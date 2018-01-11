@@ -1,8 +1,9 @@
 package sample;
 
+import java.util.Date;
+
 public class Paragon {
-    // TODO jaki format daty i godz?
-    // private format dataZakupu;
-    // private format godzinaZakupu;
+
+    private Date dataZakupu;
     private int id;
 }
