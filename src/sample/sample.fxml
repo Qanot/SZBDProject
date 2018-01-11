@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="412.0" minWidth="477.0" prefHeight="555.0" prefWidth="706.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <Button fx:id="button" layoutX="108.0" layoutY="348.0" onAction="#handleButtonAction" text="Click Me!" />
+        <ListView fx:id="companiesList" editable="true" fixedCellSize="60.0" prefHeight="414.0" prefWidth="254.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="-1.0" />
+        <Label fx:id="generateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="22.0" prefHeight="17.0" prefWidth="387.0" text="Menu" textAlignment="CENTER" />
+        <Button fx:id="generateButton3" layoutX="276.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="411.0" text="Edytuj rekord" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton111" layoutX="425.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dla wybranej firmy" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton211" layoutX="569.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dla wybranej firmy" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton311" layoutX="275.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dodaj film" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton33" layoutX="275.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dodaj bilet" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton23" layoutX="569.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dodaj seans" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton13" layoutX="425.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dodaj rezerwacje" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton31" layoutX="276.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="411.0" text="Usuń rekord" textAlignment="CENTER" wrapText="true" />
+        <ScrollPane id="asdas" layoutX="278.0" layoutY="409.0" prefHeight="129.0" prefWidth="411.0" />
+        <Button fx:id="generateButton131" layoutX="426.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Pokaż rezerwacje" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton231" layoutX="570.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Pokaż seanse" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton331" layoutX="276.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Pokaż bilety" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton3111" layoutX="276.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Pokaż filmy" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton2111" layoutX="570.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dla wybranej firmy" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="generateButton1111" layoutX="426.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="116.0" text="Dla wybranej firmy" textAlignment="CENTER" wrapText="true" />
+    </children>
+</AnchorPane>
