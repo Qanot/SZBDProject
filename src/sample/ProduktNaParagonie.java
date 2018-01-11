@@ -1,8 +1,28 @@
 package sample;
 
 public class ProduktNaParagonie {
-    // TODO te dziwne strzalki ze jedno ALBO drugie
+    /**
+     * zwiazdek wylaczny (exclusive relationship)
+     * tzn. albo referencja na Bilet
+     * (nabijamy bilet na paragon)
+     * albo referncja na Produkt (nabijamy na paragon jedzenie lub picie)
+     * bedziemy realizowac w taki sam sposob, jak w bazie danych
+     * - jedna z referencji jest null, a druga powinna wskazywac na obiekt
+     * (jednoczesnie nie mogą być obydwie not null)
+     **/
     private int lp;
     private Paragon paragonNaKtoryNabitoProdukt;
+    private Bilet bilet;
+    private Produkt produkt;
+
+    public void setBilet(Bilet bilet) {
+        this.bilet = bilet;
+        this.produkt = null; // nabijamy bilet
+    }
+
+    public void setProdukt(Produkt produkt) {
+        this.produkt = produkt; // nabijamy produkt
+        this.bilet = null;
+    }
 
 }
