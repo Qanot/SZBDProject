@@ -1,9 +1,10 @@
 package sample;
 
+import java.util.Date;
+
 public class Bilet {
-    // TODO jaki format daty i godz?
-    // private format dataZakupu;
-    // private format godzinaZakupu;
+
+    private Date dataZakupu;
     private int id;
     private RodzajBiletu rodzajBiletu;
     private Pracownik pracownikKtorySprzedal;

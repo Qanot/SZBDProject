@@ -1,9 +1,10 @@
 package sample;
 
+import java.util.Date;
+
 public class Rezerwacja {
-    // TODO jaki format daty i godz?
-    // private format dataUtworzenia;
-    // private format godzinaUtworzenia;
+
+    Date dataUtworzenia;
     private int id;
     private boolean jestOplacona;
     private Klient klientRezerwujacy;
