@@ -5,8 +5,8 @@ public class Bilet {
     // private format dataZakupu;
     // private format godzinaZakupu;
     private int id;
-    RodzajBiletu rodzajBiletu;
-    Pracownik pracownikKtorySprzedal;
-    Rezerwacja rezerwacjaPoprzedzajacaSprzedaz; //moze byc null (opcjonalne)
-    MiejsceNaSeansie miejsceNaSeansie;
+    private RodzajBiletu rodzajBiletu;
+    private Pracownik pracownikKtorySprzedal;
+    private Rezerwacja rezerwacjaPoprzedzajacaSprzedaz; //moze byc null (opcjonalne)
+    private MiejsceNaSeansie miejsceNaSeansie;
 }

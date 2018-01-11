@@ -7,5 +7,4 @@ public class Pracownik {
     private String nazwisko;
     private int id;
     private Plec plec;
-
 }
