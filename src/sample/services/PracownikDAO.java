@@ -58,7 +58,8 @@ public class PracownikDAO {
                 String plecString = rsSelect.getString(4);
                 plecString = plecString.substring(0,1); // pierwsza litera
                 Plec plec = Plec.valueOf(plecString);
-                Pracownik pracownik = new Pracownik(id, imie, nazwisko, plec);
+                Pracownik pracownik = new Pracownik(imie, nazwisko, plec);
+                pracownik.setId(id);
                 pracownicy.add(pracownik);
             }
         } catch(SQLException ex){

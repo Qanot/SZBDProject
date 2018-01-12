@@ -30,8 +30,8 @@ public class Main extends Application {
     public static void main(String[] args) {
 //        makeConnection();
         ConnectionController cc = new ConnectionController();
-        PracownikDAO prdao = new PracownikDAO(cc.getConn());
-        Pracownik pracownik = new Pracownik(0, "oli", "ma", Plec.K);
+        PracownikDAO prdao = new PracownikDAO(cc);
+        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
         prdao.insertPracownik(pracownik);
         List<Pracownik> lista = prdao.getPracownicy();
         pracownik.setNazwisko("kowalski");

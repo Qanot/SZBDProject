@@ -7,8 +7,7 @@ public class Pracownik {
     private String nazwisko;
     private Plec plec;
 
-    public Pracownik(int id, String imie, String nazwisko, Plec plec) {
-        this.setId(id);
+    public Pracownik(String imie, String nazwisko, Plec plec) {
         this.setImie(imie);
         this.setNazwisko(nazwisko);
         this.setPlec(plec);
