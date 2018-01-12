@@ -1,4 +1,6 @@
-package sample;
+package sample.model;
+
+import sample.model.Plec;
 
 public class Pracownik {
 

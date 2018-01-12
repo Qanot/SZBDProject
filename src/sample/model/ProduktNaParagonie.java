@@ -1,4 +1,8 @@
-package sample;
+package sample.model;
+
+import sample.model.Bilet;
+import sample.model.Paragon;
+import sample.model.Produkt;
 
 public class ProduktNaParagonie {
     /**

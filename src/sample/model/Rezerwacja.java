@@ -3,7 +3,9 @@
 // (powered by Fernflower decompiler)
 //
 
-package sample;
+package sample.model;
+
+import sample.model.Klient;
 
 import java.util.Date;
 

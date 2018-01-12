@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="412.0" minWidth="477.0" prefHeight="555.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane id="AnchorPane" minHeight="412.0" minWidth="477.0" prefHeight="555.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
     <children>
         <Button fx:id="button" layoutX="108.0" layoutY="348.0" onAction="#handleButtonAction" text="Click Me!" />
         <ListView fx:id="searchList" editable="true" fixedCellSize="60.0" prefHeight="414.0" prefWidth="254.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="-1.0" />
