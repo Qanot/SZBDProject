@@ -5,8 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.model.Plec;
+import sample.model.Pracownik;
+import sample.services.ConnectionController;
+import sample.services.PracownikDAO;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +28,15 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-////        makeConnection();
+//        makeConnection();
+        ConnectionController cc = new ConnectionController();
+        PracownikDAO prdao = new PracownikDAO(cc.getConn());
+        Pracownik pracownik = new Pracownik(0, "oli", "ma", Plec.K);
+        prdao.insertPracownik(pracownik);
+        List<Pracownik> lista = prdao.getPracownicy();
+        pracownik.setNazwisko("kowalski");
+        prdao.updatePracownik(pracownik);
+
         launch(args);
     }
 

@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 // prawie gotowe TODO insert
 
 public class PracownikDAO {
+
     private ConnectionController connectionController;
     private List<Pracownik> pracownicy;
     private PreparedStatement stmtSelect = null;
@@ -95,12 +96,10 @@ public class PracownikDAO {
             if(changes != 1){
                 System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
             }
-
         }catch (SQLException ex){
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
         }
-
 
     }
     public void insertPracownik(Pracownik pracownik){
