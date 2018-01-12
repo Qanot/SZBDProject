@@ -6,7 +6,6 @@ import sample.model.Pracownik;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,16 +15,17 @@ import java.util.logging.Logger;
 
 // prawie gotowe TODO insert
 
-public class EdytujPracownikow {
+public class PracownikDAO {
     private ConnectionController connectionController;
     private List<Pracownik> pracownicy;
     private PreparedStatement stmtSelect = null;
     private PreparedStatement stmtDelete = null;
     private PreparedStatement stmtUpdate = null;
-    private PreparedStatement stmtInsert = null;
+    private CallableStatement stmtInsert = null;
     private ResultSet rsSelect = null;
 
-    public EdytujPracownikow(){
+    public PracownikDAO(ConnectionController connectionController){
+        this.setConnectionController(connectionController);
         pracownicy = new ArrayList<Pracownik>();
 
         try{
@@ -35,19 +35,21 @@ public class EdytujPracownikow {
                     "DELETE FROM PRACOWNICY WHERE ID = ?");
             stmtUpdate = connectionController.getConn().prepareStatement(
                     "UPDATE PRACOWNICY SET IMIE = ?, NAZWISKO = ?, PLEC = ? WHERE ID = ?");
-            stmtInsert = connectionController.getConn().prepareStatement(
-                    "INSERT INTO PRACOWNICY(IMIE, NAZWISKO, PLEC) VALUES (?, ?, ?)");
+            stmtInsert = connectionController.getConn().prepareCall(
+                    "{call wstaw_pracownika(?, ?, ?, ?)}");
+            selectPracownicy();
 
         } catch(SQLException ex){
-            Logger.getLogger(EdytujPracownikow.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd przygotowania prekompilowanego polecenia", ex);
         }
+
 
     }
     private void selectPracownicy(){
         pracownicy.clear();
         try{
-            stmtSelect.executeQuery();
+            rsSelect = stmtSelect.executeQuery();
             while(rsSelect.next()){
                 int id = rsSelect.getInt(1);
                 String imie = rsSelect.getString(2);
@@ -59,7 +61,7 @@ public class EdytujPracownikow {
                 pracownicy.add(pracownik);
             }
         } catch(SQLException ex){
-            Logger.getLogger(EdytujPracownikow.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);
         }
 
@@ -69,52 +71,50 @@ public class EdytujPracownikow {
         return pracownicy;
     }
     public void deletePracownik(Pracownik pracownik){
-        if(pracownicy.contains(pracownik)){
-            try{
-                stmtDelete.setInt(1, pracownik.getId());
-                int changes = stmtSelect.executeUpdate();
-                if(changes != 1){
-                    System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
-                }
-            } catch(SQLException ex){
-                Logger.getLogger(EdytujPracownikow.class.getName()).log(Level.SEVERE,
-                        "Błąd wykonania prekompilowanego polecenia delete", ex);
+        try{
+            stmtDelete.setInt(1, pracownik.getId());
+            int changes = stmtDelete.executeUpdate();
+            if(changes != 1){
+                System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
-
-        }else{
-            System.out.println("Błąd! Nie ma takiego pracownika na liscie!");
+        } catch(SQLException ex){
+            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia delete", ex);
         }
+
+
     }
     public void updatePracownik(Pracownik pracownik){
-        if(pracownicy.contains(pracownik)){
-            try {
-
-                stmtUpdate.setString(1, pracownik.getImie());
-                stmtUpdate.setString(2, pracownik.getNazwisko());
-                stmtUpdate.setString(3, pracownik.getPlec().name()); // name zwroci dokladnie "K" lub "M",
-                // nawet jesli nadpiszemy w przyszlosci toString
-                stmtUpdate.setInt(4, pracownik.getId());
-                int changes = stmtUpdate.executeUpdate();
-                if(changes != 1){
-                    System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
-                }
-
-            }catch (SQLException ex){
-                Logger.getLogger(EdytujPracownikow.class.getName()).log(Level.SEVERE,
-                        "Błąd wykonania prekompilowanego polecenia update", ex);
+        try {
+            stmtUpdate.setString(1, pracownik.getImie());
+            stmtUpdate.setString(2, pracownik.getNazwisko());
+            stmtUpdate.setString(3, pracownik.getPlec().name()); // name zwroci dokladnie "K" lub "M",
+            // nawet jesli nadpiszemy w przyszlosci toString
+            stmtUpdate.setInt(4, pracownik.getId());
+            int changes = stmtUpdate.executeUpdate();
+            if(changes != 1){
+                System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
             }
 
-        }else{
-            System.out.println("Blad! Nie ma takiego pracownika na liscie!");
+        }catch (SQLException ex){
+            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia update", ex);
         }
+
 
     }
     public void insertPracownik(Pracownik pracownik){
         try{
-            // TODO musze zrobic procedure i ja tu wywolac
+            stmtInsert.setString(1, pracownik.getImie());
+            stmtInsert.setString(2, pracownik.getNazwisko());
+            stmtInsert.setString(3, pracownik.getPlec().name());
+            stmtInsert.registerOutParameter(4, Types.INTEGER);
+            stmtInsert.execute();
+            int id = stmtInsert.getInt(4);
+            pracownik.setId(id);
 
         }catch (SQLException ex){
-            Logger.getLogger(EdytujPracownikow.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
         }
 
