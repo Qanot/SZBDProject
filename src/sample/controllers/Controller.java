@@ -117,6 +117,87 @@ public class Controller {
         System.out.println("showSeanseButton!");
     }
 
+    @FXML
+    private void handleShowHallsButton(ActionEvent event) throws IOException {
+        System.out.println("showHallsButton!");
+    }
+
+    @FXML
+    private void handleShowEmployeesButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleShowReceiptsButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleShowProductsOnReceiptButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleShowTicketsTypesButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleShowClientsButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleShowSeatsButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleShowSeatsOnSeansButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleAddHallsButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleAddEmployeesButton(ActionEvent event) throws IOException {
+        System.out.println("showSeanseButton!");
+    }
+
+    @FXML
+    private void handleAddReceiptsButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+    }
+
+    @FXML
+    private void handleAddProductsOnReceiptButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+    }
+
+    @FXML
+    private void handleAddTicketsTypesButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+    }
+
+    @FXML
+    private void handleAddClientsButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+    }
+
+    @FXML
+    private void handleAddSeatsButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+    }
+
+    @FXML
+    private void handleSeatsOnSeansButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+    }
+
+
 
 
 

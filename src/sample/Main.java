@@ -29,13 +29,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 //        makeConnection();
-        ConnectionController cc = new ConnectionController();
-        PracownikDAO prdao = new PracownikDAO(cc);
-        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
-        prdao.insertPracownik(pracownik);
-        List<Pracownik> lista = prdao.getPracownicy();
-        pracownik.setNazwisko("kowalski");
-        prdao.updatePracownik(pracownik);
+//        ConnectionController cc = new ConnectionController();
+//        PracownikDAO prdao = new PracownikDAO(cc);
+//        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
+//        prdao.insertPracownik(pracownik);
+//        List<Pracownik> lista = prdao.getPracownicy();
+//        pracownik.setNazwisko("kowalski");
+//        prdao.updatePracownik(pracownik);
 
         launch(args);
     }
