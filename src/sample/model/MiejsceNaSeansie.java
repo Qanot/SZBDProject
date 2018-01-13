@@ -10,7 +10,7 @@ public class MiejsceNaSeansie {
      * - jedna z referencji jest null, a druga powinna wskazywac na obiekt
      * (jednoczesnie nie mogą być obydwie not null)
      **/
-    private Miejsce miejsceNaSali;
+    private Miejsce miejsce;
     private Seans seans;
     private Rezerwacja rezerwacja;
     private Bilet bilet;

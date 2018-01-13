@@ -14,7 +14,7 @@ public class ProduktNaParagonie {
      * - jedna z referencji jest null, a druga powinna wskazywac na obiekt
      * (jednoczesnie nie mogą być obydwie not null)
      **/
-    private int lp;
+    private int id;
     private Paragon paragonNaKtoryNabitoProdukt;
     private Bilet bilet;
     private Produkt produkt;
