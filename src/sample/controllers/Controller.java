@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import sample.model.Plec;
 import sample.model.Pracownik;
 import sample.services.ConnectionController;
 import sample.services.PracownikDAO;
@@ -59,20 +58,20 @@ public class Controller {
         //enable controller to connect to database
         cc = new ConnectionController();
         cc.open();
-        // Add some sample data to the master data
-        dataToShow.add(new RecordToShow("Hans", "Muster"));
-        dataToShow.add(new RecordToShow("Ruth", "Mueller"));
-        dataToShow.add(new RecordToShow("Heinz", "Kurz"));
-        dataToShow.add(new RecordToShow("Cornelia", "Meier"));
-        dataToShow.add(new RecordToShow("Werner", "Meyer"));
-        dataToShow.add(new RecordToShow("Lydia", "Kunz"));
-        dataToShow.add(new RecordToShow("Anna", "Best"));
-        dataToShow.add(new RecordToShow("Stefan", "Meier"));
-        dataToShow.add(new RecordToShow("Martin", "Mueller"));
+//        // Add some sample data to the master data
+//        dataToShow.add(new RecordToShow("Hans", "Muster"));
+//        dataToShow.add(new RecordToShow("Ruth", "Mueller"));
+//        dataToShow.add(new RecordToShow("Heinz", "Kurz"));
+//        dataToShow.add(new RecordToShow("Cornelia", "Meier"));
+//        dataToShow.add(new RecordToShow("Werner", "Meyer"));
+//        dataToShow.add(new RecordToShow("Lydia", "Kunz"));
+//        dataToShow.add(new RecordToShow("Anna", "Best"));
+//        dataToShow.add(new RecordToShow("Stefan", "Meier"));
+//        dataToShow.add(new RecordToShow("Martin", "Mueller"));
         //set Type o presented records
-        presentedType = "Clients";
+        presentedType = "";
         // Initially add all data to filtered data
-        filteredData.addAll(dataToShow);
+//        filteredData.addAll(dataToShow);
     }
 
     @FXML
@@ -98,7 +97,13 @@ public class Controller {
         } else if (presentedType.equals("Receipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
         } else if (presentedType.equals("Employees")) {
-            new EditEmployeeController().openWindow("Jakub - pracownik");
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                PracownikDAO prdao = new PracownikDAO(cc);
+                List<Pracownik> lista = prdao.getPracownicy();
+                Pracownik tempEmployee = lista.get(dataToShow.indexOf(selection));
+                openEditEmployeeWindow(tempEmployee);
+            }
         } else if (presentedType.equals("ProductsOnReceipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
         } else if (presentedType.equals("Reservations")) {
@@ -112,10 +117,59 @@ public class Controller {
         }
     }
 
+    private void openEditEmployeeWindow(Pracownik pracownik){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editEmployeeWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji pracownika");
+            EditEmployeeController controller = fxmlLoader.<EditEmployeeController>getController();
+            controller.initEmployee(pracownik);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void handleDeleteRecordButton(ActionEvent event) throws IOException {
         System.out.println("DeleteRecordButton!");
-        dataToShow.remove(recordsTable.getSelectionModel().getSelectedItem());
+        if(recordsTable.getSelectionModel().getSelectedIndex() != -1){
+            if (presentedType.equals("Tickets")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTicketWindow.fxml"));
+            } else if (presentedType.equals("Movies")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
+            } else if (presentedType.equals("Clients")) {
+                new EditClientController().openWindow("Jakub - klient");
+            } else if (presentedType.equals("Seats")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
+            } else if (presentedType.equals("SeatsOnSeans")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatOnSeansWindow.fxml"));
+            } else if (presentedType.equals("Receipts")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
+            } else if (presentedType.equals("Employees")) {
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+//            if(selection != null){
+//                PracownikDAO prdao = new PracownikDAO(cc);
+//                List<Pracownik> lista = prdao.getPracownicy();
+//                Pracownik tempEmployee = lista.get(dataToShow.indexOf(selection));
+//                openEditEmployeeWindow(tempEmployee);
+//            }
+            } else if (presentedType.equals("ProductsOnReceipts")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
+            } else if (presentedType.equals("Reservations")) {
+//                new EditReservationController().openWindow("Jakub - rezerwacja");
+            } else if (presentedType.equals("TypesOfTickets")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
+            } else if (presentedType.equals("Halls")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
+            } else if (presentedType.equals("Seanse")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
+            }
+        }
+
     }
 
     @FXML
@@ -261,28 +315,22 @@ public class Controller {
                 new PropertyValueFactory<RecordToShow, String>("id"));
         dataColumn.setCellValueFactory(
                 new PropertyValueFactory<RecordToShow, String>("data"));
-
         // Add filtered data to the table
         recordsTable.setItems(filteredData);
-
         // Listen for text changes in the filter text field
         filterField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
-
                 updateFilteredData();
             }
         });
-
         dataToShow.addListener(new ListChangeListener<RecordToShow>() {
             @Override
             public void onChanged(ListChangeListener.Change<? extends RecordToShow> change) {
                 updateFilteredData();
             }
         });
-
-
         recordsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 if (presentedType.equals("Employees")){
@@ -291,12 +339,10 @@ public class Controller {
                     List<Pracownik> lista = prdao.getPracownicy();
                     Pracownik tempEmployee = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText("ID: " + tempEmployee.getId() + "\nImie: " + tempEmployee.getImie() +
-                    "\nNazwisko: " + tempEmployee.getNazwisko());
+                    "\nNazwisko: " + tempEmployee.getNazwisko() + "\nPłeć: " + tempEmployee.getPlec());
                 }
             }
         });
-
-
     }
     /**
      * Updates the filteredData to contain all data from the dataToShow that
@@ -327,7 +373,6 @@ public class Controller {
             // No filter --> Add all.
             return true;
         }
-
         String lowerCaseFilterString = filterString.toLowerCase();
 
         if (record.getId().toLowerCase().indexOf(lowerCaseFilterString) != -1) {
@@ -335,7 +380,6 @@ public class Controller {
         } else if (record.getData().toLowerCase().indexOf(lowerCaseFilterString) != -1) {
             return true;
         }
-
         return false; // Does not match
     }
 
@@ -344,7 +388,6 @@ public class Controller {
         recordsTable.getSortOrder().clear();
         recordsTable.getSortOrder().addAll(sortOrder);
     }
-
 
     public class RecordToShow {
         private String id;
@@ -358,21 +401,16 @@ public class Controller {
         public String getId() {
             return id;
         }
-
         public void setId(String id) {
             this.id = id;
         }
-
         public String getData() {
             return data;
         }
-
         public void setData(String data) {
             this.data = data;
         }
-        public String toString(){
-            return id + " " + data;
-        }
+        public String toString(){  return id + " " + data; }
 
     }
 

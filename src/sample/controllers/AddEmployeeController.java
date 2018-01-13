@@ -4,16 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import sample.model.Plec;
 import sample.model.Pracownik;
 
 import java.io.IOException;
 
-public class EditEmployeeController {
+public class AddEmployeeController {
 
     Pracownik employee = null;
 
@@ -24,10 +23,11 @@ public class EditEmployeeController {
     @FXML
     private TextField editLastname;
     @FXML
-    private ChoiceBox editPlec =  new ChoiceBox(FXCollections.observableArrayList("K", "M"));
+    private ChoiceBox<String> editPlec = new ChoiceBox<>(FXCollections.observableArrayList("K", "M"));
 
-    public EditEmployeeController(){
-        editPlec.setItems(FXCollections.observableArrayList(Plec.K, Plec.M));
+
+    public AddEmployeeController(){
+
     }
 
     @FXML
@@ -40,11 +40,13 @@ public class EditEmployeeController {
         this.employee = employee;
         editName.textProperty().setValue(employee.getImie());
         editLastname.textProperty().setValue(employee.getNazwisko());
-        editPlec.getSelectionModel().select(employee.getPlec());
-
+//        editPlec = new ChoiceBox<String>(FXCollections.observableArrayList("K", "M"));
+//        editPlec.getSelectionModel().select(employee.getPlec().toString());
 
 
     }
+
+
 
 
 

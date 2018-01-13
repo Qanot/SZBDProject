@@ -120,7 +120,7 @@ public class KlientDAO {
      * (login zajęty)
      */
     public boolean insertKlient(Klient klient) {
-        try {
+//        try {
             /*
             stmtInsert.setString(1, pracownik.getImie());
 
@@ -133,10 +133,10 @@ public class KlientDAO {
             */
             return true;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
-                    "Błąd wykonania prekompilowanego polecenia insert", ex);
-        }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+//                    "Błąd wykonania prekompilowanego polecenia insert", ex);
+//        }
     }
 
 
