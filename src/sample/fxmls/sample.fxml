@@ -27,7 +27,18 @@
         <Button fx:id="addSeansButton" layoutX="480.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddSeansButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj seans" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="addReservationButton" layoutX="396.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddReservationButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj rezerwację" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="deleteRecordButton" layoutX="564.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleDeleteRecordButton" prefHeight="43.0" prefWidth="168.0" text="Usuń rekord" textAlignment="CENTER" wrapText="true" />
-        <ScrollPane id="asdas" fx:id="infoField" layoutX="313.0" layoutY="422.0" prefHeight="164.0" prefWidth="502.0" />
+        <ScrollPane id="asdas" fx:id="infoField" layoutX="313.0" layoutY="422.0" prefHeight="164.0" prefWidth="502.0">
+         <content>
+            <TextFlow fx:id="infoTextFlow" prefHeight="158.0" prefWidth="498.0">
+               <children>
+                  <Text fx:id="infoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacje pojawią po zaznaczeniu wybranej pozycji." textAlignment="CENTER" wrappingWidth="463.427734375">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+         </content></ScrollPane>
         <Button fx:id="showReservationsButton" layoutX="396.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleShowReservationsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż rezerwacje" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="showSeanseButton" layoutX="480.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleShowSeanseButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż seanse" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="showTicketsButton" layoutX="312.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleShowTicketsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż bilety" textAlignment="CENTER" wrapText="true" />

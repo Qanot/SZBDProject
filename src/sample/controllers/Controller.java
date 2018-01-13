@@ -15,6 +15,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import sample.model.Plec;
 import sample.model.Pracownik;
@@ -41,6 +43,10 @@ public class Controller {
     private TableColumn<RecordToShow, String> dataColumn;
     @FXML
     private ScrollPane infoField;
+    @FXML
+    private TextFlow infoTextFlow;
+    @FXML
+    private Text infoText = new Text();
 
     private ObservableList<RecordToShow> dataToShow = FXCollections.observableArrayList();
     private ObservableList<RecordToShow> filteredData = FXCollections.observableArrayList();
@@ -67,15 +73,6 @@ public class Controller {
         presentedType = "Clients";
         // Initially add all data to filtered data
         filteredData.addAll(dataToShow);
-
-        // Listen for changes in master data.
-        // Whenever the master data changes we must also update the filtered data.
-        dataToShow.addListener(new ListChangeListener<RecordToShow>() {
-            @Override
-            public void onChanged(ListChangeListener.Change<? extends RecordToShow> change) {
-                updateFilteredData();
-            }
-        });
     }
 
     @FXML
@@ -105,7 +102,7 @@ public class Controller {
         } else if (presentedType.equals("ProductsOnReceipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
         } else if (presentedType.equals("Reservations")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReservationWindow.fxml"));
+            new EditReservationController().openWindow("Jakub - rezerwacja");
         } else if (presentedType.equals("TypesOfTickets")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
         } else if (presentedType.equals("Halls")) {
@@ -152,6 +149,7 @@ public class Controller {
     @FXML
     private void handleShowReservationsButton(ActionEvent event) throws IOException {
         System.out.println("showReservationsButton!");
+        presentedType = "Reservations";
     }
 
     @FXML
@@ -173,11 +171,15 @@ public class Controller {
     private void handleShowEmployeesButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
         presentedType = "Employees";
+        addEmployeesToTableView();
+    }
+
+    private void addEmployeesToTableView(){
         PracownikDAO prdao = new PracownikDAO(cc);
         List<Pracownik> lista = prdao.getPracownicy();
         dataToShow.clear();
         for (Pracownik pracownik: lista){
-            dataToShow.add(new RecordToShow(pracownik.getImie(), pracownik.getNazwisko()));
+            dataToShow.add(new RecordToShow(String.valueOf(pracownik.getId()), pracownik.getImie() + " " +pracownik.getNazwisko()));
         }
     }
 
@@ -272,6 +274,29 @@ public class Controller {
                 updateFilteredData();
             }
         });
+
+        dataToShow.addListener(new ListChangeListener<RecordToShow>() {
+            @Override
+            public void onChanged(ListChangeListener.Change<? extends RecordToShow> change) {
+                updateFilteredData();
+            }
+        });
+
+
+        recordsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                if (presentedType.equals("Employees")){
+                    System.out.println("Indeks zaznaczonego pola: " + dataToShow.indexOf(newSelection) );
+                    PracownikDAO prdao = new PracownikDAO(cc);
+                    List<Pracownik> lista = prdao.getPracownicy();
+                    Pracownik tempEmployee = lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText("ID: " + tempEmployee.getId() + "\nImie: " + tempEmployee.getImie() +
+                    "\nNazwisko: " + tempEmployee.getNazwisko());
+                }
+            }
+        });
+
+
     }
     /**
      * Updates the filteredData to contain all data from the dataToShow that
@@ -345,6 +370,10 @@ public class Controller {
         public void setData(String data) {
             this.data = data;
         }
+        public String toString(){
+            return id + " " + data;
+        }
+
     }
 
 }
