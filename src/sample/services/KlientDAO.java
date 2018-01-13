@@ -1,7 +1,6 @@
 package sample.services;
 
-import sample.model.Plec;
-import sample.model.Pracownik;
+import sample.model.Klient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,55 +10,57 @@ import java.util.logging.Logger;
 
 /**
  * ZALOZENIA:
- * id jest niezmienne (klucz podstawowy)
- * przy wstawianiu rekordu id generuje wyzwalacz za pomoca sekwencji
+ * login jest niezmienny (klucz podstawowy), wiec nie mozna go updatowac
+ * przy wstawianiu rekordu, jesli metoda insert zwroci false, oznacza to, ze dany login juz istnieje
+ * (naruszenie ograniczenia integralnosciowego)
  **/
 
+// TODO prztestowac
 
-public class PracownikDAO {
-
+public class KlientDAO {
     private ConnectionController connectionController;
-    private List<Pracownik> pracownicy;
+    private List<Klient> klienci;
     private PreparedStatement stmtSelect = null;
     private PreparedStatement stmtDelete = null;
     private PreparedStatement stmtUpdate = null;
     private CallableStatement stmtInsert = null;
     private ResultSet rsSelect = null;
 
-    public PracownikDAO(ConnectionController connectionController) {
+    public KlientDAO(ConnectionController connectionController){
         this.setConnectionController(connectionController);
-        pracownicy = new ArrayList<Pracownik>();
+        klienci = new ArrayList<Klient>();
 
         try {
             stmtSelect = connectionController.getConn().prepareStatement(
-                    "SELECT id, imie, nazwisko, plec FROM PRACOWNICY");
+                    "SELECT imie, nazwisko, email, login, haslo, telefon FROM KLIENCI");
             stmtDelete = connectionController.getConn().prepareStatement(
-                    "DELETE FROM PRACOWNICY WHERE ID = ?");
+                    "DELETE FROM KLIENCI WHERE LOGIN = ?");
             stmtUpdate = connectionController.getConn().prepareStatement(
-                    "UPDATE PRACOWNICY SET IMIE = ?, NAZWISKO = ?, PLEC = ? WHERE ID = ?");
+                    "UPDATE KLIENCI SET imie = ?, nazwisko = ?, email = ?, haslo =?, telefon = ? WHERE LOGIN = ?");
             stmtInsert = connectionController.getConn().prepareCall(
-                    "{call wstaw_pracownika(?, ?, ?, ?)}");
+                    "{call wstaw_klienta(?, ?, ?, ?, ?, ?)}");
+            selectKlienci();
 
         } catch (SQLException ex) {
-            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd przygotowania prekompilowanego polecenia", ex);
         }
     }
 
-    private void selectPracownicy() {
-        pracownicy.clear();
+    private void selectKlienci() {
+        klienci.clear();
         try {
             rsSelect = stmtSelect.executeQuery();
             while (rsSelect.next()) {
-                int id = rsSelect.getInt(1);
-                String imie = rsSelect.getString(2);
-                String nazwisko = rsSelect.getString(3);
-                String plecString = rsSelect.getString(4);
-                plecString = plecString.substring(0, 1); // pierwsza litera
-                Plec plec = Plec.valueOf(plecString);
-                Pracownik pracownik = new Pracownik(imie, nazwisko, plec);
-                pracownik.setId(id);
-                pracownicy.add(pracownik);
+                String imie = rsSelect.getString(1);
+                String nazwisko = rsSelect.getString(2);
+                String email = rsSelect.getString(3);
+                String login = rsSelect.getString(4);
+                String haslo = rsSelect.getString(5);
+                String telefon = rsSelect.getString(6);
+
+                Klient klient = new Klient(imie, nazwisko, email, login, haslo, telefon);
+                klienci.add(klient);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
@@ -76,14 +77,14 @@ public class PracownikDAO {
         }
     }
 
-    public List<Pracownik> getPracownicy() {
-        selectPracownicy();
-        return pracownicy;
+    public List<Klient> getPracownicy() {
+        selectKlienci();
+        return klienci;
     }
 
-    public void deletePracownik(Pracownik pracownik) {
+    public void deleteKlient(Klient klient) {
         try {
-            stmtDelete.setInt(1, pracownik.getId());
+            stmtDelete.setString(1, klient.getLogin());
             int changes = stmtDelete.executeUpdate();
             if (changes != 1) {
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
@@ -94,13 +95,14 @@ public class PracownikDAO {
         }
     }
 
-    public void updatePracownik(Pracownik pracownik) {
+    public void updatePracownik(Klient klient) {
         try {
-            stmtUpdate.setString(1, pracownik.getImie());
-            stmtUpdate.setString(2, pracownik.getNazwisko());
-            stmtUpdate.setString(3, pracownik.getPlec().name()); // name zwroci dokladnie "K" lub "M",
-            // nawet jesli nadpiszemy w przyszlosci toString
-            stmtUpdate.setInt(4, pracownik.getId());
+            stmtUpdate.setString(1, klient.getImie());
+            stmtUpdate.setString(2, klient.getNazwisko());
+            stmtUpdate.setString(3, klient.getEmail());
+            stmtUpdate.setString(4, klient.getHaslo());
+            stmtUpdate.setString(5, klient.getTelefon());
+
             int changes = stmtUpdate.executeUpdate();
             if (changes != 1) {
                 System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
@@ -111,15 +113,25 @@ public class PracownikDAO {
         }
     }
 
-    public void insertPracownik(Pracownik pracownik) {
+    /**
+     *
+     * @param klient klient do wstawienia do relacji
+     * @return true jeśli udało się wstawić klienta o danym loginie, false w przeciwnym wypadku
+     * (login zajęty)
+     */
+    public boolean insertKlient(Klient klient) {
         try {
+            /*
             stmtInsert.setString(1, pracownik.getImie());
+
             stmtInsert.setString(2, pracownik.getNazwisko());
             stmtInsert.setString(3, pracownik.getPlec().name());
             stmtInsert.registerOutParameter(4, Types.INTEGER);
             stmtInsert.execute();
             int id = stmtInsert.getInt(4);
             pracownik.setId(id);
+            */
+            return true;
 
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
@@ -127,44 +139,9 @@ public class PracownikDAO {
         }
     }
 
+
     public void setConnectionController(ConnectionController connectionController) {
         this.connectionController = connectionController;
     }
-
-    public void closeStatements() {
-        if (stmtSelect != null) {
-            try {
-                stmtSelect.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtInsert != null) {
-            try {
-                stmtInsert.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtUpdate != null) {
-            try {
-                stmtUpdate.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtDelete != null) {
-            try {
-                stmtDelete.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-    }
-
 
 }
