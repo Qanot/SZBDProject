@@ -22,8 +22,8 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
-        <Button fx:id="addMovieButton" layoutX="564.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddMovieButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj film" textAlignment="CENTER" wrapText="true" />
-        <Button fx:id="addTicketButton" layoutX="312.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddTicketButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj bilet" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="addMoviesButton" layoutX="564.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddMoviesButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj film" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="addTicketsButton" layoutX="312.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddTicketsButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj bilet" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="addSeansButton" layoutX="480.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddSeansButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj seans" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="addReservationButton" layoutX="396.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddReservationButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj rezerwację" textAlignment="CENTER" wrapText="true" />
         <Button fx:id="deleteRecordButton" layoutX="564.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleDeleteRecordButton" prefHeight="43.0" prefWidth="168.0" text="Usuń rekord" textAlignment="CENTER" wrapText="true" />
@@ -46,14 +46,14 @@
       <Button fx:id="showHallsButton" layoutX="648.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleShowHallsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż sale" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="showEmployeesButton" layoutX="732.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleShowEmployeesButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż pracowników" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="showReceiptsButton" layoutX="312.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowReceiptsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż paragony" textAlignment="CENTER" wrapText="true" />
-      <Button fx:id="showProductsOnReceiptButton" layoutX="396.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowProductsOnReceiptButton" prefHeight="43.0" prefWidth="84.0" text="Produkty na paragonie" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="showProductsOnReceiptsButton" layoutX="396.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowProductsOnReceiptsButton" prefHeight="43.0" prefWidth="84.0" text="Produkty na paragonie" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="showTicketsTypesButton" layoutX="480.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowTicketsTypesButton" prefHeight="43.0" prefWidth="84.0" text="Rodzaje biletów" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="showClientsButton" layoutX="564.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowClientsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż klientów" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="showSeatsButton" layoutX="648.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowSeatsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż miejsca" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="showSeatsOnSeansButton" layoutX="732.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleShowSeatsOnSeansButton" prefHeight="43.0" prefWidth="84.0" text="Miejsca na seansie" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="addHallsButton" layoutX="648.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddHallsButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj salę" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="addEmployeesButton" layoutX="732.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleAddEmployeesButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj pracownika" textAlignment="CENTER" wrapText="true" />
-      <Button fx:id="addProductsOnReceiptButton" layoutX="396.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleAddProductsOnReceiptButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj produkt na paragonie" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="addProductsOnReceiptsButton" layoutX="396.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleAddProductsOnReceiptsButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj produkt na paragonie" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="addReceiptsButton" layoutX="312.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleAddReceiptsButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj paragon" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="addSeatsOnSeansButton" layoutX="732.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleSeatsOnSeansButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj miejsce na seansie" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="addClientsButton" layoutX="564.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleAddClientsButton" prefHeight="43.0" prefWidth="84.0" text="Dodaj klienta" textAlignment="CENTER" wrapText="true" />

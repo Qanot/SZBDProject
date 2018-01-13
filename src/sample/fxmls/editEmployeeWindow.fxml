@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditEmployeeController">
+   <children>
+      <Pane layoutX="8.0" layoutY="231.0" prefHeight="200.0" prefWidth="278.0">
+         <children>
+            <TextField layoutX="115.0" layoutY="14.0" />
+            <TextField layoutX="115.0" layoutY="39.0" />
+            <TextField layoutX="115.0" layoutY="64.0" prefHeight="25.0" prefWidth="149.0" />
+            <Label layoutX="87.0" layoutY="18.0" text="Label" />
+            <Label layoutX="87.0" layoutY="43.0" text="Label" />
+            <Label layoutX="87.0" layoutY="68.0" text="Label" />
+         </children>
+      </Pane>
+      <Button layoutX="54.0" layoutY="431.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź" />
+   </children>
+</AnchorPane>

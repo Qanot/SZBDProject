@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.model.Plec;
 import sample.model.Pracownik;
 import sample.services.ConnectionController;
 import sample.services.PracownikDAO;
@@ -20,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -30,10 +29,14 @@ public class Main extends Application {
     public static void main(String[] args) {
 //        makeConnection();
 //        ConnectionController cc = new ConnectionController();
+//        cc.open();
 //        PracownikDAO prdao = new PracownikDAO(cc);
 //        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
 //        prdao.insertPracownik(pracownik);
 //        List<Pracownik> lista = prdao.getPracownicy();
+//        for (Pracownik pra: lista){
+//            System.out.println(pra.getId());
+//        }
 //        pracownik.setNazwisko("kowalski");
 //        prdao.updatePracownik(pracownik);
 
@@ -49,8 +52,8 @@ public class Main extends Application {
     public static void makeConnection(){
         Connection conn = null;
         Properties connectionProps = new Properties();
-        connectionProps.put("user", "inf127276");
-        connectionProps.put("password", "inf127276");
+        connectionProps.put("user", "inf127324");
+        connectionProps.put("password", "inf12732");
         try {
             System.out.println("Przed błędem");
             conn = DriverManager.getConnection("jdbc:oracle:thin:@//admlab2.cs.put.poznan.pl:1521/dblab02_students.cs.put.poznan.pl",

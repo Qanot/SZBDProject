@@ -16,9 +16,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.model.Plec;
+import sample.model.Pracownik;
+import sample.services.ConnectionController;
+import sample.services.PracownikDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -34,11 +39,20 @@ public class Controller {
     private TableColumn<RecordToShow, String> idColumn;
     @FXML
     private TableColumn<RecordToShow, String> dataColumn;
+    @FXML
+    private ScrollPane infoField;
 
     private ObservableList<RecordToShow> dataToShow = FXCollections.observableArrayList();
     private ObservableList<RecordToShow> filteredData = FXCollections.observableArrayList();
+    private String presentedType;
+
+    ConnectionController cc;
 
     public Controller() {
+
+        //enable controller to connect to database
+        cc = new ConnectionController();
+        cc.open();
         // Add some sample data to the master data
         dataToShow.add(new RecordToShow("Hans", "Muster"));
         dataToShow.add(new RecordToShow("Ruth", "Mueller"));
@@ -49,7 +63,8 @@ public class Controller {
         dataToShow.add(new RecordToShow("Anna", "Best"));
         dataToShow.add(new RecordToShow("Stefan", "Meier"));
         dataToShow.add(new RecordToShow("Martin", "Mueller"));
-
+        //set Type o presented records
+        presentedType = "Clients";
         // Initially add all data to filtered data
         filteredData.addAll(dataToShow);
 
@@ -72,25 +87,32 @@ public class Controller {
     private void handleEditRecordButton(ActionEvent event) throws IOException {
         System.out.println("editRecordButton!");
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("..\\editRecordWindow.fxml"));
-            /*
-             * if "fx:controller" is not set in fxml
-             * fxmlLoader.setController(NewWindowController);
-             */
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            Stage stage = new Stage();
-            stage.setTitle("Okno edycji");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-//            Logger logger = Logger.getLogger(getClass().getName());
-//            logger.log(Level.SEVERE, "Failed to create new Window.", e);
-            e.printStackTrace();
+
+        if (presentedType.equals("Tickets")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTicketWindow.fxml"));
+        } else if (presentedType.equals("Movies")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
+        } else if (presentedType.equals("Clients")) {
+            new EditClientController().openWindow("Jakub - klient");
+        } else if (presentedType.equals("Seats")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
+        } else if (presentedType.equals("SeatsOnSeans")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatOnSeansWindow.fxml"));
+        } else if (presentedType.equals("Receipts")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
+        } else if (presentedType.equals("Employees")) {
+            new EditEmployeeController().openWindow("Jakub - pracownik");
+        } else if (presentedType.equals("ProductsOnReceipts")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
+        } else if (presentedType.equals("Reservations")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReservationWindow.fxml"));
+        } else if (presentedType.equals("TypesOfTickets")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
+        } else if (presentedType.equals("Halls")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
+        } else if (presentedType.equals("Seanse")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
         }
-
-
     }
 
     @FXML
@@ -100,7 +122,7 @@ public class Controller {
     }
 
     @FXML
-    private void handleAddTicketButton(ActionEvent event) throws IOException {
+    private void handleAddTicketsButton(ActionEvent event) throws IOException {
         System.out.println("addTicketButton!");
         dataToShow.add(new RecordToShow("Lydia", "Kunz"));
     }
@@ -116,13 +138,15 @@ public class Controller {
     }
 
     @FXML
-    private void handleAddMovieButton(ActionEvent event) throws IOException {
+    private void handleAddMoviesButton(ActionEvent event) throws IOException {
         System.out.println("addMovieButton!");
     }
 
     @FXML
     private void handleShowTicketsButton(ActionEvent event) throws IOException {
         System.out.println("showTicketsButton!");
+        presentedType = "Tickets";
+
     }
 
     @FXML
@@ -148,6 +172,13 @@ public class Controller {
     @FXML
     private void handleShowEmployeesButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        presentedType = "Employees";
+        PracownikDAO prdao = new PracownikDAO(cc);
+        List<Pracownik> lista = prdao.getPracownicy();
+        dataToShow.clear();
+        for (Pracownik pracownik: lista){
+            dataToShow.add(new RecordToShow(pracownik.getImie(), pracownik.getNazwisko()));
+        }
     }
 
     @FXML
@@ -156,7 +187,7 @@ public class Controller {
     }
 
     @FXML
-    private void handleShowProductsOnReceiptButton(ActionEvent event) throws IOException {
+    private void handleShowProductsOnReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
     }
 
@@ -168,6 +199,7 @@ public class Controller {
     @FXML
     private void handleShowClientsButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        presentedType = "Clients";
     }
 
     @FXML
@@ -196,7 +228,7 @@ public class Controller {
     }
 
     @FXML
-    private void handleAddProductsOnReceiptButton(ActionEvent event) throws IOException {
+    private void handleAddProductsOnReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
     }
 
@@ -220,10 +252,6 @@ public class Controller {
         System.out.println("addReceiptsButton!");
     }
 
-
-
-
-
     @FXML
     private void initialize() {
         // Initialize the person table
@@ -245,7 +273,6 @@ public class Controller {
             }
         });
     }
-
     /**
      * Updates the filteredData to contain all data from the dataToShow that
      * matches the current filter.
@@ -258,7 +285,6 @@ public class Controller {
                 filteredData.add(p);
             }
         }
-
         // Must re-sort table after items changed
         reapplyTableSortOrder();
     }
@@ -295,9 +321,7 @@ public class Controller {
     }
 
 
-
     public class RecordToShow {
-
         private String id;
         private String data;
 
