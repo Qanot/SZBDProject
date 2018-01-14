@@ -47,8 +47,16 @@ public class EditEmployeeController {
             employee.setPlec(editedSex);
             PracownikDAO pracownikDAO = new PracownikDAO(cc);
             pracownikDAO.updatePracownik(employee);
+            closeWindow();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Puste pola");
+            alert.setHeaderText(null);
+            alert.setContentText("Proszę nie pozostawiać pustych pól!");
+            alert.showAndWait();
         }
-        closeWindow();
+
+
     }
 
     public void initEmployeeController(Pracownik employee, ConnectionController cc) {
@@ -67,8 +75,4 @@ public class EditEmployeeController {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
         stage.close();
      }
-
-
-
-
 }

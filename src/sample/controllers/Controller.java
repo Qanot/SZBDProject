@@ -279,7 +279,32 @@ public class Controller {
 
     @FXML
     private void handleAddEmployeesButton(ActionEvent event) throws IOException {
-        System.out.println("showSeanseButton!");
+        System.out.println("addEmployeeButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+
+        Pracownik tempEmployee = null;
+        if(selection != null){
+            PracownikDAO prdao = new PracownikDAO(cc);
+            List<Pracownik> lista = prdao.getPracownicy();
+            tempEmployee = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddEmployeeWindow(tempEmployee);
+    }
+    private void openAddEmployeeWindow(Pracownik pracownik){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addEmployeeWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania pracownika");
+            AddEmployeeController controller = fxmlLoader.<AddEmployeeController>getController();
+            controller.initEmployeeController(pracownik, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Employees"; addEmployeesToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
