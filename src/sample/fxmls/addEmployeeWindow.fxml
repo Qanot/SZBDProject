@@ -27,11 +27,11 @@
             <ChoiceBox fx:id="editPlec" layoutX="115.0" layoutY="113.0" prefWidth="150.0" />
          </children>
       </Pane>
-      <Button fx:id="applyChanges" layoutX="54.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź zmiany">
+      <Button fx:id="applyChanges" layoutX="54.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Label layoutX="34.0" layoutY="25.0" prefHeight="30.0" prefWidth="304.0" text="Dodaj dane nowego pracownika">
+      <Label layoutX="34.0" layoutY="25.0" prefHeight="30.0" prefWidth="304.0" text="Wprowadź dane nowego pracownika">
          <font>
             <Font size="20.0" />
          </font>

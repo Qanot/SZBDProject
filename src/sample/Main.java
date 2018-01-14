@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.model.Klient;
 import sample.model.Plec;
 import sample.model.Pracownik;
 import sample.services.ConnectionController;
+import sample.services.KlientDAO;
 import sample.services.PracownikDAO;
 
 import java.sql.*;
@@ -31,6 +33,18 @@ public class Main extends Application {
 //        makeConnection();
 //        ConnectionController cc = new ConnectionController();
 //        cc.open();
+//        KlientDAO kldao =new KlientDAO(cc);
+//        Klient klient1 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
+//        Klient klient2 = new Klient("Rafał", "Klaus", "r.k@put.poznan.pl", "rafałek", "rafiXDDD", "019238032");
+//        Klient klient3 = new Klient("Matuesz", "Lango", "m.l@put.poznan.pl", "MLmaster", "WIruler", "999");
+//        kldao.insertKlient(klient1);
+//        kldao.insertKlient(klient2);
+//        kldao.insertKlient(klient3);
+
+        //        Klient klient4 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
+        //        Klient klient4 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
+        //        Klient klient4 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
+//        Klient klient5 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
 //        PracownikDAO prdao = new PracownikDAO(cc);
 //        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
 //        Pracownik pracownik2 = new Pracownik("Jakub", "Berezowski", Plec.M);

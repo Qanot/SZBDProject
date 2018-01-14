@@ -16,6 +16,8 @@ import sample.services.PracownikDAO;
 import java.io.IOException;
 import java.util.List;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 public class EditEmployeeController {
 
     Pracownik employee = null;
@@ -49,11 +51,7 @@ public class EditEmployeeController {
             pracownikDAO.updatePracownik(employee);
             closeWindow();
         }else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Puste pola");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę nie pozostawiać pustych pól!");
-            alert.showAndWait();
+            showAlertEmptyForm();
         }
 
 

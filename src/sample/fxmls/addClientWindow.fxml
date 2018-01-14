@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddClientController">
    <children>
-      <Pane layoutX="60.0" layoutY="63.0" prefHeight="272.0" prefWidth="278.0">
+      <Pane layoutX="60.0" layoutY="63.0" prefHeight="308.0" prefWidth="278.0">
          <children>
             <TextField fx:id="editName" layoutX="115.0" layoutY="14.0" />
             <TextField fx:id="editLastname" layoutX="115.0" layoutY="64.0" prefHeight="25.0" prefWidth="149.0" />
@@ -20,7 +20,7 @@
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label layoutX="9.0" layoutY="162.0" prefHeight="30.0" prefWidth="84.0" text="Haslo:">
+            <Label layoutX="9.0" layoutY="212.0" prefHeight="30.0" prefWidth="84.0" text="Haslo:">
                <font>
                   <Font size="20.0" />
                </font></Label>
@@ -30,20 +30,26 @@
                </font>
             </Label>
             <TextField fx:id="editEmail" layoutX="115.0" layoutY="114.0" prefHeight="25.0" prefWidth="149.0" />
-            <TextField fx:id="editPassword" layoutX="115.0" layoutY="164.0" prefHeight="25.0" prefWidth="149.0" />
-            <TextField fx:id="editPhoneNumber" layoutX="115.0" layoutY="214.0" prefHeight="25.0" prefWidth="149.0" />
-            <Label layoutX="9.0" layoutY="212.0" text="Telefon:">
+            <TextField fx:id="editLogin" layoutX="115.0" layoutY="164.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="editPassword" layoutX="115.0" layoutY="214.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="editPhoneNumber" layoutX="115.0" layoutY="264.0" prefHeight="25.0" prefWidth="149.0" />
+            <Label layoutX="9.0" layoutY="162.0" text="Login:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="262.0" text="Telefon:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Button fx:id="applyChanges" layoutX="67.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź zmiany">
+      <Button fx:id="applyChanges" layoutX="67.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="27.0" prefHeight="30.0" prefWidth="336.0" text="Wprowadź dane edytowanrgo klienta" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="27.0" prefHeight="30.0" prefWidth="336.0" text="Wprowadź dane nowego klienta" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>

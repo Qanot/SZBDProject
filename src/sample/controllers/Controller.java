@@ -20,8 +20,10 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.model.Klient;
 import sample.model.Pracownik;
 import sample.services.ConnectionController;
+import sample.services.KlientDAO;
 import sample.services.PracownikDAO;
 
 import java.io.IOException;
@@ -91,7 +93,13 @@ public class Controller {
         } else if (presentedType.equals("Movies")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
         } else if (presentedType.equals("Clients")) {
-            new EditClientController().openWindow("Jakub - klient");
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                KlientDAO prdao = new KlientDAO(cc);
+                List<Klient> lista = prdao.getKlienci();
+                Klient tempClient= lista.get(dataToShow.indexOf(selection));
+                openEditClientWindow(tempClient);
+            }
         } else if (presentedType.equals("Seats")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
         } else if (presentedType.equals("SeatsOnSeans")) {
@@ -130,7 +138,24 @@ public class Controller {
             controller.initEmployeeController(pracownik, cc);
             stage.setScene(scene);
             stage.show();
-            stage.setOnHiding( event -> {addEmployeesToTableView();} );
+            stage.setOnHiding( event -> {presentedType = "Employees"; addEmployeesToTableView();} );
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void openEditClientWindow(Klient client){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editClientWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji klietna");
+            EditClientController controller = fxmlLoader.<EditClientController>getController();
+            controller.initClientController(client, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Clients"; addClientsToTableView();} );
 
         } catch (IOException e){
             e.printStackTrace();
@@ -146,7 +171,14 @@ public class Controller {
             } else if (presentedType.equals("Movies")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
             } else if (presentedType.equals("Clients")) {
-                new EditClientController().openWindow("Jakub - klient");
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    KlientDAO prdao = new KlientDAO(cc);
+                    List<Klient> lista = prdao.getKlienci();
+                    Klient tempClient= lista.get(dataToShow.indexOf(selection));
+                    prdao.deleteKlient(tempClient);
+                    addClientsToTableView();
+                }
             } else if (presentedType.equals("Seats")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
             } else if (presentedType.equals("SeatsOnSeans")) {
@@ -155,12 +187,13 @@ public class Controller {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
             } else if (presentedType.equals("Employees")) {
                 RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
-//            if(selection != null){
-//                PracownikDAO prdao = new PracownikDAO(cc);
-//                List<Pracownik> lista = prdao.getPracownicy();
-//                Pracownik tempEmployee = lista.get(dataToShow.indexOf(selection));
-//                openEditEmployeeWindow(tempEmployee);
-//            }
+                if(selection != null){
+                    PracownikDAO prdao = new PracownikDAO(cc);
+                    List<Pracownik> lista = prdao.getPracownicy();
+                    Pracownik tempEmployee = lista.get(dataToShow.indexOf(selection));
+                    prdao.deletePracownik(tempEmployee);
+                    addEmployeesToTableView();
+                }
             } else if (presentedType.equals("ProductsOnReceipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
             } else if (presentedType.equals("Reservations")) {
@@ -260,6 +293,16 @@ public class Controller {
     private void handleShowClientsButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
         presentedType = "Clients";
+        addClientsToTableView();
+
+    }
+    private void addClientsToTableView(){
+        KlientDAO prdao = new KlientDAO(cc);
+        List<Klient> lista = prdao.getKlienci();
+        dataToShow.clear();
+        for (Klient client: lista){
+            dataToShow.add(new RecordToShow(String.valueOf(client.getEmail()), client.getImie() + " " +client.getNazwisko()));
+        }
     }
 
     @FXML
@@ -283,7 +326,7 @@ public class Controller {
         RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
 
         Pracownik tempEmployee = null;
-        if(selection != null){
+        if(selection != null && presentedType.equals("Employees")){
             PracownikDAO prdao = new PracownikDAO(cc);
             List<Pracownik> lista = prdao.getPracownicy();
             tempEmployee = lista.get(dataToShow.indexOf(selection));
@@ -325,6 +368,30 @@ public class Controller {
     @FXML
     private void handleAddClientsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        Klient klient = null;
+        if(selection != null && presentedType.equals("Clients")){
+            KlientDAO prdao = new KlientDAO(cc);
+            List<Klient> lista = prdao.getKlienci();
+            klient = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddClientWindow(klient);
+    }
+    private void openAddClientWindow(Klient client){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addClientWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania nowego klienta");
+            AddClientController controller = fxmlLoader.<AddClientController>getController();
+            controller.initClientController(client, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Clients"; addClientsToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -370,9 +437,19 @@ public class Controller {
                     infoText.setText("ID: " + tempEmployee.getId() + "\nImie: " + tempEmployee.getImie() +
                     "\nNazwisko: " + tempEmployee.getNazwisko() + "\nPłeć: " + tempEmployee.getPlec());
                 }
+                if (presentedType.equals("Clients")){
+                    KlientDAO prdao = new KlientDAO(cc);
+                    List<Klient> lista = prdao.getKlienci();
+                    Klient tempClient = lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText("Imie: " + tempClient.getImie() + "\nNazwisko: " + tempClient.getNazwisko() +
+                    "\nEmail: " + tempClient.getEmail() + "\nLogin: " + tempClient.getLogin() +
+                    "\nHaslo: " + tempClient.getHaslo() + "\nTelefon: " + tempClient.getTelefon());
+                }
             }
         });
     }
+
+
     /**
      * Updates the filteredData to contain all data from the dataToShow that
      * matches the current filter.
@@ -441,6 +518,13 @@ public class Controller {
         }
         public String toString(){  return id + " " + data; }
 
+    }
+    public static void showAlertEmptyForm(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Puste pola");
+        alert.setHeaderText(null);
+        alert.setContentText("Proszę nie pozostawiać pustych pól!");
+        alert.showAndWait();
     }
 
 }

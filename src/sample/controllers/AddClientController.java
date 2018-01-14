@@ -2,18 +2,18 @@ package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.model.Klient;
 import sample.services.ConnectionController;
 import sample.services.KlientDAO;
+
 import java.io.IOException;
 
 import static sample.controllers.Controller.showAlertEmptyForm;
 
-public class EditClientController {
+public class AddClientController {
 
     Klient client = null;
     ConnectionController cc;
@@ -43,18 +43,16 @@ public class EditClientController {
         String editedName = editName.textProperty().getValue();
         String editedLastname = editLastname.textProperty().getValue();
         String editedEmail = editEmail.textProperty().getValue();
+        String editedLogin = editLogin.textProperty().getValue();
         String editedPassword = editPassword.textProperty().getValue();
         String editedPhoneNumber = editPhoneNumber.textProperty().getValue();
 
         if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
-                && !editedPassword.equals("") && !editedPhoneNumber.equals("")) {
-            client.setImie(editedName);
-            client.setNazwisko(editedLastname);
-            client.setEmail(editedEmail);
-            client.setHaslo(editedPassword);
-            client.setTelefon(editedPhoneNumber);
+                && !editedLogin.equals("") && !editedPassword.equals("") && !editedPhoneNumber.equals("")) {
+            Klient newClient = new Klient(editedName, editedLastname, editedEmail,
+                    editedLogin, editedPassword, editedPhoneNumber);
             KlientDAO klientDAO = new KlientDAO(cc);
-            klientDAO.updatePracownik(client);
+            klientDAO.insertKlient(newClient);
             closeWindow();
         } else {
             showAlertEmptyForm();
@@ -66,11 +64,14 @@ public class EditClientController {
     public void initClientController(Klient client, ConnectionController cc) {
         this.client = client;
         this.cc = cc;
-        editName.textProperty().setValue(client.getImie());
-        editLastname.textProperty().setValue(client.getNazwisko());
-        editEmail.textProperty().setValue(client.getEmail());
-        editPassword.textProperty().setValue(client.getHaslo());
-        editPhoneNumber.textProperty().setValue(client.getTelefon());
+        if (client != null) {
+            editName.textProperty().setValue(client.getImie());
+            editLastname.textProperty().setValue(client.getNazwisko());
+            editEmail.textProperty().setValue(client.getEmail());
+            editLogin.textProperty().setValue(client.getLogin());
+            editPassword.textProperty().setValue(client.getHaslo());
+            editPhoneNumber.textProperty().setValue(client.getTelefon());
+        }
     }
 
     private void closeWindow() {
