@@ -38,7 +38,7 @@ public class KlientDAO {
             stmtUpdate = connectionController.getConn().prepareStatement(
                     "UPDATE KLIENCI SET imie = ?, nazwisko = ?, email = ?, haslo =?, telefon = ? WHERE LOGIN = ?");
             stmtInsert = connectionController.getConn().prepareCall(
-                    "{call wstaw_klienta(?, ?, ?, ?, ?, ?)}");
+                    "{? = call wstaw_klienta(?, ?, ?, ?, ?, ?)}");
             selectKlienci();
 
         } catch (SQLException ex) {
@@ -77,7 +77,7 @@ public class KlientDAO {
         }
     }
 
-    public List<Klient> getPracownicy() {
+    public List<Klient> getKlienci() {
         selectKlienci();
         return klienci;
     }
@@ -102,6 +102,7 @@ public class KlientDAO {
             stmtUpdate.setString(3, klient.getEmail());
             stmtUpdate.setString(4, klient.getHaslo());
             stmtUpdate.setString(5, klient.getTelefon());
+            stmtUpdate.setString(6, klient.getLogin());
 
             int changes = stmtUpdate.executeUpdate();
             if (changes != 1) {
@@ -121,21 +122,22 @@ public class KlientDAO {
      */
     public boolean insertKlient(Klient klient) {
         try {
-            /*
-            stmtInsert.setString(1, pracownik.getImie());
-
-            stmtInsert.setString(2, pracownik.getNazwisko());
-            stmtInsert.setString(3, pracownik.getPlec().name());
-            stmtInsert.registerOutParameter(4, Types.INTEGER);
+            stmtInsert.registerOutParameter(1, Types.INTEGER);
+            stmtInsert.setString(2, klient.getImie());
+            stmtInsert.setString(3, klient.getNazwisko());
+            stmtInsert.setString(4, klient.getEmail());
+            stmtInsert.setString(5, klient.getLogin());
+            stmtInsert.setString(6, klient.getHaslo());
+            stmtInsert.setString(7, klient.getTelefon());
             stmtInsert.execute();
-            int id = stmtInsert.getInt(4);
-            pracownik.setId(id);
-            */
-            return true;
+
+            int wykonananoPoprawnie = stmtInsert.getInt(1);
+            return wykonananoPoprawnie == 1;
 
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
+            return false;
         }
     }
 

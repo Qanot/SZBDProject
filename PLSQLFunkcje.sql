@@ -21,7 +21,7 @@ END wstaw_pracownika;
 /
 
 create or replace FUNCTION wstaw_klienta(v_imie IN klienci.imie%TYPE, v_nazwisko IN klienci.nazwisko%TYPE,
-                        v_email IN klienci.imie%TYPE, v_login IN klienci.login%TYPE,
+                        v_email IN klienci.email%TYPE, v_login IN klienci.login%TYPE,
                         v_haslo IN klienci.haslo%TYPE, v_telefon IN klienci.telefon%TYPE) return number is
 BEGIN
     INSERT INTO KLIENCI(IMIE, NAZWISKO, EMAIL, LOGIN, HASLO, TELEFON)
