@@ -31,5 +31,27 @@ EXCEPTION
     WHEN DUP_VAL_ON_INDEX THEN
         RETURN 0;
 END wstaw_klienta;
+/
 
+create or replace FUNCTION wstaw_sale(v_nr_sali IN sale.nr_sali%TYPE) return number is
+  BEGIN
+    INSERT INTO SALE(nr_sali)
+    VALUES(v_nr_sali);
+    RETURN 1;
+  EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END wstaw_sale;
+/
+
+create or replace FUNCTION update_sala(v_nr_sali_stare IN sale.nr_sali%TYPE,
+                v_nr_sali_nowe IN sale.nr_sali%TYPE) return number is
+BEGIN
+    UPDATE SALE SET NR_SALI = v_nr_sali_nowe
+    WHERE NR_SALI = v_nr_sali_stare;
+    RETURN 1;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        RETURN 0;
+END update_sala;
 

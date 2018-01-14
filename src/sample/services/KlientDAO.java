@@ -15,8 +15,6 @@ import java.util.logging.Logger;
  * (naruszenie ograniczenia integralnosciowego)
  **/
 
-// TODO prztestowac
-
 public class KlientDAO {
     private ConnectionController connectionController;
     private List<Klient> klienci;
@@ -63,14 +61,14 @@ public class KlientDAO {
                 klienci.add(klient);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);
         } finally {
             if (rsSelect != null) {
                 try {
                     rsSelect.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+                    Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                             "Błąd zamykania interfejsu ResultSet", ex);
                 }
             }
@@ -90,12 +88,12 @@ public class KlientDAO {
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }
     }
 
-    public void updatePracownik(Klient klient) {
+    public void updateKlient(Klient klient) {
         try {
             stmtUpdate.setString(1, klient.getImie());
             stmtUpdate.setString(2, klient.getNazwisko());
@@ -109,7 +107,7 @@ public class KlientDAO {
                 System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
         }
     }
@@ -136,7 +134,7 @@ public class KlientDAO {
             return wykonananoPoprawnie == 1;
 
         } catch (SQLException ex) {
-            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
             return false;
         }
@@ -145,6 +143,41 @@ public class KlientDAO {
 
     public void setConnectionController(ConnectionController connectionController) {
         this.connectionController = connectionController;
+    }
+
+    public void closeStatements() {
+        if (stmtSelect != null) {
+            try {
+                stmtSelect.close();
+            } catch (SQLException e) {
+                /* kod obsługi */
+                System.out.println("Błąd zamknięcia interfejsu Statement");
+            }
+        }
+        if (stmtInsert != null) {
+            try {
+                stmtInsert.close();
+            } catch (SQLException e) {
+                /* kod obsługi */
+                System.out.println("Błąd zamknięcia interfejsu Statement");
+            }
+        }
+        if (stmtUpdate != null) {
+            try {
+                stmtUpdate.close();
+            } catch (SQLException e) {
+                /* kod obsługi */
+                System.out.println("Błąd zamknięcia interfejsu Statement");
+            }
+        }
+        if (stmtDelete != null) {
+            try {
+                stmtDelete.close();
+            } catch (SQLException e) {
+                /* kod obsługi */
+                System.out.println("Błąd zamknięcia interfejsu Statement");
+            }
+        }
     }
 
 }

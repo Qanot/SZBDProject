@@ -54,7 +54,7 @@ public class EditClientController {
             client.setHaslo(editedPassword);
             client.setTelefon(editedPhoneNumber);
             KlientDAO klientDAO = new KlientDAO(cc);
-            klientDAO.updatePracownik(client);
+            klientDAO.updateKlient(client);
             closeWindow();
         } else {
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
