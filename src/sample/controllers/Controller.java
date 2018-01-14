@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.model.Pracownik;
 import sample.services.ConnectionController;
 import sample.services.PracownikDAO;
@@ -125,9 +127,11 @@ public class Controller {
             Stage stage = new Stage();
             stage.setTitle("Okno edycji pracownika");
             EditEmployeeController controller = fxmlLoader.<EditEmployeeController>getController();
-            controller.initEmployee(pracownik);
+            controller.initEmployeeController(pracownik, cc);
             stage.setScene(scene);
             stage.show();
+            stage.setOnHiding( event -> {addEmployeesToTableView();} );
+
         } catch (IOException e){
             e.printStackTrace();
         }
