@@ -51,7 +51,7 @@ public class EditEmployeeController {
             pracownikDAO.updatePracownik(employee);
             closeWindow();
         }else{
-            showAlertEmptyForm();
+            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
 
 

@@ -2,6 +2,7 @@ package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -47,15 +48,21 @@ public class AddClientController {
         String editedPassword = editPassword.textProperty().getValue();
         String editedPhoneNumber = editPhoneNumber.textProperty().getValue();
 
+        //check if not empty
         if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
                 && !editedLogin.equals("") && !editedPassword.equals("") && !editedPhoneNumber.equals("")) {
-            Klient newClient = new Klient(editedName, editedLastname, editedEmail,
-                    editedLogin, editedPassword, editedPhoneNumber);
+
+            Klient newClient = new Klient(editedName, editedLastname, editedEmail, editedLogin, editedPassword, editedPhoneNumber);
             KlientDAO klientDAO = new KlientDAO(cc);
-            klientDAO.insertKlient(newClient);
-            closeWindow();
+
+            //if false login occupied
+            if (!klientDAO.insertKlient(newClient)) {
+                showAlertEmptyForm("Login zajęty. Prosze spóbować z innym.");
+            } else {
+                closeWindow();
+            }
         } else {
-            showAlertEmptyForm();
+            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
 
 

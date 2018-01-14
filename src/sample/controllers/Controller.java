@@ -519,11 +519,11 @@ public class Controller {
         public String toString(){  return id + " " + data; }
 
     }
-    public static void showAlertEmptyForm(){
+    public static void showAlertEmptyForm(String warningText){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Puste pola");
+        alert.setTitle("Uwaga!");
         alert.setHeaderText(null);
-        alert.setContentText("Proszę nie pozostawiać pustych pól!");
+        alert.setContentText(warningText);
         alert.showAndWait();
     }
 

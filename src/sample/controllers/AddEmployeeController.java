@@ -14,6 +14,8 @@ import sample.services.ConnectionController;
 import sample.services.PracownikDAO;
 import java.io.IOException;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 
 public class AddEmployeeController {
 
@@ -42,11 +44,7 @@ public class AddEmployeeController {
             pracownikDAO.insertPracownik(newEmployee);
             closeWindow();
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Puste pola formularza");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę nie pozostawiać pustych pól!");
-            alert.showAndWait();
+            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
     }
 
