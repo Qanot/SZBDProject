@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.model.Plec;
 import sample.model.Pracownik;
 import sample.services.ConnectionController;
 import sample.services.PracownikDAO;
@@ -32,7 +33,15 @@ public class Main extends Application {
 //        cc.open();
 //        PracownikDAO prdao = new PracownikDAO(cc);
 //        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
+//        Pracownik pracownik2 = new Pracownik("Jakub", "Berezowski", Plec.M);
+//        Pracownik pracownik3 = new Pracownik("Jean", "Valjean", Plec.M);
+//        Pracownik pracownik4 = new Pracownik("Swiety", "Mikolaj", Plec.M);
+//        Pracownik pracownik5 = new Pracownik("Asia", "d Arc", Plec.K);
 //        prdao.insertPracownik(pracownik);
+//        prdao.insertPracownik(pracownik2);
+//        prdao.insertPracownik(pracownik3);
+//        prdao.insertPracownik(pracownik4);
+//        prdao.insertPracownik(pracownik5);
 //        List<Pracownik> lista = prdao.getPracownicy();
 //        for (Pracownik pra: lista){
 //            System.out.println(pra.getId());
@@ -52,8 +61,8 @@ public class Main extends Application {
     public static void makeConnection(){
         Connection conn = null;
         Properties connectionProps = new Properties();
-        connectionProps.put("user", "inf127324");
-        connectionProps.put("password", "inf12732");
+        connectionProps.put("user", "inf127276");
+        connectionProps.put("password", "inf127276");
         try {
             System.out.println("Przed błędem");
             conn = DriverManager.getConnection("jdbc:oracle:thin:@//admlab2.cs.put.poznan.pl:1521/dblab02_students.cs.put.poznan.pl",

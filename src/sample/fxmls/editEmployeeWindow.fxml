@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditEmployeeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditEmployeeController">
    <children>
-      <Pane layoutX="8.0" layoutY="231.0" prefHeight="200.0" prefWidth="278.0">
+      <Pane layoutX="47.0" layoutY="82.0" prefHeight="171.0" prefWidth="278.0">
          <children>
-            <TextField layoutX="115.0" layoutY="14.0" />
-            <TextField layoutX="115.0" layoutY="39.0" />
-            <TextField layoutX="115.0" layoutY="64.0" prefHeight="25.0" prefWidth="149.0" />
-            <Label layoutX="87.0" layoutY="18.0" text="Label" />
-            <Label layoutX="87.0" layoutY="43.0" text="Label" />
-            <Label layoutX="87.0" layoutY="68.0" text="Label" />
+            <TextField fx:id="editName" layoutX="115.0" layoutY="14.0" />
+            <TextField fx:id="editLastname" layoutX="115.0" layoutY="64.0" prefHeight="25.0" prefWidth="149.0" />
+            <Label layoutX="9.0" layoutY="12.0" text="Imie:">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="9.0" layoutY="62.0" text="Nazwisko">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="9.0" layoutY="111.0" prefHeight="30.0" prefWidth="42.0" text="Płeć">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <ChoiceBox fx:id="editPlec" layoutX="115.0" layoutY="113.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="sex" layoutX="114.0" layoutY="145.0" prefWidth="150.0" />
          </children>
       </Pane>
-      <Button layoutX="54.0" layoutY="431.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź" />
+      <Button fx:id="applyChanges" layoutX="54.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź zmiany">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Label layoutX="47.0" layoutY="24.0" prefHeight="17.0" prefWidth="278.0" text="Wprowadź zmiany pracownika">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -9,8 +9,8 @@ public class ConnectionController {
     private Connection conn = null;
     private Properties connectionProps = new Properties();
     public ConnectionController(){
-        connectionProps.put("user", "inf127324");
-        connectionProps.put("password", "inf12732");
+        connectionProps.put("user", "inf127276");
+        connectionProps.put("password", "inf127276");
     }
     public void open(){
         try {

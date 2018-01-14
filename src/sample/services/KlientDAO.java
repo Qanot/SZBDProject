@@ -129,6 +129,7 @@ public class KlientDAO {
             stmtInsert.setString(5, klient.getLogin());
             stmtInsert.setString(6, klient.getHaslo());
             stmtInsert.setString(7, klient.getTelefon());
+
             stmtInsert.execute();
 
             int wykonananoPoprawnie = stmtInsert.getInt(1);
