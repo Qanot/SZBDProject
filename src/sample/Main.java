@@ -5,12 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.model.Klient;
-import sample.model.Plec;
-import sample.model.Pracownik;
+import sample.model.*;
 import sample.services.ConnectionController;
 import sample.services.KlientDAO;
 import sample.services.PracownikDAO;
+import sample.services.ProduktDAO;
 
 import java.sql.*;
 import java.util.List;
@@ -33,6 +32,17 @@ public class Main extends Application {
 //        makeConnection();
 //        ConnectionController cc = new ConnectionController();
 //        cc.open();
+//        ProduktDAO proDAO = new ProduktDAO(cc);
+//        Produkt produkt = new Produkt(15.5, "Duży popcorn", RozmiarPorcji.L);
+//        Produkt produkt2 = new Produkt(12.5, "Sredni Popcorn", RozmiarPorcji.M);
+//        Produkt produkt3 = new Produkt(10.0, "Mały Popcorn", RozmiarPorcji.S);
+//        proDAO.insertProdukt(produkt);
+//        proDAO.insertProdukt(produkt2);
+//        proDAO.insertProdukt(produkt3);
+//        List<Produkt> lista = proDAO.getProdukty();
+//        for (Produkt pra: lista){
+//            System.out.println(pra.getId() + " " + pra.getCena());
+//        }
 //        KlientDAO kldao =new KlientDAO(cc);
 //        Klient klient1 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
 //        Klient klient2 = new Klient("Rafał", "Klaus", "r.k@put.poznan.pl", "rafałek", "rafiXDDD", "019238032");
@@ -41,21 +51,6 @@ public class Main extends Application {
 //        kldao.insertKlient(klient2);
 //        kldao.insertKlient(klient3);
 
-        //        Klient klient4 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
-        //        Klient klient4 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
-        //        Klient klient4 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
-//        Klient klient5 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
-//        PracownikDAO prdao = new PracownikDAO(cc);
-//        Pracownik pracownik = new Pracownik("oli", "ma", Plec.K);
-//        Pracownik pracownik2 = new Pracownik("Jakub", "Berezowski", Plec.M);
-//        Pracownik pracownik3 = new Pracownik("Jean", "Valjean", Plec.M);
-//        Pracownik pracownik4 = new Pracownik("Swiety", "Mikolaj", Plec.M);
-//        Pracownik pracownik5 = new Pracownik("Asia", "d Arc", Plec.K);
-//        prdao.insertPracownik(pracownik);
-//        prdao.insertPracownik(pracownik2);
-//        prdao.insertPracownik(pracownik3);
-//        prdao.insertPracownik(pracownik4);
-//        prdao.insertPracownik(pracownik5);
 //        List<Pracownik> lista = prdao.getPracownicy();
 //        for (Pracownik pra: lista){
 //            System.out.println(pra.getId());
