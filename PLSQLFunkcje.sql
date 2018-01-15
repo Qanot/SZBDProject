@@ -55,3 +55,21 @@ EXCEPTION
         RETURN 0;
 END update_sala;
 
+/
+create or replace PROCEDURE
+    wstaw_produkt (v_cena IN produkty.cena%TYPE, v_nazwa IN PRODUKTY.NAZWA%TYPE,
+                      v_rozmiar_porcji IN PRODUKTY.ROZMIAR_PORCJI%TYPE, v_id OUT PRODUKTY.ID%TYPE) IS
+BEGIN
+    v_id := PRODUKT_ID_SEQ.NEXTVAL;
+    INSERT INTO Produkty(ID, CENA, NAZWA, ROZMIAR_PORCJI)
+    VALUES(v_id, v_cena, v_nazwa, v_rozmiar_porcji);
+END wstaw_produkt;
+
+/
+create or replace PROCEDURE
+    wstaw_paragon (v_data_godzina IN PARAGONY.DATA_GODZINA%TYPE, v_id OUT pracownicy.id%TYPE) IS
+BEGIN
+    v_id := paragon_id_seq.nextval;
+    INSERT INTO PARAGONY(ID, DATA_GODZINA)
+    VALUES(v_id, v_data_godzina);
+END wstaw_paragon;
