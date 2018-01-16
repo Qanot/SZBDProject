@@ -24,6 +24,21 @@ EXCEPTION
 END wstaw_pracownika;
 /
 
+create or replace FUNCTION
+    update_pracownika (v_id IN pracownicy.id%TYPE, v_imie IN pracownicy.imie%TYPE, v_nazwisko IN pracownicy.nazwisko%TYPE,
+                      v_plec IN pracownicy.plec%TYPE, v_pesel IN pracownicy.pesel%TYPE,
+                      v_id OUT pracownicy.id%TYPE) RETURN NUMBER IS
+BEGIN
+    v_id := pracownik_id_seq.nextval;
+    INSERT INTO PRACOWNICY(ID, IMIE, NAZWISKO, PLEC, PESEL)
+    VALUES(v_id, v_imie, v_nazwisko, v_plec, v_pesel);
+    RETURN 1;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        RETURN 0;
+END update_pracownika;
+/
+
 
 create or replace FUNCTION wstaw_klienta(v_imie IN klienci.imie%TYPE, v_nazwisko IN klienci.nazwisko%TYPE,
                         v_email IN klienci.email%TYPE, v_login IN klienci.login%TYPE,
@@ -40,6 +55,25 @@ EXCEPTION
 END wstaw_klienta;
 /
 
+create or replace FUNCTION update_klienta(v_id IN klienci.id%TYPE, v_imie IN klienci.imie%TYPE,
+                        v_nazwisko IN klienci.nazwisko%TYPE, v_email IN klienci.email%TYPE,
+                        v_login IN klienci.login%TYPE, v_haslo IN klienci.haslo%TYPE,
+                        v_telefon IN klienci.telefon%TYPE) return number is
+BEGIN
+    UPDATE KLIENCI
+    SET IMIE = V_IMIE,
+    NAZWISKO = V_NAZWISKO,
+    EMAIL = V_EMAIL,
+    LOGIN = V_LOGIN,
+    HASLO = V_HASLO,
+    TELEFON = V_TELEFON
+    WHERE ID = V_ID;
+    RETURN 1;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        RETURN 0;
+END update_klienta;
+/
 
 create or replace FUNCTION wstaw_sale(v_nr_sali IN sale.nr_sali%TYPE,
                                     v_id OUT sale.id%TYPE) return number is
@@ -81,6 +115,23 @@ EXCEPTION
 END wstaw_produkt;
 /
 
+create or replace FUNCTION
+    update_produkt (v_id IN PRODUKTY.ID%TYPE, v_cena IN produkty.cena%TYPE,
+                    v_nazwa IN PRODUKTY.NAZWA%TYPE,
+                    v_rozmiar_porcji IN PRODUKTY.ROZMIAR_PORCJI%TYPE) RETURN NUMBER IS
+BEGIN
+    UPDATE PRODUKTY
+    SET CENA = V_CENA,
+    NAZWA = V_NAZWA,
+    ROZMIAR_PORCJI = V_ROZMIAR_PORCJI
+    WHERE ID = V_ID;
+    RETURN 1;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        RETURN 0;
+END update_produkt;
+/
+
 create or replace PROCEDURE
     wstaw_paragon (v_data_godzina IN PARAGONY.DATA_GODZINA%TYPE, v_id_prac IN PARAGONY.PRACOWNICY_ID%TYPE,
                    v_id OUT pracownicy.id%TYPE) IS
@@ -89,3 +140,5 @@ BEGIN
     INSERT INTO PARAGONY(ID, DATA_GODZINA, PRACOWNICY_ID)
     VALUES(v_id, v_data_godzina, v_id_prac);
 END wstaw_paragon;
+
+
