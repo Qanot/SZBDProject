@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,12 +18,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import sample.model.Klient;
 import sample.model.Pracownik;
+import sample.model.Produkt;
 import sample.services.ConnectionController;
 import sample.services.KlientDAO;
 import sample.services.PracownikDAO;
+import sample.services.ProduktDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,20 +62,8 @@ public class Controller {
         //enable controller to connect to database
         cc = new ConnectionController();
         cc.open();
-//        // Add some sample data to the master data
-//        dataToShow.add(new RecordToShow("Hans", "Muster"));
-//        dataToShow.add(new RecordToShow("Ruth", "Mueller"));
-//        dataToShow.add(new RecordToShow("Heinz", "Kurz"));
-//        dataToShow.add(new RecordToShow("Cornelia", "Meier"));
-//        dataToShow.add(new RecordToShow("Werner", "Meyer"));
-//        dataToShow.add(new RecordToShow("Lydia", "Kunz"));
-//        dataToShow.add(new RecordToShow("Anna", "Best"));
-//        dataToShow.add(new RecordToShow("Stefan", "Meier"));
-//        dataToShow.add(new RecordToShow("Martin", "Mueller"));
-        //set Type o presented records
+
         presentedType = "";
-        // Initially add all data to filtered data
-//        filteredData.addAll(dataToShow);
     }
 
     @FXML
@@ -115,6 +103,8 @@ public class Controller {
                 openEditEmployeeWindow(tempEmployee);
             }
         } else if (presentedType.equals("ProductsOnReceipts")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
+        } else if (presentedType.equals("Products")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
         } else if (presentedType.equals("Reservations")) {
             new EditReservationController().openWindow("Jakub - rezerwacja");
@@ -195,6 +185,8 @@ public class Controller {
                     addEmployeesToTableView();
                 }
             } else if (presentedType.equals("ProductsOnReceipts")) {
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
+            } else if (presentedType.equals("Products")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
             } else if (presentedType.equals("Reservations")) {
 //                new EditReservationController().openWindow("Jakub - rezerwacja");
@@ -285,6 +277,21 @@ public class Controller {
     }
 
     @FXML
+    private void handleShowProductsButton(ActionEvent event) throws IOException {
+        System.out.println("showProducts!");
+        presentedType = "Products";
+        addProductsToTableView();
+    }
+    private void addProductsToTableView(){
+        ProduktDAO proDAO = new ProduktDAO(cc);
+        List<Produkt> lista = proDAO.getProdukty();
+        dataToShow.clear();
+        for (Produkt produkt: lista){
+            dataToShow.add(new RecordToShow(String.valueOf(produkt.getId()), produkt.getNazwa() + " " +produkt.getRozmiarPorcji()));
+        }
+    }
+
+    @FXML
     private void handleShowTicketsTypesButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
     }
@@ -358,6 +365,11 @@ public class Controller {
     @FXML
     private void handleAddProductsOnReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
+    }
+
+    @FXML
+    private void handleAddProductButton(ActionEvent event) throws IOException {
+        System.out.println("showProducts!");
     }
 
     @FXML
@@ -437,13 +449,20 @@ public class Controller {
                     infoText.setText("ID: " + tempEmployee.getId() + "\nImie: " + tempEmployee.getImie() +
                     "\nNazwisko: " + tempEmployee.getNazwisko() + "\nPłeć: " + tempEmployee.getPlec());
                 }
-                if (presentedType.equals("Clients")){
+                else if (presentedType.equals("Clients")){
                     KlientDAO prdao = new KlientDAO(cc);
                     List<Klient> lista = prdao.getKlienci();
                     Klient tempClient = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText("Imie: " + tempClient.getImie() + "\nNazwisko: " + tempClient.getNazwisko() +
                     "\nEmail: " + tempClient.getEmail() + "\nLogin: " + tempClient.getLogin() +
                     "\nHaslo: " + tempClient.getHaslo() + "\nTelefon: " + tempClient.getTelefon());
+                }
+                else if (presentedType.equals("Products")){
+                    ProduktDAO proDAO = new ProduktDAO(cc);
+                    List<Produkt> lista = proDAO.getProdukty();
+                    Produkt tempProduct = lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText("Nazwa: " + tempProduct.getNazwa() + "\nCena: " + tempProduct.getCena() + " PLN"+
+                            "\nRozmiar: " + tempProduct.getRozmiarPorcji() + "\nID w bazie: " + tempProduct.getId());
                 }
             }
         });
