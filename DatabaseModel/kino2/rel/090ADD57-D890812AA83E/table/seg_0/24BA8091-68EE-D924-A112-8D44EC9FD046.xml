@@ -45,6 +45,19 @@
 <colAssociation fkAssociation="1DC3B82B-6C92-1D88-0977-75C820F92324" referredColumn="0F9B0AB9-536B-35B6-D8DE-23E823BEAF7C"/>
 </associations>
 </Column>
+<Column name="Sala_id" id="7E836D89-4168-F5AA-0AA3-A97B159C7798">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 13:18:07 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BB1BB6B7-9615-48B9-F853-830EE3E2C7D9" referredColumn="19957A6B-F002-C8E1-B4F8-F75488544D99"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="19F23B44-0354-77CC-5C05-A825F02A1FC8" name="Seanse_PK">
@@ -68,6 +81,7 @@
 <indexColumnUsage>
 <colUsage columnID="C3079DC4-0A88-9440-DC08-74C765CF1B3A"/>
 <colUsage columnID="BF36D911-53B5-8446-551D-2BFEB26BBE74"/>
+<colUsage columnID="7E836D89-4168-F5AA-0AA3-A97B159C7798"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="E7711AA7-D8D5-70FE-0C8D-FCD3DCEFE8D6" name="Seanse_Filmy_FK">
@@ -79,6 +93,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="BF36D911-53B5-8446-551D-2BFEB26BBE74"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="802341F9-B805-9D4E-5096-F9C6BFD549C6" name="Seanse_Sale_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 13:18:58 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7E836D89-4168-F5AA-0AA3-A97B159C7798"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

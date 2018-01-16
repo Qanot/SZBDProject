@@ -30,19 +30,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="data godzina zakupu" id="22057204-5312-166E-B250-BE2C548D6726">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>78291A85-C2FA-6409-3D56-4038EFF53A21</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="RodzajeBiletow id" id="F4A1E72F-61B1-157E-5196-F54E5DE9CAFC">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:47:04 UTC</createdTime>

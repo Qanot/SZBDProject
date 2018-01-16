@@ -101,7 +101,7 @@
 <colUsage columnID="A183E108-A7F6-E462-BFDD-A5D3C132F9D2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="D64431E8-622D-AAC2-A3F4-9CF58362E54D" name="ProduktyNaParagonie_Paragony_FK">
+<ind_PK_UK id="D64431E8-622D-AAC2-A3F4-9CF58362E54D" name="ProduktyNaPar_Paragony_FK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>
 <generatorID>8C68CCDC-66B6-7400-60FB-AB3F55A9D561</generatorID>
@@ -112,7 +112,7 @@
 <colUsage columnID="249DA832-2F00-10E1-23DC-96D8D7F8BE35"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="ADAAA1CE-38DE-857F-E7BC-C76BEE0B95CF" name="ProduktyNaParagonie_Produkty_FK">
+<ind_PK_UK id="ADAAA1CE-38DE-857F-E7BC-C76BEE0B95CF" name="ProduktyNaPar_Produkty_FK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>
 <generatorID>9F8E252D-FA83-464A-6C99-D00F0CF773DD</generatorID>
@@ -123,7 +123,7 @@
 <colUsage columnID="A5AF56C5-3436-3393-FFA2-F8996AA41511"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="3C96B4F7-01A5-8956-E6E3-975CCFB2B219" name="ProduktyNaParagonie_Bilety_FK">
+<ind_PK_UK id="3C96B4F7-01A5-8956-E6E3-975CCFB2B219" name="ProduktyNaPar_Bilety_FK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>
 <generatorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</generatorID>

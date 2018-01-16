@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="76AAB90E-C4B6-4053-9728-073A093C8A2C" containerWithKeyObject="0A95F7B8-7995-A946-A5AD-0879E7001E4F" localFKIndex="3C96B4F7-01A5-8956-E6E3-975CCFB2B219" name="ProduktyNaParagonie_Bilety_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="76AAB90E-C4B6-4053-9728-073A093C8A2C" containerWithKeyObject="0A95F7B8-7995-A946-A5AD-0879E7001E4F" localFKIndex="3C96B4F7-01A5-8956-E6E3-975CCFB2B219" name="ProduktyNaPar_Bilety_FK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>
 <generatorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</generatorID>

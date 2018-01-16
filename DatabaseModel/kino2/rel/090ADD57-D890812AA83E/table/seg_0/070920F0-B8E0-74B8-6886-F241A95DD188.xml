@@ -77,6 +77,7 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="17C01C60-2333-1751-035F-1A7C1CA25910"/>
+<colUsage columnID="3C4D9B6F-2B0D-2037-BA9D-2BD57175CD04"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

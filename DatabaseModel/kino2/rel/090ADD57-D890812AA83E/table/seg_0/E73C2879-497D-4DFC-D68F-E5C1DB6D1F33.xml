@@ -19,17 +19,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_godzina_zakupu" id="49E34591-AF75-EA63-9DCF-7FC4DD36CC07">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 11:12:55 UTC</createdTime>
-<generatorID>22057204-5312-166E-B250-BE2C548D6726</generatorID>
-<ownerDesignName>kino2</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="RodzajeBiletow_id" id="2088028A-25AF-9569-114B-098E1C40A255">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>
@@ -82,14 +71,11 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>106C277B-1DA0-945F-7F46-ACE6835A801C</relationGeneratorID>
-</ind_PK_UK>
-<ind_PK_UK id="1F22CA5C-7210-F86C-67C1-DB0D34365212" name="Bilety__IDXv1">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 12:31:06 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="5F3F06DB-C1F3-4B8D-D639-31F822C52AAA"/>
+<colUsage columnID="2088028A-25AF-9569-114B-098E1C40A255"/>
+<colUsage columnID="2D7C1E7B-F862-5E2C-8F87-671274328CFC"/>
+</indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="4B3C0AC8-8504-A856-BDC6-8B5ED8A858D3" name="Bilety_RodzajeBiletow_FK">
 <createdBy>Oliwia</createdBy>
