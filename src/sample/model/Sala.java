@@ -1,30 +1,30 @@
 package sample.model;
 
-public class Sala {
+import java.util.List;
 
+public class Sala {
+    private int id;
     private int nrSali;
-    private int nrSaliStary;
+    private List<Seans> seanseWSali;
+    private List<Miejsce> miejscaWSali;
 
     public Sala(int nrSali) {
-        this.setNrSali(nrSali);
-        this.nrSaliStary = nrSali;
+        this.nrSali = nrSali;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getNrSali() {
         return nrSali;
     }
-    /**
-     * GUI wgl sie nie martwi starym nr sali,
-     * DAO korzysta ze starego nr Sali przy updatowaniu,
-     * po update DAO samo dba o ustawienie starego nr sali na nowy
-     * poprzez wywolanie sala.setNrSali(sala.getNrSali)
-     */
-    public void setNrSali(int nrSali) {
-        this.nrSaliStary = this.nrSali;
-        this.nrSali = nrSali;
-    }
 
-    public int getNrSaliStary() {
-        return nrSaliStary;
+    public void setNrSali(int nrSali) {
+        this.nrSali = nrSali;
     }
 }
