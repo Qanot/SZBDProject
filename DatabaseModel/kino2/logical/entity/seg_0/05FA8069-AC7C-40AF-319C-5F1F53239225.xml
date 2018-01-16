@@ -17,6 +17,18 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>RodzajeBiletow</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="2D1D85FA-6335-DADE-0F70-0298581052D2">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:21:23 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="cena" id="1BCD03D4-4FB7-340E-DF18-C836820AA9A8">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -30,7 +42,7 @@
 <logicalDatatype>LOGDT020</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="typ" id="A8F185D9-3AF8-E355-A926-01AD592E22B1">
+<Attribute name="nazwa" id="A8F185D9-3AF8-E355-A926-01AD592E22B1">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -38,23 +50,11 @@
 <engineerTo>
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT025</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id" id="2D1D85FA-6335-DADE-0F70-0298581052D2">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:21:23 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -69,6 +69,18 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>2D1D85FA-6335-DADE-0F70-0298581052D2</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="771AA15E-4048-FD08-B822-79A128F5669F" name="RodzajBiletu_UK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:27:46 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<newElementsIDs>A8F185D9-3AF8-E355-A926-01AD592E22B1</newElementsIDs>
+<usedAttributes>
+<attributeRef>A8F185D9-3AF8-E355-A926-01AD592E22B1</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -17,51 +17,6 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>ProduktyNaParagonie</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="5142218F-3A2D-480D-0E2C-823116A15EF4">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<generatorID>66821FFF-378D-8F64-1E4E-FE3A0B646A70</generatorID>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>D6A192BF-7678-233D-A8A6-7037BC76D274</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<referedAttribute>D92037D8-F482-E258-473D-EC87A2A63245</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id1" id="97908C43-3D04-C79F-AAFC-03689E27D01C">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<generatorID>6EB0DA95-ED00-269E-8EFF-41E5F65F05CB</generatorID>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>C66A384B-9B85-8ABB-DABF-4AB708FCC3DC</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<referedAttribute>9A8232EB-4C91-B4BE-5928-DB27A0AC4A41</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id2" id="ED8AF88B-AA76-F64C-FA9B-7713B2708B67">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<generatorID>B7530328-BD7B-D824-E7A1-D30AEC083C22</generatorID>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>4C285B62-05E0-BC24-7F97-FF54E6723DAA</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<referedAttribute>A2054DB6-EC0C-68F5-E778-C11E81220724</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="lp" id="FE283380-C3BC-99D8-3CEB-83BA324BDE19">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -87,7 +42,6 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>5142218F-3A2D-480D-0E2C-823116A15EF4</attributeRef>
 <attributeRef>FE283380-C3BC-99D8-3CEB-83BA324BDE19</attributeRef>
 </usedAttributes>
 </identifier>

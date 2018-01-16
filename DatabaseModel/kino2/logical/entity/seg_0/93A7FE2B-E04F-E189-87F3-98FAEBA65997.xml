@@ -17,7 +17,19 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>Miejsca</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="rząd" id="EF7E14D3-368F-176D-639D-8FBA11A3DEB5">
+<Attribute name="id" id="2870D033-1F1C-8020-44F4-198B44A5CB15">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:33:40 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rzad" id="EF7E14D3-368F-176D-639D-8FBA11A3DEB5">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -44,21 +56,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nr_sali" id="4194BC5D-4885-3B94-8E4B-BE7B381D897D">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<generatorID>29D84413-F802-E55E-A7B9-50D31753C2D8</generatorID>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>E87B1FBB-6099-7B3B-CAB3-2BE386E8BC6F</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<referedAttribute>7E206672-D90C-9598-F1A1-201469B3414B</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="16D2E1E6-875D-7456-0BA5-10D473273FE2" name="Miejsce PK">
@@ -71,9 +68,20 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
+<attributeRef>2870D033-1F1C-8020-44F4-198B44A5CB15</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="E2D8D3B4-57AA-D2CC-5F88-046E9BB97282" name="Miejsce_UK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:36:16 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<newElementsIDs>EF7E14D3-368F-176D-639D-8FBA11A3DEB5,C95B766E-272E-5699-7709-6D55A4DABCFA</newElementsIDs>
+<usedAttributes>
 <attributeRef>EF7E14D3-368F-176D-639D-8FBA11A3DEB5</attributeRef>
 <attributeRef>C95B766E-272E-5699-7709-6D55A4DABCFA</attributeRef>
-<attributeRef>4194BC5D-4885-3B94-8E4B-BE7B381D897D</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

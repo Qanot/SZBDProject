@@ -17,19 +17,6 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>Rezerwacje</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="data_godzina" id="360ED393-1310-07E9-DAC3-F92A85D9D479">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>177C4109-3961-71AD-0DC0-9140E837876A</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id" id="37187E37-CF9E-62E9-226F-9565406600E7">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -43,21 +30,18 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="login" id="D3D40210-7995-38B9-B5B5-69D187E977ED">
+<Attribute name="data_godzina" id="360ED393-1310-07E9-DAC3-F92A85D9D479">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<generatorID>2AC5B49A-9C9C-DE45-F7D6-D72A784AB9A2</generatorID>
 <ownerDesignName>kino2</ownerDesignName>
-<importedID>1F4A5BD6-EB75-737C-6A50-5688BE795D42</importedID>
+<importedID>177C4109-3961-71AD-0DC0-9140E837876A</importedID>
 <engineerTo>
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
-<referedAttribute>4FC17438-45D3-3732-7CD6-92627F48D714</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="czy_oplacona" id="9B7FA401-29EF-07B0-2BA6-AD6D54451973">
 <createdBy>Oliwia</createdBy>
@@ -69,7 +53,7 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
+<logicalDatatype>LOGDT025</logicalDatatype>
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>

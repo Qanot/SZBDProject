@@ -30,21 +30,6 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id" id="6E2145E5-D6CA-73CC-AFFE-B35C3D53D367">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<generatorID>02B3E2C8-6D76-3593-B427-298020888F10</generatorID>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>B1DA2B74-6FC3-BE7E-0A41-437052E56F60</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<referedAttribute>EF57B3CD-D98E-DEE7-99BE-F5DEF6538EB5</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="75D78999-591F-E1E8-951F-0C97B2E40EDF" name="Seans PK">
@@ -57,7 +42,6 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>6E2145E5-D6CA-73CC-AFFE-B35C3D53D367</attributeRef>
 <attributeRef>D5FE07E8-E4DA-9513-01A0-62E46A72F6EC</attributeRef>
 </usedAttributes>
 </identifier>

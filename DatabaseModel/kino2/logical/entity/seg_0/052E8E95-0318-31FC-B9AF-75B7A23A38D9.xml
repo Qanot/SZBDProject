@@ -17,6 +17,18 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>Sale</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="D3AE6FDC-B7EC-BC9C-C7F8-6A305CDAFDD9">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:32:07 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="nr_sali" id="7E206672-D90C-9598-F1A1-201469B3414B">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -41,6 +53,18 @@
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
 <pk>true</pk>
+<usedAttributes>
+<attributeRef>D3AE6FDC-B7EC-BC9C-C7F8-6A305CDAFDD9</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="FA5837DB-EE55-5BC2-BD80-F2C8BD2D58A4" name="Sala_UK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:32:23 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<newElementsIDs>7E206672-D90C-9598-F1A1-201469B3414B</newElementsIDs>
 <usedAttributes>
 <attributeRef>7E206672-D90C-9598-F1A1-201469B3414B</attributeRef>
 </usedAttributes>

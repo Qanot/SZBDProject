@@ -17,34 +17,6 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>Pracownicy</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="imie" id="527F247D-BAB2-4F40-FD44-F677B5CD3486">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>6AFB450E-106E-8840-5FD6-FBDF59C892DC</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="nazwisko" id="A06432FE-9DD4-4CB1-F094-30EB428CE30B">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>82E6BC59-BE7F-3AEE-7BC6-14155ECC5893</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id" id="54AE2944-0B31-2EB3-CC1B-FC03CE3FAD39">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -58,7 +30,35 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="płeć" id="06D267F3-C958-58C0-1B37-5DD577203F12">
+<Attribute name="imie" id="527F247D-BAB2-4F40-FD44-F677B5CD3486">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>6AFB450E-106E-8840-5FD6-FBDF59C892DC</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwisko" id="A06432FE-9DD4-4CB1-F094-30EB428CE30B">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>82E6BC59-BE7F-3AEE-7BC6-14155ECC5893</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="plec" id="06D267F3-C958-58C0-1B37-5DD577203F12">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -66,12 +66,24 @@
 <engineerTo>
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT025</logicalDatatype>
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PESEL" id="2CD9CE48-9714-C3D0-C0A6-CBDBA24450CD">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:25:31 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11</dataTypeSize>
+<ownDataTypeParameters>11,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -86,6 +98,18 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>54AE2944-0B31-2EB3-CC1B-FC03CE3FAD39</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="6975DC69-330F-56A9-6E4F-9B8D2DF9778B" name="Pracownik_UK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:26:29 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<newElementsIDs>2CD9CE48-9714-C3D0-C0A6-CBDBA24450CD</newElementsIDs>
+<usedAttributes>
+<attributeRef>2CD9CE48-9714-C3D0-C0A6-CBDBA24450CD</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
