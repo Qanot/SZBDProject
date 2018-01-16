@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A6088B47-7648-4D8E-E97A-F9C5C845A9E2" name="Filmy">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>9C470483-04EC-46B9-9FAD-50EB0C1151F2</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="0F9B0AB9-536B-35B6-D8DE-23E823BEAF7C">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>EF57B3CD-D98E-DEE7-99BE-F5DEF6538EB5</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tytul" id="E4DE39A9-C3B9-4476-58A7-A0297052ED9A">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="czas_trwania" id="D35793BA-95BF-F6A6-E2E7-FA79D3F0ECBD">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>1942EEFA-4135-275E-E02A-38CCE9F9FD66</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B2640532-ABB3-D4C6-651A-27FAF3DB774C" name="Filmy_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>0F89A2F3-498A-34F8-D594-BA803552E158</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F9B0AB9-536B-35B6-D8DE-23E823BEAF7C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E10D65BC-F787-54C1-553A-93A51D29C714" name="Filmy_tytul_UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>7DC107B3-45DD-2BDA-E36F-2388D0BEF793</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E4DE39A9-C3B9-4476-58A7-A0297052ED9A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

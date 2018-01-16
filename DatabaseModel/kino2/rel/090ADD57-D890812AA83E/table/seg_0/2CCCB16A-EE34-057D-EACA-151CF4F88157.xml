@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2CCCB16A-EE34-057D-EACA-151CF4F88157" name="RodzajeBiletow">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>05FA8069-AC7C-40AF-319C-5F1F53239225</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="73A9F620-E475-144D-1C6E-C6EDDEC6A872">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>2D1D85FA-6335-DADE-0F70-0298581052D2</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cena" id="9FF30C3B-D1CD-EB23-4B94-D099AA6252A1">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>1BCD03D4-4FB7-340E-DF18-C836820AA9A8</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nazwa" id="5B95B7A8-19B5-1BF2-6FFF-BF19BF834077">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>A8F185D9-3AF8-E355-A926-01AD592E22B1</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6EF2E4D8-4B2F-6838-8F08-6B8E33FB760D" name="RodzajeBiletow_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>0F80D041-24D0-05DE-4507-7182FC9186F4</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="73A9F620-E475-144D-1C6E-C6EDDEC6A872"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B2B0CAF4-558E-C586-2142-0EC664861B11" name="RodzajeBiletow_nazwa_UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>771AA15E-4048-FD08-B822-79A128F5669F</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5B95B7A8-19B5-1BF2-6FFF-BF19BF834077"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

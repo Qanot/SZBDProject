@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0A95F7B8-7995-A946-A5AD-0879E7001E4F" name="ProduktyNaParagonie">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>3595D32A-6E3B-3A91-416C-87988029FB55</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="3B9E00A7-1C9D-4076-2146-3B81397E94C7">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>FE283380-C3BC-99D8-3CEB-83BA324BDE19</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Paragony_id" id="249DA832-2F00-10E1-23DC-96D8D7F8BE35">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>5F406945-E017-2394-099F-CE524E7E487C</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="65CCD592-FF76-461D-59D1-326021F5E6C9" referredColumn="DD7BBB52-5821-8970-6E77-9C36C9FD5714"/>
+</associations>
+</Column>
+<Column name="Produkty_id" id="A5AF56C5-3436-3393-FFA2-F8996AA41511">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>88478407-8928-D3DC-4703-B2B9474C91BE</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F9DCDFCB-8FC2-3BCF-4FC7-1B6C88A3E185" referredColumn="EC046E2B-0ED9-87C6-D9C8-55D5EFD3884F"/>
+</associations>
+</Column>
+<Column name="Bilety_id" id="A183E108-A7F6-E462-BFDD-A5D3C132F9D2">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>FB8B0D9D-95D6-D7F0-1CC5-B355A1D2FAB4</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="76AAB90E-C4B6-4053-9728-073A093C8A2C" referredColumn="5F3F06DB-C1F3-4B8D-D639-31F822C52AAA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A7F765AC-3F0A-D291-2A4C-582C7BDEEBBE" name="ProduktyNaParagonie_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>FBDCE94D-4E54-D709-D380-217EED259B9D</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3B9E00A7-1C9D-4076-2146-3B81397E94C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8AE0C451-9D85-B9B8-A2DE-01D0E1E4F128" name="ProduktyNaParagonie__IDX">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="A183E108-A7F6-E462-BFDD-A5D3C132F9D2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D64431E8-622D-AAC2-A3F4-9CF58362E54D" name="ProduktyNaParagonie_Paragony_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>8C68CCDC-66B6-7400-60FB-AB3F55A9D561</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="249DA832-2F00-10E1-23DC-96D8D7F8BE35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADAAA1CE-38DE-857F-E7BC-C76BEE0B95CF" name="ProduktyNaParagonie_Produkty_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>9F8E252D-FA83-464A-6C99-D00F0CF773DD</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A5AF56C5-3436-3393-FFA2-F8996AA41511"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3C96B4F7-01A5-8956-E6E3-975CCFB2B219" name="ProduktyNaParagonie_Bilety_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A183E108-A7F6-E462-BFDD-A5D3C132F9D2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

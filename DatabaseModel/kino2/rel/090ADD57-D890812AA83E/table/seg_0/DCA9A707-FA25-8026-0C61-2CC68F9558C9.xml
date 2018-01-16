@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DCA9A707-FA25-8026-0C61-2CC68F9558C9" name="Pracownicy">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>30B98D3C-A477-C928-8AD0-9EA37E4B19CF</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="DB1BB2DF-6AC6-C0F4-865C-71896148DBCF">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>54AE2944-0B31-2EB3-CC1B-FC03CE3FAD39</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="imie" id="A2B62581-E410-509B-FD8D-BF6FBC919148">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>527F247D-BAB2-4F40-FD44-F677B5CD3486</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nazwisko" id="D58D2A7F-84FB-8FAF-2678-1802486107DD">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>A06432FE-9DD4-4CB1-F094-30EB428CE30B</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="plec" id="733E3A69-40BC-722B-7093-9B3F083E8907">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>06D267F3-C958-58C0-1B37-5DD577203F12</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PESEL" id="901B7B20-A2A5-5924-325F-16AB6BF85E57">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>2CD9CE48-9714-C3D0-C0A6-CBDBA24450CD</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11</dataTypeSize>
+<ownDataTypeParameters>11,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F1011213-FFFD-B1E0-B8A7-A41F8DDEDBE3" name="Pracownicy_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>007C4D7D-E91E-3333-8A05-68B33CF858FB</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DB1BB2DF-6AC6-C0F4-865C-71896148DBCF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8360CFE2-4346-9E75-02F6-5D105B2A5E62" name="Pracownicy_PESEL_UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>6975DC69-330F-56A9-6E4F-9B8D2DF9778B</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="901B7B20-A2A5-5924-325F-16AB6BF85E57"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

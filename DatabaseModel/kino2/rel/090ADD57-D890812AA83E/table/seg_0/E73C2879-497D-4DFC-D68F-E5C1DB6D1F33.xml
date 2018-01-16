@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E73C2879-497D-4DFC-D68F-E5C1DB6D1F33" name="Bilety">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>249063EF-7C64-FB00-41A3-37F0F39D645F</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="5F3F06DB-C1F3-4B8D-D639-31F822C52AAA">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>A2054DB6-EC0C-68F5-E778-C11E81220724</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_godzina_zakupu" id="49E34591-AF75-EA63-9DCF-7FC4DD36CC07">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>22057204-5312-166E-B250-BE2C548D6726</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RodzajeBiletow_id" id="2088028A-25AF-9569-114B-098E1C40A255">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>F4A1E72F-61B1-157E-5196-F54E5DE9CAFC</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F6FA483B-28AA-AF1D-EEAB-3EA0926077AF" referredColumn="73A9F620-E475-144D-1C6E-C6EDDEC6A872"/>
+</associations>
+</Column>
+<Column name="Rezerwacje_id" id="2D7C1E7B-F862-5E2C-8F87-671274328CFC">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>A91A4E93-6587-42DA-E183-1E210A1CA264</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FE48A5E6-3278-BD1C-AB21-04032A6FB39E" referredColumn="FAE68386-6C8F-7CAB-F8BC-E17B4ABBCE34"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1A9D48CF-B994-9CA6-80B4-933D2AF9AEEC" name="Bilety_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>9F9A329C-6B86-56D8-0AAA-D245B622EDDC</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F3F06DB-C1F3-4B8D-D639-31F822C52AAA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DEE10393-050C-88DF-F92D-B0C37A09D889" name="Bilety__IDX">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>106C277B-1DA0-945F-7F46-ACE6835A801C</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="A0DFB4A8-380F-5092-7EE9-C0AFF0E87C1D" name="Bilety__IDXv1">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="4B3C0AC8-8504-A856-BDC6-8B5ED8A858D3" name="Bilety_RodzajeBiletow_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>4132A1F4-C4AA-D847-3903-78F106471578</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2088028A-25AF-9569-114B-098E1C40A255"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8B463D05-DFDA-D68C-1E54-9BA06AB4B94E" name="Bilety_Rezerwacje_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>6386C1EE-D854-7D9D-5302-390368C86E78</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D7C1E7B-F862-5E2C-8F87-671274328CFC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="76AAB90E-C4B6-4053-9728-073A093C8A2C" containerWithKeyObject="0A95F7B8-7995-A946-A5AD-0879E7001E4F" localFKIndex="3C96B4F7-01A5-8956-E6E3-975CCFB2B219" name="ProduktyNaParagonie_Bilety_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<referredTableLongName>Bilety</referredTableLongName>
+<arc>F1F6DA2A-1554-8E36-8BEA-5BD52170FB85</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E73C2879-497D-4DFC-D68F-E5C1DB6D1F33</referredTableID>
+<keyObject>1A9D48CF-B994-9CA6-80B4-933D2AF9AEEC</keyObject>
+<referredKeyID>1A9D48CF-B994-9CA6-80B4-933D2AF9AEEC</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
