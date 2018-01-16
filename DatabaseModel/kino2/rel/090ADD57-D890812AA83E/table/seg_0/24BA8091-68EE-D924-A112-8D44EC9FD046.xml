@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="24BA8091-68EE-D924-A112-8D44EC9FD046" name="Seanse">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>71404AB5-CC6D-1846-1705-C7DFD089F666</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C82E3731-895A-69FE-75A7-AFF847C6B290">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>79EB4729-4696-9615-856C-F43E4E291BE3</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_godzina" id="C3079DC4-0A88-9440-DC08-74C765CF1B3A">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>D5FE07E8-E4DA-9513-01A0-62E46A72F6EC</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Filmy_id" id="BF36D911-53B5-8446-551D-2BFEB26BBE74">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>599B4115-3428-49FC-3F4A-18663B0B9041</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1DC3B82B-6C92-1D88-0977-75C820F92324" referredColumn="0F9B0AB9-536B-35B6-D8DE-23E823BEAF7C"/>
+</associations>
+</Column>
+<Column name="Sala_id" id="7E836D89-4168-F5AA-0AA3-A97B159C7798">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 13:18:07 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BB1BB6B7-9615-48B9-F853-830EE3E2C7D9" referredColumn="19957A6B-F002-C8E1-B4F8-F75488544D99"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="19F23B44-0354-77CC-5C05-A825F02A1FC8" name="Seanse_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>75D78999-591F-E1E8-951F-0C97B2E40EDF</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C82E3731-895A-69FE-75A7-AFF847C6B290"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="92F74081-990B-9E6D-29B0-DC7F6640FE76" name="Seanse__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:33:06 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C3079DC4-0A88-9440-DC08-74C765CF1B3A"/>
+<colUsage columnID="BF36D911-53B5-8446-551D-2BFEB26BBE74"/>
+<colUsage columnID="7E836D89-4168-F5AA-0AA3-A97B159C7798"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E7711AA7-D8D5-70FE-0C8D-FCD3DCEFE8D6" name="Seanse_Filmy_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>A285C8CF-62CB-5ACC-BC9C-79B6893712A2</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF36D911-53B5-8446-551D-2BFEB26BBE74"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="802341F9-B805-9D4E-5096-F9C6BFD549C6" name="Seanse_Sale_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 13:18:58 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7E836D89-4168-F5AA-0AA3-A97B159C7798"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

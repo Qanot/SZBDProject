@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Miejsca Sale FK" directorySegmentName="seg_0" id="5A040036-A18D-3478-C2DC-9E6094C4D54F">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:54:15 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<sourcePk>C297FF95-F5D0-8A01-8162-82057A214CAC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>052E8E95-0318-31FC-B9AF-75B7A23A38D9</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>93A7FE2B-E04F-E189-87F3-98FAEBA65997</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

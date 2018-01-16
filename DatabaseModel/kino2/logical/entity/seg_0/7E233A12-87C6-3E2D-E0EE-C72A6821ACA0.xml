@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7E233A12-87C6-3E2D-E0EE-C72A6821ACA0" name="MiejscaNaSeansie">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>C4611066-C2C3-1141-6288-FBF6060501B0</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<preferredAbbreviation>MiejscaNaSeansie</preferredAbbreviation>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="F9BC6497-1A07-EA9F-AB2E-9A4C84C1DC3D">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:38:53 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Bilety id" id="93F9190F-9C99-4518-DF48-E0574D264FAA">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:49:21 UTC</createdTime>
+<generatorID>106C277B-1DA0-945F-7F46-ACE6835A801C</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>A2054DB6-EC0C-68F5-E778-C11E81220724</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Rezerwacje id" id="3753B0A3-8059-B619-F262-1D56D79CEB71">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:53:21 UTC</createdTime>
+<generatorID>67576156-350C-637A-811C-06CF2289E6F1</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>37187E37-CF9E-62E9-226F-9565406600E7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Miejsca id" id="FAE4FFCF-3A52-FB5E-92A0-748DC4D3A8FE">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:54:00 UTC</createdTime>
+<generatorID>34A8A44E-8250-49B2-F892-FEEC3B31BF79</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>2870D033-1F1C-8020-44F4-198B44A5CB15</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Seanse id" id="E191BC1F-1BBD-2371-0672-2865CD6FAD8B">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:55:24 UTC</createdTime>
+<generatorID>666E5E91-C54F-D357-0EED-820700E2BB4A</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>79EB4729-4696-9615-856C-F43E4E291BE3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="CD16EF4F-A176-5EF2-D49B-76C00A548D5B" name="MiejscaNaSeansie_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>B36D1394-BD2F-F7EB-1747-0980FF7832E2</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F9BC6497-1A07-EA9F-AB2E-9A4C84C1DC3D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

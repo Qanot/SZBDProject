@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="89FE2B14-AFC6-3DD2-93E7-0C3FAEBFD92B" containerWithKeyObject="046DCA34-F8FA-AF1D-E457-168EC8EB8993" localFKIndex="011EBE7C-5A8E-FDCB-3DD4-32100B40F51A" name="MiejscaNaSeansie_Rezerwacje_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>67576156-350C-637A-811C-06CF2289E6F1</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<referredTableLongName>Rezerwacje</referredTableLongName>
+<arc>E02D6672-E87B-7B9F-8B96-6B8F96419361</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8BED5E73-9FD9-81C4-93D8-8B6B5293018F</referredTableID>
+<keyObject>0798149F-6D54-7168-E256-85978D198201</keyObject>
+<referredKeyID>0798149F-6D54-7168-E256-85978D198201</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
