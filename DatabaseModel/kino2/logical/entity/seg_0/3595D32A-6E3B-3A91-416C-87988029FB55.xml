@@ -30,6 +30,48 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="5F406945-E017-2394-099F-CE524E7E487C">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:58:28 UTC</createdTime>
+<generatorID>8C68CCDC-66B6-7400-60FB-AB3F55A9D561</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>D92037D8-F482-E258-473D-EC87A2A63245</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="88478407-8928-D3DC-4703-B2B9474C91BE">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:59:42 UTC</createdTime>
+<generatorID>9F8E252D-FA83-464A-6C99-D00F0CF773DD</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>9A8232EB-4C91-B4BE-5928-DB27A0AC4A41</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id3" id="FB8B0D9D-95D6-D7F0-1CC5-B355A1D2FAB4">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:03:55 UTC</createdTime>
+<generatorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>A2054DB6-EC0C-68F5-E778-C11E81220724</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="FBDCE94D-4E54-D709-D380-217EED259B9D" name="ProduktNaParagonie PK">

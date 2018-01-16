@@ -43,6 +43,20 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="2AC87547-AE5C-A8EC-EA8A-DA1CBA0AE003">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:47:27 UTC</createdTime>
+<generatorID>F1CE1536-E65A-E33C-0679-2A1CB7D156A7</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>54AE2944-0B31-2EB3-CC1B-FC03CE3FAD39</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="842D9F0B-7F21-8766-6C2E-ED036156F41C" name="Paragon PK">

@@ -43,6 +43,63 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="F4A1E72F-61B1-157E-5196-F54E5DE9CAFC">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:47:04 UTC</createdTime>
+<generatorID>4132A1F4-C4AA-D847-3903-78F106471578</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>2D1D85FA-6335-DADE-0F70-0298581052D2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="A91A4E93-6587-42DA-E183-1E210A1CA264">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:48:38 UTC</createdTime>
+<generatorID>6386C1EE-D854-7D9D-5302-390368C86E78</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>37187E37-CF9E-62E9-226F-9565406600E7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id4" id="DD81F63C-B9E7-F6CB-6996-43A0BBB68DB1">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:00:04 UTC</createdTime>
+<generatorID>207EF04D-B1CF-1E60-A398-7B894F5460A4</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>FE283380-C3BC-99D8-3CEB-83BA324BDE19</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id3" id="776919FB-7BC1-826D-BC08-9D0B7336CE11">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:04:10 UTC</createdTime>
+<generatorID>106C277B-1DA0-945F-7F46-ACE6835A801C</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>F9BC6497-1A07-EA9F-AB2E-9A4C84C1DC3D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="9F9A329C-6B86-56D8-0AAA-D245B622EDDC" name="Zakup/Paragon PK">

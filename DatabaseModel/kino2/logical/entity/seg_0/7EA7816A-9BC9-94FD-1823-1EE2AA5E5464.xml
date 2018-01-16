@@ -57,6 +57,20 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="71084AA3-3077-C8AA-692D-A8C2BE548F99">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:54:25 UTC</createdTime>
+<generatorID>0399AD46-8128-FFD2-4896-094DE5B127E6</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>D5CCEFC7-EDF2-05F5-CFC2-D80EF4340B71</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="9C7957EF-F79C-BD9D-EAC7-295FA3E48F2B" name="Rezerwacja PK">

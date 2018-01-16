@@ -56,6 +56,20 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="6B87D044-8D56-BF3A-388E-CD82E5591813">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:54:15 UTC</createdTime>
+<generatorID>5A040036-A18D-3478-C2DC-9E6094C4D54F</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>D3AE6FDC-B7EC-BC9C-C7F8-6A305CDAFDD9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="16D2E1E6-875D-7456-0BA5-10D473273FE2" name="Miejsce PK">
