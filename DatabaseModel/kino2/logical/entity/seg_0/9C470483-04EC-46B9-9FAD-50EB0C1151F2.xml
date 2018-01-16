@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9C470483-04EC-46B9-9FAD-50EB0C1151F2" name="Film">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9C470483-04EC-46B9-9FAD-50EB0C1151F2" name="Filmy">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -43,7 +43,7 @@
 <dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="czas_trwania" id="1942EEFA-4135-275E-E02A-38CCE9F9FD66">
+<Attribute name="czas trwania" id="1942EEFA-4135-275E-E02A-38CCE9F9FD66">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -58,25 +58,27 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="0F89A2F3-498A-34F8-D594-BA803552E158" name="Film PK">
+<identifier id="0F89A2F3-498A-34F8-D594-BA803552E158" name="Filmy_PK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <importedID>2BBA39E9-C835-C9F4-E40C-D4A2398C26B1</importedID>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>EF57B3CD-D98E-DEE7-99BE-F5DEF6538EB5</attributeRef>
 </usedAttributes>
 </identifier>
-<identifier id="7DC107B3-45DD-2BDA-E36F-2388D0BEF793" name="Film_UK">
+<identifier id="7DC107B3-45DD-2BDA-E36F-2388D0BEF793" name="Filmy_tytul_UN">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:40:38 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <newElementsIDs>60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA</newElementsIDs>
 <usedAttributes>

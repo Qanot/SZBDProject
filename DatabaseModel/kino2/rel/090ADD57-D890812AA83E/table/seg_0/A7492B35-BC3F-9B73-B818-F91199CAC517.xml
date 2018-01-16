@@ -71,6 +71,18 @@
 <colUsage columnID="D7A5E20E-4FC9-0C57-48D6-1DBBCB603FFE"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="7657DBA8-3883-DB1B-76E3-909147D3C9D7" name="Miejsca__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:32:36 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D29317B0-A7D2-5EF9-0DF1-469709CC3710"/>
+<colUsage columnID="C0A15E0B-EEAC-FAB5-869E-17D2F6E8634A"/>
+<colUsage columnID="31D64D75-EC08-CE8A-F19D-4926011F8A08"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="091D57DE-5B43-B895-D332-0E18DCDA4FA8" name="Miejsca_Sale_FK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>

@@ -59,6 +59,17 @@
 <colUsage columnID="C82E3731-895A-69FE-75A7-AFF847C6B290"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="92F74081-990B-9E6D-29B0-DC7F6640FE76" name="Seanse__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:33:06 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C3079DC4-0A88-9440-DC08-74C765CF1B3A"/>
+<colUsage columnID="BF36D911-53B5-8446-551D-2BFEB26BBE74"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="E7711AA7-D8D5-70FE-0C8D-FCD3DCEFE8D6" name="Seanse_Filmy_FK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>

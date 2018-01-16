@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7EA7816A-9BC9-94FD-1823-1EE2AA5E5464" name="Rezerwacja">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7EA7816A-9BC9-94FD-1823-1EE2AA5E5464" name="Rezerwacje">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -30,7 +30,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="data_godzina" id="360ED393-1310-07E9-DAC3-F92A85D9D479">
+<Attribute name="data godzina" id="360ED393-1310-07E9-DAC3-F92A85D9D479">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -43,7 +43,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="czy_oplacona" id="9B7FA401-29EF-07B0-2BA6-AD6D54451973">
+<Attribute name="czy oplacona" id="9B7FA401-29EF-07B0-2BA6-AD6D54451973">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -57,7 +57,7 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="71084AA3-3077-C8AA-692D-A8C2BE548F99">
+<Attribute name="Klienci id" id="71084AA3-3077-C8AA-692D-A8C2BE548F99">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:54:25 UTC</createdTime>
 <generatorID>0399AD46-8128-FFD2-4896-094DE5B127E6</generatorID>
@@ -73,13 +73,14 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="9C7957EF-F79C-BD9D-EAC7-295FA3E48F2B" name="Rezerwacja PK">
+<identifier id="9C7957EF-F79C-BD9D-EAC7-295FA3E48F2B" name="Rezerwacje_PK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <importedID>C144B0F5-BCF4-2EA3-8309-518D8A2D565E</importedID>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

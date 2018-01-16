@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0CFFCD2F-5C05-0CF4-EEDC-CB6902421ACB" name="Klient">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0CFFCD2F-5C05-0CF4-EEDC-CB6902421ACB" name="Klienci">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -40,8 +40,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="B8C80434-179F-610A-BB48-DFAE5FA72BAD">
 <createdBy>Oliwia</createdBy>
@@ -54,8 +54,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="email" id="BDC1AB63-C10D-B3FD-C0F8-958F51D1E959">
 <createdBy>Oliwia</createdBy>
@@ -65,8 +65,11 @@
 <engineerTo>
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="login" id="4FC17438-45D3-3732-7CD6-92627F48D714">
 <createdBy>Oliwia</createdBy>
@@ -79,8 +82,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="haslo" id="A087E1CB-F6B4-9A67-8566-A7AF7BECBA9B">
 <createdBy>Oliwia</createdBy>
@@ -93,8 +96,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="telefon" id="E7D11A64-B3BE-27C6-4C05-31588046292A">
 <createdBy>Oliwia</createdBy>
@@ -112,25 +115,27 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="908C3214-2BA2-0006-AF37-E2F426FE68EC" name="Klient PK">
+<identifier id="908C3214-2BA2-0006-AF37-E2F426FE68EC" name="Klienci_PK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <importedID>77A5DA8E-017E-EFB4-D8BD-35B2381D4D05</importedID>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>D5CCEFC7-EDF2-05F5-CFC2-D80EF4340B71</attributeRef>
 </usedAttributes>
 </identifier>
-<identifier id="DE3C3424-EE4C-9D66-29FD-D37723C4A181" name="Klient_UK">
+<identifier id="DE3C3424-EE4C-9D66-29FD-D37723C4A181" name="Klienci_login_UN">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:37:16 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <newElementsIDs>4FC17438-45D3-3732-7CD6-92627F48D714</newElementsIDs>
 <usedAttributes>

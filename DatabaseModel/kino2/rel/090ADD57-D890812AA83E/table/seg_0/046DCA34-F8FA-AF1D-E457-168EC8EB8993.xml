@@ -95,6 +95,17 @@
 <colUsage columnID="2F85582C-200F-1F63-D266-B590775BEFA8"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="8CFC028D-6553-AE1F-6520-D9DE000FDCB3" name="MiejscaNaSeansie__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:33:35 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEEA63F9-5F9F-440B-C77B-FF0C774D28BF"/>
+<colUsage columnID="3DDE71C3-1834-E526-195B-E4E3E5D1A085"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="80DC7CBB-040D-F034-C1E7-CF6B89AF7EDD" name="MiejscaNaSeansie__IDX">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>

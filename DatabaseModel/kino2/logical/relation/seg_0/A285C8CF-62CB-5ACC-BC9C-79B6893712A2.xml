@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_28" directorySegmentName="seg_0" id="A285C8CF-62CB-5ACC-BC9C-79B6893712A2">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Seanse Filmy FK" directorySegmentName="seg_0" id="A285C8CF-62CB-5ACC-BC9C-79B6893712A2">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:55:40 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>

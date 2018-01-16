@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="93A7FE2B-E04F-E189-87F3-98FAEBA65997" name="Miejsce">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="93A7FE2B-E04F-E189-87F3-98FAEBA65997" name="Miejsca">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -43,7 +43,7 @@
 <dataTypeSize>2</dataTypeSize>
 <ownDataTypeParameters>2,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nr_miejsca" id="C95B766E-272E-5699-7709-6D55A4DABCFA">
+<Attribute name="nr miejsca" id="C95B766E-272E-5699-7709-6D55A4DABCFA">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -56,7 +56,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="6B87D044-8D56-BF3A-388E-CD82E5591813">
+<Attribute name="Sale id" id="6B87D044-8D56-BF3A-388E-CD82E5591813">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:54:15 UTC</createdTime>
 <generatorID>5A040036-A18D-3478-C2DC-9E6094C4D54F</generatorID>
@@ -72,7 +72,7 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="16D2E1E6-875D-7456-0BA5-10D473273FE2" name="Miejsce PK">
+<identifier id="16D2E1E6-875D-7456-0BA5-10D473273FE2" name="Miejsca_PK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>

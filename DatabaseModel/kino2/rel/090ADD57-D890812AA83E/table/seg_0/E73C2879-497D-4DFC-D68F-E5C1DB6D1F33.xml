@@ -75,17 +75,17 @@
 <colUsage columnID="5F3F06DB-C1F3-4B8D-D639-31F822C52AAA"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="DEE10393-050C-88DF-F92D-B0C37A09D889" name="Bilety__IDX">
+<ind_PK_UK id="8358D6D4-CA11-D990-E17F-E14F5BE35639" name="Bilety__IDX">
 <createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<createdTime>2018-01-16 12:31:06 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>106C277B-1DA0-945F-7F46-ACE6835A801C</relationGeneratorID>
 </ind_PK_UK>
-<ind_PK_UK id="A0DFB4A8-380F-5092-7EE9-C0AFF0E87C1D" name="Bilety__IDXv1">
+<ind_PK_UK id="1F22CA5C-7210-F86C-67C1-DB0D34365212" name="Bilety__IDXv1">
 <createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<createdTime>2018-01-16 12:31:06 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>

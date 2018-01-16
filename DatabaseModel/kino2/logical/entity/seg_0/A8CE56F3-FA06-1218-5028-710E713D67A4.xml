@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A8CE56F3-FA06-1218-5028-710E713D67A4" name="Paragon">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A8CE56F3-FA06-1218-5028-710E713D67A4" name="Paragony">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -30,7 +30,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="data_godzina" id="25847453-D070-E443-EE5A-D853D4314349">
+<Attribute name="data godzina" id="25847453-D070-E443-EE5A-D853D4314349">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -43,7 +43,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="2AC87547-AE5C-A8EC-EA8A-DA1CBA0AE003">
+<Attribute name="Pracownicy id" id="2AC87547-AE5C-A8EC-EA8A-DA1CBA0AE003">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:47:27 UTC</createdTime>
 <generatorID>F1CE1536-E65A-E33C-0679-2A1CB7D156A7</generatorID>
@@ -59,13 +59,14 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="842D9F0B-7F21-8766-6C2E-ED036156F41C" name="Paragon PK">
+<identifier id="842D9F0B-7F21-8766-6C2E-ED036156F41C" name="Paragony_PK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <importedID>6750F88E-549C-18EC-5CD0-DA0A4B93D9BE</importedID>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

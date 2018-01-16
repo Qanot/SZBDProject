@@ -80,6 +80,16 @@
 <colUsage columnID="3B9E00A7-1C9D-4076-2146-3B81397E94C7"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="16ECD726-F092-F6CA-16F4-A57D714CD8BB" name="ProduktyNaParagonie__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:37:22 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A183E108-A7F6-E462-BFDD-A5D3C132F9D2"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="8AE0C451-9D85-B9B8-A2DE-01D0E1E4F128" name="ProduktyNaParagonie__IDX">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 11:12:55 UTC</createdTime>

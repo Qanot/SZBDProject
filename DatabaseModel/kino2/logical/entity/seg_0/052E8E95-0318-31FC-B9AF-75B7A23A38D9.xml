@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="052E8E95-0318-31FC-B9AF-75B7A23A38D9" name="Sala">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="052E8E95-0318-31FC-B9AF-75B7A23A38D9" name="Sale">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -29,7 +29,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nr_sali" id="7E206672-D90C-9598-F1A1-201469B3414B">
+<Attribute name="nr sali" id="7E206672-D90C-9598-F1A1-201469B3414B">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
@@ -44,25 +44,27 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="C297FF95-F5D0-8A01-8162-82057A214CAC" name="Sala PK">
+<identifier id="C297FF95-F5D0-8A01-8162-82057A214CAC" name="Sale_PK">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <importedID>B0E0AE0E-3D4A-9EF2-35C6-D8A69C31CFE2</importedID>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>D3AE6FDC-B7EC-BC9C-C7F8-6A305CDAFDD9</attributeRef>
 </usedAttributes>
 </identifier>
-<identifier id="FA5837DB-EE55-5BC2-BD80-F2C8BD2D58A4" name="Sala_UK">
+<identifier id="FA5837DB-EE55-5BC2-BD80-F2C8BD2D58A4" name="Sale_nr_sali_UN">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:32:23 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
 </engineerTo>
 <newElementsIDs>7E206672-D90C-9598-F1A1-201469B3414B</newElementsIDs>
 <usedAttributes>
