@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0CFFCD2F-5C05-0CF4-EEDC-CB6902421ACB" name="Klient">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>37D3F8CA-544D-BA04-2E43-F0CF7E39C0E0</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<preferredAbbreviation>Klienci</preferredAbbreviation>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="imie" id="52CDF3D0-44D5-FBA8-EB2B-AE757A9018CD">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>1CA9BA8E-9D7D-3B8C-E623-B445DA658F72</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwisko" id="B8C80434-179F-610A-BB48-DFAE5FA72BAD">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>B74F2B53-DAB6-3C01-D66F-0CD77426E787</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="e-mail" id="BDC1AB63-C10D-B3FD-C0F8-958F51D1E959">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>346AFB10-E09E-9DEB-3AE2-4407C99B76C6</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="login" id="4FC17438-45D3-3732-7CD6-92627F48D714">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>F939F6A8-74DF-C4A5-3B32-F7F8C926FE07</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="hasło" id="A087E1CB-F6B4-9A67-8566-A7AF7BECBA9B">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>6DDA4E11-695F-960E-4E62-E848A4990F73</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefon" id="E7D11A64-B3BE-27C6-4C05-31588046292A">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>2AD70E1F-FD99-8A07-6E6D-56B72F06503C</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="908C3214-2BA2-0006-AF37-E2F426FE68EC" name="Klient PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>77A5DA8E-017E-EFB4-D8BD-35B2381D4D05</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4FC17438-45D3-3732-7CD6-92627F48D714</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

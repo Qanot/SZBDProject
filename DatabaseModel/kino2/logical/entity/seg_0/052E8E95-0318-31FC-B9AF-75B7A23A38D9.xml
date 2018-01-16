@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="052E8E95-0318-31FC-B9AF-75B7A23A38D9" name="Sala">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>8D25D23B-4BA2-21DD-3734-42404288CA18</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<preferredAbbreviation>Sale</preferredAbbreviation>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="nr_sali" id="7E206672-D90C-9598-F1A1-201469B3414B">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>753C6327-D102-594A-2798-3E4B71232473</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C297FF95-F5D0-8A01-8162-82057A214CAC" name="Sala PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>B0E0AE0E-3D4A-9EF2-35C6-D8A69C31CFE2</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7E206672-D90C-9598-F1A1-201469B3414B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

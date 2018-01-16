@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7E233A12-87C6-3E2D-E0EE-C72A6821ACA0" name="MiejsceNaSeansie">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>C4611066-C2C3-1141-6288-FBF6060501B0</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<preferredAbbreviation>MiejscaNaSeansie</preferredAbbreviation>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id1" id="C84682C5-EDCF-DE86-B062-1D84597CA9E3">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>79BF136C-6842-DD6D-B9D3-7E39B2B73D94</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>BE7F29F9-9CFE-A7DA-BD82-CDE610C424C6</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>37187E37-CF9E-62E9-226F-9565406600E7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="C8E62650-DD5B-17D4-ED0C-9C0D417550BA">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>25EEDA7F-32D5-CC70-8FAF-E45054EDDFC3</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>0BF13027-BEE8-5673-3A22-FBC663E3BD73</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>6E2145E5-D6CA-73CC-AFFE-B35C3D53D367</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id" id="2DFBCE5D-02C1-0847-6F73-0D0DF18012AC">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>BB19ADEC-3AAD-631F-96C6-D2E729A5F7A0</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>2B28FE90-7357-03EE-04F1-2C494938FF37</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>A2054DB6-EC0C-68F5-E778-C11E81220724</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_godzina" id="680AE652-F593-B85C-4BFA-DA702A482CA3">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>25EEDA7F-32D5-CC70-8FAF-E45054EDDFC3</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>4305F2A9-C3C4-278A-E004-9F14482E59B4</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>D5FE07E8-E4DA-9513-01A0-62E46A72F6EC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rząd" id="15E17EE2-BE42-F857-4396-B57084DF6478">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>070DC6BE-2C4D-B27A-4BAE-D68EEFA098C3</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>07A684D7-AD15-3EBC-7E81-BA8B475A7594</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>EF7E14D3-368F-176D-639D-8FBA11A3DEB5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nr_miejsca" id="72518BF2-7EA4-5EE2-2579-14BE04DE5F26">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>070DC6BE-2C4D-B27A-4BAE-D68EEFA098C3</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>BB38F44C-5936-9E9A-CB07-BF92211CCB5E</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>C95B766E-272E-5699-7709-6D55A4DABCFA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nr_sali" id="9AA6C921-67A5-BF3E-7017-73DBF1278118">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<generatorID>070DC6BE-2C4D-B27A-4BAE-D68EEFA098C3</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>AA853926-1BC9-23BB-36FC-B048A43CC1B4</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<referedAttribute>4194BC5D-4885-3B94-8E4B-BE7B381D897D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="CD16EF4F-A176-5EF2-D49B-76C00A548D5B" name="MiejsceNaSeansie PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>B36D1394-BD2F-F7EB-1747-0980FF7832E2</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C8E62650-DD5B-17D4-ED0C-9C0D417550BA</attributeRef>
+<attributeRef>680AE652-F593-B85C-4BFA-DA702A482CA3</attributeRef>
+<attributeRef>15E17EE2-BE42-F857-4396-B57084DF6478</attributeRef>
+<attributeRef>72518BF2-7EA4-5EE2-2579-14BE04DE5F26</attributeRef>
+<attributeRef>9AA6C921-67A5-BF3E-7017-73DBF1278118</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

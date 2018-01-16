@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_28" directorySegmentName="seg_0" id="B7530328-BD7B-D824-E7A1-D30AEC083C22">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>4EECB9DA-EE2E-6019-CC01-BA07815A2ED2</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<sourcePk>9F9A329C-6B86-56D8-0AAA-D245B622EDDC</sourcePk>
+<targetPk>FBDCE94D-4E54-D709-D380-217EED259B9D</targetPk>
+<arc>00A33C1B-48A4-533A-CAFE-6DFC083F2C65</arc>
+<identifying>false</identifying>
+<nameOnSource>jest nabity</nameOnSource>
+<nameOnTarget>zawiera</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>249063EF-7C64-FB00-41A3-37F0F39D645F</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>3595D32A-6E3B-3A91-416C-87988029FB55</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
