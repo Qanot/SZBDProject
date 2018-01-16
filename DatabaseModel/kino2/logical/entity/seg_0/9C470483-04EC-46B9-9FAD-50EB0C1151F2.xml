@@ -30,19 +30,18 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="tytuł" id="3F2F3F95-8C32-9215-93CD-9E1A7373E521">
+<Attribute name="tytul" id="60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA">
 <createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<createdTime>2018-01-16 10:40:09 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>
-<importedID>C75FC2BC-53AE-1359-166F-857C87AA4FBF</importedID>
 <engineerTo>
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="czas_trwania" id="1942EEFA-4135-275E-E02A-38CCE9F9FD66">
 <createdBy>Oliwia</createdBy>
@@ -55,104 +54,6 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="gatunek" id="21B8BA44-0C45-7FD9-9CDB-6F329DB0B743">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>CAFEA2EB-98ED-5F09-4DE8-B02BB6E0E4B6</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="kategoria_wiekowa" id="206E5FFD-A2DE-9C53-13FB-01D730A3239A">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>4D3EB797-8D46-6164-07F9-253FAB4892C1</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="opis" id="2F7B32FC-3E73-15EC-292D-EB50D3729B8C">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>ADE429ED-5B69-9423-9CAF-A5A22783A493</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT040</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="reżyseria" id="810523AF-3209-0F0B-B9C5-17DC736BD0DA">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>DA6A8859-66F5-B474-21DC-7F348B9F665B</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT040</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="scenariusz" id="B50DECEB-9827-20EB-96C3-4DEEE4E096DD">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>B4174143-088C-1343-17E6-03716EFF2E91</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT040</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="zdjęcia" id="BE77B7D2-15C5-635C-249C-7239ED4A9F2D">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>AFA9AF94-D5DB-0C09-6475-0C01097C3D81</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT040</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="występują" id="6C36B56E-F0EB-25F4-90CF-82460BC80725">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>DD5221E4-708D-4DA7-808B-6BFCCCB4BC16</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT040</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -168,6 +69,18 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>EF57B3CD-D98E-DEE7-99BE-F5DEF6538EB5</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="7DC107B3-45DD-2BDA-E36F-2388D0BEF793" name="Film_UK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:40:38 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<newElementsIDs>60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA</newElementsIDs>
+<usedAttributes>
+<attributeRef>60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

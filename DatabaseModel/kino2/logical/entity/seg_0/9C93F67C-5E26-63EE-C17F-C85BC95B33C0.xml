@@ -17,35 +17,6 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>Produkty</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="cena" id="E69FA79D-7928-4A61-23BB-976A90F61F19">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>BF2E99B0-87E5-81D7-001D-C28C3B725AB1</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT020</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="nazwa" id="AFDD290D-A895-4D04-6126-F6D251FE1C05">
-<createdBy>Oliwia</createdBy>
-<createdTime>2018-01-16 10:19:42 UTC</createdTime>
-<ownerDesignName>kino2</ownerDesignName>
-<importedID>5BC9C952-3A60-FB3E-784B-EAD337D5F000</importedID>
-<engineerTo>
-<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id" id="9A8232EB-4C91-B4BE-5928-DB27A0AC4A41">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -59,6 +30,33 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="cena" id="E69FA79D-7928-4A61-23BB-976A90F61F19">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>BF2E99B0-87E5-81D7-001D-C28C3B725AB1</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa" id="AFDD290D-A895-4D04-6126-F6D251FE1C05">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>5BC9C952-3A60-FB3E-784B-EAD337D5F000</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="rozmiar_porcji" id="C719AA67-B4CC-FCCD-D10B-1027815F91CE">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -67,7 +65,6 @@
 <engineerTo>
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -87,6 +84,18 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>9A8232EB-4C91-B4BE-5928-DB27A0AC4A41</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="16E4D7E7-2F75-6CD8-486B-A6B197626652" name="Produkt_UK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:42:25 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<newElementsIDs>AFDD290D-A895-4D04-6126-F6D251FE1C05</newElementsIDs>
+<usedAttributes>
+<attributeRef>AFDD290D-A895-4D04-6126-F6D251FE1C05</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

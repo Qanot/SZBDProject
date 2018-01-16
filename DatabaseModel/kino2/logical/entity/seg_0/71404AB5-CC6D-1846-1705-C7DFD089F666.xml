@@ -17,6 +17,18 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>Seanse</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="79EB4729-4696-9615-856C-F43E4E291BE3">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:41:27 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="data_godzina" id="D5FE07E8-E4DA-9513-01A0-62E46A72F6EC">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
@@ -42,7 +54,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>D5FE07E8-E4DA-9513-01A0-62E46A72F6EC</attributeRef>
+<attributeRef>79EB4729-4696-9615-856C-F43E4E291BE3</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

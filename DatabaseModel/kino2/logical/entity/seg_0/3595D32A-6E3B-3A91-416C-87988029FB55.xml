@@ -17,7 +17,7 @@
 <normalForm>Third</normalForm>
 <preferredAbbreviation>ProduktyNaParagonie</preferredAbbreviation>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="lp" id="FE283380-C3BC-99D8-3CEB-83BA324BDE19">
+<Attribute name="id" id="FE283380-C3BC-99D8-3CEB-83BA324BDE19">
 <createdBy>Oliwia</createdBy>
 <createdTime>2018-01-16 10:19:42 UTC</createdTime>
 <ownerDesignName>kino2</ownerDesignName>

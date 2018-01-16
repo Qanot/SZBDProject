@@ -16,6 +16,20 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <preferredAbbreviation>MiejscaNaSeansie</preferredAbbreviation>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="F9BC6497-1A07-EA9F-AB2E-9A4C84C1DC3D">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:38:53 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="CD16EF4F-A176-5EF2-D49B-76C00A548D5B" name="MiejsceNaSeansie PK">
 <createdBy>Oliwia</createdBy>
@@ -26,6 +40,9 @@
 <item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
 </engineerTo>
 <pk>true</pk>
+<usedAttributes>
+<attributeRef>F9BC6497-1A07-EA9F-AB2E-9A4C84C1DC3D</attributeRef>
+</usedAttributes>
 </identifier>
 </identifiers>
 </Entity>
