@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Rezerwacje Klienci FK" directorySegmentName="seg_0" id="0399AD46-8128-FFD2-4896-094DE5B127E6">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:54:25 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<sourcePk>908C3214-2BA2-0006-AF37-E2F426FE68EC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0CFFCD2F-5C05-0CF4-EEDC-CB6902421ACB</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>7EA7816A-9BC9-94FD-1823-1EE2AA5E5464</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="65CCD592-FF76-461D-59D1-326021F5E6C9" containerWithKeyObject="0A95F7B8-7995-A946-A5AD-0879E7001E4F" localFKIndex="D64431E8-622D-AAC2-A3F4-9CF58362E54D" name="ProduktyNaPar_Paragony_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>8C68CCDC-66B6-7400-60FB-AB3F55A9D561</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<referredTableLongName>Paragony</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AFE7659B-4259-4EBB-BC83-B9AC56395998</referredTableID>
+<keyObject>A2E4D9BF-4301-7881-0515-6FA2ADE1BEDF</keyObject>
+<referredKeyID>A2E4D9BF-4301-7881-0515-6FA2ADE1BEDF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

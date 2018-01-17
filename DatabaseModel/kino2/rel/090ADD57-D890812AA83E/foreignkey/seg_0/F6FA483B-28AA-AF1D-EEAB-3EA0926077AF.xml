@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F6FA483B-28AA-AF1D-EEAB-3EA0926077AF" containerWithKeyObject="E73C2879-497D-4DFC-D68F-E5C1DB6D1F33" localFKIndex="4B3C0AC8-8504-A856-BDC6-8B5ED8A858D3" name="Bilety_RodzajeBiletow_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>4132A1F4-C4AA-D847-3903-78F106471578</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<referredTableLongName>RodzajeBiletow</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2CCCB16A-EE34-057D-EACA-151CF4F88157</referredTableID>
+<keyObject>6EF2E4D8-4B2F-6838-8F08-6B8E33FB760D</keyObject>
+<referredKeyID>6EF2E4D8-4B2F-6838-8F08-6B8E33FB760D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

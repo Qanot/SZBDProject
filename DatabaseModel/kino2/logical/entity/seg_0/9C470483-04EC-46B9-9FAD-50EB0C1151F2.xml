@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9C470483-04EC-46B9-9FAD-50EB0C1151F2" name="Filmy">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>0BF57DFF-6E84-0991-040A-7C121F0E9785</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<preferredAbbreviation>Filmy</preferredAbbreviation>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="EF57B3CD-D98E-DEE7-99BE-F5DEF6538EB5">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>3974871C-8B33-064C-B719-AE0482147C98</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tytul" id="60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:40:09 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="czas trwania" id="1942EEFA-4135-275E-E02A-38CCE9F9FD66">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<importedID>1A22F246-210B-26ED-CE92-264C3E918E46</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0F89A2F3-498A-34F8-D594-BA803552E158" name="Filmy_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:19:42 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<importedID>2BBA39E9-C835-C9F4-E40C-D4A2398C26B1</importedID>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>EF57B3CD-D98E-DEE7-99BE-F5DEF6538EB5</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="7DC107B3-45DD-2BDA-E36F-2388D0BEF793" name="Filmy_tytul_UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 10:40:38 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="090ADD57-9101-F546-C85E-D890812AA83E" value="false"/>
+</engineerTo>
+<newElementsIDs>60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA</newElementsIDs>
+<usedAttributes>
+<attributeRef>60AD185C-203C-6D6E-8C3B-BA83EDA3FFDA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

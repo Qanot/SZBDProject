@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="046DCA34-F8FA-AF1D-E457-168EC8EB8993" name="MiejscaNaSeansie">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>7E233A12-87C6-3E2D-E0EE-C72A6821ACA0</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="2F85582C-200F-1F63-D266-B590775BEFA8">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>F9BC6497-1A07-EA9F-AB2E-9A4C84C1DC3D</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Bilety_id" id="17201E66-83B3-C497-55D3-DCCF83ACDF04">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>93F9190F-9C99-4518-DF48-E0574D264FAA</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1836C5F4-20D4-FD95-1197-663FD021A588" referredColumn="5F3F06DB-C1F3-4B8D-D639-31F822C52AAA"/>
+</associations>
+</Column>
+<Column name="Rezerwacje_id" id="DE72B21F-DBAE-6F31-AFBC-A9604736698A">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>3753B0A3-8059-B619-F262-1D56D79CEB71</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="89FE2B14-AFC6-3DD2-93E7-0C3FAEBFD92B" referredColumn="FAE68386-6C8F-7CAB-F8BC-E17B4ABBCE34"/>
+</associations>
+</Column>
+<Column name="Miejsca_id" id="CEEA63F9-5F9F-440B-C77B-FF0C774D28BF">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>FAE4FFCF-3A52-FB5E-92A0-748DC4D3A8FE</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3F2ACD1B-E7F3-674F-84D3-67C294EFFD9B" referredColumn="D7A5E20E-4FC9-0C57-48D6-1DBBCB603FFE"/>
+</associations>
+</Column>
+<Column name="Seanse_id" id="3DDE71C3-1834-E526-195B-E4E3E5D1A085">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>E191BC1F-1BBD-2371-0672-2865CD6FAD8B</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ACAEDB9D-AF3D-40A5-3153-2B22DFAFBB86" referredColumn="C82E3731-895A-69FE-75A7-AFF847C6B290"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6F920B90-F559-57B5-75F8-E48E26C92290" name="MiejscaNaSeansie_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>CD16EF4F-A176-5EF2-D49B-76C00A548D5B</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2F85582C-200F-1F63-D266-B590775BEFA8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8CFC028D-6553-AE1F-6520-D9DE000FDCB3" name="MiejscaNaSeansie__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:33:35 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEEA63F9-5F9F-440B-C77B-FF0C774D28BF"/>
+<colUsage columnID="3DDE71C3-1834-E526-195B-E4E3E5D1A085"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="80DC7CBB-040D-F034-C1E7-CF6B89AF7EDD" name="MiejscaNaSeansie__IDX">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>106C277B-1DA0-945F-7F46-ACE6835A801C</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="17201E66-83B3-C497-55D3-DCCF83ACDF04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="646907FE-F938-3E7E-9E93-B100C95E3B38" name="MiejscaNaSeansie_Bilety_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>106C277B-1DA0-945F-7F46-ACE6835A801C</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="17201E66-83B3-C497-55D3-DCCF83ACDF04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="011EBE7C-5A8E-FDCB-3DD4-32100B40F51A" name="MiejscaNaSeansie_Rezerwacje_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>67576156-350C-637A-811C-06CF2289E6F1</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE72B21F-DBAE-6F31-AFBC-A9604736698A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B4D7AC5B-05D5-FD35-6FEB-196BF07589D0" name="MiejscaNaSeansie_Miejsca_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>34A8A44E-8250-49B2-F892-FEEC3B31BF79</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEEA63F9-5F9F-440B-C77B-FF0C774D28BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B19FFFDC-6149-F336-8263-21D01537BFD2" name="MiejscaNaSeansie_Seanse_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>666E5E91-C54F-D357-0EED-820700E2BB4A</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3DDE71C3-1834-E526-195B-E4E3E5D1A085"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

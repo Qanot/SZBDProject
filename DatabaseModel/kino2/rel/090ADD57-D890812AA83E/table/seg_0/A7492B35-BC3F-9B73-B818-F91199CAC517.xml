@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A7492B35-BC3F-9B73-B818-F91199CAC517" name="Miejsca">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>93A7FE2B-E04F-E189-87F3-98FAEBA65997</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="D7A5E20E-4FC9-0C57-48D6-1DBBCB603FFE">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>2870D033-1F1C-8020-44F4-198B44A5CB15</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rzad" id="C0A15E0B-EEAC-FAB5-869E-17D2F6E8634A">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>EF7E14D3-368F-176D-639D-8FBA11A3DEB5</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nr_miejsca" id="D29317B0-A7D2-5EF9-0DF1-469709CC3710">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>C95B766E-272E-5699-7709-6D55A4DABCFA</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Sale_id" id="31D64D75-EC08-CE8A-F19D-4926011F8A08">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>6B87D044-8D56-BF3A-388E-CD82E5591813</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="711FB323-79C9-F8E8-32BE-C46186F01F2A" referredColumn="19957A6B-F002-C8E1-B4F8-F75488544D99"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="10CB12D3-9A08-A3BD-2CE1-A4ECAE36D5E0" name="Miejsca_PK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>16D2E1E6-875D-7456-0BA5-10D473273FE2</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D7A5E20E-4FC9-0C57-48D6-1DBBCB603FFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7657DBA8-3883-DB1B-76E3-909147D3C9D7" name="Miejsca__UN">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 12:32:36 UTC</createdTime>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D29317B0-A7D2-5EF9-0DF1-469709CC3710"/>
+<colUsage columnID="C0A15E0B-EEAC-FAB5-869E-17D2F6E8634A"/>
+<colUsage columnID="31D64D75-EC08-CE8A-F19D-4926011F8A08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="091D57DE-5B43-B895-D332-0E18DCDA4FA8" name="Miejsca_Sale_FK">
+<createdBy>Oliwia</createdBy>
+<createdTime>2018-01-16 11:12:55 UTC</createdTime>
+<generatorID>5A040036-A18D-3478-C2DC-9E6094C4D54F</generatorID>
+<ownerDesignName>kino2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="31D64D75-EC08-CE8A-F19D-4926011F8A08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
