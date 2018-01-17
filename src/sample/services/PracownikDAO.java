@@ -22,7 +22,7 @@ public class PracownikDAO {
     private List<Pracownik> pracownicy;
     private PreparedStatement stmtSelect = null;
     private PreparedStatement stmtDelete = null;
-    private PreparedStatement stmtUpdate = null;
+    private CallableStatement stmtUpdate = null;
     private CallableStatement stmtInsert = null;
     private ResultSet rsSelect = null;
 
@@ -32,13 +32,13 @@ public class PracownikDAO {
 
         try {
             stmtSelect = connectionController.getConn().prepareStatement(
-                    "SELECT id, imie, nazwisko, plec FROM PRACOWNICY");
+                    "SELECT id, imie, nazwisko, plec, PESEL FROM PRACOWNICY");
             stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM PRACOWNICY WHERE ID = ?");
-            stmtUpdate = connectionController.getConn().prepareStatement(
-                    "UPDATE PRACOWNICY SET IMIE = ?, NAZWISKO = ?, PLEC = ? WHERE ID = ?");
+            stmtUpdate = connectionController.getConn().prepareCall(
+                    "{? = call update_pracownika(?, ?, ?, ?, ?)}");
             stmtInsert = connectionController.getConn().prepareCall(
-                    "{call wstaw_pracownika(?, ?, ?, ?)}");
+                    "{? = call wstaw_pracownika(?, ?, ?, ?, ?)}");
 
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
@@ -57,7 +57,8 @@ public class PracownikDAO {
                 String plecString = rsSelect.getString(4);
                 plecString = plecString.substring(0, 1); // pierwsza litera
                 Plec plec = Plec.valueOf(plecString);
-                Pracownik pracownik = new Pracownik(imie, nazwisko, plec);
+                String PESEL = rsSelect.getString(5);
+                Pracownik pracownik = new Pracownik(imie, nazwisko, plec, PESEL);
                 pracownik.setId(id);
                 pracownicy.add(pracownik);
             }
@@ -94,36 +95,46 @@ public class PracownikDAO {
         }
     }
 
-    public void updatePracownik(Pracownik pracownik) {
+    public boolean updatePracownik(Pracownik pracownik) {
         try {
-            stmtUpdate.setString(1, pracownik.getImie());
-            stmtUpdate.setString(2, pracownik.getNazwisko());
-            stmtUpdate.setString(3, pracownik.getPlec().name()); // name zwroci dokladnie "K" lub "M",
+            stmtUpdate.registerOutParameter(1, Types.INTEGER);
+            stmtUpdate.setInt(2, pracownik.getId());
+            stmtUpdate.setString(3, pracownik.getImie());
+            stmtUpdate.setString(4, pracownik.getNazwisko());
+            stmtUpdate.setString(5, pracownik.getPlec().name()); // name zwroci dokladnie "K" lub "M",
             // nawet jesli nadpiszemy w przyszlosci toString
-            stmtUpdate.setInt(4, pracownik.getId());
-            int changes = stmtUpdate.executeUpdate();
-            if (changes != 1) {
-                System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
-            }
+            stmtUpdate.setString(6, pracownik.getPESEL());
+            stmtUpdate.executeUpdate();
+
+            int wykonananoPoprawnie = stmtUpdate.getInt(1);
+            return wykonananoPoprawnie == 1;
+
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
+            return false;
         }
     }
 
-    public void insertPracownik(Pracownik pracownik) {
+    public boolean insertPracownik(Pracownik pracownik) {
         try {
-            stmtInsert.setString(1, pracownik.getImie());
-            stmtInsert.setString(2, pracownik.getNazwisko());
-            stmtInsert.setString(3, pracownik.getPlec().name());
-            stmtInsert.registerOutParameter(4, Types.INTEGER);
+            stmtInsert.registerOutParameter(1, Types.INTEGER);
+            stmtInsert.setString(2, pracownik.getImie());
+            stmtInsert.setString(3, pracownik.getNazwisko());
+            stmtInsert.setString(4, pracownik.getPlec().name());
+            stmtInsert.setString(5, pracownik.getPESEL());
+            stmtInsert.registerOutParameter(6, Types.INTEGER);
             stmtInsert.execute();
-            int id = stmtInsert.getInt(4);
+            int id = stmtInsert.getInt(6);
             pracownik.setId(id);
+
+            int wykonananoPoprawnie = stmtInsert.getInt(1);
+            return wykonananoPoprawnie == 1;
 
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
+            return false;
         }
     }
 
