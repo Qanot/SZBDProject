@@ -92,7 +92,7 @@ public class SalaDAO {
     public boolean updateSala(Sala sala) {
         try {
             stmtUpdate.registerOutParameter(1, Types.INTEGER);
-            stmtUpdate.setInt(2, sala.getNrSaliStary());
+            stmtUpdate.setInt(2, sala.getNrSali());
             stmtUpdate.setInt(3, sala.getNrSali());
             stmtUpdate.execute();
 
