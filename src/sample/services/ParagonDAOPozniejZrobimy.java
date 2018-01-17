@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ParagonDAO {
+public class ParagonDAOPozniejZrobimy {
 
     private ConnectionController connectionController;
     private List<Paragon> paragony;
@@ -18,7 +18,7 @@ public class ParagonDAO {
     private CallableStatement stmtInsert = null;
     private ResultSet rsSelect = null;
 
-    public ParagonDAO(ConnectionController connectionController) {
+    public ParagonDAOPozniejZrobimy(ConnectionController connectionController) {
         this.setConnectionController(connectionController);
         paragony = new ArrayList<Paragon>();
 
@@ -33,7 +33,7 @@ public class ParagonDAO {
                     "{call wstaw_paragon(?, ?)}");
 
         } catch (SQLException ex) {
-            Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ParagonDAOPozniejZrobimy.class.getName()).log(Level.SEVERE,
                     "Błąd przygotowania prekompilowanego polecenia", ex);
         }
     }
@@ -51,14 +51,14 @@ public class ParagonDAO {
                 paragony.add(paragon);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ParagonDAOPozniejZrobimy.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);
         } finally {
             if (rsSelect != null) {
                 try {
                     rsSelect.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
+                    Logger.getLogger(ParagonDAOPozniejZrobimy.class.getName()).log(Level.SEVERE,
                             "Błąd zamykania interfejsu ResultSet", ex);
                 }
             }
@@ -73,7 +73,7 @@ public class ParagonDAO {
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ParagonDAOPozniejZrobimy.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }
     }
@@ -88,7 +88,7 @@ public class ParagonDAO {
                 System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ParagonDAOPozniejZrobimy.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
         }
     }
@@ -102,7 +102,7 @@ public class ParagonDAO {
             paragon.setId(id);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ParagonDAOPozniejZrobimy.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
         }
     }

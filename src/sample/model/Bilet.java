@@ -4,10 +4,9 @@ import java.util.Date;
 
 public class Bilet {
 
-    private Date dataZakupu;
     private int id;
     private RodzajBiletu rodzajBiletu;
-    private Pracownik pracownikKtorySprzedal;
     private Rezerwacja rezerwacjaPoprzedzajacaSprzedaz; //moze byc null (opcjonalne)
     private MiejsceNaSeansie miejsceNaSeansie;
+    ProduktNaParagonie produktNaParagonie; // reprezentuje pozycje na paragonie, ktora jest nabity bilet
 }

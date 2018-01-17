@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /**
  * ZALOZENIA:
- * login jest niezmienny (klucz podstawowy), wiec nie mozna go updatowac
+ * login jest kluczem unikalnym,
  * przy wstawianiu rekordu, jesli metoda insert zwroci false, oznacza to, ze dany login juz istnieje
  * (naruszenie ograniczenia integralnosciowego)
  **/
@@ -20,7 +20,7 @@ public class KlientDAO {
     private List<Klient> klienci;
     private PreparedStatement stmtSelect = null;
     private PreparedStatement stmtDelete = null;
-    private PreparedStatement stmtUpdate = null;
+    private CallableStatement stmtUpdate = null;
     private CallableStatement stmtInsert = null;
     private ResultSet rsSelect = null;
 
@@ -30,14 +30,13 @@ public class KlientDAO {
 
         try {
             stmtSelect = connectionController.getConn().prepareStatement(
-                    "SELECT imie, nazwisko, email, login, haslo, telefon FROM KLIENCI");
+                    "SELECT id, imie, nazwisko, email, login, haslo, telefon FROM KLIENCI");
             stmtDelete = connectionController.getConn().prepareStatement(
-                    "DELETE FROM KLIENCI WHERE LOGIN = ?");
-            stmtUpdate = connectionController.getConn().prepareStatement(
-                    "UPDATE KLIENCI SET imie = ?, nazwisko = ?, email = ?, haslo =?, telefon = ? WHERE LOGIN = ?");
+                    "DELETE FROM KLIENCI WHERE id = ?");
+            stmtUpdate = connectionController.getConn().prepareCall(
+                    "{? = call update_klienta(?, ?, ?, ?, ?, ?, ?)}");
             stmtInsert = connectionController.getConn().prepareCall(
-                    "{? = call wstaw_klienta(?, ?, ?, ?, ?, ?)}");
-            selectKlienci();
+                    "{? = call wstaw_klienta(?, ?, ?, ?, ?, ?, ?)}");
 
         } catch (SQLException ex) {
             Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
@@ -50,14 +49,16 @@ public class KlientDAO {
         try {
             rsSelect = stmtSelect.executeQuery();
             while (rsSelect.next()) {
-                String imie = rsSelect.getString(1);
-                String nazwisko = rsSelect.getString(2);
-                String email = rsSelect.getString(3);
-                String login = rsSelect.getString(4);
-                String haslo = rsSelect.getString(5);
-                String telefon = rsSelect.getString(6);
+                int id = rsSelect.getInt(1);
+                String imie = rsSelect.getString(2);
+                String nazwisko = rsSelect.getString(3);
+                String email = rsSelect.getString(4);
+                String login = rsSelect.getString(5);
+                String haslo = rsSelect.getString(6);
+                String telefon = rsSelect.getString(7);
 
                 Klient klient = new Klient(imie, nazwisko, email, login, haslo, telefon);
+                klient.setId(id);
                 klienci.add(klient);
             }
         } catch (SQLException ex) {
@@ -82,7 +83,7 @@ public class KlientDAO {
 
     public void deleteKlient(Klient klient) {
         try {
-            stmtDelete.setString(1, klient.getLogin());
+            stmtDelete.setInt(1, klient.getId());
             int changes = stmtDelete.executeUpdate();
             if (changes != 1) {
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
@@ -93,22 +94,25 @@ public class KlientDAO {
         }
     }
 
-    public void updateKlient(Klient klient) {
+    public boolean updateKlient(Klient klient) {
         try {
-            stmtUpdate.setString(1, klient.getImie());
-            stmtUpdate.setString(2, klient.getNazwisko());
-            stmtUpdate.setString(3, klient.getEmail());
-            stmtUpdate.setString(4, klient.getHaslo());
-            stmtUpdate.setString(5, klient.getTelefon());
-            stmtUpdate.setString(6, klient.getLogin());
+            stmtUpdate.registerOutParameter(1, Types.INTEGER);
+            stmtUpdate.setInt(2, klient.getId());
+            stmtUpdate.setString(3, klient.getImie());
+            stmtUpdate.setString(4, klient.getNazwisko());
+            stmtUpdate.setString(5, klient.getEmail());
+            stmtUpdate.setString(6, klient.getHaslo());
+            stmtUpdate.setString(7, klient.getTelefon());
+            stmtUpdate.setString(8, klient.getLogin());
 
-            int changes = stmtUpdate.executeUpdate();
-            if (changes != 1) {
-                System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
-            }
+            stmtUpdate.execute();
+
+            int wykonananoPoprawnie = stmtUpdate.getInt(1);
+            return wykonananoPoprawnie == 1;
         } catch (SQLException ex) {
             Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
+            return false;
         }
     }
 
@@ -120,6 +124,7 @@ public class KlientDAO {
      */
     public boolean insertKlient(Klient klient) {
         try {
+
             stmtInsert.registerOutParameter(1, Types.INTEGER);
             stmtInsert.setString(2, klient.getImie());
             stmtInsert.setString(3, klient.getNazwisko());
@@ -127,8 +132,11 @@ public class KlientDAO {
             stmtInsert.setString(5, klient.getLogin());
             stmtInsert.setString(6, klient.getHaslo());
             stmtInsert.setString(7, klient.getTelefon());
+            stmtInsert.registerOutParameter(8, Types.INTEGER);
 
             stmtInsert.execute();
+            int id = stmtInsert.getInt(8);
+            klient.setId(id);
 
             int wykonananoPoprawnie = stmtInsert.getInt(1);
             return wykonananoPoprawnie == 1;

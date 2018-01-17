@@ -30,6 +30,8 @@ public class AddEmployeeController {
     private TextField editLastname;
     @FXML
     private ChoiceBox editPlec;
+    @FXML
+    private TextField editPESEL;
 
 
     @FXML
@@ -37,9 +39,10 @@ public class AddEmployeeController {
         System.out.println("applyChanges!");
         String editedName = editName.textProperty().getValue();
         String editedLastname = editLastname.textProperty().getValue();
+        String editedPESEL = editPESEL.textProperty().getValue();
         Plec editedSex = (Plec) editPlec.getSelectionModel().getSelectedItem();
         if (!editedLastname.equals("") && !editedName.equals("")) {
-            Pracownik newEmployee = new Pracownik(editedName, editedLastname, editedSex);
+            Pracownik newEmployee = new Pracownik(editedName, editedLastname, editedSex, editedPESEL);
             PracownikDAO pracownikDAO = new PracownikDAO(cc);
             pracownikDAO.insertPracownik(newEmployee);
             closeWindow();
@@ -56,6 +59,7 @@ public class AddEmployeeController {
             editName.textProperty().setValue(employee.getImie());
             editLastname.textProperty().setValue(employee.getNazwisko());
             editPlec.getSelectionModel().select(employee.getPlec());
+            editPESEL.textProperty().setValue(employee.getPESEL());
         }
     }
     private void closeWindow() {

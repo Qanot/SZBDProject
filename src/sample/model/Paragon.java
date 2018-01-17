@@ -1,11 +1,14 @@
 package sample.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Paragon {
 
     private int id;
     private Date dataZakupu;
+    private Pracownik pracownikNabijajacyParagon;
+    private List<ProduktNaParagonie> produktyNaParagonie;
 
     public Paragon(Date dataZakupu) {
         this.dataZakupu = dataZakupu;
