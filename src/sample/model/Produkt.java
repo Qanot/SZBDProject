@@ -1,10 +1,13 @@
 package sample.model;
 
+import java.util.List;
+
 public class Produkt {
     private int id;
     private double cena;
     private String nazwa;
     private RozmiarPorcji rozmiarPorcji;
+    private List<ProduktNaParagonie> prodNaParBedaceProduktem;
 
     public Produkt(double cena, String nazwa, RozmiarPorcji rozmiarPorcji) {
         this.cena = cena;

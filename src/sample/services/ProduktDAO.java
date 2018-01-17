@@ -21,7 +21,7 @@ public class ProduktDAO {
     private List<Produkt> produkty;
     private PreparedStatement stmtSelect = null;
     private PreparedStatement stmtDelete = null;
-    private PreparedStatement stmtUpdate = null;
+    private CallableStatement stmtUpdate = null;
     private CallableStatement stmtInsert = null;
     private ResultSet rsSelect = null;
 
@@ -33,11 +33,11 @@ public class ProduktDAO {
             stmtSelect = connectionController.getConn().prepareStatement(
                     "SELECT id, cena, nazwa, rozmiar_porcji FROM PRODUKTY");
             stmtDelete = connectionController.getConn().prepareStatement(
-                    "DELETE FROM PRACOWNICY WHERE ID = ?");
-            stmtUpdate = connectionController.getConn().prepareStatement(
-                    "UPDATE PRODUKTY SET CENA = ?, NAZWA = ?, ROZMIR_PORCJI = ? WHERE ID = ?");
+                    "DELETE FROM PRODUKTY WHERE ID = ?");
+            stmtUpdate = connectionController.getConn().prepareCall(
+                    "{? = call update_produkt(?, ?, ?, ?)}");
             stmtInsert = connectionController.getConn().prepareCall(
-                    "{call wstaw_produkt(?, ?, ?, ?)}"); //TO DO
+                    "{? = call wstaw_produkt(?, ?, ?, ?)}");
 
         } catch (SQLException ex) {
             Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
@@ -93,35 +93,43 @@ public class ProduktDAO {
         }
     }
 
-    public void updateProdukt(Produkt produkt) {
+    public boolean updateProdukt(Produkt produkt) {
         try {
-            stmtUpdate.setDouble(1, produkt.getCena());
-            stmtUpdate.setString(2, produkt.getNazwa());
-            stmtUpdate.setString(3, produkt.getRozmiarPorcji().name()); // name zwroci dokladnie "K" lub "M",
+            stmtUpdate.registerOutParameter(1, Types.INTEGER);
+            stmtUpdate.setInt(2, produkt.getId());
+            stmtUpdate.setDouble(3, produkt.getCena());
+            stmtUpdate.setString(4, produkt.getNazwa());
+            stmtUpdate.setString(5, produkt.getRozmiarPorcji().name()); // name zwroci dokladnie S lub M lub L
             // nawet jesli nadpiszemy w przyszlosci toString
-            stmtUpdate.setInt(4, produkt.getId());
-            int changes = stmtUpdate.executeUpdate();
-            if (changes != 1) {
-                System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
-            }
+            stmtUpdate.executeUpdate();
+            int wykonananoPoprawnie = stmtUpdate.getInt(1);
+            return wykonananoPoprawnie == 1;
         } catch (SQLException ex) {
             Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
+            return false;
         }
     }
 
-    public void insertProdukt(Produkt produkt) {
+    public boolean insertProdukt(Produkt produkt) {
         try {
-            stmtInsert.setDouble(1, produkt.getCena());
-            stmtInsert.setString(2, produkt.getNazwa());
-            stmtInsert.setString(3, produkt.getRozmiarPorcji().name());
-            stmtInsert.registerOutParameter(4, Types.INTEGER);
+            stmtInsert.registerOutParameter(1, Types.INTEGER);
+            stmtInsert.setDouble(2, produkt.getCena());
+            stmtInsert.setString(3, produkt.getNazwa());
+            stmtInsert.setString(4, produkt.getRozmiarPorcji().name());
+            stmtInsert.registerOutParameter(5, Types.INTEGER);
+
             stmtInsert.execute();
-            int id = stmtInsert.getInt(4);
+            int id = stmtInsert.getInt(5);
             produkt.setId(id);
+
+            int wykonanoPoprawnie = stmtInsert.getInt(1);
+            return wykonanoPoprawnie == 1;
+
         } catch (SQLException ex) {
             Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
+            return false;
         }
     }
 

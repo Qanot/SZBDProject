@@ -12,10 +12,10 @@ import java.util.logging.Logger;
 // TODO
 
 
-public class PokazRodzajeBiletow {
+public class RodzajBiletuDAO {
     private ConnectionController connectionController;
     private List<RodzajBiletu>  rodzajeBiletow;
-    public PokazRodzajeBiletow(){
+    public RodzajBiletuDAO(){
         rodzajeBiletow = new ArrayList<RodzajBiletu>();
     }
 

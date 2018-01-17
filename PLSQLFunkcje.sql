@@ -25,9 +25,9 @@ END wstaw_pracownika;
 /
 
 create or replace FUNCTION
-    update_pracownika (v_id IN pracownicy.id%TYPE, v_imie IN pracownicy.imie%TYPE, v_nazwisko IN pracownicy.nazwisko%TYPE,
-                      v_plec IN pracownicy.plec%TYPE, v_pesel IN pracownicy.pesel%TYPE,
-                      v_id OUT pracownicy.id%TYPE) RETURN NUMBER IS
+    update_pracownika (v_id IN pracownicy.id%TYPE, v_imie IN pracownicy.imie%TYPE,
+			v_nazwisko IN pracownicy.nazwisko%TYPE, v_plec IN pracownicy.plec%TYPE,
+			v_pesel IN pracownicy.pesel%TYPE) RETURN NUMBER IS
 BEGIN
     v_id := pracownik_id_seq.nextval;
     INSERT INTO PRACOWNICY(ID, IMIE, NAZWISKO, PLEC, PESEL)

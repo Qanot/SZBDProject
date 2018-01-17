@@ -124,6 +124,7 @@ public class PracownikDAO {
             stmtInsert.setString(4, pracownik.getPlec().name());
             stmtInsert.setString(5, pracownik.getPESEL());
             stmtInsert.registerOutParameter(6, Types.INTEGER);
+
             stmtInsert.execute();
             int id = stmtInsert.getInt(6);
             pracownik.setId(id);
