@@ -13,4 +13,8 @@ public class Rezerwacja {
     private List<MiejsceNaSeansie> zarezerwowaneMiejsca; // not null
     private List<Bilet> wykupioneBilety; // moze byc nullem
 
+
+
+
+
 }

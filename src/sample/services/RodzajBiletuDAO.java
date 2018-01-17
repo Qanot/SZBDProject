@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// TODO
+// TODO implement all methods
 
 
 public class RodzajBiletuDAO {
@@ -17,15 +17,34 @@ public class RodzajBiletuDAO {
     private List<RodzajBiletu>  rodzajeBiletow;
     public RodzajBiletuDAO(){
         rodzajeBiletow = new ArrayList<RodzajBiletu>();
+        this.setConnectionController(connectionController);
     }
 
+    public void setConnectionController(ConnectionController connectionController) {
+        this.connectionController = connectionController;
+    }
     private void selectRodzajeBiletow(){
 
-
     }
+
     public List<RodzajBiletu> getRodzajeBiletow() {
         selectRodzajeBiletow();
         return rodzajeBiletow;
     }
+
+    public boolean insertRodzajBiletu(RodzajBiletu rodzajBiletu){
+        return true;
+    }
+
+    public boolean updateRodzajBiletu(RodzajBiletu rodzajBiletu){
+        return true;
+    }
+
+    public void deleteRodzajBiletu(RodzajBiletu rodzajBiletu){
+    }
+
+    public void closeStatements(){
+    }
+
 
 }
