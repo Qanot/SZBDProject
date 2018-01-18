@@ -89,9 +89,9 @@ END wstaw_sale;
 /
 
 create or replace FUNCTION update_sala(v_id IN sale.id%type,
-                v_nr_sali_nowe IN sale.nr_sali%TYPE) return number is
+                v_nr_sali IN sale.nr_sali%TYPE) return number is
 BEGIN
-    UPDATE SALE SET NR_SALI = v_nr_sali_nowe
+    UPDATE SALE SET NR_SALI = v_nr_sali
     WHERE id = v_id;
     RETURN 1;
 EXCEPTION

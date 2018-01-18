@@ -9,7 +9,7 @@ public class Sala {
     private List<Miejsce> miejscaWSali;
 
     public Sala(int nrSali) {
-        this.nrSali = nrSali;
+        this.setNrSali(nrSali);
     }
 
     public int getId() {
