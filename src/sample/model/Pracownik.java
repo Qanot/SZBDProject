@@ -18,6 +18,12 @@ public class Pracownik {
         this.setPESEL(PESEL);
     }
 
+    @Override
+    public String toString() {
+        return "Imie: " + this.getImie() + "\nNazwisko: " + this.getNazwisko() + "\nPłeć: " + this.getPlec() +
+                "\nPESEL: " + this.PESEL;
+    }
+
     public int getId() {
         return id;
     }

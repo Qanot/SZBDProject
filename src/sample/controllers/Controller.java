@@ -446,8 +446,7 @@ public class Controller {
                     PracownikDAO prdao = new PracownikDAO(cc);
                     List<Pracownik> lista = prdao.getPracownicy();
                     Pracownik tempEmployee = lista.get(dataToShow.indexOf(newSelection));
-                    infoText.setText("ID: " + tempEmployee.getId() + "\nImie: " + tempEmployee.getImie() +
-                    "\nNazwisko: " + tempEmployee.getNazwisko() + "\nPłeć: " + tempEmployee.getPlec());
+                    infoText.setText(tempEmployee.toString());
                 }
                 else if (presentedType.equals("Clients")){
                     KlientDAO prdao = new KlientDAO(cc);

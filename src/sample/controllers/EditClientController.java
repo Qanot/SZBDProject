@@ -43,19 +43,26 @@ public class EditClientController {
         String editedName = editName.textProperty().getValue();
         String editedLastname = editLastname.textProperty().getValue();
         String editedEmail = editEmail.textProperty().getValue();
+        String editedLogin = editLogin.textProperty().getValue();
         String editedPassword = editPassword.textProperty().getValue();
         String editedPhoneNumber = editPhoneNumber.textProperty().getValue();
 
+
         if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
-                && !editedPassword.equals("") && !editedPhoneNumber.equals("")) {
+                && !editedPassword.equals("") && !editedPhoneNumber.equals("") && !editedLogin.equals("")) {
             client.setImie(editedName);
             client.setNazwisko(editedLastname);
             client.setEmail(editedEmail);
+            client.setLogin(editedLogin);
             client.setHaslo(editedPassword);
             client.setTelefon(editedPhoneNumber);
+
             KlientDAO klientDAO = new KlientDAO(cc);
-            klientDAO.updateKlient(client);
-            closeWindow();
+            if (!klientDAO.updateKlient(client)) {
+                showAlertEmptyForm("Login zajęty. Prosze spóbować z innym.");
+            } else {
+                closeWindow();
+            }
         } else {
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
@@ -69,6 +76,7 @@ public class EditClientController {
         editName.textProperty().setValue(client.getImie());
         editLastname.textProperty().setValue(client.getNazwisko());
         editEmail.textProperty().setValue(client.getEmail());
+        editLogin.textProperty().setValue(client.getLogin());
         editPassword.textProperty().setValue(client.getHaslo());
         editPhoneNumber.textProperty().setValue(client.getTelefon());
     }

@@ -52,8 +52,11 @@ public class EditEmployeeController {
             employee.setPlec(editedSex);
             employee.setPESEL(editedPESEL);
             PracownikDAO pracownikDAO = new PracownikDAO(cc);
-            pracownikDAO.updatePracownik(employee);
-            closeWindow();
+            if (!pracownikDAO.updatePracownik(employee)) {
+                showAlertEmptyForm("PESEL już znajduje sie w bazie. Prosze spóbować z innym.");
+            } else {
+                closeWindow();
+            }
         }else{
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
