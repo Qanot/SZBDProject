@@ -112,8 +112,11 @@ public class SalaDAO extends DAO{
         try {
             stmtInsert.registerOutParameter(1, Types.INTEGER);
             stmtInsert.setInt(2, sala.getNrSali());
-            stmtInsert.setInt(3, sala.getId());
+            stmtInsert.registerOutParameter(3, Types.INTEGER);
+
             stmtInsert.execute();
+            int id = stmtInsert.getInt(3);
+            sala.setId(id);
 
             int wykonananoPoprawnie = stmtInsert.getInt(1);
             return wykonananoPoprawnie == 1;
@@ -131,7 +134,7 @@ public class SalaDAO extends DAO{
             rsSelect = stmtFindById.executeQuery();
             if (rsSelect.next()) {
                 int nrSali = rsSelect.getInt(1);
-                
+
                 sala = new Sala(nrSali);
                 sala.setId(id);
             }

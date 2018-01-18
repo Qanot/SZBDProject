@@ -140,5 +140,31 @@ BEGIN
     INSERT INTO PARAGONY(ID, DATA_GODZINA, PRACOWNICY_ID)
     VALUES(v_id, v_data_godzina, v_id_prac);
 END wstaw_paragon;
+/
 
+create or replace FUNCTION wstaw_film(v_tytul IN filmy.tytul%TYPE, v_czas_trwania IN filmy.czas_trwania%TYPE,
+                                      v_id OUT filmy.id%TYPE) return number is
+  BEGIN
+    v_id := film_id_seq.nextval;
+    INSERT INTO FILMY(id, tytul, czas_trwania)
+    VALUES(v_id, v_tytul, v_czas_trwania);
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END wstaw_film;
+/
 
+create or replace FUNCTION update_film(v_id IN filmy.id%TYPE, v_tytul IN filmy.tytul%TYPE,
+                                       v_czas_trwania IN filmy.czas_trwania%TYPE) return number is
+  BEGIN
+    UPDATE FILMY
+    SET TYTUL = v_tytul,
+    CZAS_TRWANIA = v_czas_trwania
+    WHERE id = v_id;
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END update_film;
+/
