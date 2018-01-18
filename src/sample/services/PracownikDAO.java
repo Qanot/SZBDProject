@@ -2,6 +2,7 @@ package sample.services;
 
 import sample.model.Plec;
 import sample.model.Pracownik;
+import sample.model.Produkt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,29 +17,25 @@ import java.util.logging.Logger;
  **/
 
 
-public class PracownikDAO {
+public class PracownikDAO extends DAO {
 
-    private ConnectionController connectionController;
     private List<Pracownik> pracownicy;
-    private PreparedStatement stmtSelect = null;
-    private PreparedStatement stmtDelete = null;
-    private CallableStatement stmtUpdate = null;
-    private CallableStatement stmtInsert = null;
-    private ResultSet rsSelect = null;
 
     public PracownikDAO(ConnectionController connectionController) {
-        this.setConnectionController(connectionController);
+        super(connectionController);
         pracownicy = new ArrayList<Pracownik>();
 
         try {
-            stmtSelect = connectionController.getConn().prepareStatement(
+            this.stmtSelect = connectionController.getConn().prepareStatement(
                     "SELECT id, imie, nazwisko, plec, PESEL FROM PRACOWNICY");
-            stmtDelete = connectionController.getConn().prepareStatement(
+            this.stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM PRACOWNICY WHERE ID = ?");
-            stmtUpdate = connectionController.getConn().prepareCall(
+            this.stmtUpdate = connectionController.getConn().prepareCall(
                     "{? = call update_pracownika(?, ?, ?, ?, ?)}");
-            stmtInsert = connectionController.getConn().prepareCall(
+            this.stmtInsert = connectionController.getConn().prepareCall(
                     "{? = call wstaw_pracownika(?, ?, ?, ?, ?)}");
+            this.stmtFindById = connectionController.getConn().prepareStatement(
+                    "SELECT imie, nazwisko, plec, PESEL FROM PRACOWNICY WHERE id = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
@@ -139,43 +136,35 @@ public class PracownikDAO {
         }
     }
 
-    public void setConnectionController(ConnectionController connectionController) {
-        this.connectionController = connectionController;
-    }
-
-    public void closeStatements() {
-        if (stmtSelect != null) {
-            try {
-                stmtSelect.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
+    public Pracownik getPracownikById(int id) {
+        Pracownik pracownik = null;
+        try {
+            stmtFindById.setInt(1, id);
+            rsSelect = stmtFindById.executeQuery();
+            if (rsSelect.next()) {
+                String imie = rsSelect.getString(1);
+                String nazwisko = rsSelect.getString(2);
+                String plecString = rsSelect.getString(3);
+                plecString = plecString.substring(0, 1); // pierwsza litera
+                Plec plec = Plec.valueOf(plecString);
+                String PESEL = rsSelect.getString(4);
+                pracownik = new Pracownik(imie, nazwisko, plec, PESEL);
+                pracownik.setId(id);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
             }
         }
-        if (stmtInsert != null) {
-            try {
-                stmtInsert.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtUpdate != null) {
-            try {
-                stmtUpdate.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtDelete != null) {
-            try {
-                stmtDelete.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
+        return pracownik;
     }
 
 

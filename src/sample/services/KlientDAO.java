@@ -15,31 +15,25 @@ import java.util.logging.Logger;
  * (naruszenie ograniczenia integralnosciowego)
  **/
 
-public class KlientDAO {
-    private ConnectionController connectionController;
+public class KlientDAO extends DAO{
+
     private List<Klient> klienci;
-    private PreparedStatement stmtSelect = null;
-    private PreparedStatement stmtFindById = null;
-    private PreparedStatement stmtDelete = null;
-    private CallableStatement stmtUpdate = null;
-    private CallableStatement stmtInsert = null;
-    private ResultSet rsSelect = null;
 
     public KlientDAO(ConnectionController connectionController){
-        this.setConnectionController(connectionController);
+        super(connectionController);
         klienci = new ArrayList<Klient>();
 
         try {
-            stmtSelect = connectionController.getConn().prepareStatement(
+            this.stmtSelect = connectionController.getConn().prepareStatement(
                     "SELECT id, imie, nazwisko, email, login, haslo, telefon FROM KLIENCI");
-            stmtDelete = connectionController.getConn().prepareStatement(
+            this.stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM KLIENCI WHERE id = ?");
-            stmtUpdate = connectionController.getConn().prepareCall(
+            this.stmtUpdate = connectionController.getConn().prepareCall(
                     "{? = call update_klienta(?, ?, ?, ?, ?, ?, ?)}");
-            stmtInsert = connectionController.getConn().prepareCall(
+            this.stmtInsert = connectionController.getConn().prepareCall(
                     "{? = call wstaw_klienta(?, ?, ?, ?, ?, ?, ?)}");
-            stmtFindById = connectionController.getConn().prepareStatement(
-              "SELECT id, imie, nazwisko, email, login, haslo, telefon FROM PRACOWNICY WHERE ID = ?");
+            this.stmtFindById = connectionController.getConn().prepareStatement(
+              "SELECT imie, nazwisko, email, login, haslo, telefon FROM PRACOWNICY WHERE ID = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
@@ -157,13 +151,12 @@ public class KlientDAO {
             stmtFindById.setInt(1, id);
             rsSelect = stmtFindById.executeQuery();
             if (rsSelect.next()) {
-                int id = rsSelect.getInt(1);
-                String imie = rsSelect.getString(2);
-                String nazwisko = rsSelect.getString(3);
-                String email = rsSelect.getString(4);
-                String login = rsSelect.getString(5);
-                String haslo = rsSelect.getString(6);
-                String telefon = rsSelect.getString(7);
+                String imie = rsSelect.getString(1);
+                String nazwisko = rsSelect.getString(2);
+                String email = rsSelect.getString(3);
+                String login = rsSelect.getString(4);
+                String haslo = rsSelect.getString(5);
+                String telefon = rsSelect.getString(6);
 
                 klient = new Klient(imie, nazwisko, email, login, haslo, telefon);
                 klient.setId(id);
@@ -180,49 +173,7 @@ public class KlientDAO {
                             "Błąd zamykania interfejsu ResultSet", ex);
                 }
             }
-            return klient;
         }
-
+        return klient;
     }
-
-
-    public void setConnectionController(ConnectionController connectionController) {
-        this.connectionController = connectionController;
-    }
-
-    public void closeStatements() {
-        if (stmtSelect != null) {
-            try {
-                stmtSelect.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtInsert != null) {
-            try {
-                stmtInsert.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtUpdate != null) {
-            try {
-                stmtUpdate.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtDelete != null) {
-            try {
-                stmtDelete.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-    }
-
 }

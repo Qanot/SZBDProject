@@ -15,29 +15,25 @@ import java.util.logging.Logger;
  **/
 
 
-public class ProduktDAO {
+public class ProduktDAO extends DAO{
 
-    private ConnectionController connectionController;
     private List<Produkt> produkty;
-    private PreparedStatement stmtSelect = null;
-    private PreparedStatement stmtDelete = null;
-    private CallableStatement stmtUpdate = null;
-    private CallableStatement stmtInsert = null;
-    private ResultSet rsSelect = null;
 
     public ProduktDAO(ConnectionController connectionController) {
-        this.setConnectionController(connectionController);
+        super(connectionController);
         produkty = new ArrayList<Produkt>();
 
         try {
-            stmtSelect = connectionController.getConn().prepareStatement(
+            this.stmtSelect = connectionController.getConn().prepareStatement(
                     "SELECT id, cena, nazwa, rozmiar_porcji FROM PRODUKTY");
-            stmtDelete = connectionController.getConn().prepareStatement(
+            this.stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM PRODUKTY WHERE ID = ?");
-            stmtUpdate = connectionController.getConn().prepareCall(
+            this.stmtUpdate = connectionController.getConn().prepareCall(
                     "{? = call update_produkt(?, ?, ?, ?)}");
-            stmtInsert = connectionController.getConn().prepareCall(
+            this.stmtInsert = connectionController.getConn().prepareCall(
                     "{? = call wstaw_produkt(?, ?, ?, ?)}");
+            this.stmtFindById = connectionController.getConn().prepareStatement(
+                    "SELECT cena, nazwa, rozmiar_porcji FROM PRODUKTY WHERE ID = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
@@ -133,44 +129,36 @@ public class ProduktDAO {
         }
     }
 
-    public void setConnectionController(ConnectionController connectionController) {
-        this.connectionController = connectionController;
-    }
 
-    public void closeStatements() {
-        if (stmtSelect != null) {
-            try {
-                stmtSelect.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtInsert != null) {
-            try {
-                stmtInsert.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtUpdate != null) {
-            try {
-                stmtUpdate.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtDelete != null) {
-            try {
-                stmtDelete.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-    }
+    public Produkt getProduktById(int id){
+        Produkt produkt = null;
+        try {
+            stmtFindById.setInt(1, id);
+            rsSelect = stmtFindById.executeQuery();
+            if (rsSelect.next()) {
+                Double cena = rsSelect.getDouble(1);
+                String nazwa = rsSelect.getString(2);
+                String rozmiarString = rsSelect.getString(3);
+                rozmiarString = rozmiarString.substring(0, 1); // pierwsza litera
+                RozmiarPorcji rozmiarPorcji = RozmiarPorcji.valueOf(rozmiarString);
 
+                produkt = new Produkt(cena, nazwa, rozmiarPorcji);
+                produkt.setId(id);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+        }
+        return produkt;
+    }
 
 }
