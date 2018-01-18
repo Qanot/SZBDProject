@@ -36,4 +36,7 @@ public class Sala {
                 ", miejscaWSali=" + miejscaWSali +
                 '}';
     }
+    public String toString() {
+        return "Sala numer: " + this.getNrSali() + "\nID sali: " + this.getId();
+    }
 }

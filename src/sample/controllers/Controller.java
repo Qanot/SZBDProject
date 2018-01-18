@@ -21,10 +21,8 @@ import javafx.stage.Stage;
 import sample.model.Klient;
 import sample.model.Pracownik;
 import sample.model.Produkt;
-import sample.services.ConnectionController;
-import sample.services.KlientDAO;
-import sample.services.PracownikDAO;
-import sample.services.ProduktDAO;
+import sample.model.Sala;
+import sample.services.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -279,7 +277,19 @@ public class Controller {
     @FXML
     private void handleShowHallsButton(ActionEvent event) throws IOException {
         System.out.println("showHallsButton!");
+        presentedType = "Halls";
+        addHallsToTableView();
+
     }
+    private void addHallsToTableView(){
+        SalaDAO salaDAO = new SalaDAO(cc);
+        List<Sala> lista = salaDAO.getSale();
+        dataToShow.clear();
+        for (Sala sala: lista){
+            dataToShow.add(new RecordToShow(String.valueOf(sala.getId()), "Numer: " + sala.getNrSali()));
+        }
+    }
+
 
     @FXML
     private void handleShowEmployeesButton(ActionEvent event) throws IOException {
@@ -515,6 +525,12 @@ public class Controller {
                     List<Produkt> lista = proDAO.getProdukty();
                     Produkt tempProduct = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(tempProduct.toString());
+                }
+                else if (presentedType.equals("Halls")){
+                    SalaDAO salaDAO = new SalaDAO(cc);
+                    List<Sala> lista = salaDAO.getSale();
+                    Sala hallTemp= lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText(hallTemp.toString());
                 }
             }
         });
