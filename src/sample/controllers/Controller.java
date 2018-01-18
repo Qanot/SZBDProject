@@ -105,7 +105,13 @@ public class Controller {
         } else if (presentedType.equals("ProductsOnReceipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
         } else if (presentedType.equals("Products")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                ProduktDAO produktDAO = new ProduktDAO(cc);
+                List<Produkt> lista = produktDAO.getProdukty();
+                Produkt tempProduct= lista.get(dataToShow.indexOf(selection));
+                openEditProductWindow(tempProduct);
+            }
         } else if (presentedType.equals("Reservations")) {
             new EditReservationController().openWindow("Jakub - rezerwacja");
         } else if (presentedType.equals("TypesOfTickets")) {
@@ -151,6 +157,23 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    private void openEditProductWindow(Produkt product){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji produktu");
+            EditProductController controller = fxmlLoader.<EditProductController>getController();
+            controller.initProductController(product, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Products"; addProductsToTableView();} );
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handleDeleteRecordButton(ActionEvent event) throws IOException {
@@ -187,6 +210,14 @@ public class Controller {
             } else if (presentedType.equals("ProductsOnReceipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
             } else if (presentedType.equals("Products")) {
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    ProduktDAO produktDAO = new ProduktDAO(cc);
+                    List<Produkt> lista = produktDAO.getProdukty();
+                    Produkt tempProduct= lista.get(dataToShow.indexOf(selection));
+                    produktDAO.deleteProdukt(tempProduct);
+                    addProductsToTableView();
+                }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
             } else if (presentedType.equals("Reservations")) {
 //                new EditReservationController().openWindow("Jakub - rezerwacja");
@@ -369,8 +400,33 @@ public class Controller {
 
     @FXML
     private void handleAddProductButton(ActionEvent event) throws IOException {
-        System.out.println("showProducts!");
+        System.out.println("addProducts!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        Produkt product = null;
+        if(selection != null && presentedType.equals("Products")){
+            ProduktDAO produktDAO = new ProduktDAO(cc);
+            List<Produkt> lista = produktDAO.getProdukty();
+            product = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddProductWindow(product);
     }
+    private void openAddProductWindow(Produkt product){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addProductWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania nowego klienta");
+            AddProductController controller = fxmlLoader.<AddProductController>getController();
+            controller.initProductController(product, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Products"; addProductsToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     private void handleAddTicketsTypesButton(ActionEvent event) throws IOException {
@@ -452,16 +508,13 @@ public class Controller {
                     KlientDAO prdao = new KlientDAO(cc);
                     List<Klient> lista = prdao.getKlienci();
                     Klient tempClient = lista.get(dataToShow.indexOf(newSelection));
-                    infoText.setText("Imie: " + tempClient.getImie() + "\nNazwisko: " + tempClient.getNazwisko() +
-                    "\nEmail: " + tempClient.getEmail() + "\nLogin: " + tempClient.getLogin() +
-                    "\nHaslo: " + tempClient.getHaslo() + "\nTelefon: " + tempClient.getTelefon());
+                    infoText.setText(tempClient.toString());
                 }
                 else if (presentedType.equals("Products")){
                     ProduktDAO proDAO = new ProduktDAO(cc);
                     List<Produkt> lista = proDAO.getProdukty();
                     Produkt tempProduct = lista.get(dataToShow.indexOf(newSelection));
-                    infoText.setText("Nazwa: " + tempProduct.getNazwa() + "\nCena: " + tempProduct.getCena() + " PLN"+
-                            "\nRozmiar: " + tempProduct.getRozmiarPorcji() + "\nID w bazie: " + tempProduct.getId());
+                    infoText.setText(tempProduct.toString());
                 }
             }
         });

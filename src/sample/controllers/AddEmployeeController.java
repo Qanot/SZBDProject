@@ -63,9 +63,6 @@ public class AddEmployeeController {
             editName.textProperty().setValue(employee.getImie());
             editLastname.textProperty().setValue(employee.getNazwisko());
             editPlec.getSelectionModel().select(employee.getPlec());
-            editPESEL.textProperty().setValue(employee.getPESEL());
-
-
         }
     }
     private void closeWindow() {

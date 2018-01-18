@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditProductController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddProductController">
    <children>
       <Pane layoutX="12.0" layoutY="84.0" prefHeight="165.0" prefWidth="348.0">
          <children>
@@ -29,11 +29,11 @@
             <ChoiceBox fx:id="editSize" layoutX="174.0" layoutY="114.0" prefWidth="150.0" />
          </children>
       </Pane>
-      <Button fx:id="applyChanges" layoutX="54.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź zmiany">
+      <Button fx:id="applyChanges" layoutX="54.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" text="Zatwierdź">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="24.0" prefHeight="65.0" prefWidth="282.0" text="Wprowadź zmiany produktu w sklepiku kina" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="24.0" prefHeight="65.0" prefWidth="282.0" text="Dodaj nowy produktu w sklepiku kina" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>

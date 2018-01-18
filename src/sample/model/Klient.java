@@ -24,6 +24,13 @@ public class Klient {
         rezerwacje = new ArrayList<Rezerwacja>();
     }
 
+    @Override
+    public String toString() {
+        return "Imie: " + this.getImie() + "\nNazwisko: " + this.getNazwisko() +
+                "\nEmail: " + this.getEmail() + "\nLogin: " + this.getLogin() +
+                "\nHaslo: " + this.getHaslo() + "\nTelefon: " + this.getTelefon();
+    }
+
     public String getImie() {
         return imie;
     }
@@ -88,17 +95,4 @@ public class Klient {
         this.rezerwacje = rezerwacje;
     }
 
-    @Override
-    public String toString() {
-        return "Klient{" +
-                "id=" + id +
-                ", imie='" + imie + '\'' +
-                ", nazwisko='" + nazwisko + '\'' +
-                ", email='" + email + '\'' +
-                ", login='" + login + '\'' +
-                ", haslo='" + haslo + '\'' +
-                ", telefon='" + telefon + '\'' +
-                ", rezerwacje=" + rezerwacje +
-                '}';
-    }
 }
