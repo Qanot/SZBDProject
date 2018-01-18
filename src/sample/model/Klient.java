@@ -88,8 +88,8 @@ public class Klient {
         this.rezerwacje = rezerwacje;
     }
 
-    @Override
-    public String toString() {
+
+    public String toStringTest() {
         return "Klient{" +
                 "id=" + id +
                 ", imie='" + imie + '\'' +

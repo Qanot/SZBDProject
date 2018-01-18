@@ -27,4 +27,13 @@ public class Sala {
     public void setNrSali(int nrSali) {
         this.nrSali = nrSali;
     }
+
+    public String toStringTest() {
+        return "Sala{" +
+                "id=" + id +
+                ", nrSali=" + nrSali +
+                ", seanseWSali=" + seanseWSali +
+                ", miejscaWSali=" + miejscaWSali +
+                '}';
+    }
 }
