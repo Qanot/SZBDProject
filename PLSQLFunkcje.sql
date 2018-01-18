@@ -1,10 +1,10 @@
 create or replace FUNCTION
-liczba_miejsc_w_sali (nr_sali IN INTEGER)RETURN NUMBER IS
+liczba_miejsc_w_sali (id_sali IN INTEGER)RETURN NUMBER IS
 ile NUMBER;
 BEGIN
    --sprawdzenie czy jest sala o takim nr
-  SELECT 0 into ile FROM miejsca where sala_nr_sali = nr_sali;
-  SELECT count(*) INTO ile from miejsca WHERE sala_nr_sali = nr_sali;
+  SELECT 0 into ile FROM miejsca where sale_id = id_sali;
+  SELECT count(*) INTO ile from miejsca WHERE sale_id = id_sali;
   return ile;
 END liczba_miejsc_w_sali;
 /
@@ -25,19 +25,23 @@ END wstaw_pracownika;
 /
 
 create or replace FUNCTION
-    update_pracownika (v_id IN pracownicy.id%TYPE, v_imie IN pracownicy.imie%TYPE,
-			v_nazwisko IN pracownicy.nazwisko%TYPE, v_plec IN pracownicy.plec%TYPE,
-			v_pesel IN pracownicy.pesel%TYPE) RETURN NUMBER IS
-BEGIN
-    v_id := pracownik_id_seq.nextval;
-    INSERT INTO PRACOWNICY(ID, IMIE, NAZWISKO, PLEC, PESEL)
-    VALUES(v_id, v_imie, v_nazwisko, v_plec, v_pesel);
+  update_pracownika (v_id IN pracownicy.id%TYPE, v_imie IN pracownicy.imie%TYPE,
+                     v_nazwisko IN pracownicy.nazwisko%TYPE, v_plec IN pracownicy.plec%TYPE,
+                     v_pesel IN pracownicy.pesel%TYPE) RETURN NUMBER IS
+  BEGIN
+    UPDATE PRACOWNICY
+    SET IMIE = V_IMIE,
+      NAZWISKO = V_NAZWISKO,
+      PLEC = V_PLEC,
+      PESEL = V_PESEL
+    WHERE ID = V_ID;
     RETURN 1;
-EXCEPTION
+    EXCEPTION
     WHEN DUP_VAL_ON_INDEX THEN
-        RETURN 0;
-END update_pracownika;
+    RETURN 0;
+  END update_pracownika;
 /
+
 
 
 create or replace FUNCTION wstaw_klienta(v_imie IN klienci.imie%TYPE, v_nazwisko IN klienci.nazwisko%TYPE,
