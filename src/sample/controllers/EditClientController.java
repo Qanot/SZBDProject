@@ -59,7 +59,7 @@ public class EditClientController {
 
             KlientDAO klientDAO = new KlientDAO(cc);
             if (!klientDAO.updateKlient(client)) {
-                showAlertEmptyForm("Login zajęty. Prosze spóbować z innym.");
+                showAlertEmptyForm("Login zajęty. Prosze spróbować z innym.");
             } else {
                 closeWindow();
             }
