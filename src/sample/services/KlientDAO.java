@@ -98,9 +98,9 @@ public class KlientDAO extends DAO{
             stmtUpdate.setString(3, klient.getImie());
             stmtUpdate.setString(4, klient.getNazwisko());
             stmtUpdate.setString(5, klient.getEmail());
-            stmtUpdate.setString(6, klient.getHaslo());
-            stmtUpdate.setString(7, klient.getTelefon());
-            stmtUpdate.setString(8, klient.getLogin());
+            stmtUpdate.setString(6, klient.getLogin());
+            stmtUpdate.setString(7, klient.getHaslo());
+            stmtUpdate.setString(8, klient.getTelefon());
 
             stmtUpdate.execute();
 
