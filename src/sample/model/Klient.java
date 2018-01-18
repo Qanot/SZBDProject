@@ -87,4 +87,18 @@ public class Klient {
     public void setRezerwacje(List<Rezerwacja> rezerwacje) {
         this.rezerwacje = rezerwacje;
     }
+
+    @Override
+    public String toString() {
+        return "Klient{" +
+                "id=" + id +
+                ", imie='" + imie + '\'' +
+                ", nazwisko='" + nazwisko + '\'' +
+                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", haslo='" + haslo + '\'' +
+                ", telefon='" + telefon + '\'' +
+                ", rezerwacje=" + rezerwacje +
+                '}';
+    }
 }
