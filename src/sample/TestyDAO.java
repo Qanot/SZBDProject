@@ -1,13 +1,12 @@
 package sample;
 
+import sample.model.Film;
+import sample.model.Sala;
 import sample.model.Klient;
 import sample.model.Produkt;
 import sample.model.RozmiarPorcji;
-import sample.model.Sala;
-import sample.services.ConnectionController;
-import sample.services.KlientDAO;
-import sample.services.ProduktDAO;
-import sample.services.SalaDAO;
+
+import sample.services.*;
 
 import java.util.List;
 
@@ -16,7 +15,8 @@ public class TestyDAO {
         ConnectionController cc = new ConnectionController();
         cc.open();
         //testProdukt(cc);
-        testSala(cc);
+        //testSala(cc);
+        testFilm(cc);
         cc.close();
 
 
@@ -96,6 +96,30 @@ public class TestyDAO {
         }
 
 
+
+    }
+    public static void testFilm(ConnectionController cc){
+        FilmDAO filmDAO = new FilmDAO(cc);
+        Film film1 = new Film("Thor", 124);
+        Film film2 = new Film("Lepiej późno niż później", 108);
+        Film film3 = new Film("Zielona Mila", 188);
+        Film film4 = new Film("Wzgórza mają oczy", 123);
+
+        filmDAO.insertFilm(film1);
+        filmDAO.insertFilm(film2);
+        filmDAO.insertFilm(film3);
+        filmDAO.insertFilm(film4);
+        System.out.println(film1.getId());
+        for(Film film : filmDAO.getFilmy()){
+            System.out.println(film.toStringTest());
+        }
+        filmDAO.deleteFilm(film1);
+        film4.setTytul("Dziecko Rosemary");
+        film4.setCzasTrwaniaWMin(142);
+        filmDAO.updateFilm(film4);
+        for(Film film : filmDAO.getFilmy()){
+            System.out.println(film.toStringTest());
+        }
 
     }
 }

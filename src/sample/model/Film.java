@@ -46,4 +46,13 @@ public class Film {
     public void setSeanse(List<Seans> seanse) {
         this.seanse = seanse;
     }
+
+    public String toStringTest() {
+        return "Film{" +
+                "id=" + id +
+                ", tytul='" + tytul + '\'' +
+                ", czasTrwaniaWMin=" + czasTrwaniaWMin +
+                ", seanse=" + seanse +
+                '}';
+    }
 }
