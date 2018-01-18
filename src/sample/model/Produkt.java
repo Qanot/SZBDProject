@@ -52,4 +52,15 @@ public class Produkt {
     public void setRozmiarPorcji(RozmiarPorcji rozmiarPorcji) {
         this.rozmiarPorcji = rozmiarPorcji;
     }
+
+
+    public String toStringTest() {
+        return "Produkt{" +
+                "id=" + id +
+                ", cena=" + cena +
+                ", nazwa='" + nazwa + '\'' +
+                ", rozmiarPorcji=" + rozmiarPorcji +
+                ", prodNaParBedaceProduktem=" + prodNaParBedaceProduktem +
+                '}';
+    }
 }

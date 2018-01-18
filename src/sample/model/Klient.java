@@ -95,4 +95,16 @@ public class Klient {
         this.rezerwacje = rezerwacje;
     }
 
+    public String toStringTest() {
+        return "Klient{" +
+                "id=" + id +
+                ", imie='" + imie + '\'' +
+                ", nazwisko='" + nazwisko + '\'' +
+                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", haslo='" + haslo + '\'' +
+                ", telefon='" + telefon + '\'' +
+                ", rezerwacje=" + rezerwacje +
+                '}';
+    }
 }

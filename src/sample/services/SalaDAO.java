@@ -36,6 +36,7 @@ public class SalaDAO extends DAO{
 
 
     public List<Sala> getSale() {
+        selectSale();
         return sale;
     }
 
