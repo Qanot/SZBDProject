@@ -19,6 +19,7 @@ public class KlientDAO {
     private ConnectionController connectionController;
     private List<Klient> klienci;
     private PreparedStatement stmtSelect = null;
+    private PreparedStatement stmtFindById = null;
     private PreparedStatement stmtDelete = null;
     private CallableStatement stmtUpdate = null;
     private CallableStatement stmtInsert = null;
@@ -37,6 +38,8 @@ public class KlientDAO {
                     "{? = call update_klienta(?, ?, ?, ?, ?, ?, ?)}");
             stmtInsert = connectionController.getConn().prepareCall(
                     "{? = call wstaw_klienta(?, ?, ?, ?, ?, ?, ?)}");
+            stmtFindById = connectionController.getConn().prepareStatement(
+              "SELECT id, imie, nazwisko, email, login, haslo, telefon FROM PRACOWNICY WHERE ID = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
@@ -146,6 +149,40 @@ public class KlientDAO {
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
             return false;
         }
+    }
+
+    public Klient getKlientById(int id){
+        Klient klient = null;
+        try {
+            stmtFindById.setInt(1, id);
+            rsSelect = stmtFindById.executeQuery();
+            if (rsSelect.next()) {
+                int id = rsSelect.getInt(1);
+                String imie = rsSelect.getString(2);
+                String nazwisko = rsSelect.getString(3);
+                String email = rsSelect.getString(4);
+                String login = rsSelect.getString(5);
+                String haslo = rsSelect.getString(6);
+                String telefon = rsSelect.getString(7);
+
+                klient = new Klient(imie, nazwisko, email, login, haslo, telefon);
+                klient.setId(id);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+            return klient;
+        }
+
     }
 
 
