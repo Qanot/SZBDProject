@@ -24,7 +24,7 @@ import java.util.List;
 
 import static sample.controllers.Controller.showAlertEmptyForm;
 
-public class  AddSeansController {
+public class  EditSeansController {
 
     Seans seans = null;
     Film film = null;
@@ -58,9 +58,11 @@ public class  AddSeansController {
         if(editedDate != null && editedTime != null && editedSala != null && editedFilm != null){
             LocalDateTime editedDateTime = LocalDateTime.of(editedDate, editedTime);
             Date editedDataEmisji =  Date.from(editedDateTime.atZone(ZoneId.systemDefault()).toInstant());
-            Seans seans = new Seans(editedDataEmisji,editedFilm, editedSala);
+            seans.setDataEmisji(editedDataEmisji);
+            seans.setFilm(editedFilm);
+            seans.setSala(editedSala);
             SeansDAO seansDAO = new SeansDAO(cc);
-            if (!seansDAO.insertSeans(seans)) {
+            if (!seansDAO.updateSeans(seans)) {
                 showAlertEmptyForm("Istnieje już seans o podanej dacie, godzinie, filmie i sali. Proszę wybrać inne wartości.");
             } else {
                 closeWindow();
@@ -90,16 +92,32 @@ public class  AddSeansController {
         ObservableList<Sala> saleLista = FXCollections.observableArrayList(sale);
         editSala.setItems(saleLista);
 
+        if(this.seans != null){
+            Film selectedFilm = null;
+            for(Film filmInFimy : filmy){
+                if(filmInFimy.getTytul().equals(seans.getFilm().getTytul())){ //equals
+                    selectedFilm = filmInFimy;
+                    break;
+                }
+            }
+            Sala selectedSala = null;
+            for(Sala salaInSale : sale){
+                if(salaInSale.getNrSali() == seans.getSala().getNrSali()){ //equals
+                    selectedSala = salaInSale;
+                    break;
+                }
+            }
 
 
+            editFilm.getSelectionModel().select(selectedFilm);
+            editSala.getSelectionModel().select(selectedSala);
+            LocalDate localDateEmisji = seans.getDataEmisji().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalTime localTimeEmisji = seans.getDataEmisji().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+            editDate.setValue(localDateEmisji);
+            editTime.setValue(localTimeEmisji);
 
-        /*
-        if (this.employee != null){
-            editName.textProperty().setValue(employee.getImie());
-            editLastname.textProperty().setValue(employee.getNazwisko());
-            editPlec.getSelectionModel().select(employee.getPlec());
+
         }
-        */
     }
     private void closeWindow() {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
