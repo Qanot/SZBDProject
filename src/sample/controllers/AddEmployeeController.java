@@ -41,7 +41,7 @@ public class AddEmployeeController {
         String editedLastname = editLastname.textProperty().getValue();
         String editedPESEL = editPESEL.textProperty().getValue();
         Plec editedSex = (Plec) editPlec.getSelectionModel().getSelectedItem();
-        if (!editedLastname.equals("") && !editedName.equals("") && !editedPESEL.equals("")) {
+        if (!editedLastname.equals("") && !editedName.equals("") && !editedPESEL.equals("") && editedSex != null) {
             Pracownik newEmployee = new Pracownik(editedName, editedLastname, editedSex, editedPESEL);
             PracownikDAO pracownikDAO = new PracownikDAO(cc);
             if (!pracownikDAO.insertPracownik(newEmployee)) {
@@ -49,7 +49,6 @@ public class AddEmployeeController {
             } else {
                 closeWindow();
             }
-            closeWindow();
         } else {
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }

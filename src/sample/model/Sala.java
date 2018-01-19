@@ -37,6 +37,6 @@ public class Sala {
                 '}';
     }
     public String toString() {
-        return "Sala numer: " + this.getNrSali() + "\nID sali: " + this.getId();
+        return "Sala numer: " + this.getNrSali();
     }
 }
