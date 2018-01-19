@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddSeansController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditSeansController">
    <children>
       <Pane layoutX="47.0" layoutY="82.0" prefHeight="208.0" prefWidth="297.0">
          <children>
@@ -39,7 +39,7 @@
             <JFXTimePicker fx:id="editTime" layoutX="115.0" layoutY="63.0" prefHeight="28.0" prefWidth="173.0" />
          </children>
       </Pane>
-      <Label layoutX="51.0" layoutY="28.0" prefHeight="30.0" prefWidth="289.0" text="Wprowadź dane nowego seansu" textFill="#009688">
+      <Label layoutX="67.0" layoutY="23.0" prefHeight="30.0" prefWidth="238.0" text="Wprowadź zmiany seansu" textFill="#009688">
          <font>
             <Font size="20.0" />
          </font>

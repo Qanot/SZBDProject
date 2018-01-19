@@ -115,7 +115,32 @@ public class Controller {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
         } else if (presentedType.equals("Seanse")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                SeansDAO senasDAO = new SeansDAO(cc);
+                List<Seans> lista = senasDAO.getSeanse();
+                Seans tempSeans = lista.get(dataToShow.indexOf(selection));
+                openEditSeansWindow(tempSeans);
+            }
         }
+    }
+
+    private void openEditSeansWindow(Seans seans){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji seansu");
+            EditSeansController controller = fxmlLoader.<EditSeansController>getController();
+            controller.initSeansController(seans, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Seanse"; addSeanseToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     private void openEditEmployeeWindow(Pracownik pracownik){
@@ -221,6 +246,14 @@ public class Controller {
             } else if (presentedType.equals("Halls")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
             } else if (presentedType.equals("Seanse")) {
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    SeansDAO seansDAO = new SeansDAO(cc);
+                    List<Seans> lista = seansDAO.getSeanse();
+                    Seans tempSeans = lista.get(dataToShow.indexOf(selection));
+                    seansDAO.deleteSeans(tempSeans);
+                    addSeanseToTableView();
+                }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
             }
         }
