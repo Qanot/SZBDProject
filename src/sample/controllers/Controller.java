@@ -356,6 +356,17 @@ public class Controller {
     @FXML
     private void handleShowMoviesButton(ActionEvent event) throws IOException {
         System.out.println("showMoviesButton!");
+        presentedType = "Movies";
+        addMoviesToTableView();
+    }
+    private void addMoviesToTableView(){
+        FilmDAO filmDAO = new FilmDAO(cc);
+        List<Film> lista = filmDAO.getFilmy();
+        filmDAO.closeStatements();
+        dataToShow.clear();
+        for(Film movie: lista){
+            dataToShow.add(new RecordToShow(movie.getTytul(), String.valueOf(movie.getCzasTrwaniaWMin())));
+        }
     }
 
     @FXML
