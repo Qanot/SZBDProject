@@ -245,6 +245,31 @@ public class Controller {
     @FXML
     private void handleAddSeansButton(ActionEvent event) throws IOException {
         System.out.println("addSeansButton!");
+        // TODO Oliwia
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        Seans tempSeans = null;
+        if(selection != null && presentedType.equals("Seanse")){
+            SeansDAO seansDAO = new SeansDAO(cc);
+            List<Seans> lista = seansDAO.getSeanse();
+            tempSeans = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddSeansWindow(tempSeans);
+    }
+    private void openAddSeansWindow(Seans seans){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addSeansWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania seansu");
+            AddSeansController controller = fxmlLoader.<AddSeansController>getController();
+            controller.initSeansController(seans, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Seanse"; addSeanseToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -315,7 +340,7 @@ public class Controller {
         List<Pracownik> lista = prdao.getPracownicy();
         dataToShow.clear();
         for (Pracownik pracownik: lista){
-            dataToShow.add(new RecordToShow(String.valueOf(pracownik.getId()), pracownik.getImie() + " " +pracownik.getNazwisko()));
+            dataToShow.add(new RecordToShow(pracownik.getPESEL(), pracownik.getImie() + " " +pracownik.getNazwisko()));
         }
     }
 
@@ -361,7 +386,7 @@ public class Controller {
         List<Klient> lista = prdao.getKlienci();
         dataToShow.clear();
         for (Klient client: lista){
-            dataToShow.add(new RecordToShow(String.valueOf(client.getEmail()), client.getImie() + " " +client.getNazwisko()));
+            dataToShow.add(new RecordToShow(String.valueOf(client.getLogin()), client.getImie() + " " +client.getNazwisko()));
         }
     }
 

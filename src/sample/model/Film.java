@@ -55,4 +55,9 @@ public class Film {
                 ", seanse=" + seanse +
                 '}';
     }
+
+    @Override
+    public String toString() {
+        return tytul + "; " + String.valueOf(czasTrwaniaWMin) + " min";
+    }
 }
