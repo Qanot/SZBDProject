@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -12,11 +16,11 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" minHeight="412.0" minWidth="477.0" prefHeight="605.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
+<AnchorPane id="AnchorPane" minHeight="412.0" minWidth="477.0" prefHeight="605.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
     <children>
         <Button fx:id="button" layoutX="108.0" layoutY="348.0" onAction="#handleButtonAction" text="Click Me!" />
         <ListView fx:id="searchList" editable="true" fixedCellSize="60.0" prefHeight="607.0" prefWidth="254.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="-1.0" />
-        <Label fx:id="generateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="17.0" prefHeight="17.0" prefWidth="387.0" text="System zarządzający bazą danych kina" textAlignment="CENTER">
+        <Label fx:id="generateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="413.0" layoutY="17.0" prefHeight="17.0" prefWidth="387.0" text="System zarządzający bazą danych kina" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
@@ -48,8 +52,8 @@
       <Label fx:id="generateLabel1111" alignment="CENTER" contentDisplay="CENTER" layoutX="413.0" layoutY="405.0" prefHeight="17.0" prefWidth="387.0" text="Okno informacyjne:" textAlignment="CENTER" />
       <TableView fx:id="recordsTable" layoutX="-1.0" layoutY="52.0" prefHeight="544.0" prefWidth="254.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0">
         <columns>
-          <TableColumn fx:id="idColumn" prefWidth="124.0" text="identyfikator" />
-            <TableColumn fx:id="dataColumn" prefWidth="129.0" text="dane" />
+          <TableColumn fx:id="idColumn" prefWidth="124.0" text="Podgląd" />
+            <TableColumn fx:id="dataColumn" prefWidth="129.0" text="Rekordów" />
         </columns>
       </TableView>
       <Button fx:id="showHallsButton" layoutX="648.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleShowHallsButton" prefHeight="43.0" prefWidth="84.0" text="Pokaż sale" textAlignment="CENTER" wrapText="true" />

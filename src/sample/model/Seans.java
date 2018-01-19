@@ -74,7 +74,7 @@ public class Seans {
     }
 
     public String toStringTytulSala() {
-        return film.getTytul() + " sala " + sala.getNrSali();
+        return film.getTytul() + ", Sala: " + sala.getNrSali();
     }
 
     @Override

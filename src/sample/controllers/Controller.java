@@ -50,6 +50,10 @@ public class Controller {
     private ObservableList<RecordToShow> filteredData = FXCollections.observableArrayList();
     private String presentedType;
 
+    public ConnectionController getCc() {
+        return cc;
+    }
+
     ConnectionController cc;
 
     public Controller() {
@@ -352,7 +356,7 @@ public class Controller {
         List<Sala> lista = salaDAO.getSale();
         dataToShow.clear();
         for (Sala sala: lista){
-            dataToShow.add(new RecordToShow(String.valueOf(sala.getId()), "Numer: " + sala.getNrSali()));
+            dataToShow.add(new RecordToShow(String.valueOf(sala.getId()), "Sala numer: " + sala.getNrSali()));
         }
     }
 
@@ -432,6 +436,31 @@ public class Controller {
     @FXML
     private void handleAddHallsButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+
+        Sala tempHall = null;
+        if(selection != null && presentedType.equals("Halls")){
+            SalaDAO salaDAO = new SalaDAO(cc);
+            List<Sala> lista = salaDAO.getSale();
+            tempHall = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddHallWindow(tempHall);
+    }
+    private void openAddHallWindow(Sala sala){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addHallWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania sali kinowej");
+            AddHallController controller = fxmlLoader.<AddHallController>getController();
+            controller.initHallController(sala, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Halls"; addHallsToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -571,10 +600,10 @@ public class Controller {
                 updateFilteredData();
             }
         });
+
         recordsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 if (presentedType.equals("Employees")){
-                    System.out.println("Indeks zaznaczonego pola: " + dataToShow.indexOf(newSelection) );
                     PracownikDAO prdao = new PracownikDAO(cc);
                     List<Pracownik> lista = prdao.getPracownicy();
                     Pracownik tempEmployee = lista.get(dataToShow.indexOf(newSelection));
