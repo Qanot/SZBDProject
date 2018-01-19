@@ -116,6 +116,13 @@ public class Controller {
         } else if (presentedType.equals("TypesOfTickets")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
         } else if (presentedType.equals("Halls")) {
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                SalaDAO salaDAO = new SalaDAO(cc);
+                List<Sala> lista = salaDAO.getSale();
+                Sala tempHall= lista.get(dataToShow.indexOf(selection));
+                openEditHallWindow(tempHall);
+            }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
         } else if (presentedType.equals("Seanse")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
@@ -168,6 +175,22 @@ public class Controller {
             stage.setScene(scene);
             stage.show();
             stage.setOnHiding( event -> {presentedType = "Products"; addProductsToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void openEditHallWindow(Sala hall){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji sali");
+            EditHallController controller = fxmlLoader.<EditHallController>getController();
+            controller.initHallController(hall, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Halls"; addHallsToTableView();} );
 
         } catch (IOException e){
             e.printStackTrace();
@@ -223,7 +246,14 @@ public class Controller {
             } else if (presentedType.equals("TypesOfTickets")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
             } else if (presentedType.equals("Halls")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    SalaDAO salaDAO = new SalaDAO(cc);
+                    List<Sala> lista = salaDAO.getSale();
+                    Sala tempHall = lista.get(dataToShow.indexOf(selection));
+                    salaDAO.deleteSala(tempHall);
+                    addHallsToTableView();
+                }
             } else if (presentedType.equals("Seanse")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
             }
