@@ -289,3 +289,4 @@ CREATE SEQUENCE sala_id_seq START WITH 1 NOCACHE ORDER;
 CREATE SEQUENCE miejscenaseansie_id_seq START WITH 1 NOCACHE ORDER;
 CREATE SEQUENCE rodzajbiletu_id_seq START WITH 1 NOCACHE ORDER;
 
+alter table seanse rename column sala_id to sale_id;

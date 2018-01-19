@@ -53,7 +53,7 @@ public class EditEmployeeController {
             employee.setPESEL(editedPESEL);
             PracownikDAO pracownikDAO = new PracownikDAO(cc);
             if (!pracownikDAO.updatePracownik(employee)) {
-                showAlertEmptyForm("PESEL już znajduje sie w bazie. Prosze spóbować z innym.");
+                showAlertEmptyForm("PESEL już znajduje się w bazie. Operacja dodania nowego pracownika odrzucona.");
             } else {
                 closeWindow();
             }

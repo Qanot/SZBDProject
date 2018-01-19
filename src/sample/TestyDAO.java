@@ -1,12 +1,19 @@
 package sample;
 
-import sample.model.Film;
-import sample.model.Sala;
+import sample.model.Seans;
 import sample.model.Klient;
 import sample.model.Produkt;
+import sample.model.Film;
+import sample.model.Sala;
 import sample.model.RozmiarPorcji;
 
-import sample.services.*;
+
+import sample.services.SeansDAO;
+import sample.services.ConnectionController;
+import sample.services.ProduktDAO;
+import sample.services.SalaDAO;
+import sample.services.FilmDAO;
+import sample.services.KlientDAO;
 
 import java.util.List;
 
@@ -16,10 +23,55 @@ public class TestyDAO {
         cc.open();
         //testProdukt(cc);
         //testSala(cc);
-        testFilm(cc);
+        //testFilm(cc);
+        //testSeans(cc);
         cc.close();
 
 
+    }
+    public static void testSeans(ConnectionController cc){
+        SeansDAO seansDAO = new SeansDAO(cc);
+        for(Seans seans: seansDAO.getSeanse()){
+            System.out.println(seans.toStringTest());
+        }
+        Seans seansGet = seansDAO.getSeansById(4);
+        System.out.println("Get by id: \t" + seansGet.toStringTest());
+
+        FilmDAO filmDAO = new FilmDAO(cc);
+        Film film = filmDAO.getFilmById(7);
+        filmDAO.closeStatements();
+
+        SalaDAO salaDAO = new SalaDAO(cc);
+        Sala sala = salaDAO.getSalaById(13);
+        salaDAO.closeStatements();
+
+        Seans seans1 = new Seans(new java.util.Date(), film, sala);
+        seansDAO.insertSeans(seans1);
+
+        for(Seans seans: seansDAO.getSeanse()){
+            System.out.println(seans.toStringTest());
+        }
+
+        Seans seansDelete = seansDAO.getSeansById(9);
+        seansDAO.deleteSeans(seansDelete);
+
+        for(Seans seans: seansDAO.getSeanse()){
+            System.out.println(seans.toStringTest());
+        }
+
+        Seans seansUpdate = seansDAO.getSeansById(5);
+        seansUpdate.setDataEmisji(new java.util.Date());
+        seansDAO.updateSeans(seansUpdate);
+
+        System.out.println("Po update: ");
+        for(Seans seans: seansDAO.getSeanse()){
+            System.out.println(seans.toStringTest());
+        }
+
+
+
+
+        seansDAO.closeStatements();
     }
 
     public static void testKlient(ConnectionController cc) {
@@ -33,6 +85,7 @@ public class TestyDAO {
         for (Klient klient : klientDAO.getKlienci()) {
             System.out.println(klient.toStringTest());
         }
+        klientDAO.closeStatements();
 
     }
 
@@ -65,6 +118,7 @@ public class TestyDAO {
         for(Produkt produkt : produktDAO.getProdukty()){
             System.out.println(produkt.toStringTest());
         }
+        produktDAO.closeStatements();
     }
 
     public static void testSala(ConnectionController cc){
@@ -94,6 +148,7 @@ public class TestyDAO {
         for(Sala sala: salaDAO.getSale()){
             System.out.println(sala.toStringTest());
         }
+        salaDAO.closeStatements();
 
 
 
@@ -120,6 +175,7 @@ public class TestyDAO {
         for(Film film : filmDAO.getFilmy()){
             System.out.println(film.toStringTest());
         }
+        filmDAO.closeStatements();
 
     }
 }

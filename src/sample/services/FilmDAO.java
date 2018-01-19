@@ -28,7 +28,7 @@ public class FilmDAO extends DAO{
             this.stmtInsert = connectionController.getConn().prepareCall(
                     "{? = call wstaw_film(?, ?, ?)}");
             this.stmtFindById = connectionController.getConn().prepareStatement(
-                    "SELECT TYTYL, CZAS_TRWANIA FROM FILMY WHERE ID = ?");
+                    "SELECT TYTUL, CZAS_TRWANIA FROM FILMY WHERE ID = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(FilmDAO.class.getName()).log(Level.SEVERE,

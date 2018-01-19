@@ -172,3 +172,35 @@ create or replace FUNCTION update_film(v_id IN filmy.id%TYPE, v_tytul IN filmy.t
     RETURN 0;
   END update_film;
 /
+
+create or replace FUNCTION wstaw_seans(v_data_godzina IN SEANSE.DATA_GODZINA%TYPE,
+                                       v_filmy_id IN SEANSE.FILMY_ID%TYPE,
+                                       v_sale_id IN SEANSE.SALE_ID%TYPE,
+                                       v_id OUT SEANSE.ID%TYPE) return number is
+  BEGIN
+    v_id := seans_id_seq.nextval;
+    INSERT INTO SEANSE(ID, DATA_GODZINA, FILMY_ID, SALE_ID)
+    VALUES(v_id, v_data_godzina, v_filmy_id, v_sale_id);
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END wstaw_seans;
+/
+
+create or replace FUNCTION update_seans(v_id IN SEANSE.ID%TYPE,
+                                        v_data_godzina IN SEANSE.DATA_GODZINA%TYPE,
+                                        v_filmy_id IN SEANSE.FILMY_ID%TYPE,
+                                        v_sale_id IN SEANSE.SALE_ID%TYPE) return number is
+  BEGIN
+    UPDATE SEANSE
+    SET DATA_GODZINA = V_DATA_GODZINA,
+      FILMY_ID = V_FILMY_ID,
+      SALE_ID = V_SALE_ID
+    WHERE ID = V_ID;
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END update_seans;
+/
