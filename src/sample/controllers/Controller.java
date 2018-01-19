@@ -18,10 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import sample.model.Klient;
-import sample.model.Pracownik;
-import sample.model.Produkt;
-import sample.model.Sala;
+import sample.model.*;
 import sample.services.*;
 
 import java.io.IOException;
@@ -272,6 +269,17 @@ public class Controller {
     @FXML
     private void handleShowSeanseButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        presentedType = "Seanse";
+        addSeanseToTableView();
+
+    }
+    private void addSeanseToTableView(){
+        SeansDAO seansDAO = new SeansDAO(cc);
+        List<Seans> lista = seansDAO.getSeanse();
+        dataToShow.clear();
+        for(Seans seans: lista){
+            dataToShow.add(new RecordToShow(seans.dataEmisjiToString(), seans.toStringTytulSala()));
+        }
     }
 
     @FXML
@@ -531,6 +539,12 @@ public class Controller {
                     List<Sala> lista = salaDAO.getSale();
                     Sala hallTemp= lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(hallTemp.toString());
+                }
+                else if (presentedType.equals("Seanse")){
+                    SeansDAO seansDAO = new SeansDAO(cc);
+                    List<Seans> lista = seansDAO.getSeanse();
+                    Seans seansTemp = lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText(seansTemp.toString());
                 }
             }
         });

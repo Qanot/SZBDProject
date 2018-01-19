@@ -2,7 +2,10 @@ package sample.model;
 
 import sample.model.Film;
 
+import java.sql.CallableStatement;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Seans {
@@ -61,5 +64,23 @@ public class Seans {
                 ", film id=" + film.getId() +
                 ", sala id=" + sala.getId() +
                 '}';
+    }
+    public String dataEmisjiToString(){
+        Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+        calendar.setTime(dataEmisji);   // assigns calendar to given date
+        return calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH + 1) + "." +
+                calendar.get(Calendar.YEAR) + " " + calendar.get(Calendar.HOUR_OF_DAY) + ":"
+                + calendar.get(Calendar.MINUTE);
+    }
+
+    public String toStringTytulSala() {
+        return film.getTytul() + " sala " + sala.getNrSali();
+    }
+
+    @Override
+    public String toString() {
+        return "Czas emisji: " + dataEmisjiToString() +
+                "\nTytuł filmu: " + film.getTytul() +
+                "\nNr sali: " + sala.getNrSali();
     }
 }
