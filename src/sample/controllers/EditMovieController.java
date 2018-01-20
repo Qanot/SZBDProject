@@ -48,7 +48,7 @@ public class EditMovieController {
         System.out.println("applyChanges!");
 
         String editedTitle = editTitle.textProperty().getValue();
-        String editedDuration = editDuration.textProperty().getValue();
+        String editedDuration = null;
         int duration;
 
         try {

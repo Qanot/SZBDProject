@@ -1,14 +1,12 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.model.Klient;
 import sample.model.Sala;
 import sample.services.ConnectionController;
-import sample.services.KlientDAO;
 import sample.services.SalaDAO;
 
 import java.io.IOException;
@@ -21,9 +19,9 @@ public class AddHallController {
     ConnectionController cc;
 
     @FXML
-    private Button applyChanges;
+    private JFXButton applyChanges;
     @FXML
-    private TextField editNumber;
+    private JFXTextField editNumber;
 
 
     @FXML

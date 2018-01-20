@@ -126,7 +126,14 @@ public class Controller {
         } else if (presentedType.equals("Reservations")) {
             new EditReservationController().openWindow("Jakub - rezerwacja");
         } else if (presentedType.equals("TypesOfTickets")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                RodzajBiletuDAO rodzajDAO = new RodzajBiletuDAO(cc);
+                List<RodzajBiletu> lista = rodzajDAO.getRodzajeBiletow();
+                RodzajBiletu typeTemp= lista.get(dataToShow.indexOf(selection));
+                rodzajDAO.closeStatements();
+                openEditTicketsTypeWindow(typeTemp);
+            }
         } else if (presentedType.equals("Halls")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
@@ -244,6 +251,22 @@ public class Controller {
             stage.setScene(scene);
             stage.show();
             stage.setOnHiding( event -> {presentedType = "Movies"; addMoviesToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void openEditTicketsTypeWindow(RodzajBiletu ticketsType){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTicketsTypeWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji rodzaju biletu");
+            EditTicketsTypeController controller = fxmlLoader.<EditTicketsTypeController>getController();
+            controller.initTicketsTypeController(ticketsType, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "TypesOfTickets"; addTicketsTypesToTableView();} );
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -671,6 +694,31 @@ public class Controller {
     @FXML
     private void handleAddTicketsTypesButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        RodzajBiletu rodzajBiletu = null;
+        if(selection != null && presentedType.equals("TypesOfTickets")){
+            RodzajBiletuDAO rodzajBiletuDAO = new RodzajBiletuDAO(cc);
+            List<RodzajBiletu> lista = rodzajBiletuDAO.getRodzajeBiletow();
+            rodzajBiletu = lista.get(dataToShow.indexOf(selection));
+            rodzajBiletuDAO.closeStatements();
+        }
+        openAddTicketsTypesWindow(rodzajBiletu);
+    }
+    private void openAddTicketsTypesWindow(RodzajBiletu rodzajBiletu){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addTicketsTypeWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania nowego rodzaju biletu");
+            AddTicketsTypeController controller = fxmlLoader.<AddTicketsTypeController>getController();
+            controller.initTicketsTypeController(rodzajBiletu, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "TypesOfTickets"; addTicketsTypesToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
