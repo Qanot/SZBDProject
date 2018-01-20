@@ -83,6 +83,7 @@ public class Controller {
                 FilmDAO filmDAO = new FilmDAO(cc);
                 List<Film> lista = filmDAO.getFilmy();
                 Film tempMovie= lista.get(dataToShow.indexOf(selection));
+                filmDAO.closeStatements();
                 openEditMovieWindow(tempMovie);
             }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
@@ -92,6 +93,7 @@ public class Controller {
                 KlientDAO prdao = new KlientDAO(cc);
                 List<Klient> lista = prdao.getKlienci();
                 Klient tempClient= lista.get(dataToShow.indexOf(selection));
+                prdao.closeStatements();
                 openEditClientWindow(tempClient);
             }
         } else if (presentedType.equals("Seats")) {
@@ -106,6 +108,7 @@ public class Controller {
                 PracownikDAO prdao = new PracownikDAO(cc);
                 List<Pracownik> lista = prdao.getPracownicy();
                 Pracownik tempEmployee = lista.get(dataToShow.indexOf(selection));
+                prdao.closeStatements();
                 openEditEmployeeWindow(tempEmployee);
             }
         } else if (presentedType.equals("ProductsOnReceipts")) {
@@ -116,6 +119,7 @@ public class Controller {
                 ProduktDAO produktDAO = new ProduktDAO(cc);
                 List<Produkt> lista = produktDAO.getProdukty();
                 Produkt tempProduct= lista.get(dataToShow.indexOf(selection));
+                produktDAO.closeStatements();
                 openEditProductWindow(tempProduct);
             }
         } else if (presentedType.equals("Reservations")) {
@@ -128,6 +132,7 @@ public class Controller {
                 SalaDAO salaDAO = new SalaDAO(cc);
                 List<Sala> lista = salaDAO.getSale();
                 Sala tempHall= lista.get(dataToShow.indexOf(selection));
+                salaDAO.closeStatements();
                 openEditHallWindow(tempHall);
             }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
@@ -138,6 +143,7 @@ public class Controller {
                 SeansDAO senasDAO = new SeansDAO(cc);
                 List<Seans> lista = senasDAO.getSeanse();
                 Seans tempSeans = lista.get(dataToShow.indexOf(selection));
+                senasDAO.closeStatements();
                 openEditSeansWindow(tempSeans);
             }
         }
@@ -256,6 +262,7 @@ public class Controller {
                     List<Film> lista = filmDAO.getFilmy();
                     Film tempMovie= lista.get(dataToShow.indexOf(selection));
                     filmDAO.deleteFilm(tempMovie);
+                    filmDAO.closeStatements();
                     addMoviesToTableView();
                 }
             } else if (presentedType.equals("Clients")) {
@@ -265,6 +272,7 @@ public class Controller {
                     List<Klient> lista = prdao.getKlienci();
                     Klient tempClient= lista.get(dataToShow.indexOf(selection));
                     prdao.deleteKlient(tempClient);
+                    prdao.closeStatements();
                     addClientsToTableView();
                 }
             } else if (presentedType.equals("Seats")) {
@@ -280,6 +288,7 @@ public class Controller {
                     List<Pracownik> lista = prdao.getPracownicy();
                     Pracownik tempEmployee = lista.get(dataToShow.indexOf(selection));
                     prdao.deletePracownik(tempEmployee);
+                    prdao.closeStatements();
                     addEmployeesToTableView();
                 }
             } else if (presentedType.equals("ProductsOnReceipts")) {
@@ -291,6 +300,7 @@ public class Controller {
                     List<Produkt> lista = produktDAO.getProdukty();
                     Produkt tempProduct= lista.get(dataToShow.indexOf(selection));
                     produktDAO.deleteProdukt(tempProduct);
+                    produktDAO.closeStatements();
                     addProductsToTableView();
                 }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
@@ -305,6 +315,7 @@ public class Controller {
                     List<Sala> lista = salaDAO.getSale();
                     Sala tempHall = lista.get(dataToShow.indexOf(selection));
                     salaDAO.deleteSala(tempHall);
+                    salaDAO.closeStatements();
                     addHallsToTableView();
                 }
             } else if (presentedType.equals("Seanse")) {
@@ -314,6 +325,7 @@ public class Controller {
                     List<Seans> lista = seansDAO.getSeanse();
                     Seans tempSeans = lista.get(dataToShow.indexOf(selection));
                     seansDAO.deleteSeans(tempSeans);
+                    seansDAO.closeStatements();
                     addSeanseToTableView();
                 }
             }
@@ -325,7 +337,7 @@ public class Controller {
     @FXML
     private void handleAddTicketsButton(ActionEvent event) throws IOException {
         System.out.println("addTicketButton!");
-        dataToShow.add(new RecordToShow("Lydia", "Kunz"));
+
     }
 
     @FXML
@@ -343,6 +355,7 @@ public class Controller {
             SeansDAO seansDAO = new SeansDAO(cc);
             List<Seans> lista = seansDAO.getSeanse();
             tempSeans = lista.get(dataToShow.indexOf(selection));
+            seansDAO.closeStatements();
         }
         openAddSeansWindow(tempSeans);
     }
@@ -373,6 +386,7 @@ public class Controller {
             FilmDAO filmDAO = new FilmDAO(cc);
             List<Film> lista = filmDAO.getFilmy();
             tempMovie = lista.get(dataToShow.indexOf(selection));
+            filmDAO.closeStatements();
         }
         openAddMovieWindow(tempMovie);
     }
@@ -432,6 +446,7 @@ public class Controller {
     private void addSeanseToTableView(){
         SeansDAO seansDAO = new SeansDAO(cc);
         List<Seans> lista = seansDAO.getSeanse();
+        seansDAO.closeStatements();
         dataToShow.clear();
         for(Seans seans: lista){
             dataToShow.add(new RecordToShow(seans.dataEmisjiToString(), seans.toStringTytulSala()));
@@ -448,6 +463,7 @@ public class Controller {
     private void addHallsToTableView(){
         SalaDAO salaDAO = new SalaDAO(cc);
         List<Sala> lista = salaDAO.getSale();
+        salaDAO.closeStatements();
         dataToShow.clear();
         for (Sala sala: lista){
             dataToShow.add(new RecordToShow(String.valueOf(sala.getId()), "Sala numer: " + sala.getNrSali()));
@@ -465,6 +481,7 @@ public class Controller {
     private void addEmployeesToTableView(){
         PracownikDAO prdao = new PracownikDAO(cc);
         List<Pracownik> lista = prdao.getPracownicy();
+        prdao.closeStatements();
         dataToShow.clear();
         for (Pracownik pracownik: lista){
             dataToShow.add(new RecordToShow(pracownik.getPESEL(), pracownik.getImie() + " " +pracownik.getNazwisko()));
@@ -490,6 +507,7 @@ public class Controller {
     private void addProductsToTableView(){
         ProduktDAO proDAO = new ProduktDAO(cc);
         List<Produkt> lista = proDAO.getProdukty();
+        proDAO.closeStatements();
         dataToShow.clear();
         for (Produkt produkt: lista){
             dataToShow.add(new RecordToShow(String.valueOf(produkt.getId()), produkt.getNazwa() + " " +produkt.getRozmiarPorcji()));
@@ -511,6 +529,7 @@ public class Controller {
     private void addClientsToTableView(){
         KlientDAO prdao = new KlientDAO(cc);
         List<Klient> lista = prdao.getKlienci();
+        prdao.closeStatements();
         dataToShow.clear();
         for (Klient client: lista){
             dataToShow.add(new RecordToShow(String.valueOf(client.getLogin()), client.getImie() + " " +client.getNazwisko()));
@@ -537,6 +556,7 @@ public class Controller {
             SalaDAO salaDAO = new SalaDAO(cc);
             List<Sala> lista = salaDAO.getSale();
             tempHall = lista.get(dataToShow.indexOf(selection));
+            salaDAO.closeStatements();
         }
         openAddHallWindow(tempHall);
     }
@@ -567,6 +587,7 @@ public class Controller {
             PracownikDAO prdao = new PracownikDAO(cc);
             List<Pracownik> lista = prdao.getPracownicy();
             tempEmployee = lista.get(dataToShow.indexOf(selection));
+            prdao.closeStatements();
         }
         openAddEmployeeWindow(tempEmployee);
     }
@@ -606,6 +627,7 @@ public class Controller {
             ProduktDAO produktDAO = new ProduktDAO(cc);
             List<Produkt> lista = produktDAO.getProdukty();
             product = lista.get(dataToShow.indexOf(selection));
+            produktDAO.closeStatements();
         }
         openAddProductWindow(product);
     }
@@ -641,6 +663,7 @@ public class Controller {
             KlientDAO prdao = new KlientDAO(cc);
             List<Klient> lista = prdao.getKlienci();
             klient = lista.get(dataToShow.indexOf(selection));
+            prdao.closeStatements();
         }
         openAddClientWindow(klient);
     }
@@ -702,36 +725,44 @@ public class Controller {
                     List<Pracownik> lista = prdao.getPracownicy();
                     Pracownik tempEmployee = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(tempEmployee.toString());
+                    prdao.closeStatements();
                 }
                 else if (presentedType.equals("Clients")){
                     KlientDAO prdao = new KlientDAO(cc);
                     List<Klient> lista = prdao.getKlienci();
                     Klient tempClient = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(tempClient.toString());
+                    prdao.closeStatements();
                 }
                 else if (presentedType.equals("Products")){
                     ProduktDAO proDAO = new ProduktDAO(cc);
                     List<Produkt> lista = proDAO.getProdukty();
                     Produkt tempProduct = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(tempProduct.toString());
+                    proDAO.closeStatements();
                 }
                 else if (presentedType.equals("Halls")){
                     SalaDAO salaDAO = new SalaDAO(cc);
                     List<Sala> lista = salaDAO.getSale();
                     Sala hallTemp= lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(hallTemp.toString());
+                    salaDAO.closeStatements();
                 }
                 else if (presentedType.equals("Seanse")){
                     SeansDAO seansDAO = new SeansDAO(cc);
                     List<Seans> lista = seansDAO.getSeanse();
                     Seans seansTemp = lista.get(dataToShow.indexOf(newSelection));
-                    infoText.setText(seansTemp.toString());
+                    if(!seansTemp.equals(null)) {
+                        infoText.setText(seansTemp.toString());
+                    }
+                    seansDAO.closeStatements();
                 }
                 else if (presentedType.equals("Movies")){
                     FilmDAO movieDAO = new FilmDAO(cc);
                     List<Film> lista = movieDAO.getFilmy();
                     Film movieTemp= lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(movieTemp.toString2());
+                    movieDAO.closeStatements();
                 }
             }
         });

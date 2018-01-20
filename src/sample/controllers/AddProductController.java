@@ -50,6 +50,7 @@ public class AddProductController {
             } else {
                 closeWindow();
             }
+            produktDAO.closeStatements();
 
         }else{
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");

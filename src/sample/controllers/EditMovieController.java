@@ -62,9 +62,9 @@ public class EditMovieController {
                 if (!produktDAO.updateFilm(movie)) {
                     showAlertEmptyForm("Nie udało sie poprawnie wstawić rekodru. Sprawdź połączenie.");
                 } else {
-                    produktDAO.closeStatements();
                     closeWindow();
                 }
+                produktDAO.closeStatements();
             } else {
                 showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }

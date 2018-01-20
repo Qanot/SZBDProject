@@ -49,6 +49,7 @@ public class AddMovieController {
                     filmDAO.closeStatements();
                     closeWindow();
                 }
+                filmDAO.closeStatements();
 
             }else{
                 showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");

@@ -33,33 +33,33 @@ public class SeansDAO extends DAO{
                     "SELECT DATA_GODZINA, FILMY_ID, SALE_ID FROM SEANSE WHERE ID = ?");
 
         } catch (SQLException ex) {
-            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
                     "Błąd przygotowania prekompilowanego polecenia", ex);
         }
     }
 
     public void selectSeanse(){
-        seanse.clear();
+
         try {
             rsSelect = stmtSelect.executeQuery();
+            seanse.clear();
+            FilmDAO filmDAO = new FilmDAO(connectionController);
+            SalaDAO salaDAO = new SalaDAO(connectionController);
             while (rsSelect.next()) {
                 int id = rsSelect.getInt("ID");
                 Date dataEmisji = new Date(rsSelect.getTimestamp("DATA_GODZINA").getTime());
                 int idFilmu = rsSelect.getInt("FILMY_ID");
                 int idSali = rsSelect.getInt("SALE_ID");
 
-                FilmDAO filmDAO = new FilmDAO(connectionController);
                 Film film = filmDAO.getFilmById(idFilmu);
-                filmDAO.closeStatements();
-
-                SalaDAO salaDAO = new SalaDAO(connectionController);
                 Sala sala = salaDAO.getSalaById(idSali);
-                salaDAO.closeStatements();
 
                 Seans seans = new Seans(dataEmisji, film, sala);
                 seans.setId(id);
                 seanse.add(seans);
             }
+            filmDAO.closeStatements();
+            salaDAO.closeStatements();
         } catch (SQLException ex) {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);

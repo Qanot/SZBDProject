@@ -45,8 +45,10 @@ public class AddEmployeeController {
             Pracownik newEmployee = new Pracownik(editedName, editedLastname, editedSex, editedPESEL);
             PracownikDAO pracownikDAO = new PracownikDAO(cc);
             if (!pracownikDAO.insertPracownik(newEmployee)) {
+                pracownikDAO.closeStatements();
                 showAlertEmptyForm("PESEL już znajduje sie w bazie. Prosze spóbować z innym.");
             } else {
+                pracownikDAO.closeStatements();
                 closeWindow();
             }
         } else {

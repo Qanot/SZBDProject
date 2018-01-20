@@ -43,11 +43,14 @@ public class AddHallController {
             if (!salaDAO.insertSala(newSala)) {
                 showAlertEmptyForm("Numer sali zajęty. Prosze spóbować z innym.");
             } else {
+
                 closeWindow();
             }
+            salaDAO.closeStatements();
         } else {
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
+
     }
 
     public void initHallController(Sala hall, ConnectionController cc) {

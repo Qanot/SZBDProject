@@ -57,11 +57,14 @@ public class AddClientController {
 
             //if false login occupied
             if (!klientDAO.insertKlient(newClient)) {
+                klientDAO.closeStatements();
                 showAlertEmptyForm("Login zajęty. Prosze spóbować z innym.");
             } else {
+                klientDAO.closeStatements();
                 closeWindow();
             }
         } else {
+
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
 

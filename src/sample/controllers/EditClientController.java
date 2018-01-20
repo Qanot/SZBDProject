@@ -63,6 +63,7 @@ public class EditClientController {
             } else {
                 closeWindow();
             }
+            klientDAO.closeStatements();
         } else {
             showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
         }
