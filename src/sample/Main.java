@@ -6,36 +6,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controllers.Controller;
-import sample.model.*;
+import sample.model.RodzajBiletu;
 import sample.services.ConnectionController;
-import sample.services.KlientDAO;
-import sample.services.PracownikDAO;
-import sample.services.ProduktDAO;
-
-import java.sql.*;
-import java.util.List;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import sample.services.RodzajBiletuDAO;
 
 public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxmls/sample.fxml"));
-        Parent root = (Parent)loader.load();
-        Controller controller = (Controller)loader.getController();
-        primaryStage.setOnHiding( event -> {controller.getCc().close();} );
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
-
 
     public static void main(String[] args) {
 //        makeConnection();
 //        ConnectionController cc = new ConnectionController();
 //        cc.open();
+//        RodzajBiletuDAO rodzajDAO = new RodzajBiletuDAO(cc);
+////        RodzajBiletu rodzajBiletu0 = new RodzajBiletu(15.50, "Studencki");
+//        RodzajBiletu rodzajBiletu1 = new RodzajBiletu(19.50, "Normalny");
+//        RodzajBiletu rodzajBiletu2 = new RodzajBiletu(15.50, "Ulgowy");
+//        RodzajBiletu rodzajBiletu3 = new RodzajBiletu(16.50, "Serniorski");
+//        rodzajDAO.insertRodzajBiletu(rodzajBiletu1);
+//        rodzajDAO.insertRodzajBiletu(rodzajBiletu2);
+//        rodzajDAO.insertRodzajBiletu(rodzajBiletu3);
+//        rodzajDAO.closeStatements();
 //        ProduktDAO proDAO = new ProduktDAO(cc);
 //        Produkt produkt = new Produkt(15.5, "Duży popcorn", RozmiarPorcji.L);
 //        Produkt produkt2 = new Produkt(12.5, "Sredni Popcorn", RozmiarPorcji.M);
@@ -65,10 +54,22 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void initApp(){
+    public static void initApp() {
 
     }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxmls/sample.fxml"));
+        Parent root = (Parent) loader.load();
+        Controller controller = (Controller) loader.getController();
+        primaryStage.setOnHiding(event -> {
+            controller.getCc().close();
+        });
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
 
 
 }

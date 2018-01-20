@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 public class SalaDAO extends DAO{
 
     private List<Sala> sale;
@@ -74,6 +76,7 @@ public class SalaDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+            showAlertEmptyForm("W danej sali są aktualnie zaplanowane seanse. Nie można jej usunąć!");
             Logger.getLogger(SalaDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

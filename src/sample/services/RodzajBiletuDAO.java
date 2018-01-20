@@ -26,9 +26,9 @@ public class RodzajBiletuDAO extends DAO{
             this.stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM RODZAJEBILETOW WHERE ID = ?");
             this.stmtUpdate = connectionController.getConn().prepareCall(
-                    "{? = call update_rodzajbiletu(?, ?, ?, ?)}");
+                    "{? = call update_rodzajbiletu(?, ?, ?)}");
             this.stmtInsert = connectionController.getConn().prepareCall(
-                    "{? = call wstaw_rodzajbiletu(?, ?, ?, ?)}");
+                    "{? = call wstaw_rodzajbiletu(?, ?, ?)}");
             this.stmtFindById = connectionController.getConn().prepareStatement(
                     "SELECT CENA, NAZWA FROM RODZAJEBILETOW WHERE ID = ?");
 
@@ -47,29 +47,19 @@ public class RodzajBiletuDAO extends DAO{
                 int id = rsSelect.getInt("ID");
                 Double cena = rsSelect.getDouble("CENA");
                 String nazwa = rsSelect.getString("NAZWA");
-
-
-//                FilmDAO filmDAO = new FilmDAO(connectionController);
-//                Film film = filmDAO.getFilmById(idFilmu);
-//                filmDAO.closeStatements();
-//
-//                SalaDAO salaDAO = new SalaDAO(connectionController);
-//                Sala sala = salaDAO.getSalaById(idSali);
-//                salaDAO.closeStatements();
-//
-//                Seans seans = new Seans(dataEmisji, film, sala);
-//                seans.setId(id);
-//                seanse.add(seans);
+                RodzajBiletu nowyRodzaj = new RodzajBiletu(cena, nazwa);
+                nowyRodzaj.setId(id);
+                rodzajeBiletow.add(nowyRodzaj);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);
         } finally {
             if (rsSelect != null) {
                 try {
                     rsSelect.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                    Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
                             "Błąd zamykania interfejsu ResultSet", ex);
                 }
             }
@@ -82,18 +72,81 @@ public class RodzajBiletuDAO extends DAO{
     }
 
     public boolean insertRodzajBiletu(RodzajBiletu rodzajBiletu){
-        return true;
+        try {
+            stmtInsert.registerOutParameter(1, Types.INTEGER);
+            stmtInsert.setDouble(2, rodzajBiletu.getCena());
+            stmtInsert.setString(3, rodzajBiletu.getNazwa());
+            stmtInsert.registerOutParameter(4, Types.INTEGER);
+
+            stmtInsert.execute();
+            int id = stmtInsert.getInt(4);
+            rodzajBiletu.setId(id);
+
+            int wykonanoPoprawnie = stmtInsert.getInt(1);
+            return wykonanoPoprawnie == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(RodzajBiletu.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia insert", ex);
+            return false;
+        }
     }
 
     public boolean updateRodzajBiletu(RodzajBiletu rodzajBiletu){
-        return true;
+        try {
+            stmtUpdate.registerOutParameter(1, Types.INTEGER);
+            stmtUpdate.setDouble(2, rodzajBiletu.getId());
+            stmtUpdate.setDouble(3, rodzajBiletu.getCena());
+            stmtUpdate.setString(4, rodzajBiletu.getNazwa());
+            // nawet jesli nadpiszemy w przyszlosci toString
+            stmtUpdate.executeUpdate();
+            int wykonananoPoprawnie = stmtUpdate.getInt(1);
+            return wykonananoPoprawnie == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia update", ex);
+            return false;
+        }
+
     }
 
     public void deleteRodzajBiletu(RodzajBiletu rodzajBiletu){
+        try {
+            stmtDelete.setInt(1, rodzajBiletu.getId());
+            int changes = stmtDelete.executeUpdate();
+            if (changes != 1) {
+                System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia delete", ex);
+        }
     }
 
-    public void closeStatements(){
+    public RodzajBiletu getRodzajBiletuById(int id){
+        RodzajBiletu rodzajBiletu = null;
+        try {
+            stmtFindById.setInt(1, id);
+            rsSelect = stmtFindById.executeQuery();
+            if (rsSelect.next()) {
+                double cena = rsSelect.getDouble(1);
+                String nazwa = rsSelect.getString(2);
+
+                rodzajBiletu = new RodzajBiletu(cena, nazwa);
+                rodzajBiletu.setId(id);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SalaDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+        }
+        return rodzajBiletu;
     }
-
-
 }

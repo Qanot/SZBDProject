@@ -1,8 +1,8 @@
 package sample.services;
 
 import sample.model.Film;
-import sample.model.Seans;
 import sample.model.Sala;
+import sample.model.Seans;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SeansDAO extends DAO{
+public class SeansDAO extends DAO {
 
     private List<Seans> seanse;
 
-    public SeansDAO(ConnectionController connectionController){
+    public SeansDAO(ConnectionController connectionController) {
         super(connectionController);
         seanse = new ArrayList<Seans>();
 
@@ -38,7 +38,7 @@ public class SeansDAO extends DAO{
         }
     }
 
-    public void selectSeanse(){
+    public void selectSeanse() {
 
         try {
             rsSelect = stmtSelect.executeQuery();
@@ -75,11 +75,12 @@ public class SeansDAO extends DAO{
         }
     }
 
-    public List<Seans>  getSeanse(){
+    public List<Seans> getSeanse() {
         selectSeanse();
         return seanse;
     }
-    public boolean insertSeans(Seans seans){
+
+    public boolean insertSeans(Seans seans) {
         try {
             stmtInsert.registerOutParameter(1, Types.INTEGER);
             stmtInsert.setDate(2, new java.sql.Date(seans.getDataEmisji().getTime())); // to chyba dziala
@@ -102,7 +103,7 @@ public class SeansDAO extends DAO{
         }
     }
 
-    public boolean updateSeans(Seans seans){
+    public boolean updateSeans(Seans seans) {
         try {
             stmtUpdate.registerOutParameter(1, Types.INTEGER);
             stmtUpdate.setInt(2, seans.getId());
@@ -123,7 +124,7 @@ public class SeansDAO extends DAO{
     }
 
 
-    public void deleteSeans(Seans seans){
+    public void deleteSeans(Seans seans) {
         try {
             stmtDelete.setInt(1, seans.getId());
             int changes = stmtDelete.executeUpdate();
@@ -136,7 +137,7 @@ public class SeansDAO extends DAO{
         }
     }
 
-    public Seans getSeansById(int id){
+    public Seans getSeansById(int id) {
         Seans seans = null;
         try {
             stmtFindById.setInt(1, id);

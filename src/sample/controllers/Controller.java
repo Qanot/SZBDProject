@@ -22,6 +22,7 @@ import sample.model.*;
 import sample.services.*;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,9 +136,7 @@ public class Controller {
                 salaDAO.closeStatements();
                 openEditHallWindow(tempHall);
             }
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editHallWindow.fxml"));
         } else if (presentedType.equals("Seanse")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
                 SeansDAO senasDAO = new SeansDAO(cc);
@@ -147,6 +146,7 @@ public class Controller {
                 openEditSeansWindow(tempSeans);
             }
         }
+        infoText.setText("");
     }
 
     private void openEditSeansWindow(Seans seans){
@@ -307,7 +307,15 @@ public class Controller {
             } else if (presentedType.equals("Reservations")) {
 //                new EditReservationController().openWindow("Jakub - rezerwacja");
             } else if (presentedType.equals("TypesOfTickets")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTypesOfTicketWindow.fxml"));
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    RodzajBiletuDAO rodzajDAO = new RodzajBiletuDAO(cc);
+                    List<RodzajBiletu> lista = rodzajDAO.getRodzajeBiletow();
+                    RodzajBiletu typeTemp = lista.get(dataToShow.indexOf(selection));
+                    rodzajDAO.deleteRodzajBiletu(typeTemp);
+                    rodzajDAO.closeStatements();
+                    addTicketsTypesToTableView();
+                }
             } else if (presentedType.equals("Halls")) {
                 RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
                 if(selection != null){
@@ -329,7 +337,7 @@ public class Controller {
                     addSeanseToTableView();
                 }
             }
-            infoText.setText("Rekord został usunięty");
+            infoText.setText("");
         }
 
     }
@@ -517,6 +525,17 @@ public class Controller {
     @FXML
     private void handleShowTicketsTypesButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        presentedType = "TypesOfTickets";
+        addTicketsTypesToTableView();
+    }
+    private void addTicketsTypesToTableView(){
+        RodzajBiletuDAO rodzajDAO = new RodzajBiletuDAO(cc);
+        List<RodzajBiletu> lista = rodzajDAO.getRodzajeBiletow();
+        rodzajDAO.closeStatements();
+        dataToShow.clear();
+        for (RodzajBiletu rodzaj: lista){
+            dataToShow.add(new RecordToShow(rodzaj.getNazwa(), String.valueOf(rodzaj.getCena()) + " PLN"));
+        }
     }
 
     @FXML
@@ -532,7 +551,7 @@ public class Controller {
         prdao.closeStatements();
         dataToShow.clear();
         for (Klient client: lista){
-            dataToShow.add(new RecordToShow(String.valueOf(client.getLogin()), client.getImie() + " " +client.getNazwisko()));
+            dataToShow.add(new RecordToShow(String.valueOf(client.getEmail()), client.getImie() + " " +client.getNazwisko()));
         }
     }
 
@@ -763,6 +782,13 @@ public class Controller {
                     Film movieTemp= lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(movieTemp.toString2());
                     movieDAO.closeStatements();
+                }
+                else if (presentedType.equals("TypesOfTickets")){
+                    RodzajBiletuDAO rodzajDAO= new RodzajBiletuDAO(cc);
+                    List<RodzajBiletu> lista = rodzajDAO.getRodzajeBiletow();
+                    RodzajBiletu typeTemp= lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText(typeTemp.toString());
+                    rodzajDAO.closeStatements();
                 }
             }
         });

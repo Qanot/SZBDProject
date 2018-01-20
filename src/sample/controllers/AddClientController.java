@@ -58,7 +58,7 @@ public class AddClientController {
             //if false login occupied
             if (!klientDAO.insertKlient(newClient)) {
                 klientDAO.closeStatements();
-                showAlertEmptyForm("Login zajęty. Prosze spóbować z innym.");
+                showAlertEmptyForm("Niepoprawne dane! Przyczyną błędu może być zajęty login lub nieporawny numer telefonu. Spróbuj jeszcze raz.");
             } else {
                 klientDAO.closeStatements();
                 closeWindow();
