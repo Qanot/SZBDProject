@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditMovieController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddMovieController">
    <children>
       <Pane layoutX="38.0" layoutY="99.0" prefHeight="156.0" prefWidth="297.0">
          <children>
@@ -25,12 +25,12 @@
             <JFXTextField fx:id="editDuration" layoutX="147.0" layoutY="74.0" prefHeight="25.0" prefWidth="150.0" />
          </children>
       </Pane>
-      <Label layoutX="67.0" layoutY="23.0" prefHeight="30.0" prefWidth="238.0" text="Wprowadź zmiany filmu" textFill="#009688">
+      <Label layoutX="38.0" layoutY="29.0" prefHeight="30.0" prefWidth="297.0" text="Wprowadź dane nowego filmu" textFill="#009688">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXButton fx:id="applyChanges" layoutX="54.0" layoutY="247.0" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" ripplerFill="#676f6d" style="-fx-background-color: #25bbac;" text="Zatwierdź zmiany" textFill="#f8f6f6">
+      <JFXButton fx:id="applyChanges" layoutX="54.0" layoutY="247.0" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" ripplerFill="#676f6d" style="-fx-background-color: #25bbac;" text="Zatwierdź" textFill="#f8f6f6">
          <font>
             <Font size="24.0" />
          </font>

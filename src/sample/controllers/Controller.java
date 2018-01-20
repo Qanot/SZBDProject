@@ -78,6 +78,13 @@ public class Controller {
         if (presentedType.equals("Tickets")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTicketWindow.fxml"));
         } else if (presentedType.equals("Movies")) {
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                FilmDAO filmDAO = new FilmDAO(cc);
+                List<Film> lista = filmDAO.getFilmy();
+                Film tempMovie= lista.get(dataToShow.indexOf(selection));
+                openEditMovieWindow(tempMovie);
+            }
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
         } else if (presentedType.equals("Clients")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
@@ -151,7 +158,6 @@ public class Controller {
         } catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
     private void openEditEmployeeWindow(Pracownik pracownik){
@@ -216,7 +222,22 @@ public class Controller {
             stage.setScene(scene);
             stage.show();
             stage.setOnHiding( event -> {presentedType = "Halls"; addHallsToTableView();} );
-
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void openEditMovieWindow(Film movie){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji filmu");
+            EditMovieController controller = fxmlLoader.<EditMovieController>getController();
+            controller.initMovieController(movie, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Movies"; addMoviesToTableView();} );
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -229,7 +250,14 @@ public class Controller {
             if (presentedType.equals("Tickets")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTicketWindow.fxml"));
             } else if (presentedType.equals("Movies")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    FilmDAO filmDAO = new FilmDAO(cc);
+                    List<Film> lista = filmDAO.getFilmy();
+                    Film tempMovie= lista.get(dataToShow.indexOf(selection));
+                    filmDAO.deleteFilm(tempMovie);
+                    addMoviesToTableView();
+                }
             } else if (presentedType.equals("Clients")) {
                 RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
                 if(selection != null){
@@ -288,8 +316,8 @@ public class Controller {
                     seansDAO.deleteSeans(tempSeans);
                     addSeanseToTableView();
                 }
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeansWindow.fxml"));
             }
+            infoText.setText("Rekord został usunięty");
         }
 
     }
@@ -338,6 +366,31 @@ public class Controller {
     @FXML
     private void handleAddMoviesButton(ActionEvent event) throws IOException {
         System.out.println("addMovieButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+
+        Film tempMovie = null;
+        if(selection != null && presentedType.equals("Movies")){
+            FilmDAO filmDAO = new FilmDAO(cc);
+            List<Film> lista = filmDAO.getFilmy();
+            tempMovie = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddMovieWindow(tempMovie);
+    }
+    private void openAddMovieWindow(Film movie){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addMovieWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania seansu");
+            AddMovieController controller = fxmlLoader.<AddMovieController>getController();
+            controller.initMovieController(movie, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Movies"; addMoviesToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -673,6 +726,12 @@ public class Controller {
                     List<Seans> lista = seansDAO.getSeanse();
                     Seans seansTemp = lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(seansTemp.toString());
+                }
+                else if (presentedType.equals("Movies")){
+                    FilmDAO movieDAO = new FilmDAO(cc);
+                    List<Film> lista = movieDAO.getFilmy();
+                    Film movieTemp= lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText(movieTemp.toString2());
                 }
             }
         });

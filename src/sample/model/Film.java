@@ -55,6 +55,10 @@ public class Film {
                 ", seanse=" + seanse +
                 '}';
     }
+    public String toString2(){
+        return "Tytuł: " + this.getTytul() + "\nCzas trwania: " + this.getCzasTrwaniaWMin() + " min";
+    }
+
 
     @Override
     public String toString() {
