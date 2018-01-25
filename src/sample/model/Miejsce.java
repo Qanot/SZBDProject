@@ -19,6 +19,12 @@ public class Miejsce {
         this.sala = sala;
     }
 
+    @Override
+    public String toString() {
+        return "Miejsce: " + this.getNrMiejsca() + "\nRząd: " + this.getRzad() +
+                "\nSala numer: " + this.getSala().getNrSali();
+    }
+
     public int getId() {
         return id;
     }
