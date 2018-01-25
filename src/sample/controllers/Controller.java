@@ -581,6 +581,18 @@ public class Controller {
     @FXML
     private void handleShowSeatsButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        presentedType = "Seats";
+        addSeatsToTableView();
+    }
+    private void addSeatsToTableView(){
+        MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
+        List<Miejsce> lista = miejsceDAO.getMiejsca();
+        miejsceDAO.closeStatements();
+        dataToShow.clear();
+        for (Miejsce miejsce: lista){
+            dataToShow.add(new RecordToShow("Miejsce " + miejsce.getNrMiejsca() + ", rząd: " + miejsce.getRzad(),
+                    "Sala numer: " + miejsce.getSala().getNrSali()));
+        }
     }
 
     @FXML
