@@ -41,18 +41,22 @@ public class AddEmployeeController {
         String editedLastname = editLastname.textProperty().getValue();
         String editedPESEL = editPESEL.textProperty().getValue();
         Plec editedSex = (Plec) editPlec.getSelectionModel().getSelectedItem();
-        if (!editedLastname.equals("") && !editedName.equals("") && !editedPESEL.equals("") && editedSex != null) {
-            Pracownik newEmployee = new Pracownik(editedName, editedLastname, editedSex, editedPESEL);
-            PracownikDAO pracownikDAO = new PracownikDAO(cc);
-            if (!pracownikDAO.insertPracownik(newEmployee)) {
-                pracownikDAO.closeStatements();
-                showAlertEmptyForm("PESEL już znajduje sie w bazie. Prosze spóbować z innym.");
+        try{
+            if (!editedLastname.equals("") && !editedName.equals("") && !editedPESEL.equals("") && editedSex != null) {
+                Pracownik newEmployee = new Pracownik(editedName, editedLastname, editedSex, editedPESEL);
+                PracownikDAO pracownikDAO = new PracownikDAO(cc);
+                if (!pracownikDAO.insertPracownik(newEmployee)) {
+                    pracownikDAO.closeStatements();
+                    showAlertEmptyForm("PESEL już znajduje sie w bazie. Prosze spóbować z innym.");
+                } else {
+                    pracownikDAO.closeStatements();
+                    closeWindow();
+                }
             } else {
-                pracownikDAO.closeStatements();
-                closeWindow();
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }
-        } else {
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
     }
 

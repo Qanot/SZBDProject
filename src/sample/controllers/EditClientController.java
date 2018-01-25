@@ -47,25 +47,28 @@ public class EditClientController {
         String editedPassword = editPassword.textProperty().getValue();
         String editedPhoneNumber = editPhoneNumber.textProperty().getValue();
 
+        try{
+            if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
+                    && !editedPassword.equals("") && !editedPhoneNumber.equals("") && !editedLogin.equals("")) {
+                client.setImie(editedName);
+                client.setNazwisko(editedLastname);
+                client.setEmail(editedEmail);
+                client.setLogin(editedLogin);
+                client.setHaslo(editedPassword);
+                client.setTelefon(editedPhoneNumber);
 
-        if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
-                && !editedPassword.equals("") && !editedPhoneNumber.equals("") && !editedLogin.equals("")) {
-            client.setImie(editedName);
-            client.setNazwisko(editedLastname);
-            client.setEmail(editedEmail);
-            client.setLogin(editedLogin);
-            client.setHaslo(editedPassword);
-            client.setTelefon(editedPhoneNumber);
-
-            KlientDAO klientDAO = new KlientDAO(cc);
-            if (!klientDAO.updateKlient(client)) {
-                showAlertEmptyForm("Login zajęty. Prosze spróbować z innym.");
+                KlientDAO klientDAO = new KlientDAO(cc);
+                if (!klientDAO.updateKlient(client)) {
+                    showAlertEmptyForm("Login zajęty. Prosze spróbować z innym.");
+                } else {
+                    closeWindow();
+                }
+                klientDAO.closeStatements();
             } else {
-                closeWindow();
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }
-            klientDAO.closeStatements();
-        } else {
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
 
 

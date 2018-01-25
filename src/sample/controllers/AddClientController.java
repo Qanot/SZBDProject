@@ -48,24 +48,28 @@ public class AddClientController {
         String editedPassword = editPassword.textProperty().getValue();
         String editedPhoneNumber = editPhoneNumber.textProperty().getValue();
 
-        //check if not empty
-        if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
-                && !editedLogin.equals("") && !editedPassword.equals("") && !editedPhoneNumber.equals("")) {
+        try{
+            //check if not empty
+            if (!editedLastname.equals("") && !editedName.equals("") && !editedEmail.equals("")
+                    && !editedLogin.equals("") && !editedPassword.equals("") && !editedPhoneNumber.equals("")) {
 
-            Klient newClient = new Klient(editedName, editedLastname, editedEmail, editedLogin, editedPassword, editedPhoneNumber);
-            KlientDAO klientDAO = new KlientDAO(cc);
+                Klient newClient = new Klient(editedName, editedLastname, editedEmail, editedLogin, editedPassword, editedPhoneNumber);
+                KlientDAO klientDAO = new KlientDAO(cc);
 
-            //if false login occupied
-            if (!klientDAO.insertKlient(newClient)) {
-                klientDAO.closeStatements();
-                showAlertEmptyForm("Niepoprawne dane! Przyczyną błędu może być zajęty login lub nieporawny numer telefonu. Spróbuj jeszcze raz.");
+                //if false login occupied
+                if (!klientDAO.insertKlient(newClient)) {
+                    klientDAO.closeStatements();
+                    showAlertEmptyForm("Niepoprawne dane! Przyczyną błędu może być zajęty login lub nieporawny numer telefonu. Spróbuj jeszcze raz.");
+                } else {
+                    klientDAO.closeStatements();
+                    closeWindow();
+                }
             } else {
-                klientDAO.closeStatements();
-                closeWindow();
-            }
-        } else {
 
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+            }
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
 
 

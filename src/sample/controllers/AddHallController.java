@@ -31,25 +31,26 @@ public class AddHallController {
         //getting values from forms
         String editedNumber = editNumber.textProperty().getValue();
         //check if not empty
-        if (!editedNumber.equals("")) {
-
-            Sala newSala = new Sala(Integer.parseInt(editedNumber));
-            SalaDAO salaDAO = new SalaDAO(cc);
-
-
-            //if false number occupied
-            if (!salaDAO.insertSala(newSala)) {
-                showAlertEmptyForm("Numer sali zajęty. Prosze spóbować z innym.");
+        try{
+            if (!editedNumber.equals("")) {
+                Sala newSala = new Sala(Integer.parseInt(editedNumber));
+                SalaDAO salaDAO = new SalaDAO(cc);
+                //if false number occupied
+                if (!salaDAO.insertSala(newSala)) {
+                    showAlertEmptyForm("Numer sali zajęty. Prosze spóbować z innym.");
+                } else {
+                    closeWindow();
+                }
+                salaDAO.closeStatements();
             } else {
-
-                closeWindow();
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }
-            salaDAO.closeStatements();
-        } else {
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
-
     }
+
+
 
     public void initHallController(Sala hall, ConnectionController cc) {
         this.hall = hall;

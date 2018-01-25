@@ -41,28 +41,29 @@ public class EditEmployeeController {
         System.out.println("applyChanges!");
 
         //getting values from forms
-
-        String editedName = editName.textProperty().getValue();
-        String editedLastname = editLastname.textProperty().getValue();
-        Plec editedSex = (Plec) editPlec.getSelectionModel().getSelectedItem();
-        String editedPESEL = editPESEL.textProperty().getValue();
-        if (!editedLastname.equals("") && !editedName.equals("") && !editedPESEL.equals("")){
-            employee.setImie(editedName);
-            employee.setNazwisko(editedLastname);
-            employee.setPlec(editedSex);
-            employee.setPESEL(editedPESEL);
-            PracownikDAO pracownikDAO = new PracownikDAO(cc);
-            if (!pracownikDAO.updatePracownik(employee)) {
-                showAlertEmptyForm("PESEL już znajduje się w bazie. Operacja dodania nowego pracownika odrzucona.");
-            } else {
-                closeWindow();
+        try{
+            String editedName = editName.textProperty().getValue();
+            String editedLastname = editLastname.textProperty().getValue();
+            Plec editedSex = (Plec) editPlec.getSelectionModel().getSelectedItem();
+            String editedPESEL = editPESEL.textProperty().getValue();
+            if (!editedLastname.equals("") && !editedName.equals("") && !editedPESEL.equals("")){
+                employee.setImie(editedName);
+                employee.setNazwisko(editedLastname);
+                employee.setPlec(editedSex);
+                employee.setPESEL(editedPESEL);
+                PracownikDAO pracownikDAO = new PracownikDAO(cc);
+                if (!pracownikDAO.updatePracownik(employee)) {
+                    showAlertEmptyForm("PESEL już znajduje się w bazie. Operacja dodania nowego pracownika odrzucona.");
+                } else {
+                    closeWindow();
+                }
+                pracownikDAO.closeStatements();
+            }else{
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }
-            pracownikDAO.closeStatements();
-        }else{
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
-
-
     }
 
     public void initEmployeeController(Pracownik employee, ConnectionController cc) {
