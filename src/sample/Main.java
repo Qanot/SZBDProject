@@ -6,9 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controllers.Controller;
+import sample.model.Miejsce;
 import sample.model.RodzajBiletu;
+import sample.model.Sala;
 import sample.services.ConnectionController;
+import sample.services.MiejsceDAO;
 import sample.services.RodzajBiletuDAO;
+import sample.services.SalaDAO;
 
 public class Main extends Application {
 
@@ -16,40 +20,17 @@ public class Main extends Application {
 //        makeConnection();
 //        ConnectionController cc = new ConnectionController();
 //        cc.open();
-//        RodzajBiletuDAO rodzajDAO = new RodzajBiletuDAO(cc);
-////        RodzajBiletu rodzajBiletu0 = new RodzajBiletu(15.50, "Studencki");
-//        RodzajBiletu rodzajBiletu1 = new RodzajBiletu(19.50, "Normalny");
-//        RodzajBiletu rodzajBiletu2 = new RodzajBiletu(15.50, "Ulgowy");
-//        RodzajBiletu rodzajBiletu3 = new RodzajBiletu(16.50, "Serniorski");
-//        rodzajDAO.insertRodzajBiletu(rodzajBiletu1);
-//        rodzajDAO.insertRodzajBiletu(rodzajBiletu2);
-//        rodzajDAO.insertRodzajBiletu(rodzajBiletu3);
-//        rodzajDAO.closeStatements();
-//        ProduktDAO proDAO = new ProduktDAO(cc);
-//        Produkt produkt = new Produkt(15.5, "Duży popcorn", RozmiarPorcji.L);
-//        Produkt produkt2 = new Produkt(12.5, "Sredni Popcorn", RozmiarPorcji.M);
-//        Produkt produkt3 = new Produkt(10.0, "Mały Popcorn", RozmiarPorcji.S);
-//        proDAO.insertProdukt(produkt);
-//        proDAO.insertProdukt(produkt2);
-//        proDAO.insertProdukt(produkt3);
-//        List<Produkt> lista = proDAO.getProdukty();
-//        for (Produkt pra: lista){
-//            System.out.println(pra.getId() + " " + pra.getCena());
-//        }
-//        KlientDAO kldao =new KlientDAO(cc);
-//        Klient klient1 = new Klient("Jan", "Węglarz", "j.w@put.poznan.pl", "janek123", "janek123", "123456789");
-//        Klient klient2 = new Klient("Rafał", "Klaus", "r.k@put.poznan.pl", "rafałek", "rafiXDDD", "019238032");
-//        Klient klient3 = new Klient("Matuesz", "Lango", "m.l@put.poznan.pl", "MLmaster", "WIruler", "999");
-//        kldao.insertKlient(klient1);
-//        kldao.insertKlient(klient2);
-//        kldao.insertKlient(klient3);
-
-//        List<Pracownik> lista = prdao.getPracownicy();
-//        for (Pracownik pra: lista){
-//            System.out.println(pra.getId());
-//        }
-//        pracownik.setNazwisko("kowalski");
-//        prdao.updatePracownik(pracownik);
+//        MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
+//        SalaDAO salaDAO = new SalaDAO(cc);
+//        Sala sala = salaDAO.getSalaById(1);
+//        Miejsce miejsce1 = new Miejsce("I", 1, sala);
+//        Miejsce miejsce2 = new Miejsce("I", 2, sala);
+//        Miejsce miejsce3 = new Miejsce("I", 3, sala);
+//        Miejsce miejsce4 = new Miejsce("I", 4, sala);
+//        miejsceDAO.insertMiejsce(miejsce1);
+//        miejsceDAO.insertMiejsce(miejsce2);
+//        miejsceDAO.insertMiejsce(miejsce3);
+//        miejsceDAO.insertMiejsce(miejsce4);
 
         launch(args);
     }

@@ -42,21 +42,26 @@ public class EditProductController {
         String editedName = editName.textProperty().getValue();
         String editedPrice = editPrice.textProperty().getValue();
         RozmiarPorcji editedSize = (RozmiarPorcji) editSize.getSelectionModel().getSelectedItem();
-        if (!editedPrice.equals("") && !editedName.equals("")){
-            product.setNazwa(editedName);
-            product.setCena(Double.valueOf(editedPrice));
-            product.setRozmiarPorcji(editedSize);
-            ProduktDAO produktDAO = new ProduktDAO(cc);
-            if (!produktDAO.updateProdukt(product)) {
-                showAlertEmptyForm("Nie udało sie poprawnie wstawić rekodru. Sprawdź połączenie.");
-            } else {
-                closeWindow();
-            }
-            produktDAO.closeStatements();
+        try{
+            if (!editedPrice.equals("") && !editedName.equals("")){
+                product.setNazwa(editedName);
+                product.setCena(Double.valueOf(editedPrice));
+                product.setRozmiarPorcji(editedSize);
+                ProduktDAO produktDAO = new ProduktDAO(cc);
+                if (!produktDAO.updateProdukt(product)) {
+                    showAlertEmptyForm("Nie udało sie poprawnie wstawić rekodru. Sprawdź połączenie.");
+                } else {
+                    closeWindow();
+                }
+                produktDAO.closeStatements();
 
-        }else{
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+            }else{
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+            }
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
+
 
 
     }

@@ -47,7 +47,6 @@ public class AddTicketsTypeController {
                     closeWindow();
                 }
                 rodzajDAO.closeStatements();
-
             }else{
                 showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }

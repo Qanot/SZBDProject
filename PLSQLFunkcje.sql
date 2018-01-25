@@ -219,19 +219,4 @@ BEGIN
 END wstaw_rodzajbiletu;
 /
 
-create or replace FUNCTION update_rodzajbiletu(v_id IN rodzajebiletow.ID%TYPE,
-                                       v_cena IN rodzajebiletow.cena%TYPE,
-                                       v_nazwa IN rodzajebiletow.nazwa%TYPE) return number is
-  BEGIN
-    UPDATE rodzajebiletow
-    SET CENA = v_cena,
-        NAZWA = v_nazwa
-    WHERE ID = V_ID;
-    RETURN 1;
-    EXCEPTION
-    WHEN DUP_VAL_ON_INDEX THEN
-    RETURN 0;
-  END update_rodzajbiletu;
-/
-
 

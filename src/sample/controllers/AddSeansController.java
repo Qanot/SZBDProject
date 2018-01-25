@@ -55,19 +55,23 @@ public class  AddSeansController {
         Film editedFilm = editFilm.getValue();
         Sala editedSala = editSala.getValue();
 
-        if(editedDate != null && editedTime != null && editedSala != null && editedFilm != null){
-            LocalDateTime editedDateTime = LocalDateTime.of(editedDate, editedTime);
-            Date editedDataEmisji =  Date.from(editedDateTime.atZone(ZoneId.systemDefault()).toInstant());
-            Seans seans = new Seans(editedDataEmisji,editedFilm, editedSala);
-            SeansDAO seansDAO = new SeansDAO(cc);
-            if (!seansDAO.insertSeans(seans)) {
-                showAlertEmptyForm("Istnieje już seans o podanej dacie, godzinie, filmie i sali. Proszę wybrać inne wartości.");
+        try{
+            if(editedDate != null && editedTime != null && editedSala != null && editedFilm != null){
+                LocalDateTime editedDateTime = LocalDateTime.of(editedDate, editedTime);
+                Date editedDataEmisji =  Date.from(editedDateTime.atZone(ZoneId.systemDefault()).toInstant());
+                Seans seans = new Seans(editedDataEmisji,editedFilm, editedSala);
+                SeansDAO seansDAO = new SeansDAO(cc);
+                if (!seansDAO.insertSeans(seans)) {
+                    showAlertEmptyForm("Istnieje już seans o podanej dacie, godzinie, filmie i sali. Proszę wybrać inne wartości.");
+                } else {
+                    closeWindow();
+                }
+                seansDAO.closeStatements();
             } else {
-                closeWindow();
+                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }
-            seansDAO.closeStatements();
-        } else {
-            showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
+        } catch (Exception e){
+            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
     }
 
