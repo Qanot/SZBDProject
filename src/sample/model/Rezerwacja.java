@@ -1,7 +1,5 @@
 package sample.model;
 
-import sample.model.Klient;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -76,21 +74,33 @@ public class Rezerwacja {
     @Override
     public String toString() {
         return "Id rezerwacji: " + id
-                + "\nData utworzenia: " + dataUtworzeniaToString()
+                + "\nData utworzenia: " + getDataUtworzeniaToString()
                 + "\n" + jestOplaconaToString()
                 + "\nLogin klienta rezerwującego: " + klientRezerwujacy.getLogin()
-                + "\nLiczba zarezerwowanych miejsc: " + zarezerwowaneMiejsca.size()
                 + "\nDane seansu:\n"
-                + zarezerwowaneMiejsca.get(0).getSeans().toString();
+                + zarezerwowaneMiejsca.get(0).getSeans().toString()
+                + "\nLiczba zarezerwowanych miejsc: " + zarezerwowaneMiejsca.size()
+                + "\nLista zarezerwowanych miejsc:\n"
+                + getZarezerwowaneMiejscaToString();
     }
-    public String jestOplaconaToString(){
+    private String getZarezerwowaneMiejscaToString(){
+        String wynik = "";
+        int i = 1;
+        for(MiejsceNaSeansie miejsceNaSeansie: zarezerwowaneMiejsca){
+            wynik += "\t" + Integer.toString(i) + ". " + miejsceNaSeansie.getMiejsce().getRzad()
+            + "/" + miejsceNaSeansie.getMiejsce().getNrMiejsca() + "\n";
+        }
+        return wynik;
+
+    }
+    private String jestOplaconaToString(){
         if(jestOplacona){
             return "Opłacona";
         } else{
             return "Nieopłacona";
         }
     }
-    public String dataUtworzeniaToString(){
+    public String getDataUtworzeniaToString(){
 
         LocalDate localDateEmisji = getDataUtworzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalTime localTimeEmisji = getDataUtworzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();

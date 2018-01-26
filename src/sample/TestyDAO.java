@@ -27,6 +27,7 @@ public class TestyDAO {
         for(Rezerwacja rezerwacja: rezerwacje){
             System.out.println(rezerwacja.toString());
         }
+        System.out.println(rezerwacjaDAO.getRezerwacjaById(1));
     }
 
 

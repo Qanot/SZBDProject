@@ -22,7 +22,6 @@ import sample.model.*;
 import sample.services.*;
 
 import java.io.IOException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,7 +130,16 @@ public class Controller {
                 openEditProductWindow(tempProduct);
             }
         } else if (presentedType.equals("Reservations")) {
-            new EditReservationController().openWindow("Jakub - rezerwacja");
+            //new EditReservationController().openWindow("Jakub - rezerwacja");
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null) {
+                RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+                List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
+                Rezerwacja tempRezerwacja = lista.get(dataToShow.indexOf(selection));
+                // TODO Oliwia
+                // openEditReservationWindow(tempRezerwacja);
+            }
+
         } else if (presentedType.equals("TypesOfTickets")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
@@ -406,6 +414,8 @@ public class Controller {
     @FXML
     private void handleAddReservationButton(ActionEvent event) throws IOException {
         System.out.println("addReservationButton!");
+        // TODO Oliwia
+
     }
 
     @FXML
@@ -481,6 +491,17 @@ public class Controller {
     private void handleShowReservationsButton(ActionEvent event) throws IOException {
         System.out.println("showReservationsButton!");
         presentedType = "Reservations";
+        addReservationToTableView();
+    }
+    private void addReservationToTableView(){
+        RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+        List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
+        dataToShow.clear();
+        for(Rezerwacja rezerwacja: lista){
+            dataToShow.add(new RecordToShow(rezerwacja.getDataUtworzeniaToString(),
+                    rezerwacja.getKlientRezerwujacy().getLogin()));
+        }
+
     }
 
     @FXML
@@ -913,6 +934,15 @@ public class Controller {
                     Miejsce seatTemp= lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(seatTemp.toString());
                     miejsceDAO.closeStatements();
+                }
+                else if (presentedType.equals("Reservations")) {
+                    RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+                    List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
+                    Rezerwacja reservationTemp = lista.get(dataToShow.indexOf(newSelection));
+                    if(!reservationTemp.equals(null)) {
+                        infoText.setText(reservationTemp.toString());
+                    }
+
                 }
             }
         });
