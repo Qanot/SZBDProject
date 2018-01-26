@@ -1,9 +1,11 @@
 package sample.services;
 
 import sample.model.Film;
+import sample.model.Miejsce;
 import sample.model.Sala;
 import sample.model.Seans;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -174,5 +176,58 @@ public class SeansDAO extends DAO {
         return seans;
     }
 
+    public List<Miejsce> getWolneMiejscaDlaSeansu(Seans seans){
+        List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
+        PreparedStatement stmtSelectWolne = null;
+        try {
+            stmtSelectWolne = connectionController.getConn().prepareStatement(
+                    "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
+                            " WHERE SALE_ID = ?" +
+                            " AND NOT EXISTS(" +
+                            "   SELECT 1 FROM MIEJSCANASEANSIE" +
+                            "   WHERE MIEJSCA_ID = MMIEJSCA.ID" +
+                            "   AND SEANSE_ID = ?)");
+            stmtSelectWolne.setInt(1, seans.getSala().getId());
+            stmtSelectWolne.setInt(2, seans.getId());
+            rsSelect = stmtSelectWolne.executeQuery();
+            while (rsSelect.next()) {
+                int idMiejsca = rsSelect.getInt(1);
+                MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
+                Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
+                miejscaWolne.add(miejsce);
+                miejsceDAO.closeStatements();
+            }
+
+        }catch (SQLException ex) {
+            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+            if (stmtSelectWolne != null) {
+                try {
+                    stmtSelectWolne.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
+        return miejscaWolne;
+    }
+
+    
+
+    public List<Seans> getSeanseDlaFilmu(int idFilmu){
+        // TODO
+        return null;
+
+    }
 
 }
