@@ -190,13 +190,13 @@ public class SeansDAO extends DAO {
             stmtSelectWolne.setInt(1, seans.getSala().getId());
             stmtSelectWolne.setInt(2, seans.getId());
             rsSelect = stmtSelectWolne.executeQuery();
+            MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
             while (rsSelect.next()) {
                 int idMiejsca = rsSelect.getInt(1);
-                MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
                 Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
                 miejscaWolne.add(miejsce);
-                miejsceDAO.closeStatements();
             }
+            miejsceDAO.closeStatements();
 
         }catch (SQLException ex) {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
@@ -222,7 +222,97 @@ public class SeansDAO extends DAO {
         return miejscaWolne;
     }
 
-    
+    public List<Miejsce> getWykupioneMiejscaDlaSeansu(Seans seans){
+        List<Miejsce> miejscaWykupione = new ArrayList<Miejsce>();
+        PreparedStatement stmtSelectWykupione = null;
+        try {
+            stmtSelectWykupione = connectionController.getConn().prepareStatement(
+                    "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
+                            " WHERE SALE_ID = ?" +
+                            " AND EXISTS(" +
+                            "   SELECT 1 FROM MIEJSCANASEANSIE" +
+                            "   WHERE MIEJSCA_ID = MMIEJSCA.ID" +
+                            "   AND SEANSE_ID = ?" +
+                            "   AND BILETY_ID IS NOT NULL)");
+            stmtSelectWykupione.setInt(1, seans.getSala().getId());
+            stmtSelectWykupione.setInt(2, seans.getId());
+            rsSelect = stmtSelectWykupione.executeQuery();
+            MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
+            while (rsSelect.next()) {
+                int idMiejsca = rsSelect.getInt(1);
+                Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
+                miejscaWykupione.add(miejsce);
+            }
+            miejsceDAO.closeStatements();
+        }catch (SQLException ex) {
+            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+            if (stmtSelectWykupione != null) {
+                try {
+                    stmtSelectWykupione.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
+        return miejscaWykupione;
+    }
+
+    public List<Miejsce> getZarezerwowaneMiejscaDlaSeansu(Seans seans){
+        List<Miejsce> miejscaZarezerwowane = new ArrayList<Miejsce>();
+        PreparedStatement stmtSelectZarezerwowane = null;
+        try {
+            stmtSelectZarezerwowane = connectionController.getConn().prepareStatement(
+                    "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
+                            " WHERE SALE_ID = ?" +
+                            " AND EXISTS(" +
+                            "   SELECT 1 FROM MIEJSCANASEANSIE" +
+                            "   WHERE MIEJSCA_ID = MMIEJSCA.ID" +
+                            "   AND SEANSE_ID = ?" +
+                            "   AND REZERWACJE_ID IS NOT NULL)");
+            stmtSelectZarezerwowane.setInt(1, seans.getSala().getId());
+            stmtSelectZarezerwowane.setInt(2, seans.getId());
+            rsSelect = stmtSelectZarezerwowane.executeQuery();
+            MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
+            while (rsSelect.next()) {
+                int idMiejsca = rsSelect.getInt(1);
+                Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
+                miejscaZarezerwowane.add(miejsce);
+            }
+            miejsceDAO.closeStatements();
+        }catch (SQLException ex) {
+            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+            if (stmtSelectZarezerwowane != null) {
+                try {
+                    stmtSelectZarezerwowane.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
+        return miejscaZarezerwowane;
+    }
 
     public List<Seans> getSeanseDlaFilmu(int idFilmu){
         // TODO

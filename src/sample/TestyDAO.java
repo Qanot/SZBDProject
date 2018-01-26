@@ -1,12 +1,12 @@
 package sample;
 
 import sample.model.Seans;
-import sample.model.Klient;
+import sample.model.Miejsce;
 import sample.model.Produkt;
-import sample.model.Film;
 import sample.model.Sala;
+import sample.model.Film;
+import sample.model.Klient;
 import sample.model.RozmiarPorcji;
-
 
 import sample.services.SeansDAO;
 import sample.services.ConnectionController;
@@ -25,9 +25,34 @@ public class TestyDAO {
         //testSala(cc);
         //testFilm(cc);
         //testSeans(cc);
+        testSeansWolneWykupioneZarezerwowane(cc);
         cc.close();
 
 
+    }
+    public static void testSeansWolneWykupioneZarezerwowane(ConnectionController cc){
+        List<Miejsce> miejscaWolne;
+        List<Miejsce> miejscaWykupione;
+        List<Miejsce> miejscaZarezerwowane;
+        SeansDAO seansDAO = new SeansDAO(cc);
+        Seans seans = seansDAO.getSeansById(21);
+        miejscaWolne = seansDAO.getWolneMiejscaDlaSeansu(seans);
+        System.out.println("MIEJSCA WOLNE");
+        for(Miejsce m: miejscaWolne){
+            System.out.println(m.toString());
+        }
+        miejscaWykupione = seansDAO.getWykupioneMiejscaDlaSeansu(seans);
+        System.out.println("MIEJSCA WYKUPIONE");
+        for(Miejsce m: miejscaWykupione){
+            System.out.println(m.toString());
+        }
+        miejscaZarezerwowane = seansDAO.getZarezerwowaneMiejscaDlaSeansu(seans);
+        System.out.println("MIEJSCA ZAREZERWOWANE");
+        for(Miejsce m: miejscaZarezerwowane){
+            System.out.println(m.toString());
+        }
+
+        seansDAO.closeStatements();
     }
     public static void testSeans(ConnectionController cc){
         SeansDAO seansDAO = new SeansDAO(cc);
