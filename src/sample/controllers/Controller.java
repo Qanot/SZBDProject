@@ -415,7 +415,30 @@ public class Controller {
     private void handleAddReservationButton(ActionEvent event) throws IOException {
         System.out.println("addReservationButton!");
         // TODO Oliwia
-
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        Rezerwacja tempReservation = null;
+        if(selection != null && presentedType.equals("Reservations")){
+            RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+            List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
+            tempReservation = lista.get(dataToShow.indexOf(selection));
+        }
+        openAddReservationWindow(tempReservation);
+    }
+    private void openAddReservationWindow(Rezerwacja rezerwacja){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addReservationWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania rezerwacji");
+            AddReservationController controller = fxmlLoader.<AddReservationController>getController();
+            controller.initSeansController(rezerwacja, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Reservations"; addReservationToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
