@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 /**
  * ZALOZENIA:
  * id jest niezmienne (klucz podstawowy)
@@ -84,6 +86,7 @@ public class ProduktDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+            showAlertEmptyForm("Nie można usunąć produktu, bo jest powiązany z innymi rekordami!");
             Logger.getLogger(ProduktDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

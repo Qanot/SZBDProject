@@ -1,27 +1,22 @@
 package sample.services;
 
 import sample.model.Paragon;
+import sample.model.Pracownik;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-// TODO dostosowac do nowego modelu bazy (w drugiej kolejnosci, bo nie jest lisciem (ma dziecko pracownik)
+import java.util.Date;
 
 public class ParagonDAO extends DAO {
 
 
     private List<Paragon> paragony;
-//    private PreparedStatement stmtSelect = null;
-//    private PreparedStatement stmtDelete = null;
-//    private PreparedStatement stmtUpdate = null;
-//    private CallableStatement stmtInsert = null;
-//    private CallableStatement stmtFindById = null;
-//    private ResultSet rsSelect = null;
 
     public ParagonDAO(ConnectionController connectionController) {
+
         super(connectionController);
         paragony = new ArrayList<Paragon>();
 
@@ -30,8 +25,6 @@ public class ParagonDAO extends DAO {
                     "SELECT id, data_godzina, pracownicy_id FROM PARAGONY");
             this.stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM PARAGONY WHERE ID = ?");
-//            stmtUpdate = connectionController.getConn().prepareStatement(
-//                    "UPDATE PARAGONY SET data_godzina = ? WHERE ID = ?");
             this.stmtUpdate = connectionController.getConn().prepareCall(
                     "{? = call update_paragon(?, ?, ?)}");
             this.stmtInsert = connectionController.getConn().prepareCall(
@@ -50,14 +43,18 @@ public class ParagonDAO extends DAO {
         try {
             rsSelect = stmtSelect.executeQuery();
             PracownikDAO pracownikDAO = new PracownikDAO(connectionController);
-
             while (rsSelect.next()) {
-                int id = rsSelect.getInt(1);
-                Date data = rsSelect.getDate(2);
+                int id = rsSelect.getInt("ID");
+                Date dataZakupu = new java.util.Date(rsSelect.getTimestamp("DATA_GODZINA").getTime());
+                int idPracownika = rsSelect.getInt("PRACOWNICY_ID");
 
-                Paragon paragon = new Paragon(data);
-                paragon.setId(id);
-                paragony.add(paragon);
+                Pracownik pracownik = pracownikDAO.getPracownikById(idPracownika);
+
+                Paragon nowyParagon = new Paragon(dataZakupu, pracownik);
+                nowyParagon.setId(id);
+
+//                nowyParagon.setProduktyNaParagonie(this.getProduktuNaParagonie(nowyParagon); //jeszcze nie zrobione
+                paragony.add(nowyParagon);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
@@ -87,75 +84,81 @@ public class ParagonDAO extends DAO {
         }
     }
 
-    public void updateParagon(Paragon paragon) {
+    public boolean updateParagon(Paragon paragon) {
         try {
-            stmtUpdate.setDate(1, new java.sql.Date(paragon.getDataZakupu().getTime()));
-            // stmtUpdate.setDate(1, paragon.getDataZakupu()); // TODO test
+            stmtUpdate.registerOutParameter(1, Types.INTEGER);
             stmtUpdate.setInt(2, paragon.getId());
-            int changes = stmtUpdate.executeUpdate();
-            if (changes != 1) {
-                System.out.println("Błąd! Nie zmodyfikowano dokladnie 1 rekordu");
-            }
+            stmtUpdate.setDate(3, new java.sql.Date(paragon.getDataZakupu().getTime())); // to chyba dziala
+            stmtUpdate.setInt(4, paragon.getPracownikNabijajacyParagon().getId());
+
+            stmtUpdate.execute();
+
+//            paragon.setProduktyNaParagonie(this.getProduktyNaParagonie());
+
+            int wykonananoPoprawnie = stmtUpdate.getInt(1);
+            return wykonananoPoprawnie == 1;
         } catch (SQLException ex) {
             Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia update", ex);
         }
+        return false;
     }
 
-    public void insertParagon(Paragon paragon) {
+    public boolean insertParagon(Paragon paragon) {
         try {
-            stmtInsert.setDate(1, new java.sql.Date(paragon.getDataZakupu().getTime()));
-            stmtInsert.registerOutParameter(2, Types.INTEGER);
+            stmtInsert.registerOutParameter(1, Types.INTEGER);
+            stmtInsert.setDate(2, new java.sql.Date(paragon.getDataZakupu().getTime())); // to chyba dziala
+            stmtInsert.setInt(3, paragon.getPracownikNabijajacyParagon().getId());
+            stmtInsert.registerOutParameter(4, Types.INTEGER);
+
             stmtInsert.execute();
-            int id = stmtInsert.getInt(2);
+            int id = stmtInsert.getInt(4);
             paragon.setId(id);
+//            paragon.setProduktyNaParagonie(this.getProduktyNaParagonie());
+
+            int wykonananoPoprawnie = stmtInsert.getInt(1);
+            return wykonananoPoprawnie == 1;
 
         } catch (SQLException ex) {
             Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia insert", ex);
         }
+        return false;
     }
-
     public List<Paragon> getParagony() {
         return paragony;
     }
 
-    public void setConnectionController(ConnectionController connectionController) {
-        this.connectionController = connectionController;
-    }
+    public Paragon getParagonById(int id) {
+        Paragon paragon = null;
+        try {
+            stmtFindById.setInt(1, id);
+            rsSelect = stmtFindById.executeQuery();
+            PracownikDAO pracownikDAO = new PracownikDAO(connectionController);
+            if (rsSelect.next()) {
+                Date dataZakupu = new Date(rsSelect.getTimestamp("DATA_GODZINA").getTime());
+                int idPracownika= rsSelect.getInt("PRACOWNICY_ID");
 
-    public void closeStatements() {
-        if (stmtSelect != null) {
-            try {
-                stmtSelect.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
+                Pracownik pracownik = pracownikDAO.getPracownikById(idPracownika);
+
+                paragon = new Paragon(dataZakupu, pracownik);
+                paragon.setId(id);
+//                paragon.setProduktyNaParagonie(this.getProduktyNaParagonie(paragon));
+               }
+            pracownikDAO.closeStatements();
+        } catch (SQLException ex) {
+            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania prekompilowanego polecenia select", ex);
+        } finally {
+            if (rsSelect != null) {
+                try {
+                    rsSelect.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
             }
         }
-        if (stmtInsert != null) {
-            try {
-                stmtInsert.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtUpdate != null) {
-            try {
-                stmtUpdate.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
-        if (stmtDelete != null) {
-            try {
-                stmtDelete.close();
-            } catch (SQLException e) {
-                /* kod obsługi */
-                System.out.println("Błąd zamknięcia interfejsu Statement");
-            }
-        }
+        return paragon;
     }
 }

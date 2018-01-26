@@ -267,3 +267,32 @@ create or replace FUNCTION update_miejsce(v_id IN MIEJSCA.ID%TYPE,
   END update_miejsce;
 /
 
+create or replace FUNCTION insert_paragon(v_data_godzina IN PARAGONY.DATA_GODZINA%TYPE,
+                                       v_pracownicy_id IN PARAGONY.PRACOWNICY_ID%TYPE,
+                                       v_id OUT PARAGONY.ID%TYPE) return number is
+  BEGIN
+    v_id := paragon_id_seq.nextval;
+    INSERT INTO PARAGONY(ID, DATA_GODZINA, PRACOWNICY_ID)
+    VALUES(v_id, v_data_godzina, v_pracownicy_id);
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END insert_paragon;
+/
+
+create or replace FUNCTION update_paragon(v_id IN PARAGONY.ID%TYPE,
+                                        v_data_godzina IN PARAGONY.DATA_GODZINA%TYPE,
+                                        v_pracownicy_id IN PARAGONY.PRACOWNICY_ID%TYPE) return number is
+  BEGIN
+    UPDATE PARAGONY
+    SET DATA_GODZINA = V_DATA_GODZINA,
+      PRACOWNICY_ID = V_PRACOWNICY_ID
+    WHERE ID = V_ID;
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END update_paragon;
+/
+

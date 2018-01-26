@@ -10,6 +10,8 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 /**
  * ZALOZENIA:
  * id jest niezmienne (klucz podstawowy)
@@ -87,6 +89,7 @@ public class PracownikDAO extends DAO {
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+            showAlertEmptyForm("Nie można usunąć pracownika, bo jest powiązany z innymi rekordami!");
             Logger.getLogger(PracownikDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

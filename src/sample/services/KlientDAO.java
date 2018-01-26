@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 /**
  * ZALOZENIA:
  * login jest kluczem unikalnym,
@@ -86,6 +88,7 @@ public class KlientDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+            showAlertEmptyForm("Nie można usunąć klienta, bo jest powiązany z innymi rekordami!");
             Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

@@ -118,6 +118,7 @@ public class FilmDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+            showAlertEmptyForm("Nie można usunąć filmu, bo jest powiązany z innymi rekordami!");
             Logger.getLogger(FilmDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

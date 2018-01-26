@@ -9,6 +9,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 // TODO implement all methods
 
 
@@ -117,6 +119,7 @@ public class RodzajBiletuDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+            showAlertEmptyForm("Nie można usunąć rodzaju biletu, bo jest powiązany z innymi rekordami!");
             Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }
