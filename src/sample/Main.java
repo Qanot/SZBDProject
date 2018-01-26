@@ -22,11 +22,12 @@ public class Main extends Application {
 //        cc.open();
 //        MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
 //        SalaDAO salaDAO = new SalaDAO(cc);
-//        Sala sala = salaDAO.getSalaById(1);
+//        Sala sala = salaDAO.getSalaById(12);
 //        Miejsce miejsce1 = new Miejsce("I", 1, sala);
 //        Miejsce miejsce2 = new Miejsce("I", 2, sala);
 //        Miejsce miejsce3 = new Miejsce("I", 3, sala);
 //        Miejsce miejsce4 = new Miejsce("I", 4, sala);
+//        System.out.println("Id sali to: " + sala.getId());
 //        miejsceDAO.insertMiejsce(miejsce1);
 //        miejsceDAO.insertMiejsce(miejsce2);
 //        miejsceDAO.insertMiejsce(miejsce3);

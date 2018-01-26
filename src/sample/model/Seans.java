@@ -3,6 +3,9 @@ package sample.model;
 import sample.model.Film;
 
 import java.sql.CallableStatement;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -66,11 +69,19 @@ public class Seans {
                 '}';
     }
     public String dataEmisjiToString(){
+
+        LocalDate localDateEmisji = getDataEmisji().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalTime localTimeEmisji = getDataEmisji().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+
+        return localDateEmisji.toString() + " " + localTimeEmisji.toString();
+        /*
+
         Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
         calendar.setTime(dataEmisji);   // assigns calendar to given date
         return calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH + 1) + "." +
                 calendar.get(Calendar.YEAR) + " " + calendar.get(Calendar.HOUR_OF_DAY) + ":"
                 + calendar.get(Calendar.MINUTE);
+                */
     }
 
     public String toStringTytulSala() {

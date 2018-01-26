@@ -98,7 +98,14 @@ public class Controller {
                 openEditClientWindow(tempClient);
             }
         } else if (presentedType.equals("Seats")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
+            RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+            if(selection != null){
+                MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
+                List<Miejsce> lista = miejsceDAO.getMiejsca();
+                Miejsce tempSeat = lista.get(dataToShow.indexOf(selection));
+                miejsceDAO.closeStatements();
+                openEditSeatWindow(tempSeat);
+            }
         } else if (presentedType.equals("SeatsOnSeans")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatOnSeansWindow.fxml"));
         } else if (presentedType.equals("Receipts")) {
@@ -267,6 +274,23 @@ public class Controller {
             stage.setScene(scene);
             stage.show();
             stage.setOnHiding( event -> {presentedType = "TypesOfTickets"; addTicketsTypesToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void openEditSeatWindow(Miejsce miejsce){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno edycji miejsca");
+            EditSeatController controller = fxmlLoader.<EditSeatController>getController();
+            controller.initSeatController(miejsce, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Seats"; addSeatsToTableView();} );
+
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -581,6 +605,18 @@ public class Controller {
     @FXML
     private void handleShowSeatsButton(ActionEvent event) throws IOException {
         System.out.println("showSeanseButton!");
+        presentedType = "Seats";
+        addSeatsToTableView();
+    }
+    private void addSeatsToTableView(){
+        MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
+        List<Miejsce> lista = miejsceDAO.getMiejsca();
+        miejsceDAO.closeStatements();
+        dataToShow.clear();
+        for (Miejsce miejsce: lista){
+            dataToShow.add(new RecordToShow("Miejsce " + miejsce.getNrMiejsca() + ", rząd: " + miejsce.getRzad(),
+                    "Sala numer: " + miejsce.getSala().getNrSali()));
+        }
     }
 
     @FXML
@@ -837,6 +873,13 @@ public class Controller {
                     RodzajBiletu typeTemp= lista.get(dataToShow.indexOf(newSelection));
                     infoText.setText(typeTemp.toString());
                     rodzajDAO.closeStatements();
+                }
+                else if (presentedType.equals("Seats")){
+                    MiejsceDAO miejsceDAO= new MiejsceDAO(cc);
+                    List<Miejsce> lista = miejsceDAO.getMiejsca();
+                    Miejsce seatTemp= lista.get(dataToShow.indexOf(newSelection));
+                    infoText.setText(seatTemp.toString());
+                    miejsceDAO.closeStatements();
                 }
             }
         });

@@ -219,4 +219,51 @@ BEGIN
 END wstaw_rodzajbiletu;
 /
 
+create or replace FUNCTION update_rodzajbiletu(v_id IN rodzajebiletow.ID%TYPE,
+                                       v_cena IN rodzajebiletow.cena%TYPE,
+                                       v_nazwa IN rodzajebiletow.nazwa%TYPE) return number is
+  BEGIN
+    UPDATE rodzajebiletow
+    SET CENA = v_cena,
+        NAZWA = v_nazwa
+    WHERE ID = V_ID;
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END update_rodzajbiletu;
+/
+
+
+create or replace FUNCTION wstaw_miejsce(v_rzad IN MIEJSCA.RZAD%TYPE,
+                                       v_nr_miejsca IN MIEJSCA.NR_MIEJSCA%TYPE,
+                                       v_sale_id IN MIEJSCA.SALE_ID%TYPE,
+                                       v_id OUT MIEJSCA.ID%TYPE) return number is
+  BEGIN
+    v_id := miejsce_id_seq.nextval;
+    INSERT INTO MIEJSCA(ID, RZAD, NR_MIEJSCA, SALE_ID)
+    VALUES(v_id, v_rzad, v_nr_miejsca, v_sale_id);
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END wstaw_miejsce;
+/
+
+create or replace FUNCTION update_miejsce(v_id IN MIEJSCA.ID%TYPE,
+                                        v_rzad IN MIEJSCA.RZAD%TYPE,
+                                        v_nr_miejsca IN MIEJSCA.NR_MIEJSCA%TYPE,
+                                        v_sale_id IN MIEJSCA.SALE_ID%TYPE) return number is
+  BEGIN
+    UPDATE MIEJSCA
+    SET RZAD = v_rzad,
+        NR_MIEJSCA = v_nr_miejsca,
+        SALE_ID = V_SALE_ID
+    WHERE ID = V_ID;
+    RETURN 1;
+    EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+    RETURN 0;
+  END update_miejsce;
+/
 

@@ -73,7 +73,7 @@ public class MiejsceDAO extends DAO {
         }
     }
 
-    public List<Miejsce> getSeanse() {
+    public List<Miejsce> getMiejsca() {
         selectSeanse();
         return miejsca;
     }
@@ -100,7 +100,7 @@ public class MiejsceDAO extends DAO {
         }
     }
 
-    public boolean updateSeans(Miejsce miejsce) {
+    public boolean updateMiejsce(Miejsce miejsce) {
         try {
             stmtUpdate.registerOutParameter(1, Types.INTEGER);
             stmtUpdate.setInt(2, miejsce.getId());
@@ -121,7 +121,7 @@ public class MiejsceDAO extends DAO {
     }
 
 
-    public void deleteSeans(Miejsce miejsce) {
+    public void deleteMiejsce(Miejsce miejsce) {
         try {
             stmtDelete.setInt(1, miejsce.getId());
             int changes = stmtDelete.executeUpdate();
