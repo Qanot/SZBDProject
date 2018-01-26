@@ -89,9 +89,9 @@ public class AddSeatController {
                     int counterHowManyFailed = 0;
                     MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
                     for (int i = 0; i < editedRowInt; i++) {
-                        String romanNumber  = ToRoman.toRoman(i);
+                        String romanNumber  = ToRoman.toRoman(i+1);
                         for (int j = 0; j < editedNumberInt; j++) {
-                            Miejsce newSeat = new Miejsce(romanNumber, j, editedSala);
+                            Miejsce newSeat = new Miejsce(romanNumber, j + 1, editedSala);
                             if (!miejsceDAO.insertMiejsce(newSeat)){
                                 counterHowManyFailed++;
                             }
