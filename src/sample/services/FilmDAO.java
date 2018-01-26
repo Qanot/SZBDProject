@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
 
+import static sample.controllers.Controller.showAlertEmptyForm;
+
 
 public class FilmDAO extends DAO{
 

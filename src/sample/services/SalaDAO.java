@@ -76,7 +76,7 @@ public class SalaDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
-            showAlertEmptyForm("W danej sali są aktualnie zaplanowane seanse. Nie można jej usunąć!");
+            showAlertEmptyForm("Nie można usunąć sali, bo jest powiązana z innymi rekordami!");
             Logger.getLogger(SalaDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

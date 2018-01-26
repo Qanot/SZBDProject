@@ -18,7 +18,7 @@ public class Produkt {
     @Override
     public String toString() {
         return "Nazwa: " + this.getNazwa() + "\nCena: " + this.getCena() + " PLN" +
-            "\nRozmiar: " + this.getRozmiarPorcji() + "\nID w bazie: " + this.getId();
+            "\nRozmiar: " + this.getRozmiarPorcji();
     }
 
     public int getId() {
