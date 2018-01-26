@@ -98,7 +98,7 @@ public class AddSeatController {
                         }
                     }
                     if(counterHowManyFailed > 0) {
-                        showAlertEmptyForm("Wprowadzone dane pokrywają " + counterHowManyFailed + " miejsc/a. ");
+                        showAlertEmptyForm("Wprowadzone dane pokrywają " + counterHowManyFailed + " już istniejące miejsc/a. ");
                     }
                     miejsceDAO.closeStatements();
                     closeWindow();

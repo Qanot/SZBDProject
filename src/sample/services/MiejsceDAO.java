@@ -129,6 +129,7 @@ public class MiejsceDAO extends DAO {
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+
             Logger.getLogger(MiejsceDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

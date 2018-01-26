@@ -617,7 +617,7 @@ public class Controller {
         proDAO.closeStatements();
         dataToShow.clear();
         for (Produkt produkt: lista){
-            dataToShow.add(new RecordToShow(String.valueOf(produkt.getId()), produkt.getNazwa() + " " +produkt.getRozmiarPorcji()));
+            dataToShow.add(new RecordToShow(produkt.getNazwa(), "Rozmiar: " +produkt.getRozmiarPorcji()));
         }
     }
 
