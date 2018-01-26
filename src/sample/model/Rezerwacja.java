@@ -13,6 +13,7 @@ public class Rezerwacja {
     private List<MiejsceNaSeansie> zarezerwowaneMiejsca; // not null
     private List<Bilet> wykupioneBilety; // moze byc nullem
 
+
     public Rezerwacja(Klient klientRezerwujacy, List<MiejsceNaSeansie> zarezerwowaneMiejsca) {
         dataUtworzenia = new Date();
         jestOplacona = false;
@@ -20,7 +21,7 @@ public class Rezerwacja {
         this.zarezerwowaneMiejsca = zarezerwowaneMiejsca;
     }
 
-    public Rezerwacja(int id, Date dataUtworzenia, boolean jestOplacona, Klient klientRezerwujacy, List<MiejsceNaSeansie> zarezerwowaneMiejsca) {
+    public Rezerwacja(int id, Date dataUtworzenia, boolean jestOplacona, Klient klientRezerwujacy) {
         this.id = id;
         this.dataUtworzenia = dataUtworzenia;
         this.jestOplacona = jestOplacona;
