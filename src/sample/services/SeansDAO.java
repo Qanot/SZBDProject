@@ -35,7 +35,7 @@ public class SeansDAO extends DAO {
                     "SELECT DATA_GODZINA, FILMY_ID, SALE_ID FROM SEANSE WHERE ID = ?");
 
         } catch (SQLException ex) {
-            Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                     "Błąd przygotowania prekompilowanego polecenia", ex);
         }
     }
@@ -283,7 +283,7 @@ public class SeansDAO extends DAO {
     }
 
     private List<Miejsce> getZarezerwowaneMiejscaDlaSeansu(Seans seans){
-        
+
         List<Miejsce> miejscaZarezerwowane = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectZarezerwowane = null;
         try {
@@ -327,12 +327,6 @@ public class SeansDAO extends DAO {
             }
         }
         return miejscaZarezerwowane;
-    }
-
-    public List<Seans> getSeanseDlaFilmu(int idFilmu){
-        // TODO
-        return null;
-
     }
 
 }

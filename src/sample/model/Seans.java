@@ -94,4 +94,29 @@ public class Seans {
                 "\nTytuł filmu: " + film.getTytul() +
                 "\nNr sali: " + sala.getNrSali();
     }
+
+
+    public List<Miejsce> getMiejscaWolne() {
+        return miejscaWolne;
+    }
+
+    public void setMiejscaWolne(List<Miejsce> miejscaWolne) {
+        this.miejscaWolne = miejscaWolne;
+    }
+
+    public List<Miejsce> getMiejscaWykupione() {
+        return miejscaWykupione;
+    }
+
+    public void setMiejscaWykupione(List<Miejsce> miejscaWykupione) {
+        this.miejscaWykupione = miejscaWykupione;
+    }
+
+    public List<Miejsce> getMiejscaZarezerwowane() {
+        return miejscaZarezerwowane;
+    }
+
+    public void setMiejscaZarezerwowane(List<Miejsce> miejscaZarezerwowane) {
+        this.miejscaZarezerwowane = miejscaZarezerwowane;
+    }
 }

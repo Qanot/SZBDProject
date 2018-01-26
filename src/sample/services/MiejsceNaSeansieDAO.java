@@ -2,6 +2,7 @@ package sample.services;
 
 
 import sample.model.MiejsceNaSeansie;
+import sample.model.Rezerwacja;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -10,13 +11,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class MiejsceNaSeansieDAO{
 
-    /*
-    private List<MiejsceNaSeansie> miejscaNaSeansie;
+public class MiejsceNaSeansieDAO{
+    private ConnectionController connectionController;
+    //private List<MiejsceNaSeansie> miejscaNaSeansie;
 
     public MiejsceNaSeansieDAO(ConnectionController connectionController){
+        this.setConnectionController(connectionController);
+
+        /*
         super(connectionController);
+
         miejscaNaSeansie = new ArrayList<MiejsceNaSeansie>();
 
         try {
@@ -34,8 +39,26 @@ public class MiejsceNaSeansieDAO{
         } catch (SQLException ex) {
             Logger.getLogger(RodzajBiletuDAO.class.getName()).log(Level.SEVERE,
                     "Błąd przygotowania prekompilowanego polecenia", ex);
-        }
+        }*/
+
     }
-*/
+
+    public void deleteAllMiejscaNaSeansieForRezerwacja(Rezerwacja rezerwacja){
+        // TODO
+    }
+    
+
+    public void insert(MiejsceNaSeansie miejsceNaSeansie){
+        // TODO
+    }
+    public List<MiejsceNaSeansie> getMiejscaByIdRezerwacji(int idRezerwacji){
+        // TODO
+        return null;
+    }
+
+    public void setConnectionController(ConnectionController connectionController) {
+        this.connectionController = connectionController;
+    }
+
 
 }
