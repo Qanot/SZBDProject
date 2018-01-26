@@ -5,7 +5,9 @@ import sample.model.Miejsce;
 import sample.model.Sala;
 import sample.model.Seans;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -193,6 +195,7 @@ public class SeansDAO extends DAO {
     private List<Miejsce> getWolneMiejscaDlaSeansu(Seans seans){
         List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectWolne = null;
+        ResultSet rs = null;
         try {
             stmtSelectWolne = connectionController.getConn().prepareStatement(
                     "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
@@ -203,10 +206,10 @@ public class SeansDAO extends DAO {
                             "   AND SEANSE_ID = ?)");
             stmtSelectWolne.setInt(1, seans.getSala().getId());
             stmtSelectWolne.setInt(2, seans.getId());
-            rsSelect = stmtSelectWolne.executeQuery();
+            rs = stmtSelectWolne.executeQuery();
             MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
-            while (rsSelect.next()) {
-                int idMiejsca = rsSelect.getInt(1);
+            while (rs.next()) {
+                int idMiejsca = rs.getInt(1);
                 Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
                 miejscaWolne.add(miejsce);
             }
@@ -216,9 +219,9 @@ public class SeansDAO extends DAO {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania polecenia select", ex);
         } finally {
-            if (rsSelect != null) {
+            if (rs != null) {
                 try {
-                    rsSelect.close();
+                    rs.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                             "Błąd zamykania interfejsu ResultSet", ex);
@@ -239,6 +242,7 @@ public class SeansDAO extends DAO {
    private List<Miejsce> getWykupioneMiejscaDlaSeansu(Seans seans){
         List<Miejsce> miejscaWykupione = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectWykupione = null;
+        ResultSet rs = null;
         try {
             stmtSelectWykupione = connectionController.getConn().prepareStatement(
                     "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
@@ -250,10 +254,10 @@ public class SeansDAO extends DAO {
                             "   AND BILETY_ID IS NOT NULL)");
             stmtSelectWykupione.setInt(1, seans.getSala().getId());
             stmtSelectWykupione.setInt(2, seans.getId());
-            rsSelect = stmtSelectWykupione.executeQuery();
+            rs = stmtSelectWykupione.executeQuery();
             MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
-            while (rsSelect.next()) {
-                int idMiejsca = rsSelect.getInt(1);
+            while (rs.next()) {
+                int idMiejsca = rs.getInt(1);
                 Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
                 miejscaWykupione.add(miejsce);
             }
@@ -262,9 +266,9 @@ public class SeansDAO extends DAO {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania polecenia select", ex);
         } finally {
-            if (rsSelect != null) {
+            if (rs != null) {
                 try {
-                    rsSelect.close();
+                    rs.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                             "Błąd zamykania interfejsu ResultSet", ex);
@@ -286,6 +290,7 @@ public class SeansDAO extends DAO {
 
         List<Miejsce> miejscaZarezerwowane = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectZarezerwowane = null;
+        ResultSet rs = null;
         try {
             stmtSelectZarezerwowane = connectionController.getConn().prepareStatement(
                     "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
@@ -297,10 +302,10 @@ public class SeansDAO extends DAO {
                             "   AND REZERWACJE_ID IS NOT NULL)");
             stmtSelectZarezerwowane.setInt(1, seans.getSala().getId());
             stmtSelectZarezerwowane.setInt(2, seans.getId());
-            rsSelect = stmtSelectZarezerwowane.executeQuery();
+            rs = stmtSelectZarezerwowane.executeQuery();
             MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
-            while (rsSelect.next()) {
-                int idMiejsca = rsSelect.getInt(1);
+            while (rs.next()) {
+                int idMiejsca = rs.getInt(1);
                 Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
                 miejscaZarezerwowane.add(miejsce);
             }
@@ -309,9 +314,9 @@ public class SeansDAO extends DAO {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania polecenia select", ex);
         } finally {
-            if (rsSelect != null) {
+            if (rs != null) {
                 try {
-                    rsSelect.close();
+                    rs.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                             "Błąd zamykania interfejsu ResultSet", ex);
