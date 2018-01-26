@@ -9,4 +9,13 @@ public class Bilet {
     private Rezerwacja rezerwacjaPoprzedzajacaSprzedaz; //moze byc null (opcjonalne)
     private MiejsceNaSeansie miejsceNaSeansie;
     ProduktNaParagonie produktNaParagonie; // reprezentuje pozycje na paragonie, ktora jest nabity bilet
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

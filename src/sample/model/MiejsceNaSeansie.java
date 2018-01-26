@@ -1,6 +1,7 @@
 package sample.model;
 
 public class MiejsceNaSeansie {
+
     /**
      * zwiazdek wylaczny (exclusive relationship)
      * tzn. albo referencja na Bilet
@@ -10,6 +11,8 @@ public class MiejsceNaSeansie {
      * - jedna z referencji jest null, a druga powinna wskazywac na obiekt
      * (jednoczesnie nie mogą być obydwie not null)
      **/
+
+    private int id;
     private Miejsce miejsce;
     private Seans seans;
     private Rezerwacja rezerwacja;
@@ -25,5 +28,51 @@ public class MiejsceNaSeansie {
         this.rezerwacja = rezerwacja; // ktos zarezerwowal miejsce
         this.bilet = null; // w normalnej sytuacji nie bylo biletu (nadpisujemy null)- najpierw rezerwacja, potem zakup;
         // chyba ze, ktos (np. pracownik) edytuje historie i anulowuje bilet
+    }
+
+    public MiejsceNaSeansie(int id, Miejsce miejsce, Seans seans, Rezerwacja rezerwacja) {
+        this.id = id;
+        this.miejsce = miejsce;
+        this.seans = seans;
+        this.setRezerwacja(rezerwacja);
+    }
+
+    public MiejsceNaSeansie(int id, Miejsce miejsce, Seans seans, Bilet bilet) {
+        this.id = id;
+        this.miejsce = miejsce;
+        this.seans = seans;
+        this.setBilet(bilet);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Miejsce getMiejsce() {
+        return miejsce;
+    }
+
+    public void setMiejsce(Miejsce miejsce) {
+        this.miejsce = miejsce;
+    }
+
+    public Seans getSeans() {
+        return seans;
+    }
+
+    public void setSeans(Seans seans) {
+        this.seans = seans;
+    }
+
+    public Rezerwacja getRezerwacja() {
+        return rezerwacja;
+    }
+
+    public Bilet getBilet() {
+        return bilet;
     }
 }

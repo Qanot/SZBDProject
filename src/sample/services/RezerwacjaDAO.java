@@ -75,6 +75,7 @@ public class RezerwacjaDAO {
             stmtInsert.setInt(1, rezerwacja.getId());
             stmtInsert.setDate(2, new java.sql.Date(rezerwacja.getDataUtworzenia().getTime())); // to chyba dziala
             stmtInsert.setInt(3, rezerwacja.getKlientRezerwujacy().getId());
+            stmtInsert.execute();
 
             // a potem wstaw MiejscaNaSeansie
             MiejsceNaSeansieDAO miejsceNaSeansieDAO = new MiejsceNaSeansieDAO(connectionController);
@@ -125,9 +126,9 @@ public class RezerwacjaDAO {
                 klientDAO.closeStatements();
 
                 MiejsceNaSeansieDAO miejsceNaSeansieDAO = new MiejsceNaSeansieDAO(connectionController);
-                List<MiejsceNaSeansie> zarezerwowaneMiejsca = miejsceNaSeansieDAO.getMiejscaByIdRezerwacji(idRezerwacji);
-
-                rezerwacja = new Rezerwacja(idRezerwacji, dataUtworzenia, jestOplacona, klientRezerwujacy, zarezerwowaneMiejsca);
+                rezerwacja = new Rezerwacja(idRezerwacji, dataUtworzenia, jestOplacona, klientRezerwujacy);
+                List<MiejsceNaSeansie> zarezerwowaneMiejsca = miejsceNaSeansieDAO.getMiejscaByIdRezerwacji(rezerwacja);
+                rezerwacja.setZarezerwowaneMiejsca(zarezerwowaneMiejsca);
 
             }
 
