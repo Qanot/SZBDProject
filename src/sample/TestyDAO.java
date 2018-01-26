@@ -30,25 +30,24 @@ public class TestyDAO {
 
 
     }
-    public static void testSeansWolneWykupioneZarezerwowane(ConnectionController cc){
-        List<Miejsce> miejscaWolne;
-        List<Miejsce> miejscaWykupione;
-        List<Miejsce> miejscaZarezerwowane;
+
+
+    public static void testSeansWolneWykupioneZarezerwowane(ConnectionController cc)
+    {
         SeansDAO seansDAO = new SeansDAO(cc);
         Seans seans = seansDAO.getSeansById(21);
-        miejscaWolne = seansDAO.getWolneMiejscaDlaSeansu(seans);
         System.out.println("MIEJSCA WOLNE");
-        for(Miejsce m: miejscaWolne){
+        for(Miejsce m: seans.getMiejscaWolne()){
             System.out.println(m.toString());
         }
-        miejscaWykupione = seansDAO.getWykupioneMiejscaDlaSeansu(seans);
+
         System.out.println("MIEJSCA WYKUPIONE");
-        for(Miejsce m: miejscaWykupione){
+        for(Miejsce m: seans.getMiejscaWykupione()){
             System.out.println(m.toString());
         }
-        miejscaZarezerwowane = seansDAO.getZarezerwowaneMiejscaDlaSeansu(seans);
+
         System.out.println("MIEJSCA ZAREZERWOWANE");
-        for(Miejsce m: miejscaZarezerwowane){
+        for(Miejsce m: seans.getMiejscaZarezerwowane()){
             System.out.println(m.toString());
         }
 

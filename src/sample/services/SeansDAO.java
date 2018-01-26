@@ -58,6 +58,10 @@ public class SeansDAO extends DAO {
 
                 Seans seans = new Seans(dataEmisji, film, sala);
                 seans.setId(id);
+                seans.setMiejscaWolne(this.getWolneMiejscaDlaSeansu(seans));
+                seans.setMiejscaWykupione(this.getWykupioneMiejscaDlaSeansu(seans));
+                seans.setMiejscaZarezerwowane(this.getZarezerwowaneMiejscaDlaSeansu(seans));
+
                 seanse.add(seans);
             }
             filmDAO.closeStatements();
@@ -94,6 +98,9 @@ public class SeansDAO extends DAO {
             stmtInsert.execute();
             int id = stmtInsert.getInt(5);
             seans.setId(id);
+            seans.setMiejscaWolne(this.getWolneMiejscaDlaSeansu(seans));
+            seans.setMiejscaWykupione(this.getWykupioneMiejscaDlaSeansu(seans));
+            seans.setMiejscaZarezerwowane(this.getZarezerwowaneMiejscaDlaSeansu(seans));
 
             int wykonananoPoprawnie = stmtInsert.getInt(1);
             return wykonananoPoprawnie == 1;
@@ -114,6 +121,10 @@ public class SeansDAO extends DAO {
             stmtUpdate.setInt(5, seans.getSala().getId());
 
             stmtUpdate.execute();
+
+            seans.setMiejscaWolne(this.getWolneMiejscaDlaSeansu(seans));
+            seans.setMiejscaWykupione(this.getWykupioneMiejscaDlaSeansu(seans));
+            seans.setMiejscaZarezerwowane(this.getZarezerwowaneMiejscaDlaSeansu(seans));
 
             int wykonananoPoprawnie = stmtUpdate.getInt(1);
             return wykonananoPoprawnie == 1;
@@ -159,6 +170,9 @@ public class SeansDAO extends DAO {
 
                 seans = new Seans(dataEmisji, film, sala);
                 seans.setId(id);
+                seans.setMiejscaWolne(this.getWolneMiejscaDlaSeansu(seans));
+                seans.setMiejscaWykupione(this.getWykupioneMiejscaDlaSeansu(seans));
+                seans.setMiejscaZarezerwowane(this.getZarezerwowaneMiejscaDlaSeansu(seans));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
@@ -176,7 +190,7 @@ public class SeansDAO extends DAO {
         return seans;
     }
 
-    public List<Miejsce> getWolneMiejscaDlaSeansu(Seans seans){
+    private List<Miejsce> getWolneMiejscaDlaSeansu(Seans seans){
         List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectWolne = null;
         try {
@@ -222,7 +236,7 @@ public class SeansDAO extends DAO {
         return miejscaWolne;
     }
 
-    public List<Miejsce> getWykupioneMiejscaDlaSeansu(Seans seans){
+   private List<Miejsce> getWykupioneMiejscaDlaSeansu(Seans seans){
         List<Miejsce> miejscaWykupione = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectWykupione = null;
         try {
@@ -268,7 +282,8 @@ public class SeansDAO extends DAO {
         return miejscaWykupione;
     }
 
-    public List<Miejsce> getZarezerwowaneMiejscaDlaSeansu(Seans seans){
+    private List<Miejsce> getZarezerwowaneMiejscaDlaSeansu(Seans seans){
+        
         List<Miejsce> miejscaZarezerwowane = new ArrayList<Miejsce>();
         PreparedStatement stmtSelectZarezerwowane = null;
         try {
