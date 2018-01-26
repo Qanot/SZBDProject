@@ -33,7 +33,7 @@ public class KlientDAO extends DAO{
             this.stmtInsert = connectionController.getConn().prepareCall(
                     "{? = call wstaw_klienta(?, ?, ?, ?, ?, ?, ?)}");
             this.stmtFindById = connectionController.getConn().prepareStatement(
-              "SELECT imie, nazwisko, email, login, haslo, telefon FROM PRACOWNICY WHERE ID = ?");
+              "SELECT imie, nazwisko, email, login, haslo, telefon FROM KLIENCI WHERE ID = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(KlientDAO.class.getName()).log(Level.SEVERE,

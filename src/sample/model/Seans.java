@@ -74,14 +74,6 @@ public class Seans {
         LocalTime localTimeEmisji = getDataEmisji().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
 
         return localDateEmisji.toString() + " " + localTimeEmisji.toString();
-        /*
-
-        Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
-        calendar.setTime(dataEmisji);   // assigns calendar to given date
-        return calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH + 1) + "." +
-                calendar.get(Calendar.YEAR) + " " + calendar.get(Calendar.HOUR_OF_DAY) + ":"
-                + calendar.get(Calendar.MINUTE);
-                */
     }
 
     public String toStringTytulSala() {

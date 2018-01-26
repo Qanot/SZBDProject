@@ -1,19 +1,8 @@
 package sample;
 
-import sample.model.Seans;
-import sample.model.Miejsce;
-import sample.model.Produkt;
-import sample.model.Sala;
-import sample.model.Film;
-import sample.model.Klient;
-import sample.model.RozmiarPorcji;
+import sample.model.*;
 
-import sample.services.SeansDAO;
-import sample.services.ConnectionController;
-import sample.services.ProduktDAO;
-import sample.services.SalaDAO;
-import sample.services.FilmDAO;
-import sample.services.KlientDAO;
+import sample.services.*;
 
 import java.util.List;
 
@@ -25,10 +14,19 @@ public class TestyDAO {
         //testSala(cc);
         //testFilm(cc);
         //testSeans(cc);
-        testSeansWolneWykupioneZarezerwowane(cc);
+        //testSeansWolneWykupioneZarezerwowane(cc);
+        testRezerwacja(cc);
         cc.close();
 
 
+    }
+
+    public static void testRezerwacja(ConnectionController cc){
+        RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+        List<Rezerwacja> rezerwacje = rezerwacjaDAO.getRezerwacje();
+        for(Rezerwacja rezerwacja: rezerwacje){
+            System.out.println(rezerwacja.toString());
+        }
     }
 
 
@@ -52,6 +50,7 @@ public class TestyDAO {
         }
 
         seansDAO.closeStatements();
+        int x = 3;
     }
     public static void testSeans(ConnectionController cc){
         SeansDAO seansDAO = new SeansDAO(cc);
