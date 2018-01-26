@@ -323,7 +323,15 @@ public class Controller {
                     addClientsToTableView();
                 }
             } else if (presentedType.equals("Seats")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatWindow.fxml"));
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
+                    List<Miejsce> lista = miejsceDAO.getMiejsca();
+                    Miejsce tempMiejsce = lista.get(dataToShow.indexOf(selection));
+                    miejsceDAO.deleteMiejsce(tempMiejsce);
+                    miejsceDAO.closeStatements();
+                    addSeatsToTableView();
+                }
             } else if (presentedType.equals("SeatsOnSeans")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatOnSeansWindow.fxml"));
             } else if (presentedType.equals("Receipts")) {
@@ -790,6 +798,31 @@ public class Controller {
     @FXML
     private void handleAddSeatsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        Miejsce miejsce = null;
+        if(selection != null && presentedType.equals("Seats")){
+            MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
+            List<Miejsce> lista = miejsceDAO.getMiejsca();
+            miejsce = lista.get(dataToShow.indexOf(selection));
+            miejsceDAO.closeStatements();
+        }
+        openAddSeatWindow(miejsce);
+    }
+    private void openAddSeatWindow(Miejsce miejsce){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addSeatWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania nowego miejsca");
+            AddSeatController controller = fxmlLoader.<AddSeatController>getController();
+            controller.initSeatController(miejsce, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Seats"; addSeatsToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

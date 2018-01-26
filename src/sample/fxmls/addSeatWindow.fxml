@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddSeatController">
+   <children>
+      <Pane fx:id="singlePane" layoutX="38.0" layoutY="107.0" prefHeight="168.0" prefWidth="297.0">
+         <children>
+            <Label layoutX="9.0" layoutY="12.0" text="Rząd:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="111.0" prefHeight="30.0" prefWidth="43.0" text="Sala:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="editSala" layoutX="115.0" layoutY="114.0" prefWidth="150.0" />
+            <JFXTextField fx:id="editRow" layoutX="115.0" layoutY="15.0" prefHeight="25.0" prefWidth="150.0" />
+            <JFXTextField fx:id="editNumber" layoutX="115.0" layoutY="65.0" prefHeight="25.0" prefWidth="150.0" />
+            <Label layoutX="9.0" layoutY="63.0" text="Numer:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="67.0" layoutY="14.0" prefHeight="65.0" prefWidth="238.0" text="Wprowadź dane nowego miejsca w konketnej sali" textAlignment="CENTER" textFill="#009688" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="applyChanges" layoutX="54.0" layoutY="290.0" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" ripplerFill="#676f6d" style="-fx-background-color: #25bbac;" text="Zatwierdź" textFill="#f8f6f6">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <Pane fx:id="multiPane" layoutX="24.0" layoutY="94.0" prefHeight="157.0" prefWidth="326.0" visible="false">
+         <children>
+            <JFXTextField fx:id="editMultiRow" layoutX="161.0" layoutY="45.0" prefHeight="25.0" prefWidth="150.0" />
+            <Label layoutY="42.0" text="Liczba rzędów:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutY="85.0" prefHeight="30.0" prefWidth="150.0" text="Miejsc w rzędzie:" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="editMultiSala" layoutX="161.0" layoutY="126.0" prefWidth="150.0" />
+            <Label layoutY="123.0" text="Sala:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="editMultiNumber" layoutX="161.0" layoutY="88.0" prefHeight="25.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <JFXCheckBox fx:id="isMulti" layoutX="80.0" layoutY="85.0" text="Wygeneruj miejsca masowo dla sali" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
