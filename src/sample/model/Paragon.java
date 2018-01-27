@@ -82,24 +82,25 @@ public class Paragon {
 
     @Override
     public String toString() {
+        int rozmiar = bilety.size() + produkty.size();
         return "Id: "+ id +
                 "\nData zakupu: " + this.getDataZakupuToString() +
                 "\nPracownik: " + pracownikNabijajacyParagon.getImie() + " " + pracownikNabijajacyParagon.getNazwisko() +
                 "\nPESEL: " + pracownikNabijajacyParagon.getPESEL() +
-                "\nLiczba produktów: " + bilety.size() + produkty.size() +
+                "\nLiczba produktów: " + rozmiar +
                 "\nProdukty ze sklepiku: " +
                 produktyToString()
                 + "\nBilety: "
                 + biletyToString();
     }
     private String produktyToString(){
-        if(produkty.size() < 0)
+        if(produkty.size() == 0)
             return "brak";
         else{
             String wynik = "";
             int i = 1;
             for(Produkt produkt: produkty){
-                wynik += "\n\t" + Integer.toString(i) + ". " + produkt.toString();
+                wynik += "\n" + Integer.toString(i) + ". " + produkt.toString();
                 i += 1;
             }
             return wynik;
@@ -107,13 +108,13 @@ public class Paragon {
     }
 
     private String biletyToString(){
-        if(bilety.size() < 0)
+        if(bilety.size() == 0)
             return "brak";
         else{
             String wynik = "";
             int i = 1;
             for(Bilet bilet : bilety){
-                wynik += "\n\t" + Integer.toString(i) + ". " + bilet.toString();
+                wynik += "\n" + Integer.toString(i) + ". " + bilet.toString();
                 i += 1;
             }
             return wynik;

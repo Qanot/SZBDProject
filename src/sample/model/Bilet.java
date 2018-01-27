@@ -42,7 +42,7 @@ public class Bilet {
 
     @Override
     public String toString() {
-        return rodzajBiletu.getNazwa() + miejsceNaSeansie.getSeans().getFilm().getTytul() +
+        return rodzajBiletu.getNazwa() + " " + miejsceNaSeansie.getSeans().getFilm().getTytul() + " " +
                 miejsceNaSeansie.getMiejsce().getRzad() +
                 "/" + miejsceNaSeansie.getMiejsce().getNrMiejsca();
     }

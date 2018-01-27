@@ -770,12 +770,13 @@ public class Controller {
         System.out.println("addReceiptsButton!");
         RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
         Paragon paragon = new Paragon();
-        if(selection != null && presentedType.equals("Receipts")){
-            ParagonDAO paragonDAO = new ParagonDAO(cc);
-            List<Paragon> lista = paragonDAO.getParagony();
-            paragon = lista.get(dataToShow.indexOf(selection));
-            paragonDAO.closeStatements();
-        }
+        /** Straszny bład będący przeszłością **/
+//        if(selection != null && presentedType.equals("Receipts")){
+//            ParagonDAO paragonDAO = new ParagonDAO(cc);
+//            List<Paragon> lista = paragonDAO.getParagony();
+//            paragon = lista.get(dataToShow.indexOf(selection));
+//            paragonDAO.closeStatements();
+//        }
         openAddReceiptWindow(paragon);
     }
     private void openAddReceiptWindow(Paragon paragon){
