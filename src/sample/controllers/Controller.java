@@ -61,7 +61,6 @@ public class Controller {
         //enable controller to connect to database
         cc = new ConnectionController();
         cc.open();
-
         presentedType = "";
     }
 
@@ -75,9 +74,8 @@ public class Controller {
         System.out.println("editRecordButton!");
 
 
-        if (presentedType.equals("Tickets")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editTicketWindow.fxml"));
-        } else if (presentedType.equals("Movies")) {
+
+        if (presentedType.equals("Movies")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
                 FilmDAO filmDAO = new FilmDAO(cc);
@@ -105,8 +103,6 @@ public class Controller {
                 miejsceDAO.closeStatements();
                 openEditSeatWindow(tempSeat);
             }
-        } else if (presentedType.equals("SeatsOnSeans")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatOnSeansWindow.fxml"));
         } else if (presentedType.equals("Receipts")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
         } else if (presentedType.equals("Employees")) {
@@ -118,8 +114,6 @@ public class Controller {
                 prdao.closeStatements();
                 openEditEmployeeWindow(tempEmployee);
             }
-        } else if (presentedType.equals("ProductsOnReceipts")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
         } else if (presentedType.equals("Products")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
@@ -774,7 +768,7 @@ public class Controller {
     private void handleAddReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
         RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
-        Paragon paragon = null;
+        Paragon paragon = new Paragon();
         if(selection != null && presentedType.equals("Receipts")){
             ParagonDAO paragonDAO = new ParagonDAO(cc);
             List<Paragon> lista = paragonDAO.getParagony();

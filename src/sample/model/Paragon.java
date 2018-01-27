@@ -3,6 +3,7 @@ package sample.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,14 +21,17 @@ public class Paragon {
 
 
 
-    public Paragon(Date dataZakupu) {
-        this.dataZakupu = dataZakupu;
+    public Paragon() {
+        this.dataZakupu = new Date();
+        produkty = new ArrayList<>();
+        bilety = new ArrayList<>();
     }
 
     public Paragon(Date dataZakupu, Pracownik pracownikNabijajacyParagon) {
         this.dataZakupu = dataZakupu;
         this.pracownikNabijajacyParagon = pracownikNabijajacyParagon;
     }
+
 
     public int getId() {
         return id;

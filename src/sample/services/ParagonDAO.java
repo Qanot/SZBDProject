@@ -1,8 +1,6 @@
 package sample.services;
 
-import sample.model.Paragon;
-import sample.model.Pracownik;
-import sample.model.ProduktNaParagonie;
+import sample.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +41,7 @@ public class ParagonDAO extends DAO {
         paragony.clear();
         try {
             rsSelect = stmtSelect.executeQuery();
-            PracownikDAO pracownikDAO = new PracownikDAO(connectionController);
+            PracownikDAO pracownikDAO = new PracownikDAO(super.connectionController);
             while (rsSelect.next()) {
                 int id = rsSelect.getInt("ID");
                 Date dataZakupu = new java.util.Date(rsSelect.getTimestamp("DATA_GODZINA").getTime());
@@ -74,7 +72,7 @@ public class ParagonDAO extends DAO {
     }
 
     public void deleteParagon(Paragon paragon) {
-
+//        ProduktNaParagonieDAO pnpDAO = ProduktNaParagonieDAO(super.connectionController);
         // TODO wstawka od Oliwii wywolac przed usunieciem paragonu usuwanie wszystkich produktow na nim
         try {
             stmtDelete.setInt(1, paragon.getId());

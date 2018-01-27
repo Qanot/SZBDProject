@@ -17,6 +17,10 @@ public class ProduktNaParagonieDAO {
 
     private ConnectionController connectionController;
 
+    public ProduktNaParagonieDAO(ConnectionController connectionController) {
+        this.connectionController = connectionController;
+    }
+
     public void deleteAll(Paragon paragon){
         deleteAllProduktyForParagon(paragon);
         deleteAllBiletyForParagon(paragon);
