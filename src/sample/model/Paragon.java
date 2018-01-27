@@ -84,6 +84,7 @@ public class Paragon {
     public String toString() {
         int rozmiar = bilety.size() + produkty.size();
         return "Id: "+ id +
+                "\nSuma (PLN): " + String.format ("%.2f", getSumaPieniazkow()) +
                 "\nData zakupu: " + this.getDataZakupuToString() +
                 "\nPracownik: " + pracownikNabijajacyParagon.getImie() + " " + pracownikNabijajacyParagon.getNazwisko() +
                 "\nPESEL: " + pracownikNabijajacyParagon.getPESEL() +
@@ -119,5 +120,16 @@ public class Paragon {
             }
             return wynik;
         }
+    }
+
+    public double getSumaPieniazkow(){
+        double wynik = 0;
+        for(Produkt produkt: produkty){
+            wynik += produkt.getCena();
+        }
+        for(Bilet bilet : bilety){
+            wynik += bilet.getRodzajBiletu().getCena();
+        }
+        return wynik;
     }
 }
