@@ -82,8 +82,9 @@ public class Paragon {
 
     @Override
     public String toString() {
-        return "Data zakupu: " + this.getDataZakupuToString() +
-                "\n Pracownik: " + pracownikNabijajacyParagon.getImie() + " " + pracownikNabijajacyParagon.getNazwisko() +
+        return "Id: "+ id +
+                "\nData zakupu: " + this.getDataZakupuToString() +
+                "\nPracownik: " + pracownikNabijajacyParagon.getImie() + " " + pracownikNabijajacyParagon.getNazwisko() +
                 "PESEL: " + pracownikNabijajacyParagon.getPESEL() +
                 "\nLiczba produktów: " + bilety.size() + produkty.size() +
                 "\nProdukty ze sklepiku: " +

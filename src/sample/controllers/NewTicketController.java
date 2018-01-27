@@ -65,6 +65,7 @@ public class NewTicketController {
                 Bilet bilet = new Bilet(rodzajBiletu);
                 MiejsceNaSeansie miejsceNaSeansie = new MiejsceNaSeansie(miejsce, seans);
                 bilet.setMiejsceNaSeansie(miejsceNaSeansie);
+                miejsceNaSeansie.setBilet(bilet);
                 paragon.getBilety().add(bilet);
 
                 closeConnection();
