@@ -85,7 +85,7 @@ public class Paragon {
         return "Id: "+ id +
                 "\nData zakupu: " + this.getDataZakupuToString() +
                 "\nPracownik: " + pracownikNabijajacyParagon.getImie() + " " + pracownikNabijajacyParagon.getNazwisko() +
-                "PESEL: " + pracownikNabijajacyParagon.getPESEL() +
+                "\nPESEL: " + pracownikNabijajacyParagon.getPESEL() +
                 "\nLiczba produktów: " + bilety.size() + produkty.size() +
                 "\nProdukty ze sklepiku: " +
                 produktyToString()

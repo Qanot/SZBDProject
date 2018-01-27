@@ -84,7 +84,6 @@ public class Controller {
                 filmDAO.closeStatements();
                 openEditMovieWindow(tempMovie);
             }
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editMovieWindow.fxml"));
         } else if (presentedType.equals("Clients")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
@@ -104,7 +103,9 @@ public class Controller {
                 openEditSeatWindow(tempSeat);
             }
         } else if (presentedType.equals("Receipts")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
+            showAlertEmptyForm("Edytowanie wydanego już paragonu nie jest możliwe. " +
+                    "\nBy wycofać paragon, należy go usunąć,  a następnie dodać od nowa wszystkie pozycje." +
+                    "\nW razie problemów proszę kotaktować się z numerem +48 695 520 450");
         } else if (presentedType.equals("Employees")) {
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null){
