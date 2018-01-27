@@ -32,7 +32,7 @@ import java.util.List;
 
 import static sample.controllers.Controller.showAlertEmptyForm;
 
-public class  AddReservationController {
+public class AddReservationController {
 
     Rezerwacja rezerwacja = null;
     ConnectionController cc;
@@ -76,17 +76,17 @@ public class  AddReservationController {
     private JFXButton usunMiejsceButton;
 
     @FXML
-    void handleApplyChanges(ActionEvent event) throws IOException{
+    void handleApplyChanges(ActionEvent event) throws IOException {
         System.out.println("applyChanges!");
         Klient klient = editKlient.getValue();
         Seans seans = editSeans.getValue();
 
-        try{
-            if(klient != null && seans != null && miejscaWybrane.size() > 0){
+        try {
+            if (klient != null && seans != null && miejscaWybrane.size() > 0) {
                 List<MiejsceNaSeansie> miejscaNaSeansie = new ArrayList<MiejsceNaSeansie>();
                 Rezerwacja rezerwacja = new Rezerwacja(klient, miejscaNaSeansie);
 
-                for(Miejsce miejsce : miejscaWybrane){
+                for (Miejsce miejsce : miejscaWybrane) {
                     // id i tak zostanie nadpisane przy wstawianiu
                     // rezerwacja tez zostanie nadpisana
                     MiejsceNaSeansie miejsceNaSeansie = new MiejsceNaSeansie(miejsce, seans);
@@ -97,19 +97,16 @@ public class  AddReservationController {
                 RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
                 rezerwacjaDAO.insertRezerwacja(rezerwacja);
                 closeWindow();
-            }
-            else {
+            } else {
                 showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             showAlertEmptyForm("Niepoprawnie wypełnione pola!");
         }
 
 
-
     }
-
 
 
     public void initReservationController(Rezerwacja rezerwacja, ConnectionController cc) {
@@ -137,9 +134,9 @@ public class  AddReservationController {
     }
 
     @FXML
-    void handleAddSeat(ActionEvent event) throws IOException{
+    void handleAddSeat(ActionEvent event) throws IOException {
         System.out.println("Dodaj miejsce!");
-        if(editMiejsce.getValue() != null){
+        if (editMiejsce.getValue() != null) {
             System.out.println("Not null");
             Miejsce miejsceWybrane = editMiejsce.getValue();
             miejscaWybrane.add(miejsceWybrane);
@@ -148,16 +145,17 @@ public class  AddReservationController {
             editMiejsce.setItems(miejscaWolneLista);
             miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
             recordsTable.setItems(miejscaWybraneLista);
-        } else{
+        } else {
             okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
 
         }
     }
+
     @FXML
-    void handleDeleteSeat(ActionEvent event) throws IOException{
+    void handleDeleteSeat(ActionEvent event) throws IOException {
         System.out.println("Usun miejsce!");
         Miejsce selection = recordsTable.getSelectionModel().getSelectedItem();
-        if(selection != null){
+        if (selection != null) {
             System.out.println("Not null usun");
             miejscaWybrane.remove(selection);
             miejscaWolne.add(selection);
@@ -166,19 +164,19 @@ public class  AddReservationController {
             miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
             recordsTable.setItems(miejscaWybraneLista);
 
-        } else{
+        } else {
             okienkoWiadomosci("Proszę najpierw zaznaczyć miejsce do usunięcia.");
         }
     }
 
     @FXML
-    public void comboActionSeans(){
+    public void comboActionSeans() {
         System.out.println("Akcja!!!!");
         miejscaWybrane.clear();
         Seans selectedSeans = editSeans.getValue();
         //SeansDAO seansDAO = new SeansDAO(cc);
         miejscaWolne = new ArrayList<Miejsce>(selectedSeans.getMiejscaWolne());
-        if(miejscaWolne.size() == 0){
+        if (miejscaWolne.size() == 0) {
             okienkoWiadomosci("Niestety na ten seans nie ma już miejsc.");
         }
         miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
@@ -188,11 +186,13 @@ public class  AddReservationController {
         recordsTable.setItems(miejscaWybraneLista);
         //seansDAO.closeStatements();
     }
+
     private void closeWindow() {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
         stage.close();
     }
-    private void okienkoWiadomosci(String message){
+
+    private void okienkoWiadomosci(String message) {
         BoxBlur blur = new BoxBlur(3, 3, 3);
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Label("Uwaga!"));
