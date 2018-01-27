@@ -1,10 +1,7 @@
 package sample.services;
 
 
-import sample.model.Miejsce;
-import sample.model.MiejsceNaSeansie;
-import sample.model.Rezerwacja;
-import sample.model.Seans;
+import sample.model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +18,33 @@ public class MiejsceNaSeansieDAO{
 
     public MiejsceNaSeansieDAO(ConnectionController connectionController){
         this.setConnectionController(connectionController);
+    }
+
+    public void deleteMiejsceNaSeansieForBilet(Bilet bilet){
+        /** UWAGA! ZNAJDUJE MIEJSCANASEANSIE DO USUNIECIA POD ID BILETU
+         */
+        PreparedStatement stmtDelete = null;
+        try {
+            stmtDelete = connectionController.getConn().prepareStatement(
+                    "DELETE FROM MIEJSCANASEANSIE " +
+                            "WHERE BILETY_ID = ?");
+
+            stmtDelete.setInt(1, bilet.getId());
+            stmtDelete.executeUpdate();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia delete", ex);
+        } finally {
+            if (stmtDelete!= null) {
+                try {
+                    stmtDelete.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
     }
 
     public void deleteAllMiejscaNaSeansieForRezerwacja(Rezerwacja rezerwacja){
