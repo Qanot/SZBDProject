@@ -178,14 +178,14 @@ public class AddReceiptController {
     void handleAddProduct(ActionEvent event) throws IOException{
         System.out.println("Dodaj produkt!");
         //Tego raczej nie będzie
-//        if(editProduct.getValue() != null){
-//            Produkt produkt = editProduct.getValue();
-//            produkty.add(produkt);
-//            produktyLista = FXCollections.observableArrayList(produkty);
-//            recordsTableProducts.setItems(produktyLista);
-//        } else{
-//            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
-//        }
+        if(editProduct.getValue() != null){
+            Produkt produkt = editProduct.getValue();
+            produkty.add(produkt);
+            produktyLista = FXCollections.observableArrayList(produkty);
+            recordsTableProducts.setItems(produktyLista);
+        } else{
+            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
+        }
     }
     @FXML
     void handleDeleteTicket(ActionEvent event) throws IOException{

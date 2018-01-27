@@ -85,6 +85,11 @@ public class NewTicketController {
     }
 
     public void initController(Paragon paragon){
+        if(paragon == null){
+
+
+            System.out.println("KUBA NIE DAWAJ MI PROSZE NULLA! :)");
+        }
         connectionController = new ConnectionController();
         connectionController.open();
 
