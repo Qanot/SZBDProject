@@ -16,6 +16,8 @@ public class Paragon {
     }
     private List<ProduktNaParagonie> produktyNaParagonie;
 
+
+
     public Paragon(Date dataZakupu) {
         this.dataZakupu = dataZakupu;
     }

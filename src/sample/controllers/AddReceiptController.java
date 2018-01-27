@@ -13,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -20,6 +21,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import sample.model.*;
 import sample.services.ConnectionController;
+import sample.services.PracownikDAO;
+import sample.services.ProduktDAO;
 import sample.services.RezerwacjaDAO;
 
 import java.io.IOException;
@@ -32,6 +35,7 @@ public class AddReceiptController {
 
     Paragon paragon = null;
     ConnectionController cc;
+
     List<ProduktNaParagonie> produktyNaParagonie= new ArrayList<ProduktNaParagonie>();
     ObservableList<ProduktNaParagonie> produktNaParagonieLista = FXCollections.observableArrayList(produktyNaParagonie);
 //    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();
@@ -50,9 +54,9 @@ public class AddReceiptController {
     @FXML
     private ChoiceBox<Pracownik> editEmployee;
     @FXML
-    private ChoiceBox<Bilet> editSeans;
+    private ChoiceBox<Bilet> editBilet;
     @FXML
-    private ChoiceBox<Produkt> editMiejsce;
+    private ChoiceBox<Produkt> editProdukt;
 
     @FXML
     private TableView<Bilet> recordsTableTickets;
@@ -117,27 +121,32 @@ public class AddReceiptController {
 
 
     public void initReceiptController(Paragon paragon, ConnectionController cc) {
-//        this.cc = cc;
-//        this.rezerwacja = rezerwacja;
-//
-//        KlientDAO klientDAO = new KlientDAO(cc);
-//        List<Klient> klienci = klientDAO.getKlienci();
-//        klientDAO.closeStatements();
-//        ObservableList<Klient> klienciLista = FXCollections.observableArrayList(klienci);
-//        editEmployee.setItems(klienciLista);
-//
-//        SeansDAO seansDAO = new SeansDAO(cc);
-//        List<Seans> seanse = seansDAO.getSeanse();
-//        ObservableList<Seans> seanseLista = FXCollections.observableArrayList(seanse);
-//        editSeans.setItems(seanseLista);
-//        seansDAO.closeStatements();
-//
-//        rzadColumn.setCellValueFactory(
-//                new PropertyValueFactory<Miejsce, String>("rzad"));
-//        nrMiejscaColumn.setCellValueFactory(
-//                new PropertyValueFactory<Miejsce, String>("nrMiejsca"));
-//
-//        recordsTable.setPlaceholder(new Label("Nie wybrano miejsc"));
+        this.cc = cc;
+        this.paragon = paragon;
+
+        PracownikDAO pracownikDAO = new PracownikDAO(cc);
+        List<Pracownik> pracownicy = pracownikDAO.getPracownicy();
+        pracownikDAO.closeStatements();
+        editEmployee.setItems(FXCollections.observableArrayList(pracownicy));
+
+
+//        ProduktDAO produktDAO = new ProduktDAO(cc);
+//        List<Produkt> produkty = produktDAO.getProdukty();
+//        ObservableList<Produkt> produktyLista  = FXCollections.observableArrayList(produkty);
+//        editProdukt.setItems(produktyLista);
+//        produktDAO.closeStatements();
+
+        dataColumn.setCellValueFactory(
+                new PropertyValueFactory<Bilet, String>("rzad"));
+        miejsceColumn.setCellValueFactory(
+                new PropertyValueFactory<Bilet, String>("miejsce"));
+        nazwaColumn.setCellValueFactory(
+                new PropertyValueFactory<Produkt, String>("nazwa"));
+        rozmiarColumn.setCellValueFactory(
+                new PropertyValueFactory<Produkt, String>("rozmiar"));
+
+        recordsTableProducts.setPlaceholder(new Label("Nie wybrano produktów"));
+        recordsTableTickets.setPlaceholder(new Label("Nie wybrano biletów"));
     }
 
     @FXML
