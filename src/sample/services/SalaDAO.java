@@ -1,5 +1,9 @@
 package sample.services;
 
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXScrollPane;
+import javafx.scene.text.Text;
 import sample.model.Sala;
 
 import java.util.ArrayList;
@@ -76,7 +80,9 @@ public class SalaDAO extends DAO{
                 System.out.println("Błąd! Nie usunieto dokladnie 1 rekordu");
             }
         } catch (SQLException ex) {
+
             showAlertEmptyForm("Nie można usunąć sali, bo jest powiązana z innymi rekordami!");
+
             Logger.getLogger(SalaDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia delete", ex);
         }

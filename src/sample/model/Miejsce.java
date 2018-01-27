@@ -44,6 +44,9 @@ public class Miejsce {
     public int getNrMiejsca() {
         return nrMiejsca;
     }
+    public String getNrMiejscaToString() {
+        return Integer.toString(nrMiejsca);
+    }
 
     public void setNrMiejsca(int nrMiejsca) {
         this.nrMiejsca = nrMiejsca;

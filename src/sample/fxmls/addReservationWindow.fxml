@@ -3,13 +3,15 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddReservationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddReservationController">
     <children>
-        <Pane layoutX="47.0" layoutY="82.0" prefHeight="121.0" prefWidth="297.0">
+        <Pane layoutX="39.0" layoutY="52.0" prefHeight="325.0" prefWidth="297.0">
             <children>
                 <Label layoutX="9.0" layoutY="12.0" text="Klient:">
                     <font>
@@ -21,18 +23,40 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
-            <ChoiceBox fx:id="editFilm1" layoutX="112.0" layoutY="10.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="editFilm2" layoutX="112.0" layoutY="65.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="editKlient" layoutX="112.0" layoutY="10.0" prefHeight="28.0" prefWidth="178.0" />
+            <ChoiceBox fx:id="editSeans" layoutX="112.0" layoutY="65.0" onAction="#comboActionSeans" prefHeight="28.0" prefWidth="178.0" />
+            <ChoiceBox fx:id="editMiejsce" layoutX="218.0" layoutY="170.0" prefHeight="28.0" prefWidth="76.0" />
+            <Label layoutX="221.0" layoutY="124.0" prefHeight="38.0" prefWidth="56.0" text="Nowe&#10;miejsce:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="dodajMiejsceButton" buttonType="RAISED" layoutX="218.0" layoutY="208.0" onAction="#handleAddSeat" prefHeight="38.0" prefWidth="76.0" ripplerFill="#676f6d" style="-fx-background-color: #6cc241;" text="Dodaj" textFill="#f8f6f6">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="usunMiejsceButton" buttonType="RAISED" layoutX="218.0" layoutY="253.0" onAction="#handleDeleteSeat" prefHeight="38.0" prefWidth="76.0" ripplerFill="#6e6766" style="-fx-background-color: #dd3618;" text="Usuń" textFill="#f8f6f6">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </JFXButton>
+            <TableView fx:id="recordsTable" layoutX="14.0" layoutY="108.0" prefHeight="200.0" prefWidth="150.0">
+              <columns>
+                <TableColumn fx:id="rzadColumn" prefWidth="75.0" text="Rząd" />
+                <TableColumn fx:id="nrMiejscaColumn" prefWidth="75.0" text="Nr miejsca" />
+              </columns>
+            </TableView>
             </children>
         </Pane>
-        <Label layoutX="47.0" layoutY="30.0" prefHeight="63.0" prefWidth="297.0" text="Wprowadź dane nowej rezerwacji" textAlignment="CENTER" textFill="#009688">
+        <Label layoutX="39.0" layoutY="14.0" prefHeight="38.0" prefWidth="297.0" style="-fx-text-fill: #009688;" text="Wprowadź dane nowej rezerwacji" textAlignment="CENTER" textFill="#1a655d">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <JFXButton fx:id="applyChanges" layoutX="55.0" layoutY="402.0" onAction="#handleApplyChanges" prefHeight="78.0" prefWidth="264.0" ripplerFill="#676f6d" style="-fx-background-color: #25bbac;" text="Zatwierdź" textFill="#f8f6f6">
+        <JFXButton fx:id="applyChanges" layoutX="39.0" layoutY="387.0" onAction="#handleApplyChanges" prefHeight="63.0" prefWidth="297.0" ripplerFill="#676f6d" style="-fx-background-color: #25bbac;" text="Zatwierdź" textFill="#f8f6f6">
             <font>
-                <Font size="24.0" />
+                <Font size="20.0" />
             </font>
         </JFXButton>
     </children>
