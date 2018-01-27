@@ -23,6 +23,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import sample.model.*;
 import sample.services.ConnectionController;
+import sample.services.ParagonDAO;
 import sample.services.PracownikDAO;
 import sample.services.ProduktDAO;
 
@@ -35,12 +36,12 @@ public class AddReceiptController {
     Paragon paragon = null;
     ConnectionController cc;
 
-    List<ProduktNaParagonie> produktyNaParagonie= new ArrayList<ProduktNaParagonie>();
+    List<ProduktNaParagonie> produktyNaParagonie = new ArrayList<ProduktNaParagonie>();
     ObservableList<ProduktNaParagonie> produktNaParagonieLista = FXCollections.observableArrayList(produktyNaParagonie);
-    List<Produkt> produkty = new ArrayList<>();
-    ObservableList<Produkt> produktyLista = FXCollections.observableArrayList(produkty);
-    List<Bilet> bilety = new ArrayList<>();
-    ObservableList<Bilet> biletyLista = FXCollections.observableArrayList(bilety);
+    //    List<Produkt> produkty = new ArrayList<>();
+    ObservableList<Produkt> produktyLista;
+    //    List<Bilet> bilety;
+    ObservableList<Bilet> biletyLista;
 
 //    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();
 //    List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
@@ -57,7 +58,7 @@ public class AddReceiptController {
 
     @FXML
     private ChoiceBox<Pracownik> editEmployee;
-//    @FXML
+    //    @FXML
 //    private ChoiceBox<Bilet> editTicket;
     @FXML
     private ChoiceBox<Produkt> editProduct;
@@ -91,45 +92,37 @@ public class AddReceiptController {
 
 
     @FXML
-    void handleApplyChanges(ActionEvent event) throws IOException{
+    void handleApplyChanges(ActionEvent event) throws IOException {
 //        System.out.println("applyChanges!");
-//        Klient klient = editEmployee.getValue();
-//        Seans seans = editSeans.getValue();
+        Pracownik pracownik = editEmployee.getValue();
 //
-//        try{
-//            if(klient != null && seans != null && miejscaWybrane.size() > 0){
-//                List<MiejsceNaSeansie> miejscaNaSeansie = new ArrayList<MiejsceNaSeansie>();
-//                Rezerwacja rezerwacja = new Rezerwacja(klient, miejscaNaSeansie);
-//
-//                for(Miejsce miejsce : miejscaWybrane){
-//                    // id i tak zostanie nadpisane przy wstawianiu
-//                    // rezerwacja tez zostanie nadpisana
-//                    MiejsceNaSeansie miejsceNaSeansie = new MiejsceNaSeansie(miejsce, seans);
-//                    miejscaNaSeansie.add(miejsceNaSeansie);
-//                }
-//                rezerwacja.setZarezerwowaneMiejsca(miejscaNaSeansie);
-//
-//                RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
-//                rezerwacjaDAO.insertRezerwacja(rezerwacja);
-//                closeWindow();
-//            }
-//            else {
-//                showAlertEmptyForm("Puste pola! Proszę uzupełnić niekompletne formularze.");
-//            }
-//
-//        }catch (Exception e){
-//            showAlertEmptyForm("Niepoprawnie wypełnione pola!");
-//        }
+        try {
+            if (pracownik != null &&
+                (paragon.getBilety().size() > 0 || paragon.getProdukty().size() > 0)) {
 
+                paragon.setPracownikNabijajacyParagon(pracownik);
+                ParagonDAO paragonDAO = new ParagonDAO(cc);
+                paragonDAO.insertParagon(paragon);
+                paragonDAO.closeStatements();
+                closeWindow();
+            } else {
+                okienkoWiadomosci("Puste pola! Proszę uzupełnić niekompletne formularze.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            okienkoWiadomosci("Niepoprawnie wypełnione pola!");
+        }
 
 
     }
 
 
-
     public void initReceiptController(Paragon paragon, ConnectionController cc) {
         this.cc = cc;
         this.paragon = paragon;
+        biletyLista = FXCollections.observableArrayList(paragon.getBilety());
+        produktyLista = FXCollections.observableArrayList(paragon.getProdukty());
 
         PracownikDAO pracownikDAO = new PracownikDAO(cc);
         List<Pracownik> pracownicy = pracownikDAO.getPracownicy();
@@ -139,14 +132,14 @@ public class AddReceiptController {
 
         ProduktDAO produktDAO = new ProduktDAO(cc);
         List<Produkt> produkty = produktDAO.getProdukty();
-        ObservableList<Produkt> produktyListaPelna  = FXCollections.observableArrayList(produkty);
+        ObservableList<Produkt> produktyListaPelna = FXCollections.observableArrayList(produkty);
         produktDAO.closeStatements();
         editProduct.setItems(produktyListaPelna);
 
         dataColumn.setCellValueFactory(
-                new PropertyValueFactory<Bilet, String>("rzad"));
+                new PropertyValueFactory<Bilet, String>("miejsceNaSeansie"));
         miejsceColumn.setCellValueFactory(
-                new PropertyValueFactory<Bilet, String>("miejsce"));
+                new PropertyValueFactory<Bilet, String>("rodzajBiletu"));
         nazwaColumn.setCellValueFactory(
                 new PropertyValueFactory<Produkt, String>("nazwa"));
         rozmiarColumn.setCellValueFactory(
@@ -157,9 +150,9 @@ public class AddReceiptController {
     }
 
     @FXML
-    void handleAddTicket(ActionEvent event) throws IOException{
+    void handleAddTicket(ActionEvent event) throws IOException {
         okienkoWiadomosci("Hej");
-//        System.out.println("Dodaj miejsce!");
+        System.out.println("Dodaj miejsce!");
 //        if(editMiejsce.getValue() != null){
 //            System.out.println("Not null");
 //            Miejsce miejsceWybrane = editMiejsce.getValue();
@@ -171,43 +164,45 @@ public class AddReceiptController {
 //            recordsTable.setItems(miejscaWybraneLista);
 //        } else{
 //            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
-//
 //        }
     }
+
     @FXML
-    void handleAddProduct(ActionEvent event) throws IOException{
+    void handleAddProduct(ActionEvent event) throws IOException {
         System.out.println("Dodaj produkt!");
         //Tego raczej nie będzie
-//        if(editProduct.getValue() != null){
-//            Produkt produkt = editProduct.getValue();
-//            produkty.add(produkt);
-//            produktyLista = FXCollections.observableArrayList(produkty);
-//            recordsTableProducts.setItems(produktyLista);
-//        } else{
-//            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
-//        }
+        if (editProduct.getValue() != null) {
+            Produkt produkt = editProduct.getValue();
+            paragon.getProdukty().add(produkt);
+            produktyLista = FXCollections.observableArrayList(paragon.getProdukty());
+            recordsTableProducts.setItems(produktyLista);
+        } else {
+            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
+        }
     }
+
     @FXML
-    void handleDeleteTicket(ActionEvent event) throws IOException{
+    void handleDeleteTicket(ActionEvent event) throws IOException {
         System.out.println("Usun miejsce!");
         Bilet selection = recordsTableTickets.getSelectionModel().getSelectedItem();
-        if(selection != null){
-            bilety.remove(selection);
-            biletyLista= FXCollections.observableArrayList(bilety);
+        if (selection != null) {
+            paragon.getBilety().remove(selection);
+            biletyLista = FXCollections.observableArrayList(paragon.getBilety());
             recordsTableTickets.setItems(biletyLista);
-        } else{
+        } else {
             okienkoWiadomosci("Proszę najpierw zaznaczyć bilet do usunięcia.");
         }
     }
+
     @FXML
-    void handleDeleteProduct(ActionEvent event) throws IOException{
+    void handleDeleteProduct(ActionEvent event) throws IOException {
         System.out.println("Usun miejsce!");
         Produkt selection = recordsTableProducts.getSelectionModel().getSelectedItem();
-        if(selection != null){
-            produkty.remove(selection);
-            produktyLista = FXCollections.observableArrayList(produkty);
+        if (selection != null) {
+            paragon.getProdukty().remove(selection);
+            produktyLista = FXCollections.observableArrayList(paragon.getProdukty());
             recordsTableProducts.setItems(produktyLista);
-        } else{
+        } else {
             okienkoWiadomosci("Proszę najpierw zaznaczyć produkt do usunięcia.");
         }
     }
@@ -232,9 +227,9 @@ public class AddReceiptController {
 
 
     @FXML
-    void handleNewTicket(ActionEvent event) throws IOException{
+    void handleNewTicket(ActionEvent event) throws IOException {
         System.out.println("Nowe okno dodania biletu");
-        try{
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\NewTicketForReceipt.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -244,23 +239,24 @@ public class AddReceiptController {
             controller.initController(paragon);
             stage.setScene(scene);
             stage.show();
-            stage.setOnHiding( event2 -> {
+            stage.setOnHiding(event2 -> {
                 controller.closeConnection();
-
+                biletyLista = FXCollections.observableArrayList(paragon.getBilety());
+                recordsTableTickets.setItems(biletyLista);
                 System.out.println("Tutaj trzeba dodać funckje na zamknęcie okna");
-            } );
-        } catch (IOException e){
+            });
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 
     private void closeWindow() {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
         stage.close();
     }
-    private void okienkoWiadomosci(String message){
+
+    private void okienkoWiadomosci(String message) {
         BoxBlur blur = new BoxBlur(3, 3, 3);
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Label("Uwaga!"));
