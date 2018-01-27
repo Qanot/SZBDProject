@@ -1,10 +1,7 @@
 package sample.services;
 
 
-import sample.model.Miejsce;
-import sample.model.MiejsceNaSeansie;
-import sample.model.Rezerwacja;
-import sample.model.Seans;
+import sample.model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +18,33 @@ public class MiejsceNaSeansieDAO{
 
     public MiejsceNaSeansieDAO(ConnectionController connectionController){
         this.setConnectionController(connectionController);
+    }
+
+    public void deleteMiejsceNaSeansieForBilet(Bilet bilet){
+        /** UWAGA! ZNAJDUJE MIEJSCANASEANSIE DO USUNIECIA POD ID BILETU
+         */
+        PreparedStatement stmtDelete = null;
+        try {
+            stmtDelete = connectionController.getConn().prepareStatement(
+                    "DELETE FROM MIEJSCANASEANSIE " +
+                            "WHERE BILETY_ID = ?");
+
+            stmtDelete.setInt(1, bilet.getId());
+            stmtDelete.executeUpdate();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia delete", ex);
+        } finally {
+            if (stmtDelete!= null) {
+                try {
+                    stmtDelete.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
     }
 
     public void deleteAllMiejscaNaSeansieForRezerwacja(Rezerwacja rezerwacja){
@@ -146,6 +170,58 @@ public class MiejsceNaSeansieDAO{
             }
         }
         return miejscaNaSeansie;
+    }
+
+    public MiejsceNaSeansie getMiejsceByIdBiletu(Bilet bilet){
+        MiejsceNaSeansie miejsceNaSeansie = null;
+
+        PreparedStatement stmtSelect = null;
+        ResultSet rs = null;
+        try {
+            stmtSelect = connectionController.getConn().prepareStatement(
+                    "SELECT ID, MIEJSCA_ID, SEANSE_ID " +
+                            "FROM MIEJSCANASEANSIE " +
+                            "WHERE BILETY_ID = ?");
+            stmtSelect.setInt(1, bilet.getId());
+
+            rs = stmtSelect.executeQuery();
+            MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
+            SeansDAO seansDAO = new SeansDAO(connectionController);
+            if(rs.next()) {
+                int id = rs.getInt(1);
+                int idMiejsca = rs.getInt(2);
+                int idSeansu = rs.getInt(3);
+
+                Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
+                Seans seans = seansDAO.getSeansById(idSeansu);
+                miejsceNaSeansie = new MiejsceNaSeansie(id, miejsce, seans, bilet);
+            }
+            miejsceDAO.closeStatements();
+            seansDAO.closeStatements();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia select", ex);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+            if (stmtSelect!= null) {
+                try {
+                    stmtSelect.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
+        return miejsceNaSeansie;
+
     }
 
     public void setConnectionController(ConnectionController connectionController) {
