@@ -44,6 +44,11 @@ public class MiejsceNaSeansie {
         this.setBilet(bilet);
     }
 
+    public MiejsceNaSeansie(Miejsce miejsce, Seans seans) {
+        this.miejsce = miejsce;
+        this.seans = seans;
+    }
+
     public int getId() {
         return id;
     }
