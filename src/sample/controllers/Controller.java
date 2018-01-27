@@ -934,6 +934,7 @@ public class Controller {
                 new PropertyValueFactory<RecordToShow, String>("id"));
         dataColumn.setCellValueFactory(
                 new PropertyValueFactory<RecordToShow, String>("data"));
+        recordsTable.setPlaceholder(new Label("Nie wybrano żadnych rekordów"));
         // Add filtered data to the table
         recordsTable.setItems(filteredData);
         // Listen for text changes in the filter text field
@@ -1024,7 +1025,17 @@ public class Controller {
                         infoText.setText(reservationTemp.toString());
                     }
                     cc3.close();
-
+                }
+                else if (presentedType.equals("Receipts")) {
+                    ConnectionController cc2 = new ConnectionController();
+                    cc2.open();
+                    ParagonDAO paragonDAO = new ParagonDAO(cc2);
+                    List<Paragon> lista = paragonDAO.getParagony();
+                    Paragon paragonTemp = lista.get(dataToShow.indexOf(newSelection));
+                    if(!paragonTemp.equals(null)) {
+                        infoText.setText(paragonTemp.toString());
+                    }
+                    cc2.close();
                 }
             }
         });

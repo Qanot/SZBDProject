@@ -82,7 +82,6 @@ public class ParagonDAO extends DAO {
     public void deleteParagon(Paragon paragon) {
         ProduktNaParagonieDAO pnpDAO = new ProduktNaParagonieDAO(connectionController);
         pnpDAO.deleteAll(paragon);
-
         // TODO wstawka od Oliwii wywolac przed usunieciem paragonu usuwanie wszystkich produktow na nim
         try {
             stmtDelete.setInt(1, paragon.getId());
