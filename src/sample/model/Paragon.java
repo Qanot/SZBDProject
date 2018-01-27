@@ -12,10 +12,7 @@ public class Paragon {
     private int id;
     private Date dataZakupu;
     private Pracownik pracownikNabijajacyParagon;
-    public Pracownik getPracownikNabijajacyParagon() {
-        return pracownikNabijajacyParagon;
-    }
-    private List<ProduktNaParagonie> produktyNaParagonie;
+
     private List<Produkt> produkty;
     private List<Bilet> bilety;
 
@@ -30,6 +27,11 @@ public class Paragon {
     public Paragon(Date dataZakupu, Pracownik pracownikNabijajacyParagon) {
         this.dataZakupu = dataZakupu;
         this.pracownikNabijajacyParagon = pracownikNabijajacyParagon;
+    }
+
+    public Pracownik getPracownikNabijajacyParagon() {
+
+        return pracownikNabijajacyParagon;
     }
 
 
@@ -56,14 +58,9 @@ public class Paragon {
 
         return localDateZakupu.toString() + " " + localTimeZakupu.toString();
     }
-    public void setProduktyNaParagonie(List<ProduktNaParagonie> produktyNaParagonie) {
-        this.produktyNaParagonie = produktyNaParagonie;
-    }
+
     public void setPracownikNabijajacyParagon(Pracownik pracownikNabijajacyParagon) {
         this.pracownikNabijajacyParagon = pracownikNabijajacyParagon;
-    }
-    public List<ProduktNaParagonie> getProduktyNaParagonie() {
-        return produktyNaParagonie;
     }
 
 
@@ -81,5 +78,45 @@ public class Paragon {
 
     public void setBilety(List<Bilet> bilety) {
         this.bilety = bilety;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: "+ id +
+                "\nData zakupu: " + this.getDataZakupuToString() +
+                "\nPracownik: " + pracownikNabijajacyParagon.getImie() + " " + pracownikNabijajacyParagon.getNazwisko() +
+                "PESEL: " + pracownikNabijajacyParagon.getPESEL() +
+                "\nLiczba produktów: " + bilety.size() + produkty.size() +
+                "\nProdukty ze sklepiku: " +
+                produktyToString()
+                + "\nBilety: "
+                + biletyToString();
+    }
+    private String produktyToString(){
+        if(produkty.size() < 0)
+            return "brak";
+        else{
+            String wynik = "";
+            int i = 1;
+            for(Produkt produkt: produkty){
+                wynik += "\n\t" + Integer.toString(i) + ". " + produkt.toString();
+                i += 1;
+            }
+            return wynik;
+        }
+    }
+
+    private String biletyToString(){
+        if(bilety.size() < 0)
+            return "brak";
+        else{
+            String wynik = "";
+            int i = 1;
+            for(Bilet bilet : bilety){
+                wynik += "\n\t" + Integer.toString(i) + ". " + bilet.toString();
+                i += 1;
+            }
+            return wynik;
+        }
     }
 }

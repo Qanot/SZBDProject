@@ -65,6 +65,7 @@ public class NewTicketController {
                 Bilet bilet = new Bilet(rodzajBiletu);
                 MiejsceNaSeansie miejsceNaSeansie = new MiejsceNaSeansie(miejsce, seans);
                 bilet.setMiejsceNaSeansie(miejsceNaSeansie);
+                miejsceNaSeansie.setBilet(bilet);
                 paragon.getBilety().add(bilet);
 
                 closeConnection();
@@ -85,6 +86,11 @@ public class NewTicketController {
     }
 
     public void initController(Paragon paragon){
+        if(paragon == null){
+
+
+            System.out.println("KUBA NIE DAWAJ MI PROSZE NULLA! :)");
+        }
         connectionController = new ConnectionController();
         connectionController.open();
 

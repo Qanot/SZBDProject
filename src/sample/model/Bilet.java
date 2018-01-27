@@ -40,4 +40,10 @@ public class Bilet {
         this.rodzajBiletu = rodzajBiletu;
     }
 
+    @Override
+    public String toString() {
+        return rodzajBiletu.getNazwa() + miejsceNaSeansie.getSeans().getFilm().getTytul() +
+                miejsceNaSeansie.getMiejsce().getRzad() +
+                "/" + miejsceNaSeansie.getMiejsce().getNrMiejsca();
+    }
 }

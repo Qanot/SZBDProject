@@ -98,7 +98,7 @@ public class AddReceiptController {
 //
         try {
             if (pracownik != null &&
-                (paragon.getBilety().size() > 0 || paragon.getProdukty().size() > 0)) {
+                    (paragon.getBilety().size() > 0 || paragon.getProdukty().size() > 0)) {
 
                 paragon.setPracownikNabijajacyParagon(pracownik);
                 ParagonDAO paragonDAO = new ParagonDAO(cc);
@@ -281,4 +281,3 @@ public class AddReceiptController {
         dialog.show();
     }
 }
-
