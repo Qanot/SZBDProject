@@ -929,13 +929,16 @@ public class Controller {
                     salaDAO.closeStatements();
                 }
                 else if (presentedType.equals("Seanse")){
-                    SeansDAO seansDAO = new SeansDAO(cc);
+                    ConnectionController cc2 = new ConnectionController();
+                    cc2.open();
+                    SeansDAO seansDAO = new SeansDAO(cc2);
                     List<Seans> lista = seansDAO.getSeanse();
                     Seans seansTemp = lista.get(dataToShow.indexOf(newSelection));
                     if(!seansTemp.equals(null)) {
                         infoText.setText(seansTemp.toString());
                     }
                     seansDAO.closeStatements();
+                    cc2.close();
                 }
                 else if (presentedType.equals("Movies")){
                     FilmDAO movieDAO = new FilmDAO(cc);

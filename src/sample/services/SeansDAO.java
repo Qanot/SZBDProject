@@ -157,14 +157,13 @@ public class SeansDAO extends DAO {
         try {
             stmtFindById.setInt(1, id);
             rsSelect = stmtFindById.executeQuery();
+            FilmDAO filmDAO = new FilmDAO(connectionController);
             if (rsSelect.next()) {
                 Date dataEmisji = new Date(rsSelect.getTimestamp("DATA_GODZINA").getTime());
                 int idFilmu = rsSelect.getInt("FILMY_ID");
                 int idSali = rsSelect.getInt("SALE_ID");
 
-                FilmDAO filmDAO = new FilmDAO(connectionController);
                 Film film = filmDAO.getFilmById(idFilmu);
-                filmDAO.closeStatements();
 
                 SalaDAO salaDAO = new SalaDAO(connectionController);
                 Sala sala = salaDAO.getSalaById(idSali);
@@ -176,6 +175,7 @@ public class SeansDAO extends DAO {
                 seans.setMiejscaWykupione(this.getWykupioneMiejscaDlaSeansu(seans));
                 seans.setMiejscaZarezerwowane(this.getZarezerwowaneMiejscaDlaSeansu(seans));
             }
+            filmDAO.closeStatements();
         } catch (SQLException ex) {
             Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);

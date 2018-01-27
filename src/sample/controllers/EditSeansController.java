@@ -80,7 +80,9 @@ public class  EditSeansController {
 
 
     public void initSeansController(Seans seans, ConnectionController cc) {
-        this.cc = cc;
+        ConnectionController cc2 = new ConnectionController();
+        cc2.open();
+        this.cc = cc2;
         this.seans = seans;
 
         FilmDAO filmDAO = new FilmDAO(cc);
@@ -125,6 +127,7 @@ public class  EditSeansController {
     }
     private void closeWindow() {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
+        cc.close();
         stage.close();
     }
 }
