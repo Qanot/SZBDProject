@@ -15,6 +15,8 @@ public class Paragon {
         return pracownikNabijajacyParagon;
     }
     private List<ProduktNaParagonie> produktyNaParagonie;
+    private List<Produkt> produkty;
+    private List<Bilet> bilety;
 
 
 
@@ -58,5 +60,22 @@ public class Paragon {
     }
     public List<ProduktNaParagonie> getProduktyNaParagonie() {
         return produktyNaParagonie;
+    }
+
+
+    public List<Produkt> getProdukty() {
+        return produkty;
+    }
+
+    public void setProdukty(List<Produkt> produkty) {
+        this.produkty = produkty;
+    }
+
+    public List<Bilet> getBilety() {
+        return bilety;
+    }
+
+    public void setBilety(List<Bilet> bilety) {
+        this.bilety = bilety;
     }
 }
