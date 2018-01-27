@@ -16,8 +16,8 @@ public class ProduktNaParagonieDAO {
 
     }
     private void deleteAllBiletyForParagon(Paragon paragon){
-        BiletDAO biletDAO = new BiletDAO(connectionController);
-        biletDAO.deleteAllBiletyForParagon(paragon);
+//        BiletDAO biletDAO = new BiletDAO(connectionController);
+//        biletDAO.deleteAllBiletyForParagon(paragon);
         //biletDAO.closeStatemnts(); // jesli w klasie bedzie zamykanie
     }
 }

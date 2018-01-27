@@ -30,12 +30,13 @@ import static sample.controllers.Controller.showAlertEmptyForm;
 
 public class AddReceiptController {
 
-    Rezerwacja rezerwacja = null;
+    Paragon paragon = null;
     ConnectionController cc;
-    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();
-    ObservableList<Miejsce> miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
-    List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
-    ObservableList<Miejsce> miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
+    List<ProduktNaParagonie> produktyNaParagonie= new ArrayList<ProduktNaParagonie>();
+    ObservableList<ProduktNaParagonie> produktNaParagonieLista = FXCollections.observableArrayList(produktyNaParagonie);
+//    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();
+//    List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
+//    ObservableList<Miejsce> miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
 
     @FXML
     private StackPane stackPane;
@@ -157,7 +158,41 @@ public class AddReceiptController {
 //        }
     }
     @FXML
-    void handleDeleteSeat(ActionEvent event) throws IOException{
+    void handleAddProduct(ActionEvent event) throws IOException{
+//        System.out.println("Dodaj miejsce!");
+//        if(editMiejsce.getValue() != null){
+//            System.out.println("Not null");
+//            Miejsce miejsceWybrane = editMiejsce.getValue();
+//            miejscaWybrane.add(miejsceWybrane);
+//            miejscaWolne.remove(miejsceWybrane);
+//            miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
+//            editMiejsce.setItems(miejscaWolneLista);
+//            miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
+//            recordsTable.setItems(miejscaWybraneLista);
+//        } else{
+//            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
+//
+//        }
+    }
+    @FXML
+    void handleDeleteTicket(ActionEvent event) throws IOException{
+//        System.out.println("Usun miejsce!");
+//        Miejsce selection = recordsTable.getSelectionModel().getSelectedItem();
+//        if(selection != null){
+//            System.out.println("Not null usun");
+//            miejscaWybrane.remove(selection);
+//            miejscaWolne.add(selection);
+//            miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
+//            editMiejsce.setItems(miejscaWolneLista);
+//            miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
+//            recordsTable.setItems(miejscaWybraneLista);
+//
+//        } else{
+//            okienkoWiadomosci("Proszę najpierw zaznaczyć miejsce do usunięcia.");
+//        }
+    }
+    @FXML
+    void handleDeleteProduct(ActionEvent event) throws IOException{
 //        System.out.println("Usun miejsce!");
 //        Miejsce selection = recordsTable.getSelectionModel().getSelectedItem();
 //        if(selection != null){
