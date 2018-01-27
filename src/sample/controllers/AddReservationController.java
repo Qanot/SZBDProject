@@ -149,28 +149,8 @@ public class  AddReservationController {
             miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
             recordsTable.setItems(miejscaWybraneLista);
         } else{
-            BoxBlur blur = new BoxBlur(3, 3, 3);
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Label("Uwaga!"));
-            JFXButton button = new JFXButton("OK, rozumiem");
-            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    dialog.close();
-                    anchorPane.setEffect(null);
-                }
-            });
-            content.setActions(button);
-            anchorPane.setEffect(blur);
-            dialog.setOnDialogClosed(new EventHandler<JFXDialogEvent>() {
-                @Override
-                public void handle(JFXDialogEvent event) {
-                    anchorPane.setEffect(null);
-                }
-            });
-            content.setBody(new Label("Proszę najpierw wybrać z listy miejsce do dodania."));
-            dialog.show();
+            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
+
         }
     }
     @FXML
@@ -187,29 +167,7 @@ public class  AddReservationController {
             recordsTable.setItems(miejscaWybraneLista);
 
         } else{
-
-            BoxBlur blur = new BoxBlur(3, 3, 3);
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Label("Uwaga!"));
-            JFXButton button = new JFXButton("OK, rozumiem");
-            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    dialog.close();
-                    anchorPane.setEffect(null);
-                }
-            });
-            content.setActions(button);
-            anchorPane.setEffect(blur);
-            dialog.setOnDialogClosed(new EventHandler<JFXDialogEvent>() {
-                @Override
-                public void handle(JFXDialogEvent event) {
-                    anchorPane.setEffect(null);
-                }
-            });
-            content.setBody(new Label("Proszę najpierw zaznaczyć miejsce do usunięcia."));
-            dialog.show();
+            okienkoWiadomosci("Proszę najpierw zaznaczyć miejsce do usunięcia.");
         }
     }
 
@@ -220,6 +178,9 @@ public class  AddReservationController {
         Seans selectedSeans = editSeans.getValue();
         //SeansDAO seansDAO = new SeansDAO(cc);
         miejscaWolne = new ArrayList<Miejsce>(selectedSeans.getMiejscaWolne());
+        if(miejscaWolne.size() == 0){
+            okienkoWiadomosci("Niestety na ten seans nie ma już miejsc.");
+        }
         miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
         miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
 
@@ -230,6 +191,30 @@ public class  AddReservationController {
     private void closeWindow() {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
         stage.close();
+    }
+    private void okienkoWiadomosci(String message){
+        BoxBlur blur = new BoxBlur(3, 3, 3);
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("Uwaga!"));
+        JFXButton button = new JFXButton("OK, rozumiem");
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+                anchorPane.setEffect(null);
+            }
+        });
+        content.setActions(button);
+        anchorPane.setEffect(blur);
+        dialog.setOnDialogClosed(new EventHandler<JFXDialogEvent>() {
+            @Override
+            public void handle(JFXDialogEvent event) {
+                anchorPane.setEffect(null);
+            }
+        });
+        content.setBody(new Label(message));
+        dialog.show();
     }
 }
 
