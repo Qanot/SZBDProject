@@ -38,7 +38,9 @@ public class ProduktNaParagonieDAO {
         BiletDAO biletDAO = new BiletDAO(connectionController);
         try {
             stmtFindAll = connectionController.getConn().prepareStatement(
-                    "SELECT BILETY_ID FROM PRODUKTYNAPARAGONIE WHERE BILETY_ID IS NOT NULL");
+                    "SELECT BILETY_ID FROM PRODUKTYNAPARAGONIE WHERE BILETY_ID IS NOT NULL " +
+                            " AND PARAGONY_ID = ?");
+            stmtFindAll.setInt(1, paragon.getId());
             rs = stmtFindAll.executeQuery();
             while (rs.next()) {
                 int idBiletu = rs.getInt("BILETY_ID");
@@ -77,7 +79,9 @@ public class ProduktNaParagonieDAO {
         ProduktDAO produktDAO = new ProduktDAO(connectionController);
         try {
             stmtFindAll = connectionController.getConn().prepareStatement(
-                    "SELECT PRODUKTY_ID FROM PRODUKTYNAPARAGONIE WHERE PRODUKTY_ID IS NOT NULL");
+                    "SELECT PRODUKTY_ID FROM PRODUKTYNAPARAGONIE WHERE PRODUKTY_ID IS NOT NULL " +
+                            " AND PARAGONY_ID = ?");
+            stmtFindAll.setInt(1, paragon.getId());
             rs = stmtFindAll.executeQuery();
             while (rs.next()) {
                 int idProduktu = rs.getInt("PRODUKTY_ID");

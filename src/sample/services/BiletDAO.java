@@ -76,6 +76,7 @@ public class BiletDAO {
         try {
             stmtDelete = connectionController.getConn().prepareStatement(
                     "DELETE FROM BILETY WHERE ID = ?");
+            System.out.println("Id usuwanego biletu: " + bilet.getId());
             stmtDelete.setInt(1, bilet.getId());
             int changes = stmtDelete.executeUpdate();
             if (changes != 1) {
