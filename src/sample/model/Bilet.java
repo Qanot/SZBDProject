@@ -10,6 +10,9 @@ public class Bilet {
     private MiejsceNaSeansie miejsceNaSeansie;
     ProduktNaParagonie produktNaParagonie; // reprezentuje pozycje na paragonie, ktora jest nabity bilet
 
+    public Bilet(RodzajBiletu rodzajBiletu) {
+        this.rodzajBiletu = rodzajBiletu;
+    }
 
     public int getId() {
         return id;
@@ -17,5 +20,23 @@ public class Bilet {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+
+    public MiejsceNaSeansie getMiejsceNaSeansie() {
+        return miejsceNaSeansie;
+    }
+
+    public void setMiejsceNaSeansie(MiejsceNaSeansie miejsceNaSeansie) {
+        this.miejsceNaSeansie = miejsceNaSeansie;
+    }
+
+
+    public RodzajBiletu getRodzajBiletu() {
+        return rodzajBiletu;
+    }
+
+    public void setRodzajBiletu(RodzajBiletu rodzajBiletu) {
+        this.rodzajBiletu = rodzajBiletu;
     }
 }

@@ -172,6 +172,58 @@ public class MiejsceNaSeansieDAO{
         return miejscaNaSeansie;
     }
 
+    public MiejsceNaSeansie getMiejsceByIdBiletu(Bilet bilet){
+        MiejsceNaSeansie miejsceNaSeansie = null;
+
+        PreparedStatement stmtSelect = null;
+        ResultSet rs = null;
+        try {
+            stmtSelect = connectionController.getConn().prepareStatement(
+                    "SELECT ID, MIEJSCA_ID, SEANSE_ID " +
+                            "FROM MIEJSCANASEANSIE " +
+                            "WHERE BILETY_ID = ?");
+            stmtSelect.setInt(1, bilet.getId());
+
+            rs = stmtSelect.executeQuery();
+            MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
+            SeansDAO seansDAO = new SeansDAO(connectionController);
+            if(rs.next()) {
+                int id = rs.getInt(1);
+                int idMiejsca = rs.getInt(2);
+                int idSeansu = rs.getInt(3);
+
+                Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
+                Seans seans = seansDAO.getSeansById(idSeansu);
+                miejsceNaSeansie = new MiejsceNaSeansie(id, miejsce, seans, bilet);
+            }
+            miejsceDAO.closeStatements();
+            seansDAO.closeStatements();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia select", ex);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
+                            "Błąd zamykania interfejsu ResultSet", ex);
+                }
+            }
+            if (stmtSelect!= null) {
+                try {
+                    stmtSelect.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
+        return miejsceNaSeansie;
+
+    }
+
     public void setConnectionController(ConnectionController connectionController) {
         this.connectionController = connectionController;
     }
