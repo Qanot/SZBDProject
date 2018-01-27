@@ -440,7 +440,7 @@ public class Controller {
             Stage stage = new Stage();
             stage.setTitle("Okno dodania rezerwacji");
             AddReservationController controller = fxmlLoader.<AddReservationController>getController();
-            controller.initSeansController(rezerwacja, cc);
+            controller.initReservationController(rezerwacja, cc);
             stage.setScene(scene);
             stage.show();
             stage.setOnHiding( event -> {presentedType = "Reservations"; addReservationToTableView();} );
@@ -759,12 +759,6 @@ public class Controller {
     @FXML
     private void handleAddReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
-
-    }
-
-    @FXML
-    private void handleAddProductsOnReceiptsButton(ActionEvent event) throws IOException {
-        System.out.println("addReceiptsButton!");
         RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
         Paragon paragon = null;
         if(selection != null && presentedType.equals("Receipts")){
@@ -776,21 +770,28 @@ public class Controller {
         openAddReceiptWindow(paragon);
     }
     private void openAddReceiptWindow(Paragon paragon){
-//        try{
-//            FXMLLoader fxmlLoader = new FXMLLoader();
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addReceiptWindow.fxml"));
-//            Scene scene = new Scene(fxmlLoader.load());
-//            Stage stage = new Stage();
-//            stage.setTitle("Okno dodania nowego paragonu");
-//            AddReceiptController controller = fxmlLoader.<AddReceiptController>getController();
-//            controller.initReceiptController(paragon, cc);
-//            stage.setScene(scene);
-//            stage.show();
-//            stage.setOnHiding( event -> {presentedType = "Receipts"; addReceiptsToTableView();} );
-//        } catch (IOException e){
-//            e.printStackTrace();
-//        }
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addReceiptWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania nowego paragonu");
+            AddReceiptController controller = fxmlLoader.<AddReceiptController>getController();
+            controller.initReceiptController(paragon, cc);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event -> {presentedType = "Receipts"; addReceiptsToTableView();} );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
+
+    @FXML
+    private void handleAddProductsOnReceiptsButton(ActionEvent event) throws IOException {
+        System.out.println("addReceiptsButton!");
+
+    }
+
 
     @FXML
     private void handleAddProductButton(ActionEvent event) throws IOException {

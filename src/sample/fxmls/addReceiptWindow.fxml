@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddSeansController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddReceiptController">
    <children>
       <Label alignment="TOP_CENTER" layoutX="87.0" layoutY="29.0" prefHeight="30.0" prefWidth="289.0" text="Wprowadź nowy paragon" textAlignment="CENTER" textFill="#009688" wrapText="true">
          <font>
@@ -33,52 +33,52 @@
       </Pane>
       <Pane layoutX="19.0" layoutY="131.0" prefHeight="369.0" prefWidth="202.0">
          <children>
-            <ChoiceBox fx:id="editMiejsce" layoutX="111.0" layoutY="240.0" prefHeight="28.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="editTicket" layoutX="111.0" layoutY="240.0" prefHeight="28.0" prefWidth="76.0" />
             <Label layoutX="14.0" layoutY="235.0" prefHeight="38.0" prefWidth="84.0" text="Nowy bilet:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXButton fx:id="dodajMiejsceButton" buttonType="RAISED" layoutX="14.0" layoutY="292.0" onAction="#handleAddSeat" prefHeight="38.0" prefWidth="76.0" ripplerFill="#676f6d" style="-fx-background-color: #6cc241;" text="Dodaj" textFill="#f8f6f6">
+            <JFXButton fx:id="addTicket" buttonType="RAISED" layoutX="14.0" layoutY="292.0" onAction="#handleAddTicket" prefHeight="38.0" prefWidth="76.0" ripplerFill="#676f6d" style="-fx-background-color: #6cc241;" text="Dodaj" textFill="#f8f6f6">
                <font>
                   <Font size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="usunMiejsceButton" buttonType="RAISED" layoutX="111.0" layoutY="292.0" onAction="#handleDeleteSeat" prefHeight="38.0" prefWidth="76.0" ripplerFill="#6e6766" style="-fx-background-color: #dd3618;" text="Usuń" textFill="#f8f6f6">
+            <JFXButton fx:id="deleteTicket" buttonType="RAISED" layoutX="111.0" layoutY="292.0" onAction="#handleDeleteTicket" prefHeight="38.0" prefWidth="76.0" ripplerFill="#6e6766" style="-fx-background-color: #dd3618;" text="Usuń" textFill="#f8f6f6">
                <font>
                   <Font size="12.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="recordsTableTickets" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="172.0">
+            <TableView fx:id="recordsTableTickets" layoutX="6.0" layoutY="14.0" prefHeight="200.0" prefWidth="184.0">
                <columns>
-                  <TableColumn fx:id="rzadColumn" prefWidth="87.0" text="Rząd" />
-                  <TableColumn fx:id="nrMiejscaColumn" prefWidth="84.0" text="Nr miejsca" />
+                  <TableColumn fx:id="dataColumn" prefWidth="98.0" text="Bilet" />
+                  <TableColumn fx:id="miejsceColumn" prefWidth="85.0" text="Cena" />
                </columns>
             </TableView>
          </children>
       </Pane>
       <Pane layoutX="243.0" layoutY="131.0" prefHeight="369.0" prefWidth="202.0">
          <children>
-            <ChoiceBox fx:id="editMiejsce1" layoutX="111.0" layoutY="240.0" prefHeight="28.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="editProduct" layoutX="111.0" layoutY="240.0" prefHeight="28.0" prefWidth="76.0" />
             <Label layoutX="14.0" layoutY="235.0" prefHeight="38.0" prefWidth="105.0" text="Nowe produkt:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXButton fx:id="dodajMiejsceButton1" buttonType="RAISED" layoutX="14.0" layoutY="292.0" onAction="#handleAddSeat" prefHeight="38.0" prefWidth="76.0" ripplerFill="#676f6d" style="-fx-background-color: #6cc241;" text="Dodaj" textFill="#f8f6f6">
+            <JFXButton fx:id="addProduct" buttonType="RAISED" layoutX="14.0" layoutY="292.0" onAction="#handleAddProduct" prefHeight="38.0" prefWidth="76.0" ripplerFill="#676f6d" style="-fx-background-color: #6cc241;" text="Dodaj" textFill="#f8f6f6">
                <font>
                   <Font size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="usunMiejsceButton1" buttonType="RAISED" layoutX="111.0" layoutY="292.0" onAction="#handleDeleteSeat" prefHeight="38.0" prefWidth="76.0" ripplerFill="#6e6766" style="-fx-background-color: #dd3618;" text="Usuń" textFill="#f8f6f6">
+            <JFXButton fx:id="deleteProduct" buttonType="RAISED" layoutX="111.0" layoutY="292.0" onAction="#handleDeleteProduct" prefHeight="38.0" prefWidth="76.0" ripplerFill="#6e6766" style="-fx-background-color: #dd3618;" text="Usuń" textFill="#f8f6f6">
                <font>
                   <Font size="12.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="recordsTableProducts" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="172.0">
+            <TableView fx:id="recordsTableProducts" layoutX="9.0" layoutY="14.0" prefHeight="200.0" prefWidth="184.0">
                <columns>
-                  <TableColumn fx:id="rzadColumn1" prefWidth="87.0" text="Rząd" />
-                  <TableColumn fx:id="nrMiejscaColumn1" prefWidth="84.0" text="Nr miejsca" />
+                  <TableColumn fx:id="nazwaColumn" prefWidth="107.0" text="Nazwa produktu" />
+                  <TableColumn fx:id="rozmiarColumn1" prefWidth="76.0" text="Nr miejsca" />
                </columns>
             </TableView>
          </children>

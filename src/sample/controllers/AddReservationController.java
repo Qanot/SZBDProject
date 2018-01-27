@@ -112,7 +112,7 @@ public class  AddReservationController {
 
 
 
-    public void initSeansController(Rezerwacja rezerwacja, ConnectionController cc) {
+    public void initReservationController(Rezerwacja rezerwacja, ConnectionController cc) {
         this.cc = cc;
         this.rezerwacja = rezerwacja;
 
