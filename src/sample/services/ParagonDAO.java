@@ -56,6 +56,7 @@ public class ParagonDAO extends DAO {
 //                nowyParagon.setProduktyNaParagonie(this.getProduktuNaParagonie(nowyParagon); //jeszcze nie zrobione
                 paragony.add(nowyParagon);
             }
+            pracownikDAO.closeStatements();
         } catch (SQLException ex) {
             Logger.getLogger(ParagonDAO.class.getName()).log(Level.SEVERE,
                     "Błąd wykonania prekompilowanego polecenia select", ex);
@@ -126,6 +127,7 @@ public class ParagonDAO extends DAO {
         return false;
     }
     public List<Paragon> getParagony() {
+        selectParagony();
         return paragony;
     }
 

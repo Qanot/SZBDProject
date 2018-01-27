@@ -1,5 +1,8 @@
 package sample.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -50,5 +53,13 @@ public class Paragon {
 
     public void setDataZakupu(Date dataZakupu) {
         this.dataZakupu = dataZakupu;
+    }
+
+    public String getDataZakupuToString() {
+
+        LocalDate localDateZakupu = getDataZakupu().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalTime localTimeZakupu = getDataZakupu().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+
+        return localDateZakupu.toString() + " " + localTimeZakupu.toString();
     }
 }

@@ -4,6 +4,7 @@ import sample.model.*;
 
 import sample.services.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class TestyDAO {
@@ -15,10 +16,24 @@ public class TestyDAO {
         //testFilm(cc);
         //testSeans(cc);
         //testSeansWolneWykupioneZarezerwowane(cc);
-        testRezerwacja(cc);
+//        testRezerwacja(cc);
+        testParagon(cc);
         cc.close();
 
 
+    }
+
+    public static void testParagon(ConnectionController cc){
+        ParagonDAO paragonDAO = new ParagonDAO(cc);
+//        PracownikDAO pracownikDAO = new PracownikDAO(cc);
+//        Pracownik prac = pracownikDAO.getPracownicy().get(0);
+//        Paragon paragon1 = new Paragon(new Date(), prac);
+//        paragonDAO.insertParagon(paragon1);
+        List<Paragon> paragony = paragonDAO.getParagony();
+        for(Paragon paragon : paragony){
+            System.out.println("ParagonID: " + paragon.getId() + paragon.getDataZakupuToString());
+        }
+        paragonDAO.closeStatements();
     }
 
     public static void testRezerwacja(ConnectionController cc){
