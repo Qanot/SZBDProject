@@ -2,6 +2,7 @@ package sample.services;
 
 import sample.model.*;
 
+import javax.swing.text.html.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
@@ -52,6 +53,13 @@ public class ParagonDAO extends DAO {
                 Paragon nowyParagon = new Paragon(dataZakupu, pracownik);
                 nowyParagon.setId(id);
 
+                ProduktNaParagonieDAO produktNaParagonieDAO = new ProduktNaParagonieDAO(connectionController);
+                List<Bilet> listaBiletow = produktNaParagonieDAO.getAllBilety(nowyParagon);
+                nowyParagon.setBilety(listaBiletow);
+                List<Produkt> listaProduktow = produktNaParagonieDAO.getAllProdukty(nowyParagon);
+                nowyParagon.setProdukty(listaProduktow);
+
+
 //                nowyParagon.setProduktyNaParagonie(this.getProduktuNaParagonie(nowyParagon); //jeszcze nie zrobione
                 paragony.add(nowyParagon);
             }
@@ -72,7 +80,9 @@ public class ParagonDAO extends DAO {
     }
 
     public void deleteParagon(Paragon paragon) {
-//        ProduktNaParagonieDAO pnpDAO = ProduktNaParagonieDAO(super.connectionController);
+        ProduktNaParagonieDAO pnpDAO = new ProduktNaParagonieDAO(connectionController);
+        pnpDAO.deleteAll(paragon);
+
         // TODO wstawka od Oliwii wywolac przed usunieciem paragonu usuwanie wszystkich produktow na nim
         try {
             stmtDelete.setInt(1, paragon.getId());
@@ -107,6 +117,7 @@ public class ParagonDAO extends DAO {
     }
 
     public boolean insertParagon(Paragon paragon) {
+
         try {
             stmtInsert.registerOutParameter(1, Types.INTEGER);
             stmtInsert.setDate(2, new java.sql.Date(paragon.getDataZakupu().getTime())); // to chyba dziala
@@ -117,6 +128,8 @@ public class ParagonDAO extends DAO {
             int id = stmtInsert.getInt(4);
             paragon.setId(id);
 //            paragon.setProduktyNaParagonie(this.getProduktyNaParagonie());
+            ProduktNaParagonieDAO produktNaParagonieDAO = new ProduktNaParagonieDAO(connectionController);
+            produktNaParagonieDAO.insertAll(paragon);
 
             int wykonananoPoprawnie = stmtInsert.getInt(1);
             return wykonananoPoprawnie == 1;
