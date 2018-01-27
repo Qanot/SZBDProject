@@ -33,7 +33,6 @@
       </Pane>
       <Pane layoutX="19.0" layoutY="183.0" prefHeight="369.0" prefWidth="202.0">
          <children>
-            <ChoiceBox fx:id="editTicket" layoutX="111.0" layoutY="240.0" prefHeight="28.0" prefWidth="76.0" />
             <Label layoutX="14.0" layoutY="235.0" prefHeight="38.0" prefWidth="84.0" text="Nowy bilet:">
                <font>
                   <Font size="14.0" />
@@ -55,6 +54,11 @@
                   <TableColumn fx:id="miejsceColumn" prefWidth="85.0" text="Cena" />
                </columns>
             </TableView>
+            <JFXButton fx:id="newTicket" buttonType="RAISED" layoutX="111.0" layoutY="235.0" onAction="#handleNewTicket" prefHeight="38.0" prefWidth="76.0" ripplerFill="#3f15ab" style="-fx-background-color: #b300dd;" text="Wybierz" textFill="#f8f6f6">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </JFXButton>
          </children>
       </Pane>
       <Pane layoutX="243.0" layoutY="183.0" prefHeight="369.0" prefWidth="202.0">

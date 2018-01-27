@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -53,8 +55,8 @@ public class AddReceiptController {
 
     @FXML
     private ChoiceBox<Pracownik> editEmployee;
-    @FXML
-    private ChoiceBox<Bilet> editTicket;
+//    @FXML
+//    private ChoiceBox<Bilet> editTicket;
     @FXML
     private ChoiceBox<Produkt> editProduct;
 
@@ -82,6 +84,9 @@ public class AddReceiptController {
     private JFXButton addProduct;
     @FXML
     private JFXButton deleteProduct;
+    @FXML
+    private JFXButton newTicket;
+
 
     @FXML
     void handleApplyChanges(ActionEvent event) throws IOException{
@@ -220,7 +225,7 @@ public class AddReceiptController {
     }
 
     @FXML
-    public void comboActionSeans(){
+    public void comboActionSeans() {
 //        System.out.println("Akcja!!!!");
 //        miejscaWybrane.clear();
 //        Seans selectedSeans = editSeans.getValue();
@@ -236,6 +241,31 @@ public class AddReceiptController {
 //        recordsTable.setItems(miejscaWybraneLista);
 //        //seansDAO.closeStatements();
     }
+
+
+    @FXML
+    void handleNewTicket(ActionEvent event) throws IOException{
+        System.out.println("Nowe okno dodania biletu");
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\NewTicketForReceipt.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Okno dodania nowego biletu");
+            NewTicketController controller = fxmlLoader.<NewTicketController>getController();
+            controller.initController(paragon);
+            stage.setScene(scene);
+            stage.show();
+            stage.setOnHiding( event2 -> {
+                System.out.println("Tutaj trzeba dodać funckje na zamknęcie okna");
+            } );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
     private void closeWindow() {
         Stage stage = (Stage) applyChanges.getScene().getWindow();
         stage.close();
