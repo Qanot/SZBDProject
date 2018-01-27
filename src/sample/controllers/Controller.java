@@ -770,6 +770,7 @@ public class Controller {
         System.out.println("addReceiptsButton!");
         RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
         Paragon paragon = new Paragon();
+        /** Straszny bład będący przeszłością **/
 //        if(selection != null && presentedType.equals("Receipts")){
 //            ParagonDAO paragonDAO = new ParagonDAO(cc);
 //            List<Paragon> lista = paragonDAO.getParagony();
