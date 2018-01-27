@@ -130,6 +130,7 @@ public class Controller {
                 openEditProductWindow(tempProduct);
             }
         } else if (presentedType.equals("Reservations")) {
+            showAlertEmptyForm("Rezerwacji nie można edytować! Istnieje możliwość usnięcia rezerwacji i dodania nowej.");
             //new EditReservationController().openWindow("Jakub - rezerwacja");
             RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
             if(selection != null) {
@@ -377,6 +378,16 @@ public class Controller {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editProductsOnReceiptWindow.fxml"));
             } else if (presentedType.equals("Reservations")) {
 //                new EditReservationController().openWindow("Jakub - rezerwacja");
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    System.out.println("Usun rezerwacje!");
+                    RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+                    List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
+                    Rezerwacja tempRezerwacja = lista.get(dataToShow.indexOf(selection));
+                    rezerwacjaDAO.deleteRezerwacja(tempRezerwacja);
+                    addReservationToTableView();
+                }
+
             } else if (presentedType.equals("TypesOfTickets")) {
                 RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
                 if(selection != null){
@@ -525,13 +536,16 @@ public class Controller {
         addReservationToTableView();
     }
     private void addReservationToTableView(){
-        RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+        ConnectionController cc4 = new ConnectionController();
+        cc4.open();
+        RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc4);
         List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
         dataToShow.clear();
         for(Rezerwacja rezerwacja: lista){
             dataToShow.add(new RecordToShow(rezerwacja.getDataUtworzeniaToString(),
                     rezerwacja.getKlientRezerwujacy().getLogin()));
         }
+        cc4.close();
 
     }
 
