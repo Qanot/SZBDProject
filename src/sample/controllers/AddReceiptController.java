@@ -33,14 +33,10 @@ import java.util.List;
 
 public class AddReceiptController {
 
-    Paragon paragon = null;
+    Paragon paragon;
     ConnectionController cc;
 
-    List<ProduktNaParagonie> produktyNaParagonie = new ArrayList<ProduktNaParagonie>();
-    ObservableList<ProduktNaParagonie> produktNaParagonieLista = FXCollections.observableArrayList(produktyNaParagonie);
-    //    List<Produkt> produkty = new ArrayList<>();
     ObservableList<Produkt> produktyLista;
-    //    List<Bilet> bilety;
     ObservableList<Bilet> biletyLista;
 
 //    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();

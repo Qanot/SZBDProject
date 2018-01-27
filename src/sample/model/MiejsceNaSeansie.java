@@ -49,6 +49,13 @@ public class MiejsceNaSeansie {
         this.seans = seans;
     }
 
+    @Override
+    public String toString() {
+        return "Miejsce:  " + this.miejsce.getNrMiejsca() +
+                "\nRząd: " + this.miejsce.getRzad()  +
+                "\nSeans: " + this.bilet.getMiejsceNaSeansie().getSeans().getFilm().getTytul();
+    }
+
     public int getId() {
         return id;
     }
