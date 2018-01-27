@@ -84,7 +84,10 @@ public class Seans {
     public String toString() {
         return "Czas emisji: " + dataEmisjiToString() +
                 "\nTytuł filmu: " + film.getTytul() +
-                "\nNr sali: " + sala.getNrSali();
+                "\nNr sali: " + sala.getNrSali()
+                +"\nMiejsc wolnych: " + this.getMiejscaWolne().size()
+                + "\nMiejsc zarezerwowanych: " + this.getMiejscaZarezerwowane().size()
+                + "\nMiejsc wykupionych: " + this.getMiejscaWykupione().size();
     }
 
 
