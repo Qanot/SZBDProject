@@ -73,15 +73,21 @@ public class Rezerwacja {
 
     @Override
     public String toString() {
-        return "Id rezerwacji: " + id
+        String wynik = "";
+        wynik = "Id rezerwacji: " + id
                 + "\nData utworzenia: " + getDataUtworzeniaToString()
                 + "\n" + jestOplaconaToString()
-                + "\nLogin klienta rezerwującego: " + klientRezerwujacy.getLogin()
-                + "\nDane seansu:\n"
-                + zarezerwowaneMiejsca.get(0).getSeans().toString()
-                + "\nLiczba zarezerwowanych miejsc: " + zarezerwowaneMiejsca.size()
-                + "\nLista zarezerwowanych miejsc:\n"
-                + getZarezerwowaneMiejscaToString();
+                + "\nLogin klienta rezerwującego: " + klientRezerwujacy.getLogin();
+        if(zarezerwowaneMiejsca!= null && zarezerwowaneMiejsca.size() > 0){
+            wynik += "\nDane seansu:\n"
+                    + zarezerwowaneMiejsca.get(0).getSeans().toString()
+                    + "\nLiczba zarezerwowanych miejsc: " + zarezerwowaneMiejsca.size()
+                    + "\nLista zarezerwowanych miejsc:\n"
+                    + getZarezerwowaneMiejscaToString();
+        }else{
+            System.out.println("NIE MA MIEJSC DLA REZERWACJI");
+        }
+        return wynik;
     }
     private String getZarezerwowaneMiejscaToString(){
         String wynik = "";
