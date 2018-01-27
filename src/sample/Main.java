@@ -6,13 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controllers.Controller;
-import sample.model.Miejsce;
-import sample.model.RodzajBiletu;
-import sample.model.Sala;
-import sample.services.ConnectionController;
-import sample.services.MiejsceDAO;
-import sample.services.RodzajBiletuDAO;
-import sample.services.SalaDAO;
+import sample.model.*;
+import sample.services.*;
+
+import java.util.Date;
 
 public class Main extends Application {
 
@@ -20,6 +17,11 @@ public class Main extends Application {
 //        makeConnection();
 //        ConnectionController cc = new ConnectionController();
 //        cc.open();
+//        ParagonDAO paragonDAO = new ParagonDAO(cc);
+//        PracownikDAO pracownikDAO = new PracownikDAO(cc);
+//        Pracownik prac = pracownikDAO.getPracownicy().get(0);
+//        Paragon paragon1 = new Paragon(new Date(), prac);
+//        paragonDAO.insertParagon(paragon1);
 //        MiejsceDAO miejsceDAO = new MiejsceDAO(cc);
 //        SalaDAO salaDAO = new SalaDAO(cc);
 //        Sala sala = salaDAO.getSalaById(12);

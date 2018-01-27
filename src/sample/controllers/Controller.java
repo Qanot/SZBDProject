@@ -344,7 +344,15 @@ public class Controller {
             } else if (presentedType.equals("SeatsOnSeans")) {
 //            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editSeatOnSeansWindow.fxml"));
             } else if (presentedType.equals("Receipts")) {
-//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\editReceiptWindow.fxml"));
+                RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+                if(selection != null){
+                    ParagonDAO paragonDAO = new ParagonDAO(cc);
+                    List<Paragon> lista = paragonDAO.getParagony();
+                    Paragon tempEmployee = lista.get(dataToShow.indexOf(selection));
+                    paragonDAO.deleteParagon(tempEmployee);
+                    paragonDAO.closeStatements();
+                    addReceiptsToTableView();
+                }
             } else if (presentedType.equals("Employees")) {
                 RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
                 if(selection != null){
@@ -562,7 +570,6 @@ public class Controller {
         System.out.println("showSeanseButton!");
         presentedType = "Seanse";
         addSeanseToTableView();
-
     }
     private void addSeanseToTableView(){
         SeansDAO seansDAO = new SeansDAO(cc);
@@ -611,7 +618,18 @@ public class Controller {
 
     @FXML
     private void handleShowReceiptsButton(ActionEvent event) throws IOException {
-        System.out.println("showSeanseButton!");
+        System.out.println("showReceiptsButton!");
+        presentedType = "Receipts";
+        addReceiptsToTableView();
+    }
+    private void addReceiptsToTableView(){
+        ParagonDAO paragonDAO = new ParagonDAO(cc);
+        List<Paragon> lista = paragonDAO.getParagony();
+        paragonDAO.closeStatements();
+        dataToShow.clear();
+        for (Paragon paragon: lista){
+            dataToShow.add(new RecordToShow("Data zakupu:", paragon.getDataZakupuToString()));
+        }
     }
 
     @FXML
@@ -755,11 +773,37 @@ public class Controller {
     @FXML
     private void handleAddReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
+
     }
 
     @FXML
     private void handleAddProductsOnReceiptsButton(ActionEvent event) throws IOException {
         System.out.println("addReceiptsButton!");
+        RecordToShow selection = recordsTable.getSelectionModel().getSelectedItem();
+        Paragon paragon = null;
+        if(selection != null && presentedType.equals("Receipts")){
+            ParagonDAO paragonDAO = new ParagonDAO(cc);
+            List<Paragon> lista = paragonDAO.getParagony();
+            paragon = lista.get(dataToShow.indexOf(selection));
+            paragonDAO.closeStatements();
+        }
+        openAddReceiptWindow(paragon);
+    }
+    private void openAddReceiptWindow(Paragon paragon){
+//        try{
+//            FXMLLoader fxmlLoader = new FXMLLoader();
+//            fxmlLoader.setLocation(getClass().getResource("..\\fxmls\\addReceiptWindow.fxml"));
+//            Scene scene = new Scene(fxmlLoader.load());
+//            Stage stage = new Stage();
+//            stage.setTitle("Okno dodania nowego paragonu");
+//            AddReceiptController controller = fxmlLoader.<AddReceiptController>getController();
+//            controller.initReceiptController(paragon, cc);
+//            stage.setScene(scene);
+//            stage.show();
+//            stage.setOnHiding( event -> {presentedType = "Receipts"; addReceiptsToTableView();} );
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
     }
 
     @FXML
