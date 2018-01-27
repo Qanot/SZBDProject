@@ -62,6 +62,7 @@ public class MiejsceNaSeansieDAO{
         PreparedStatement stmtInsert = null;
         try {
             int id = this.getNextValueOfSequence();
+            System.out.println("Id wynosi: " + id);
             stmtInsert = connectionController.getConn().prepareStatement(
                     "INSERT INTO MIEJSCANASEANSIE(ID, BILETY_ID, REZERWACJE_ID, MIEJSCA_ID, SEANSE_ID) " +
                             "VALUES(?, ?, ?, ?, ?)");
@@ -82,7 +83,7 @@ public class MiejsceNaSeansieDAO{
 
         }catch (SQLException ex) {
             Logger.getLogger(MiejsceNaSeansieDAO.class.getName()).log(Level.SEVERE,
-                    "Błąd wykonania polecenia delete", ex);
+                    "Błąd wykonania polecenia insert", ex);
         } finally {
             if (stmtInsert!= null) {
                 try {

@@ -71,7 +71,7 @@ public class RezerwacjaDAO {
             rezerwacja.setId(idRezerwacji);
             stmtInsert = connectionController.getConn().prepareStatement(
                     "INSERT INTO rezerwacje(id, data_godzina, czy_oplacona, klienci_id) " +
-                            "VALUES(?, ?, 'N', ?);");
+                            "VALUES(?, ?, 'N', ?)");
             stmtInsert.setInt(1, rezerwacja.getId());
             stmtInsert.setDate(2, new java.sql.Date(rezerwacja.getDataUtworzenia().getTime())); // to chyba dziala
             stmtInsert.setInt(3, rezerwacja.getKlientRezerwujacy().getId());

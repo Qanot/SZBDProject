@@ -962,12 +962,15 @@ public class Controller {
                     miejsceDAO.closeStatements();
                 }
                 else if (presentedType.equals("Reservations")) {
-                    RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc);
+                    ConnectionController cc3 = new ConnectionController();
+                    cc3.open();
+                    RezerwacjaDAO rezerwacjaDAO = new RezerwacjaDAO(cc3);
                     List<Rezerwacja> lista = rezerwacjaDAO.getRezerwacje();
                     Rezerwacja reservationTemp = lista.get(dataToShow.indexOf(newSelection));
                     if(!reservationTemp.equals(null)) {
                         infoText.setText(reservationTemp.toString());
                     }
+                    cc3.close();
 
                 }
             }
