@@ -21,7 +21,7 @@ public class MiejsceNaSeansieDAO{
     }
 
     public void deleteMiejsceNaSeansieForBilet(Bilet bilet){
-        /** UWAGA! ZNAJDUJE MIEJSCANASEANSIE DO USUNIECIA POD ID BILETU
+        /** UWAGA! ZNAJDUJE MIEJSCANASEANSIE DO USUNIECIA PO ID BILETU
          */
         PreparedStatement stmtDelete = null;
         try {

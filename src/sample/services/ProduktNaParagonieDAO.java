@@ -103,7 +103,7 @@ public class ProduktNaParagonieDAO {
         }
         produktDAO.closeStatements();
         return produkty;
-        
+
     }
     private void insrtAllProduktyForParagon(Paragon paragon){
         // tutaj tylko wstawiamy odpowiednie produkty na paragonie
@@ -122,11 +122,70 @@ public class ProduktNaParagonieDAO {
         }
     }
     private void deleteAllProduktyForParagon(Paragon paragon){
-        // TODO
+        /** UWAGA! ZNAJDUJE MIEJSCANASEANSIE DO USUNIECIA PO ID PARAGONU
+         */
+        PreparedStatement stmtDelete = null;
+        try {
+            stmtDelete = connectionController.getConn().prepareStatement(
+                    "DELETE FROM PRODUKTYNAPARAGONIE " +
+                            "WHERE PARAGONY_ID = ? " +
+                            "AND PRODUKTY_ID IS NOT NULL");
+
+            stmtDelete.setInt(1, paragon.getId());
+            stmtDelete.executeUpdate();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(ProduktNaParagonieDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia delete", ex);
+        } finally {
+            if (stmtDelete!= null) {
+                try {
+                    stmtDelete.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
     }
 
     private void deleteAllBiletyForParagon(Paragon paragon){
-        // TODO
+        /**
+         * 1. usun wszystkie produkty na paragonie
+         * 2. usun wszystkie bilety na podstawie id z listy produktow na paragonie (model)
+         */
+        /** UWAGA! ZNAJDUJE MIEJSCANASEANSIE DO USUNIECIA PO ID PARAGONU
+         */
+        PreparedStatement stmtDelete = null;
+        try {
+            stmtDelete = connectionController.getConn().prepareStatement(
+                    "DELETE FROM PRODUKTYNAPARAGONIE " +
+                            "WHERE PARAGONY_ID = ? " +
+                            "AND BILETY_ID IS NOT NULL");
+
+            stmtDelete.setInt(1, paragon.getId());
+            stmtDelete.executeUpdate();
+
+        }catch (SQLException ex) {
+            Logger.getLogger(ProduktNaParagonieDAO.class.getName()).log(Level.SEVERE,
+                    "Błąd wykonania polecenia delete", ex);
+        } finally {
+            if (stmtDelete!= null) {
+                try {
+                    stmtDelete.close();
+                } catch (SQLException e) {
+                    /* kod obsługi */
+                    System.out.println("Błąd zamknięcia interfejsu Statement");
+                }
+            }
+        }
+
+        BiletDAO biletDAO = new BiletDAO(connectionController);
+        for(Bilet bilet: paragon.getBilety()){
+            biletDAO.deleteBilet(bilet);
+        }
+
+
     }
 
     private void insertSingleBilet(int idParagonu, Bilet bilet){
