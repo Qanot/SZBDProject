@@ -245,6 +245,8 @@ public class AddReceiptController {
             stage.setScene(scene);
             stage.show();
             stage.setOnHiding( event2 -> {
+                controller.closeConnection();
+
                 System.out.println("Tutaj trzeba dodać funckje na zamknęcie okna");
             } );
         } catch (IOException e){

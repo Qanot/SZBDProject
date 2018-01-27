@@ -171,7 +171,7 @@ public class AddReservationController {
 
     @FXML
     public void comboActionSeans() {
-        System.out.println("Akcja!!!!");
+        System.out.println("Akcja wyboru seansu!!");
         miejscaWybrane.clear();
         Seans selectedSeans = editSeans.getValue();
         //SeansDAO seansDAO = new SeansDAO(cc);
