@@ -2,6 +2,7 @@ package sample.services;
 
 import sample.model.Paragon;
 import sample.model.Pracownik;
+import sample.model.ProduktNaParagonie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,6 +132,53 @@ public class ParagonDAO extends DAO {
     public List<Paragon> getParagony() {
         selectParagony();
         return paragony;
+    }
+
+    private List<ProduktNaParagonie> getWolneMiejscaDlaSeansu(Paragon paragon){
+        List<ProduktNaParagonie> produktNaParagonie = new ArrayList<ProduktNaParagonie>();
+//        PreparedStatement stmtSelectProdukty = null;
+//        ResultSet rs = null;
+//        try {
+//            stmtSelectProdukty = connectionController.getConn().prepareStatement(
+//                    "SELECT MMIEJSCA.ID FROM MIEJSCA MMIEJSCA" +
+//                            " WHERE SALE_ID = ?" +
+//                            " AND NOT EXISTS(" +
+//                            "   SELECT 1 FROM MIEJSCANASEANSIE" +
+//                            "   WHERE MIEJSCA_ID = MMIEJSCA.ID" +
+//                            "   AND SEANSE_ID = ?)");
+//            stmtSelectProdukty.setInt(1, paragon.getSala().getId());
+//            stmtSelectProdukty.setInt(2, paragon.getId());
+//            rs = stmtSelectProdukty.executeQuery();
+//            MiejsceDAO miejsceDAO = new MiejsceDAO(connectionController);
+//            while (rs.next()) {
+//                int idMiejsca = rs.getInt(1);
+//                Miejsce miejsce = miejsceDAO.getMiejsceById(idMiejsca);
+//                produktNaParagonie.add(miejsce);
+//            }
+//            miejsceDAO.closeStatements();
+//
+//        }catch (SQLException ex) {
+//            Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+//                    "Błąd wykonania polecenia select", ex);
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(SeansDAO.class.getName()).log(Level.SEVERE,
+//                            "Błąd zamykania interfejsu ResultSet", ex);
+//                }
+//            }
+//            if (stmtSelectProdukty != null) {
+//                try {
+//                    stmtSelectProdukty.close();
+//                } catch (SQLException e) {
+//                    /* kod obsługi */
+//                    System.out.println("Błąd zamknięcia interfejsu Statement");
+//                }
+//            }
+//        }
+        return produktNaParagonie;
     }
 
     public Paragon getParagonById(int id) {
