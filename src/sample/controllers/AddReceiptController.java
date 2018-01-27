@@ -23,13 +23,10 @@ import sample.model.*;
 import sample.services.ConnectionController;
 import sample.services.PracownikDAO;
 import sample.services.ProduktDAO;
-import sample.services.RezerwacjaDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static sample.controllers.Controller.showAlertEmptyForm;
 
 public class AddReceiptController {
 
@@ -38,6 +35,9 @@ public class AddReceiptController {
 
     List<ProduktNaParagonie> produktyNaParagonie= new ArrayList<ProduktNaParagonie>();
     ObservableList<ProduktNaParagonie> produktNaParagonieLista = FXCollections.observableArrayList(produktyNaParagonie);
+    List<Produkt> produkty = new ArrayList<>();
+    ObservableList<Produkt> produktyLista = FXCollections.observableArrayList(produkty);
+
 //    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();
 //    List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
 //    ObservableList<Miejsce> miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
@@ -54,9 +54,9 @@ public class AddReceiptController {
     @FXML
     private ChoiceBox<Pracownik> editEmployee;
     @FXML
-    private ChoiceBox<Bilet> editBilet;
+    private ChoiceBox<Bilet> editTicket;
     @FXML
-    private ChoiceBox<Produkt> editProdukt;
+    private ChoiceBox<Produkt> editProduct;
 
     @FXML
     private TableView<Bilet> recordsTableTickets;
@@ -130,11 +130,11 @@ public class AddReceiptController {
         editEmployee.setItems(FXCollections.observableArrayList(pracownicy));
 
 
-//        ProduktDAO produktDAO = new ProduktDAO(cc);
-//        List<Produkt> produkty = produktDAO.getProdukty();
-//        ObservableList<Produkt> produktyLista  = FXCollections.observableArrayList(produkty);
-//        editProdukt.setItems(produktyLista);
-//        produktDAO.closeStatements();
+        ProduktDAO produktDAO = new ProduktDAO(cc);
+        List<Produkt> produkty = produktDAO.getProdukty();
+        ObservableList<Produkt> produktyListaPelna  = FXCollections.observableArrayList(produkty);
+        produktDAO.closeStatements();
+        editProduct.setItems(produktyListaPelna);
 
         dataColumn.setCellValueFactory(
                 new PropertyValueFactory<Bilet, String>("rzad"));
@@ -143,7 +143,7 @@ public class AddReceiptController {
         nazwaColumn.setCellValueFactory(
                 new PropertyValueFactory<Produkt, String>("nazwa"));
         rozmiarColumn.setCellValueFactory(
-                new PropertyValueFactory<Produkt, String>("rozmiar"));
+                new PropertyValueFactory<Produkt, String>("rozmiarPorcji"));
 
         recordsTableProducts.setPlaceholder(new Label("Nie wybrano produktów"));
         recordsTableTickets.setPlaceholder(new Label("Nie wybrano biletów"));
@@ -168,20 +168,21 @@ public class AddReceiptController {
     }
     @FXML
     void handleAddProduct(ActionEvent event) throws IOException{
-//        System.out.println("Dodaj miejsce!");
-//        if(editMiejsce.getValue() != null){
-//            System.out.println("Not null");
-//            Miejsce miejsceWybrane = editMiejsce.getValue();
+        System.out.println("Dodaj produkt!");
+        if(editProduct.getValue() != null){
+            System.out.println("Not null");
+            Produkt produkt = editProduct.getValue();
+            produkty.add(produkt);
+            produktyLista = FXCollections.observableArrayList(produkty);
 //            miejscaWybrane.add(miejsceWybrane);
 //            miejscaWolne.remove(miejsceWybrane);
 //            miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
-//            editMiejsce.setItems(miejscaWolneLista);
-//            miejscaWybraneLista = FXCollections.observableArrayList(miejscaWybrane);
-//            recordsTable.setItems(miejscaWybraneLista);
-//        } else{
-//            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
-//
-//        }
+//            editProduct.setItems(produktyLista);
+            recordsTableProducts.setItems(produktyLista);
+        } else{
+            okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
+
+        }
     }
     @FXML
     void handleDeleteTicket(ActionEvent event) throws IOException{
