@@ -39,4 +39,5 @@ public class Bilet {
     public void setRodzajBiletu(RodzajBiletu rodzajBiletu) {
         this.rodzajBiletu = rodzajBiletu;
     }
+
 }
