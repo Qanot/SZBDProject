@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,6 +43,9 @@ public class AddReceiptController {
 //    List<Miejsce> miejscaWybrane = new ArrayList<Miejsce>();
 //    List<Miejsce> miejscaWolne = new ArrayList<Miejsce>();
 //    ObservableList<Miejsce> miejscaWolneLista = FXCollections.observableArrayList(miejscaWolne);
+
+    @FXML
+    private Label sumaPieniazkow;
 
     @FXML
     private StackPane stackPane;
@@ -120,6 +124,24 @@ public class AddReceiptController {
         biletyLista = FXCollections.observableArrayList(paragon.getBilety());
         produktyLista = FXCollections.observableArrayList(paragon.getProdukty());
 
+        /*
+
+        produktyLista.addListener(new ListChangeListener<Produkt>() {
+            @Override
+            public void onChanged(Change<? extends Produkt> c) {
+                updateSumaPieniazkow();
+            }
+        });
+
+        biletyLista.addListener(new ListChangeListener<Bilet>() {
+            @Override
+            public void onChanged(Change<? extends Bilet> c) {
+                updateSumaPieniazkow();
+            }
+        });
+
+        */
+
         PracownikDAO pracownikDAO = new PracownikDAO(cc);
         List<Pracownik> pracownicy = pracownikDAO.getPracownicy();
         pracownikDAO.closeStatements();
@@ -172,6 +194,7 @@ public class AddReceiptController {
             paragon.getProdukty().add(produkt);
             produktyLista = FXCollections.observableArrayList(paragon.getProdukty());
             recordsTableProducts.setItems(produktyLista);
+            updateSumaPieniazkow();
         } else {
             okienkoWiadomosci("Proszę najpierw wybrać z listy miejsce do dodania.");
         }
@@ -185,6 +208,7 @@ public class AddReceiptController {
             paragon.getBilety().remove(selection);
             biletyLista = FXCollections.observableArrayList(paragon.getBilety());
             recordsTableTickets.setItems(biletyLista);
+            updateSumaPieniazkow();
         } else {
             okienkoWiadomosci("Proszę najpierw zaznaczyć bilet do usunięcia.");
         }
@@ -198,6 +222,7 @@ public class AddReceiptController {
             paragon.getProdukty().remove(selection);
             produktyLista = FXCollections.observableArrayList(paragon.getProdukty());
             recordsTableProducts.setItems(produktyLista);
+            updateSumaPieniazkow();
         } else {
             okienkoWiadomosci("Proszę najpierw zaznaczyć produkt do usunięcia.");
         }
@@ -224,6 +249,7 @@ public class AddReceiptController {
 
     @FXML
     void handleNewTicket(ActionEvent event) throws IOException {
+
         System.out.println("Nowe okno dodania biletu");
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -239,6 +265,7 @@ public class AddReceiptController {
                 controller.closeConnection();
                 biletyLista = FXCollections.observableArrayList(paragon.getBilety());
                 recordsTableTickets.setItems(biletyLista);
+                updateSumaPieniazkow();
                 System.out.println("Tutaj trzeba dodać funckje na zamknęcie okna");
             });
         } catch (IOException e) {
@@ -275,5 +302,9 @@ public class AddReceiptController {
         });
         content.setBody(new Label(message));
         dialog.show();
+    }
+
+    private void updateSumaPieniazkow(){
+        sumaPieniazkow.setText("Suma PLN: " + String.format ("%.2f", paragon.getSumaPieniazkow()));
     }
 }
